@@ -1,115 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stealth Strategist | Medspa Booking Expert</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #1a1a1a;
-            --card: #262626;
-            --accent: #d4af37;
-            --text: #f5f5f5;
-            --subtext: #a3a3a3;
-        }
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 40px 20px;
-            display: flex;
-            justify-content: center;
-        }
-        .container { max-width: 600px; width: 100%; }
-        header p { text-transform: uppercase; letter-spacing: 2px; font-weight: bold; color: var(--accent); margin-bottom: 5px; font-size: 0.9rem; }
-        h1 { font-size: 2.2rem; line-height: 1.2; color: var(--text); margin-bottom: 15px; font-weight: 700; }
-        p { font-size: 1.05rem; color: var(--subtext); line-height: 1.6; }
-        strong { color: var(--text); }
-        
-        .box { 
-            background: var(--card); 
-            padding: 25px; 
-            border-radius: 8px; 
-            margin: 30px 0; 
-            border: 1px solid #333; 
-        }
-        .list { list-style: none; padding: 0; }
-        .list li { margin-bottom: 12px; padding-left: 30px; position: relative; color: var(--subtext); }
-        .list li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
-        
-        /* This fixes the Tally area */
-        .form-wrapper {
-            margin-top: 20px;
-            min-height: 500px;
-            background: transparent;
-        }
-
-        .cta-button {
-            display: block;
-            background: var(--accent);
-            color: #1a1a1a;
-            text-align: center;
-            padding: 16px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 800;
-            font-size: 1.1rem;
-            margin-top: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .cta-button:hover { background: #c5a028; }
-        
-        .price-tag { font-size: 1.8rem; font-weight: bold; color: var(--text); margin: 10px 0; }
-        .small-print { font-size: 0.75rem; color: #666; margin-top: 15px; text-align: center; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stealth Strategist | Med Spa Landing Pages</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--c:#F7F4EE;--w:#FDFCF9;--i:#1A1714;--is:#3D3830;--g:#C49A52;--gl:#E8D5A8;--b:rgba(26,23,20,.12);--S:'Cormorant Garamond',Georgia,serif;--N:'DM Sans',sans-serif}
+html{scroll-behavior:smooth}
+body{font-family:var(--N);background:var(--w);color:var(--i);font-size:16px;line-height:1.6;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;background:rgba(253,252,249,.93);backdrop-filter:blur(10px);border-bottom:.5px solid var(--b)}
+.logo{font-family:var(--S);font-size:1.1rem;letter-spacing:.12em;text-transform:uppercase;color:var(--i);text-decoration:none}
+.nb{font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--w);background:var(--i);padding:.6rem 1.4rem;text-decoration:none;transition:background .2s}
+.nb:hover{background:var(--g)}
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:80px}
+.hl{display:flex;flex-direction:column;justify-content:center;padding:5rem 4rem 5rem 5rem;position:relative}
+.hl::after{content:'';position:absolute;right:0;top:10%;bottom:10%;width:.5px;background:var(--b)}
+.ey{font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--g);margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem}
+.ey::before{content:'';display:block;width:2rem;height:.5px;background:var(--g)}
+h1{font-family:var(--S);font-size:clamp(2.8rem,5vw,4.2rem);font-weight:300;line-height:1.12}
+h1 em{font-style:italic;color:var(--g)}
+.sub{font-size:1rem;font-weight:300;color:var(--is);line-height:1.7;max-width:420px;margin:1.75rem 0 2.5rem}
+.acts{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+.btn{font-size:.8rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--w);background:var(--i);padding:1rem 2.2rem;text-decoration:none;display:inline-block;transition:background .2s,transform .15s;border:none;cursor:pointer;font-family:var(--N)}
+.btn:hover{background:var(--g);transform:translateY(-1px)}
+.bg{background:var(--g);color:var(--i)}.bg:hover{opacity:.85;background:var(--g)}
+.gh{font-size:.8rem;color:var(--is);text-decoration:underline;text-underline-offset:3px;cursor:pointer;background:none;border:none;font-family:var(--N)}
+.sts{display:flex;gap:2.5rem;margin-top:3.5rem;padding-top:2rem;border-top:.5px solid var(--b)}
+.sl{font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--g);margin-bottom:.25rem}
+.sv{font-family:var(--S);font-size:1.9rem;font-weight:300;line-height:1}
+.hr{background:var(--c);display:flex;flex-direction:column;justify-content:center;padding:5rem 4rem;position:relative;overflow:hidden}
+.hr::before{content:'"';font-family:var(--S);font-size:18rem;color:var(--gl);position:absolute;top:-3rem;left:1rem;line-height:1;pointer-events:none;opacity:.4}
+.pl{font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:#8A9E8C;margin-bottom:1.5rem}
+.ph{font-family:var(--S);font-size:1.6rem;font-weight:400;line-height:1.35;margin-bottom:2rem;position:relative;z-index:1}
+.pli{list-style:none;display:flex;flex-direction:column;gap:1rem;position:relative;z-index:1}
+.pli li{display:flex;gap:1rem;font-size:.9rem;font-weight:300;color:var(--is);line-height:1.5}
+.pli li::before{content:'→';color:var(--g);flex-shrink:0;margin-top:.1rem}
+.off{background:var(--i);color:var(--w);padding:6rem 5rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.seclbl{font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--g);margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem}
+.seclbl::before{content:'';display:block;width:1.5rem;height:.5px;background:var(--g)}
+.off h2{font-family:var(--S);font-size:clamp(2rem,3.5vw,3rem);font-weight:300;line-height:1.2;margin-bottom:1.5rem}
+.off h2 em{font-style:italic;color:var(--g)}
+.ob{font-size:.95rem;font-weight:300;line-height:1.8;color:rgba(253,252,249,.75);max-width:400px;margin-bottom:2.5rem}
+.pb{border:.5px solid rgba(196,154,82,.4);padding:1.5rem 2rem;display:inline-block;margin-bottom:2rem}
+.pbl{font-size:.72rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--g);margin-bottom:.5rem}
+.pr{font-family:var(--S);font-size:3rem;font-weight:300;line-height:1}
+.pn{font-size:.78rem;color:rgba(253,252,249,.5);margin-top:.4rem}
+.dt{font-family:var(--S);font-size:1.2rem;color:var(--g);margin-bottom:1.5rem}
+.di{border-bottom:.5px solid rgba(255,255,255,.08);padding:1.25rem 0;display:flex;gap:1.25rem}
+.dn{font-family:var(--S);font-size:1rem;font-weight:300;color:var(--g);opacity:.6;min-width:1.5rem}
+.dtt{font-size:.88rem;font-weight:500;color:var(--w);margin-bottom:.25rem}
+.dd{font-size:.82rem;font-weight:300;color:rgba(253,252,249,.55);line-height:1.5}
+.proc{padding:6rem 5rem;background:var(--c)}
+.prh{text-align:center;margin-bottom:4rem}
+.prh h2{font-family:var(--S);font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.2;margin-bottom:.75rem}
+.prh h2 em{font-style:italic;color:var(--g)}
+.prh p{font-size:.95rem;font-weight:300;color:var(--is);max-width:500px;margin:0 auto}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+.step{background:var(--w);padding:2.5rem 2rem}
+.sn{font-family:var(--S);font-size:3.5rem;font-weight:300;color:var(--gl);line-height:1;margin-bottom:1.25rem}
+.st{font-size:.88rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.75rem}
+.sd{font-size:.85rem;font-weight:300;color:var(--is);line-height:1.6}
+.urg{background:var(--g);padding:1.25rem 3rem;text-align:center;font-size:.8rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--i)}
+.cta{padding:7rem 5rem;text-align:center;background:var(--i);position:relative;overflow:hidden}
+.cta::before{content:'BOOK';font-family:var(--S);font-size:18rem;font-weight:300;color:rgba(255,255,255,.03);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;white-space:nowrap}
+.cta h2{font-family:var(--S);font-size:clamp(2.5rem,5vw,4rem);font-weight:300;color:var(--w);line-height:1.15;margin-bottom:1rem;position:relative}
+.cta h2 em{font-style:italic;color:var(--g)}
+.cta p{font-size:.95rem;font-weight:300;color:rgba(253,252,249,.6);max-width:500px;margin:0 auto 3rem;line-height:1.7;position:relative}
+.ctab{display:flex;gap:1.25rem;justify-content:center;flex-wrap:wrap;position:relative}
+.cn{margin-top:1.5rem;font-size:.78rem;font-weight:300;color:rgba(253,252,249,.35);letter-spacing:.06em;position:relative}
+@keyframes fu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.hl>*{animation:fu .7s ease both}
+.hl>*:nth-child(1){animation-delay:.1s}.hl>*:nth-child(2){animation-delay:.2s}.hl>*:nth-child(3){animation-delay:.3s}.hl>*:nth-child(4){animation-delay:.4s}.hl>*:nth-child(5){animation-delay:.5s}
+@media(max-width:900px){nav{padding:1rem 1.5rem}.hero{grid-template-columns:1fr;min-height:auto}.hl{padding:5rem 2rem 3rem}.hl::after{display:none}.hr{padding:3rem 2rem}.off{grid-template-columns:1fr;padding:4rem 2rem;gap:3rem}.proc{padding:4rem 2rem}.steps{grid-template-columns:1fr 1fr}.cta{padding:5rem 2rem}}
+@media(max-width:500px){.steps{grid-template-columns:1fr}.sts{gap:1.5rem}}
+</style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <p>Stealth Strategist</p>
-            <h1>Stop losing customers to a "messy" website.</h1>
-        </header>
-
-        <section>
-            <p>Most people who click your ads leave because your website is too confusing. They want to book a treatment, but they get lost in your menus.</p>
-            <p><strong>I build simple, one-page websites that do one thing: get you more bookings.</strong></p>
-            
-            <ul class="list">
-                <li><strong>No phone calls.</strong> We talk over email or Slack only.</li>
-                <li><strong>Fast work.</strong> Your new page is ready in 24 hours.</li>
-                <li><strong>Better results.</strong> I focus on making it easy for people to say "Yes."</li>
-            </ul>
-        </section>
-
-        <section class="box">
-            <h3 style="margin-top:0;">Step 1: Get a Free Website Audit</h3>
-            <p>Paste your link below. I will send you 3 simple things we can fix this week.</p>
-            
-            <div class="form-wrapper">
-                <iframe data-tally-src="https://tally.so/embed/Pd0LeP?transparentBackground=1&dynamicHeight=1" 
-                        loading="lazy" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0" 
-                        title="Medspa Audit Form">
-                </iframe>
-                <script src="https://tally.so/widgets/embed.js"></script>
-            </div>
-        </section>
-
-        <section class="box" style="border-color: var(--accent);">
-            <h3 style="margin-top:0;">Ready to start right now?</h3>
-            <p>Skip the audit and get your high-conversion booking page setup in the next 24 hours.</p>
-            <div class="price-tag">$997 <span style="font-size: 1rem; color: #666; font-weight: normal;">one-time fee</span></div>
-            
-            <a href="https://buy.stripe.com/dRmdR8bBk6Zkas99qmdfG05" class="cta-button">Start My Project Now</a>
-            
-            <p class="small-print">100% Secure Payment via Stripe. Work begins immediately.</p>
-        </section>
-
-        <footer style="margin-top: 60px; font-size: 0.75rem; color: #666; border-top: 1px solid #333; padding-top: 20px; text-align: center;">
-            <p>&copy; 2026 Stealth Strategist. 100% Asynchronous Service.</p>
-        </footer>
-    </div>
+<nav>
+ <a href="#" class="logo">Stealth Strategist</a>
+ <a href="https://tally.so/r/Pd0LeP" class="nb">Get Your Free Audit</a>
+</nav>
+<section class="hero">
+ <div class="hl">
+ <div class="ey">For Med Spas Who Want More Customers</div>
+ <h1>Your ads are buying<br><em>visitors,</em><br>not bookings.</h1>
+ <p class="sub">You are spending money on ads. But if your website is too messy, people leave without booking. I fix that in 24 hours.</p>
+ <div class="acts">
+ <a href="https://tally.so/r/Pd0LeP" class="btn">Get Started — $997</a>
+ <button class="gh" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})">How it works</button>
+ </div>
+ <div class="sts">
+ <div><div class="sl">Fast Delivery</div><div class="sv">24 hrs</div></div>
+ <div><div class="sl">Simple Price</div><div class="sv">$997</div></div>
+ <div><div class="sl">Safety</div><div class="sv">7-day</div></div>
+ </div>
+ </div>
+ <div class="hr">
+ <div class="pl">The Problem</div>
+ <h2 class="ph">Most spa websites are too confusing for customers.</h2>
+ <ul class="pli">
+ <li>Too much talking that doesn't help people book.</li>
+ <li>No clear buttons to click when they are ready.</li>
+ <li>The "Book Now" button is hidden or hard to find.</li>
+ <li>The site is slow and messy on phones.</li>
+ </ul>
+ </div>
+</section>
+<section class="off" id="offer">
+ <div>
+ <div class="seclbl">The Offer</div>
+ <h2>One page.<br>Built to <em>sell.</em></h2>
+ <p class="ob">I build a simple, clean page for your spa. I write all the words, build the site, and give it to you in 24 hours. It makes it easy for customers to book appointments.</p>
+ <div class="pb">
+ <div class="pbl">One-time fee</div>
+ <div class="pr">$997</div>
+ <div class="pn">7-day guarantee. No monthly bills.</div>
+ </div><br>
+ <a href="https://buy.stripe.com/dRmdR8bBk6Zkas99qmdfG05" class="btn bg">Buy Now — $997</a>
+ </div>
+ <div>
+ <div class="dt">What you get</div>
+ <div class="di"><div class="dn">01</div><div><div class="dtt">A Custom Page</div><div class="dd">One clean page for your top service. Designed for bookings.</div></div></div>
+ <div class="di"><div class="dn">02</div><div><div class="dtt">Easy Reading</div><div class="dd">I write simple words that make people want to book with you.</div></div></div>
+ <div class="di"><div class="dn">03</div><div><div class="dtt">Perfect on Phones</div><div class="dd">Most people book on their phone. Your site will look great.</div></div></div>
+ <div class="di"><div class="dn">04</div><div><div class="dtt">Booking Links</div><div class="dd">I connect your booking tool (like Mindbody or Jane) to the page.</div></div></div>
+ <div class="di"><div class="dn">05</div><div><div class="dtt">24-Hour Delivery</div><div class="dd">I finish the work in one business day. No long waits.</div></div></div>
+ </div>
+</section>
+<section class="proc" id="how">
+ <div class="prh">
+ <h2>How it <em>works</em></h2>
+ <p>Four simple steps. Everything is handled over email. No phone calls.</p>
+ </div>
+ <div class="steps">
+ <div class="step"><div class="sn">01</div><div class="st">Fill Out the Form</div><div class="sd">A short 10-minute form about your spa and your booking link.</div></div>
+ <div class="step"><div class="sn">02</div><div class="st">I Write the Words</div><div class="sd">I write headlines and descriptions that speak to your customers.</div></div>
+ <div class="step"><div class="sn">03</div><div class="st">I Build the Page</div><div class="sd">I build the design and add your booking tool within 24 hours.</div></div>
+ <div class="step"><div class="sn">04</div><div class="st">You Get Bookings</div><div class="sd">Send your ad traffic to the new page. I handle edits over email.</div></div>
+ </div>
+</section>
+<div class="urg">✦ &nbsp; Only 3 spots available this week — first come, first served &nbsp; ✦</div>
+<section class="cta" id="book">
+ <h2>Ready for more<br><em>bookings?</em></h2>
+ <p>Fill out the form. I build your page in 24 hours. If you aren't happy, you pay nothing.</p>
+ <div class="ctab">
+ <a href="https://buy.stripe.com/dRmdR8bBk6Zkas99qmdfG05" class="btn bg">Start Now — $997</a>
+ </div>
+ <p class="cn">No calls. Everything handled by email. 7-day guarantee.</p>
+</section>
+<div style="background:#1A1714;border-top:.5px solid rgba(255,255,255,.1);padding:2rem 5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
+ <span style="font-family:'Cormorant Garamond',Georgia,serif;font-size:.95rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(253,252,249,.5);">Stealth Strategist</span>
+ <div style="display:flex;gap:2rem;flex-wrap:wrap;">
+ <span style="font-size:.78rem;color:rgba(253,252,249,.4);letter-spacing:.06em;">tyra@stealthstrategist.co</span>
+ <a href="#offer" style="font-size:.78rem;color:rgba(253,252,249,.4);text-decoration:none;letter-spacing:.06em;">What's Included</a>
+ <a href="#how" style="font-size:.78rem;color:rgba(253,252,249,.4);text-decoration:none;letter-spacing:.06em;">How It Works</a>
+ </div>
+</div>
 </body>
 </html>
