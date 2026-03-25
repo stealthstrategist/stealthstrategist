@@ -37,6 +37,20 @@ h1 em{font-style:italic;color:var(--g)}
 .pli{list-style:none;display:flex;flex-direction:column;gap:1rem;position:relative;z-index:1}
 .pli li{display:flex;gap:1rem;font-size:.9rem;font-weight:300;color:var(--is);line-height:1.5}
 .pli li::before{content:'→';color:var(--g);flex-shrink:0;margin-top:.1rem}
+
+/* NEW BEFORE/AFTER WIREFRAME STYLES */
+.ba-section{padding:6rem 5rem;background:var(--w);text-align:center}
+.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:3rem}
+.ba-card{background:var(--c);padding:1.5rem;border-radius:4px;border:.5px solid var(--b)}
+.ba-label{font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;margin-bottom:1rem;display:block}
+.bad{color:#cc0000}.good{color:var(--g)}
+
+/* The Mockup Wireframes (Drawn with HTML) */
+.mock-container{width:100%; height:250px; background:var(--w); border:.5px solid var(--b); margin-bottom:1.5rem; position:relative; overflow:hidden;}
+.mock-header{height:40px; background:#f0f0f0; border-bottom:.5px solid var(--b); display:flex; gap:.5rem; align-items:center; padding:0 1rem;}
+.mock-dot{width:8px; height:8px; border-radius:50%; background:#bbb;}
+.mock-box{background:#f0f0f0; border:.5px solid var(--b); padding:.5rem; font-family:var(--N); font-size:.65rem;}
+
 .off{background:var(--i);color:var(--w);padding:6rem 5rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
 .seclbl{font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--g);margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem}
 .seclbl::before{content:'';display:block;width:1.5rem;height:.5px;background:var(--g)}
@@ -73,7 +87,7 @@ h1 em{font-style:italic;color:var(--g)}
 @keyframes fu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 .hl>*{animation:fu .7s ease both}
 .hl>*:nth-child(1){animation-delay:.1s}.hl>*:nth-child(2){animation-delay:.2s}.hl>*:nth-child(3){animation-delay:.3s}.hl>*:nth-child(4){animation-delay:.4s}.hl>*:nth-child(5){animation-delay:.5s}
-@media(max-width:900px){nav{padding:1rem 1.5rem}.hero{grid-template-columns:1fr;min-height:auto}.hl{padding:5rem 2rem 3rem}.hl::after{display:none}.hr{padding:3rem 2rem}.off{grid-template-columns:1fr;padding:4rem 2rem;gap:3rem}.proc{padding:4rem 2rem}.steps{grid-template-columns:1fr 1fr}.cta{padding:5rem 2rem}}
+@media(max-width:900px){nav{padding:1rem 1.5rem}.hero{grid-template-columns:1fr;min-height:auto}.hl{padding:5rem 2rem 3rem}.hl::after{display:none}.hr{padding:3rem 2rem}.ba-section{padding:4rem 2rem}.ba-grid{grid-template-columns:1fr}.off{grid-template-columns:1fr;padding:4rem 2rem;gap:3rem}.proc{padding:4rem 2rem}.steps{grid-template-columns:1fr 1fr}.cta{padding:5rem 2rem}}
 @media(max-width:500px){.steps{grid-template-columns:1fr}.sts{gap:1.5rem}}
 </style>
 </head>
@@ -94,7 +108,7 @@ h1 em{font-style:italic;color:var(--g)}
  <div class="sts">
  <div><div class="sl">Fast Delivery</div><div class="sv">24 hrs</div></div>
  <div><div class="sl">Simple Price</div><div class="sv">$997</div></div>
- <div><div class="sl">Expert Support</div><div class="sv">7-day</div></div>
+ <div><div class="sl">Expert Tips</div><div class="sv">7 Days</div></div>
  </div>
  </div>
  <div class="hr">
@@ -108,6 +122,51 @@ h1 em{font-style:italic;color:var(--g)}
  </ul>
  </div>
 </section>
+
+<section class="ba-section">
+ <div class="seclbl" style="justify-content:center;">The Visual Proof</div>
+ <h2 style="font-family:var(--S); font-size:clamp(2rem, 4vw, 3rem); font-weight:300;">Messy vs. <em>Stealth</em></h2>
+ <p style="max-width:500px; margin: 1rem auto; font-weight:300; color:var(--is);">We turn cluttered pages into simple machines that get you paid.</p>
+ 
+ <div class="ba-grid">
+    <div class="ba-card">
+        <span class="ba-label bad">● Before (Confusing Site Sketch)</span>
+        
+        <div class="mock-container" style="display:flex; flex-direction:column; gap:.5rem; padding:.75rem; border-color:#cc0000; color:#555;">
+            <div class="mock-header" style="justify-content:space-between; border-color:#cc0000; background:#fff1f1;">
+                <div style="font-size:.65rem; color:#cc0000;">Menu 1 | Menu 2 | Menu 3 | Menu 4</div>
+                <button style="border:.5px solid #cc0000; background:none; font-size:.6rem; padding:2px 5px; color:#cc0000;">Small Button</button>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:.25rem;">
+                <div class="mock-box">Small Photo Box</div>
+                <div class="mock-box">Generic Title Box</div>
+                <div class="mock-box">Big Block of Text Box</div>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 2fr; gap:.25rem;">
+                <div class="mock-box">Cluttered Menu</div>
+                <div class="mock-box" style="height:80px; text-align:left;">Too much information here. People get confused. They look for the booking link and give up.</div>
+            </div>
+        </div>
+
+        <p style="font-size: .85rem; color:var(--is);">Too many links, small buttons, and hard to read.</p>
+    </div>
+    <div class="ba-card">
+        <span class="ba-label good">● After (Clean Site Sketch)</span>
+        
+        <div class="mock-container" style="display:flex; flex-direction:column; align-items:center; border-color:var(--g); color:var(--i);">
+            <div class="mock-header" style="justify-content:space-between; width:100%; border-color:var(--g);">
+                <div style="font-size:.8rem; font-weight:700; font-family:var(--S);">Logo</div>
+            </div>
+            <div style="width:100%; height:80px; background:var(--gl); display:flex; align-items:center; justify-content:center; font-family:var(--S);">Beautiful Image</div>
+            <div style="font-family:var(--S); font-weight:700; font-size:1.5rem; color:var(--i); margin-top:.5rem;">ONE FOCUSED TITLE</div>
+            <div style="padding:0 .5rem; font-size:.7rem; margin-top:.25rem; font-weight:300;">One simple service. Zero distractions. Clear steps.</div>
+            <button style="background:var(--i); color:var(--w); border:none; padding:8px 20px; text-transform:uppercase; font-size:.7rem; margin-top:auto; width:80%; margin-bottom:1rem;">Clear Book Button</button>
+        </div>
+
+        <p style="font-size: .85rem; color:var(--is);">One clear goal, easy to read, and 1-click booking.</p>
+    </div>
+ </div>
+</section>
 <section class="off" id="offer">
  <div>
  <div class="seclbl">The Offer</div>
@@ -116,7 +175,7 @@ h1 em{font-style:italic;color:var(--g)}
  <div class="pb">
  <div class="pbl">One-time fee</div>
  <div class="pr">$997</div>
- <div class="pn">7-day marketing support guarantee. No monthly bills.</div>
+ <div class="pn">7 days of expert marketing tips included. No monthly bills.</div>
  </div><br>
  <a href="https://buy.stripe.com/dRmdR8bBk6Zkas99qmdfG05" class="btn bg">Buy Now — $997</a>
  </div>
@@ -144,7 +203,7 @@ h1 em{font-style:italic;color:var(--g)}
 <div class="urg">✦ &nbsp; Only 3 spots available this week — first come, first served &nbsp; ✦</div>
 <section class="cta" id="book">
  <h2>Ready for more<br><em>bookings?</em></h2>
- <p>Fill out the form. I build your page in 24 hours. If you aren't happy, you pay nothing. (No refunds unless you see zero increase in sales within 60 days).</p>
+ <p>Fill out the form. I build your page in 24 hours. No refunds unless you see zero increase in sales within 60 days of going live.</p>
  <div class="ctab">
  <a href="https://buy.stripe.com/dRmdR8bBk6Zkas99qmdfG05" class="btn bg">START NOW — $997</a>
  </div>
