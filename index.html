@@ -1,162 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Booking Engine — Med Spa Landing Pages</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{--c:#F7F4EE;--w:#FDFCF9;--i:#1A1714;--is:#3D3830;--g:#C49A52;--gl:#E8D5A8;--b:rgba(26,23,20,.12);--S:'Cormorant Garamond',Georgia,serif;--N:'DM Sans',sans-serif}
-html{scroll-behavior:smooth}
-body{font-family:var(--N);background:var(--w);color:var(--i);font-size:16px;line-height:1.6;overflow-x:hidden}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;background:rgba(253,252,249,.93);backdrop-filter:blur(10px);border-bottom:.5px solid var(--b)}
-.logo{font-family:var(--S);font-size:1.1rem;letter-spacing:.12em;text-transform:uppercase;color:var(--i);text-decoration:none}
-.nb{font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--w);background:var(--i);padding:.6rem 1.4rem;text-decoration:none;transition:background .2s}
-.nb:hover{background:var(--g)}
-.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:80px}
-.hl{display:flex;flex-direction:column;justify-content:center;padding:5rem 4rem 5rem 5rem;position:relative}
-.hl::after{content:'';position:absolute;right:0;top:10%;bottom:10%;width:.5px;background:var(--b)}
-.ey{font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--g);margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem}
-.ey::before{content:'';display:block;width:2rem;height:.5px;background:var(--g)}
-h1{font-family:var(--S);font-size:clamp(2.8rem,5vw,4.2rem);font-weight:300;line-height:1.12}
-h1 em{font-style:italic;color:var(--g)}
-.sub{font-size:1rem;font-weight:300;color:var(--is);line-height:1.7;max-width:420px;margin:1.75rem 0 2.5rem}
-.acts{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
-.btn{font-size:.8rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--w);background:var(--i);padding:1rem 2.2rem;text-decoration:none;display:inline-block;transition:background .2s,transform .15s;border:none;cursor:pointer;font-family:var(--N)}
-.btn:hover{background:var(--g);transform:translateY(-1px)}
-.bg{background:var(--g);color:var(--i)}.bg:hover{opacity:.85;background:var(--g)}
-.gh{font-size:.8rem;color:var(--is);text-decoration:underline;text-underline-offset:3px;cursor:pointer;background:none;border:none;font-family:var(--N)}
-.sts{display:flex;gap:2.5rem;margin-top:3.5rem;padding-top:2rem;border-top:.5px solid var(--b)}
-.sl{font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--g);margin-bottom:.25rem}
-.sv{font-family:var(--S);font-size:1.9rem;font-weight:300;line-height:1}
-.hr{background:var(--c);display:flex;flex-direction:column;justify-content:center;padding:5rem 4rem;position:relative;overflow:hidden}
-.hr::before{content:'"';font-family:var(--S);font-size:18rem;color:var(--gl);position:absolute;top:-3rem;left:1rem;line-height:1;pointer-events:none;opacity:.4}
-.pl{font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:#8A9E8C;margin-bottom:1.5rem}
-.ph{font-family:var(--S);font-size:1.6rem;font-weight:400;line-height:1.35;margin-bottom:2rem;position:relative;z-index:1}
-.pli{list-style:none;display:flex;flex-direction:column;gap:1rem;position:relative;z-index:1}
-.pli li{display:flex;gap:1rem;font-size:.9rem;font-weight:300;color:var(--is);line-height:1.5}
-.pli li::before{content:'→';color:var(--g);flex-shrink:0;margin-top:.1rem}
-.off{background:var(--i);color:var(--w);padding:6rem 5rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
-.seclbl{font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--g);margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem}
-.seclbl::before{content:'';display:block;width:1.5rem;height:.5px;background:var(--g)}
-.off h2{font-family:var(--S);font-size:clamp(2rem,3.5vw,3rem);font-weight:300;line-height:1.2;margin-bottom:1.5rem}
-.off h2 em{font-style:italic;color:var(--g)}
-.ob{font-size:.95rem;font-weight:300;line-height:1.8;color:rgba(253,252,249,.75);max-width:400px;margin-bottom:2.5rem}
-.pb{border:.5px solid rgba(196,154,82,.4);padding:1.5rem 2rem;display:inline-block;margin-bottom:2rem}
-.pbl{font-size:.72rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--g);margin-bottom:.5rem}
-.pr{font-family:var(--S);font-size:3rem;font-weight:300;line-height:1}
-.pn{font-size:.78rem;color:rgba(253,252,249,.5);margin-top:.4rem}
-.dt{font-family:var(--S);font-size:1.2rem;color:var(--g);margin-bottom:1.5rem}
-.di{border-bottom:.5px solid rgba(255,255,255,.08);padding:1.25rem 0;display:flex;gap:1.25rem}
-.dn{font-family:var(--S);font-size:1rem;font-weight:300;color:var(--g);opacity:.6;min-width:1.5rem}
-.dtt{font-size:.88rem;font-weight:500;color:var(--w);margin-bottom:.25rem}
-.dd{font-size:.82rem;font-weight:300;color:rgba(253,252,249,.55);line-height:1.5}
-.proc{padding:6rem 5rem;background:var(--c)}
-.prh{text-align:center;margin-bottom:4rem}
-.prh h2{font-family:var(--S);font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.2;margin-bottom:.75rem}
-.prh h2 em{font-style:italic;color:var(--g)}
-.prh p{font-size:.95rem;font-weight:300;color:var(--is);max-width:500px;margin:0 auto}
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
-.step{background:var(--w);padding:2.5rem 2rem}
-.sn{font-family:var(--S);font-size:3.5rem;font-weight:300;color:var(--gl);line-height:1;margin-bottom:1.25rem}
-.st{font-size:.88rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.75rem}
-.sd{font-size:.85rem;font-weight:300;color:var(--is);line-height:1.6}
-.urg{background:var(--g);padding:1.25rem 3rem;text-align:center;font-size:.8rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--i)}
-.cta{padding:7rem 5rem;text-align:center;background:var(--i);position:relative;overflow:hidden}
-.cta::before{content:'BOOK';font-family:var(--S);font-size:18rem;font-weight:300;color:rgba(255,255,255,.03);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;white-space:nowrap}
-.cta h2{font-family:var(--S);font-size:clamp(2.5rem,5vw,4rem);font-weight:300;color:var(--w);line-height:1.15;margin-bottom:1rem;position:relative}
-.cta h2 em{font-style:italic;color:var(--g)}
-.cta p{font-size:.95rem;font-weight:300;color:rgba(253,252,249,.6);max-width:500px;margin:0 auto 3rem;line-height:1.7;position:relative}
-.ctab{display:flex;gap:1.25rem;justify-content:center;flex-wrap:wrap;position:relative}
-.cn{margin-top:1.5rem;font-size:.78rem;font-weight:300;color:rgba(253,252,249,.35);letter-spacing:.06em;position:relative}
-@keyframes fu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-.hl>*{animation:fu .7s ease both}
-.hl>*:nth-child(1){animation-delay:.1s}.hl>*:nth-child(2){animation-delay:.2s}.hl>*:nth-child(3){animation-delay:.3s}.hl>*:nth-child(4){animation-delay:.4s}.hl>*:nth-child(5){animation-delay:.5s}
-@media(max-width:900px){nav{padding:1rem 1.5rem}.hero{grid-template-columns:1fr;min-height:auto}.hl{padding:5rem 2rem 3rem}.hl::after{display:none}.hr{padding:3rem 2rem}.off{grid-template-columns:1fr;padding:4rem 2rem;gap:3rem}.proc{padding:4rem 2rem}.steps{grid-template-columns:1fr 1fr}.cta{padding:5rem 2rem}}
-@media(max-width:500px){.steps{grid-template-columns:1fr}.sts{gap:1.5rem}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stealth Strategist | Medspa Booking Expert</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container { max-width: 650px; width: 100%; }
+        h1 { font-size: 2.5rem; line-height: 1.2; color: #38bdf8; margin-bottom: 10px; }
+        p { font-size: 1.1rem; color: #cbd5e1; line-height: 1.6; }
+        .box { background: #1e293b; padding: 30px; border-radius: 12px; margin: 30px 0; border: 1px solid #334155; }
+        .list { list-style: none; padding: 0; }
+        .list li { margin-bottom: 12px; padding-left: 30px; position: relative; }
+        .list li::before { content: "✓"; position: absolute; left: 0; color: #38bdf8; font-weight: bold; }
+        
+        .cta-button {
+            display: block;
+            background: #38bdf8;
+            color: #0f172a;
+            text-align: center;
+            padding: 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+        .cta-button:hover { background: #7dd3fc; }
+        
+        .price-tag { font-size: 2rem; font-weight: bold; color: #f8fafc; margin: 10px 0; }
+        .small-print { font-size: 0.8rem; color: #64748b; margin-top: 10px; text-align: center; }
+    </style>
 </head>
 <body>
-<nav>
- <a href="#" class="logo">Stealth Strategist</a>
- <a href="https://tally.so/r/Pd0LeP" class="nb">Get Your Page</a>
-</nav>
-<section class="hero">
- <div class="hl">
- <div class="ey">For Med Spas Ready to Grow</div>
- <h1>Your ads are buying<br><em>strangers,</em><br>not bookings.</h1>
- <p class="sub">You're investing in growth — but if your landing page isn't built for appointments, you're losing traffic every day. We fix that in 24 hours.</p>
- <div class="acts">
- <a href="https://tally.so/r/Pd0LeP" class="btn">Get My Booking Engine — $997</a>
- <button class="gh" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})">See the process</button>
- </div>
- <div class="sts">
- <div><div class="sl">Turnaround</div><div class="sv">24 hrs</div></div>
- <div><div class="sl">Flat fee</div><div class="sv">$997</div></div>
- <div><div class="sl">Guarantee</div><div class="sv">7-day</div></div>
- </div>
- </div>
- <div class="hr">
- <div class="pl">The missing link</div>
- <h2 class="ph">Most med spa websites are portfolios, not patient-acquisition systems.</h2>
- <ul class="pli">
- <li>Generic copy that doesn't speak to your ideal client</li>
- <li>No clear calls-to-action that create momentum to book</li>
- <li>Booking buried so deep visitors give up and leave</li>
- <li>Mobile experience that wasn't built for quick decisions</li>
- </ul>
- </div>
-</section>
-<section class="off" id="offer">
- <div>
- <div class="seclbl">The offer</div>
- <h2>One page.<br>Built to <em>convert.</em></h2>
- <p class="ob">The Booking Engine is a done-for-you landing page built exclusively for med spas. We write the copy, build the page, and hand it over in 24 hours — ready to turn traffic into booked appointments.</p>
- <div class="pb">
- <div class="pbl">One-time flat fee</div>
- <div class="pr">$997</div>
- <div class="pn">7-day satisfaction guarantee. No retainer required.</div>
- </div><br>
- <a href="https://tally.so/r/Pd0LeP" class="btn bg">Claim Your Spot</a>
- </div>
- <div>
- <div class="dt">Everything included</div>
- <div class="di"><div class="dn">01</div><div><div class="dtt">Custom Landing Page</div><div class="dd">One focused page built around your top service — designed to book, not browse.</div></div></div>
- <div class="di"><div class="dn">02</div><div><div class="dtt">Conversion Copywriting</div><div class="dd">Every headline and CTA written for your med spa's audience and offers.</div></div></div>
- <div class="di"><div class="dn">03</div><div><div class="dtt">Mobile-First Design</div><div class="dd">Over 70% of med spa traffic is mobile. Your page will be flawless on every screen.</div></div></div>
- <div class="di"><div class="dn">04</div><div><div class="dtt">Booking Integration</div><div class="dd">We connect Mindbody, Jane App, Vagaro, or any tool you use directly into the page.</div></div></div>
- <div class="di"><div class="dn">05</div><div><div class="dtt">24-Hour Delivery</div><div class="dd">From brief to live page in one business day. No waiting weeks for an agency.</div></div></div>
- </div>
-</section>
-<section class="proc" id="how">
- <div class="prh">
- <h2>How it <em>works</em></h2>
- <p>Four steps. One business day. A page that works while you focus on clients.</p>
- </div>
- <div class="steps">
- <div class="step"><div class="sn">01</div><div class="st">Fill Out the Brief</div><div class="sd">A short intake form — your service, audience, and booking link. Under 10 minutes.</div></div>
- <div class="step"><div class="sn">02</div><div class="st">We Write the Copy</div><div class="sd">Conversion-focused headlines and body copy tailored to your voice and clientele.</div></div>
- <div class="step"><div class="sn">03</div><div class="st">We Build the Page</div><div class="sd">Design, development, and booking integration — delivered within 24 hours of your brief.</div></div>
- <div class="step"><div class="sn">04</div><div class="st">You Go Live</div><div class="sd">Point your ad traffic to the new page. Edits and questions handled by email.</div></div>
- </div>
-</section>
-<div class="urg">✦ &nbsp; Only 3 spots available this week — first come, first served &nbsp; ✦</div>
-<section class="cta" id="book">
- <h2>Ready to turn your<br>traffic into <em>bookings?</em></h2>
- <p>Fill out the brief. We'll build your page in 24 hours. If you're not happy with the result, you pay nothing.</p>
- <div class="ctab">
- <a href="https://tally.so/r/Pd0LeP" class="btn bg">Get My Booking Engine — $997</a>
- </div>
- <p class="cn">No calls required. Everything handled by email. 7-day guarantee.</p>
-</section>
-<div style="background:#1A1714;border-top:.5px solid rgba(255,255,255,.1);padding:2rem 5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
- <span style="font-family:'Cormorant Garamond',Georgia,serif;font-size:.95rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(253,252,249,.5);">Stealth Strategist</span>
- <div style="display:flex;gap:2rem;flex-wrap:wrap;">
- <span style="font-size:.78rem;color:rgba(253,252,249,.4);letter-spacing:.06em;">tyra@stealthstrategist.co</span>
- <a href="#offer" style="font-size:.78rem;color:rgba(253,252,249,.4);text-decoration:none;letter-spacing:.06em;">What's Included</a>
- <a href="#how" style="font-size:.78rem;color:rgba(253,252,249,.4);text-decoration:none;letter-spacing:.06em;">How It Works</a>
- </div>
-</div>
+    <div class="container">
+        <header>
+            <p style="text-transform: uppercase; letter-spacing: 2px; font-weight: bold; color: #38bdf8; margin-bottom: 5px;">Stealth Strategist</p>
+            <h1>Stop losing customers to a "messy" website.</h1>
+        </header>
+
+        <section>
+            <p>Most people who click your ads leave because your website is too confusing. They want to book a treatment, but they get lost in your menus.</p>
+            <p><strong>I build simple, one-page websites that do one thing: get you more bookings.</strong></p>
+            
+            <ul class="list">
+                <li><strong>No phone calls.</strong> We talk over email or Slack only.</li>
+                <li><strong>Fast work.</strong> Your new page is ready in 24 hours.</li>
+                <li><strong>Better results.</strong> I focus on making it easy for people to say "Yes."</li>
+            </ul>
+        </section>
+
+        <section class="box">
+            <h3>Step 1: Get a Free Website Audit</h3>
+            <p>Paste your link below. I will send you 3 simple things we can fix this week to help you get more customers.</p>
+            
+            <iframe data-tally-src="https://tally.so/embed/Pd0LeP?transparentBackground=1&dynamicHeight=1" 
+                    loading="lazy" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0" 
+                    title="Medspa Audit Form">
+            </iframe>
+            <script src="https://tally.so/widgets/embed.js"></script>
+        </section>
+
+        <section class="box" style="border-color: #38bdf8; background: #0f172a;">
+            <h3>Ready to start right now?</h3>
+            <p>Skip the audit and get your high-conversion booking page deployed in the next 24 hours.</p>
+            <div class="price-tag">$997 <span style="font-size: 1rem; color: #64748b; font-weight: normal;">one-time fee</span></div>
+            
+            <a href="https://buy.stripe.com/dRmdR8bBk6Zkas99qmdfG05" class="cta-button">Start My Project Now</a>
+            
+            <p class="small-print">100% Secure Payment via Stripe. Work begins immediately.</p>
+        </section>
+
+        <footer style="margin-top: 60px; font-size: 0.8rem; color: #64748b; border-top: 1px solid #334155; padding-top: 20px; text-align: center;">
+            <p>&copy; 2026 Stealth Strategist. 100% Asynchronous Service.</p>
+        </footer>
+    </div>
 </body>
 </html>
