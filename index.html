@@ -38,19 +38,100 @@ h1 em{font-style:italic;color:var(--g)}
 .pli li{display:flex;gap:1rem;font-size:.9rem;font-weight:300;color:var(--is);line-height:1.5}
 .pli li::before{content:'→';color:var(--g);flex-shrink:0;margin-top:.1rem}
 
-/* NEW BEFORE/AFTER WIREFRAME STYLES */
-.ba-section{padding:6rem 5rem;background:var(--w);text-align:center}
-.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:3rem}
-.ba-card{background:var(--c);padding:1.5rem;border-radius:4px;border:.5px solid var(--b)}
-.ba-label{font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;margin-bottom:1rem;display:block}
-.bad{color:#cc0000}.good{color:var(--g)}
+/* ── BEFORE / AFTER ── */
+.ba-section{padding:6rem 5rem;background:var(--w);overflow:hidden}
+.ba-header{text-align:center;margin-bottom:4rem}
+.ba-header h2{font-family:var(--S);font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.2;margin-bottom:.75rem}
+.ba-header h2 em{font-style:italic;color:var(--g)}
+.ba-header p{font-size:.95rem;font-weight:300;color:var(--is);max-width:480px;margin:0 auto}
+.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start}
+.ba-card{display:flex;flex-direction:column;gap:1rem}
+.ba-pill{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:.35rem .9rem;border-radius:2px;width:fit-content}
+.ba-pill.bad{background:#fff1f1;color:#b03030;border:.5px solid rgba(176,48,48,.2)}
+.ba-pill.good{background:#f0f8f0;color:#2d7a3a;border:.5px solid rgba(45,122,58,.2)}
+.ba-pill.bad::before{content:'✕';font-size:.7rem}
+.ba-pill.good::before{content:'✓';font-size:.7rem}
+.ba-desc{font-size:.82rem;font-weight:300;color:var(--is);line-height:1.6;padding:.75rem 0 .25rem}
 
-/* The Mockup Wireframes (Drawn with HTML) */
-.mock-container{width:100%; height:250px; background:var(--w); border:.5px solid var(--b); margin-bottom:1.5rem; position:relative; overflow:hidden;}
-.mock-header{height:40px; background:#f0f0f0; border-bottom:.5px solid var(--b); display:flex; gap:.5rem; align-items:center; padding:0 1rem;}
-.mock-dot{width:8px; height:8px; border-radius:50%; background:#bbb;}
-.mock-box{background:#f0f0f0; border:.5px solid var(--b); padding:.5rem; font-family:var(--N); font-size:.65rem;}
+/* ── BROWSER CHROME WRAPPER ── */
+.browser{width:100%;border-radius:8px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.13);border:.5px solid rgba(0,0,0,.08)}
+.browser-bar{background:#f0f0f0;padding:.45rem .75rem;display:flex;align-items:center;gap:.5rem;border-bottom:.5px solid #ddd}
+.browser-dots{display:flex;gap:.3rem}
+.browser-dot{width:9px;height:9px;border-radius:50%}
+.bd-r{background:#ff5f57}.bd-y{background:#ffbd2e}.bd-g{background:#28c840}
+.browser-url{flex:1;background:#fff;border:.5px solid #ddd;border-radius:3px;padding:.2rem .6rem;font-size:.58rem;color:#888;font-family:var(--N);letter-spacing:.01em}
 
+/* ── BEFORE MOCKUP ── */
+.mock-before{background:#fff;font-family:var(--N)}
+.mb-nav{background:#fff;border-bottom:1px solid #eee;padding:.55rem 1rem;display:flex;justify-content:space-between;align-items:center}
+.mb-nav-logo{font-size:.7rem;font-weight:600;color:#222;letter-spacing:.03em}
+.mb-nav-links{display:flex;gap:.5rem;align-items:center}
+.mb-nav-links span{font-size:.52rem;color:#666;padding:.15rem .35rem}
+.mb-nav-links .mb-book-btn{background:#c0a060;color:#fff;padding:.2rem .5rem;font-size:.52rem}
+.mb-hero{position:relative;height:140px;overflow:hidden}
+.mb-hero img{width:100%;height:100%;object-fit:cover;filter:brightness(.7)}
+.mb-hero-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:.75rem 1rem}
+.mb-hero-tag{font-size:.5rem;color:rgba(255,255,255,.7);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.25rem}
+.mb-hero-title{font-size:.9rem;font-weight:300;color:#fff;line-height:1.2;margin-bottom:.35rem;font-family:Georgia,serif}
+.mb-hero-btns{display:flex;gap:.35rem}
+.mb-hero-btn{font-size:.5rem;padding:.25rem .55rem;border:.5px solid rgba(255,255,255,.6);color:#fff;background:none}
+.mb-hero-btn.filled{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.4)}
+.mb-services-row{display:grid;grid-template-columns:repeat(6,1fr);border-bottom:1px solid #eee}
+.mb-svc{padding:.4rem .2rem;text-align:center;border-right:.5px solid #eee;font-size:.48rem;color:#777;line-height:1.4}
+.mb-svc:last-child{border-right:none}
+.mb-svc-icon{font-size:.7rem;display:block;margin-bottom:.1rem}
+.mb-body{padding:.6rem .75rem;display:grid;grid-template-columns:2fr 1fr;gap:.6rem}
+.mb-body-left{}
+.mb-body-title{font-size:.65rem;font-weight:600;color:#333;margin-bottom:.25rem}
+.mb-body-text{font-size:.52rem;color:#999;line-height:1.6;margin-bottom:.4rem}
+.mb-body-img{width:100%;height:55px;object-fit:cover;margin-bottom:.3rem;filter:saturate(.6)}
+.mb-body-more{font-size:.5rem;color:#bbb;line-height:1.5}
+.mb-body-right{border-left:.5px solid #eee;padding-left:.5rem}
+.mb-sidebar-title{font-size:.55rem;font-weight:600;color:#444;margin-bottom:.3rem}
+.mb-sidebar-item{font-size:.5rem;color:#888;padding:.2rem 0;border-bottom:.5px solid #f0f0f0;display:flex;justify-content:space-between}
+.mb-sidebar-item span{color:#c0a060}
+.mb-footer-bar{background:#f8f8f8;border-top:.5px solid #eee;padding:.4rem .75rem;display:flex;justify-content:space-between;align-items:center}
+.mb-footer-links{display:flex;gap:.5rem}
+.mb-footer-links a{font-size:.45rem;color:#bbb;text-decoration:none}
+.mb-footer-social{display:flex;gap:.3rem}
+.mb-social-icon{width:12px;height:12px;border-radius:50%;background:#ddd;font-size:.4rem;display:flex;align-items:center;justify-content:center;color:#888}
+
+/* ── AFTER MOCKUP ── */
+.mock-after{background:#1A1714;font-family:var(--N)}
+.ma-nav{padding:.55rem 1rem;display:flex;justify-content:space-between;align-items:center;border-bottom:.5px solid rgba(255,255,255,.06)}
+.ma-nav-logo{font-family:var(--S);font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:#E8D5A8}
+.ma-nav-cta{font-size:.5rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;background:#C49A52;color:#1A1714;padding:.28rem .65rem;border:none;cursor:pointer}
+.ma-hero{position:relative;overflow:hidden}
+.ma-hero-img{width:100%;height:145px;object-fit:cover;object-position:center 30%;display:block;filter:brightness(.45)}
+.ma-hero-content{position:absolute;inset:0;padding:.9rem 1rem;display:flex;flex-direction:column;justify-content:center}
+.ma-eyebrow{font-size:.5rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:#C49A52;margin-bottom:.35rem;display:flex;align-items:center;gap:.4rem}
+.ma-eyebrow::before{content:'';display:block;width:.8rem;height:.5px;background:#C49A52}
+.ma-h1{font-family:var(--S);font-size:1.4rem;font-weight:300;line-height:1.1;color:#FDFCF9;margin-bottom:.35rem}
+.ma-h1 em{font-style:italic;color:#C49A52}
+.ma-sub{font-size:.55rem;font-weight:300;color:rgba(253,252,249,.6);line-height:1.55;margin-bottom:.7rem;max-width:90%}
+.ma-cta-btn{display:inline-block;background:#C49A52;color:#1A1714;font-size:.58rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:.5rem 1rem;margin-bottom:.5rem}
+.ma-trust-row{display:flex;gap:.6rem;padding:.4rem 0;border-top:.5px solid rgba(255,255,255,.07)}
+.ma-trust-item{font-size:.5rem;color:rgba(253,252,249,.4);letter-spacing:.04em}
+.ma-proof{padding:.65rem 1rem;background:#221f1b;border-top:.5px solid rgba(255,255,255,.06)}
+.ma-proof-label{font-size:.5rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#C49A52;margin-bottom:.45rem}
+.ma-proof-cards{display:grid;grid-template-columns:1fr 1fr;gap:.4rem}
+.ma-proof-card{background:#1A1714;border-left:1.5px solid #C49A52;padding:.4rem .5rem}
+.ma-proof-quote{font-family:var(--S);font-size:.6rem;font-style:italic;color:rgba(253,252,249,.8);line-height:1.4;margin-bottom:.2rem}
+.ma-proof-name{font-size:.48rem;font-weight:500;color:#C49A52;text-transform:uppercase;letter-spacing:.06em}
+.ma-offer{background:#F7F4EE;padding:.65rem 1rem}
+.ma-offer-label{font-size:.5rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#8A9E8C;margin-bottom:.3rem}
+.ma-offer-row{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:.45rem}
+.ma-service-name{font-family:var(--S);font-size:.95rem;font-weight:400;color:#1A1714}
+.ma-price{font-family:var(--S);font-size:1.15rem;font-weight:300;color:#C49A52}
+.ma-book-btn{display:block;background:#1A1714;color:#FDFCF9;font-size:.58rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-align:center;padding:.5rem;width:100%;border:none;cursor:pointer}
+
+/* comparison labels */
+.ba-points{display:flex;flex-direction:column;gap:.5rem;margin-top:.5rem}
+.ba-point{font-size:.78rem;font-weight:300;color:var(--is);display:flex;align-items:flex-start;gap:.5rem;line-height:1.5}
+.ba-point.x::before{content:'✕';color:#b03030;font-size:.7rem;margin-top:.15rem;flex-shrink:0}
+.ba-point.ck::before{content:'✓';color:#2d7a3a;font-size:.7rem;margin-top:.15rem;flex-shrink:0}
+
+/* ── REST OF PAGE (unchanged classes) ── */
 .off{background:var(--i);color:var(--w);padding:6rem 5rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
 .seclbl{font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--g);margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem}
 .seclbl::before{content:'';display:block;width:1.5rem;height:.5px;background:var(--g)}
@@ -92,130 +173,242 @@ h1 em{font-style:italic;color:var(--g)}
 </style>
 </head>
 <body>
+
 <nav>
- <a href="#" class="logo">Stealth Strategist</a>
- <a href="https://tally.so/r/Pd0LeP" class="nb">Get Your Free Audit</a>
+  <a href="#" class="logo">Stealth Strategist</a>
+  <a href="https://tally.so/r/Pd0LeP" class="nb">Get Your Free Audit</a>
 </nav>
+
 <section class="hero">
- <div class="hl">
- <div class="ey">For Med Spas Who Want More Customers</div>
- <h1>Your ads are buying<br><em>visitors,</em><br>not bookings.</h1>
- <p class="sub">You are spending money on ads. But if your website is too messy, people leave without booking. I fix that in 24 hours.</p>
- <div class="acts">
- <a href="https://tally.so/r/Pd0LeP" class="btn">Get Started — $997</a>
- <button class="gh" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})">How it works</button>
- </div>
- <div class="sts">
- <div><div class="sl">Fast Delivery</div><div class="sv">24 hrs</div></div>
- <div><div class="sl">Simple Price</div><div class="sv">$997</div></div>
- <div><div class="sl">Expert Tips</div><div class="sv">7 Days</div></div>
- </div>
- </div>
- <div class="hr">
- <div class="pl">The Problem</div>
- <h2 class="ph">Most spa websites are too confusing for customers.</h2>
- <ul class="pli">
- <li>Too much talking that doesn't help people book.</li>
- <li>No clear buttons to click when they are ready.</li>
- <li>The "Book Now" button is hidden or hard to find.</li>
- <li>The site is slow and messy on phones.</li>
- </ul>
- </div>
+  <div class="hl">
+    <div class="ey">For Med Spas Running Paid Ads</div>
+    <h1>Your ads are buying<br><em>visitors,</em><br>not bookings.</h1>
+    <p class="sub">You are spending money on ads. But if your website is too messy, people leave without booking. I fix that in 24 hours.</p>
+    <div class="acts">
+      <a href="https://buy.stripe.com/dRmdR8bBk6Zkas99qmdfG05" class="btn">Get Started — $997</a>
+      <button class="gh" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})">How it works</button>
+    </div>
+    <div class="sts">
+      <div><div class="sl">Fast Delivery</div><div class="sv">24 hrs</div></div>
+      <div><div class="sl">Simple Price</div><div class="sv">$997</div></div>
+      <div><div class="sl">Email Support</div><div class="sv">7 Days</div></div>
+    </div>
+  </div>
+  <div class="hr">
+    <div class="pl">The Problem</div>
+    <h2 class="ph">Most spa websites are too confusing for customers.</h2>
+    <ul class="pli">
+      <li>Too many links and menus that distract people from booking.</li>
+      <li>No clear reason to book right now instead of later.</li>
+      <li>The booking button is buried or missing on phones.</li>
+      <li>Ad traffic lands on a homepage built for browsing, not buying.</li>
+    </ul>
+  </div>
 </section>
 
+<!-- ── BEFORE / AFTER ── -->
 <section class="ba-section">
- <div class="seclbl" style="justify-content:center;">The Visual Proof</div>
- <h2 style="font-family:var(--S); font-size:clamp(2rem, 4vw, 3rem); font-weight:300;">Messy vs. <em>Stealth</em></h2>
- <p style="max-width:500px; margin: 1rem auto; font-weight:300; color:var(--is);">We turn cluttered pages into simple machines that get you paid.</p>
- 
- <div class="ba-grid">
-    <div class="ba-card">
-        <span class="ba-label bad">● Before (Confusing Site Sketch)</span>
-        
-        <div class="mock-container" style="display:flex; flex-direction:column; gap:.5rem; padding:.75rem; border-color:#cc0000; color:#555;">
-            <div class="mock-header" style="justify-content:space-between; border-color:#cc0000; background:#fff1f1;">
-                <div style="font-size:.65rem; color:#cc0000;">Menu 1 | Menu 2 | Menu 3 | Menu 4</div>
-                <button style="border:.5px solid #cc0000; background:none; font-size:.6rem; padding:2px 5px; color:#cc0000;">Small Button</button>
-            </div>
-            <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:.25rem;">
-                <div class="mock-box">Small Photo Box</div>
-                <div class="mock-box">Generic Title Box</div>
-                <div class="mock-box">Big Block of Text Box</div>
-            </div>
-            <div style="display:grid; grid-template-columns:1fr 2fr; gap:.25rem;">
-                <div class="mock-box">Cluttered Menu</div>
-                <div class="mock-box" style="height:80px; text-align:left;">Too much information here. People get confused. They look for the booking link and give up.</div>
-            </div>
-        </div>
+  <div class="ba-header">
+    <div class="seclbl" style="justify-content:center;">The Visual Proof</div>
+    <h2>What your page looks like<br>vs. what it <em>should</em> look like</h2>
+    <p>This is the difference between a visitor who leaves and a client who books.</p>
+  </div>
 
-        <p style="font-size: .85rem; color:var(--is);">Too many links, small buttons, and hard to read.</p>
-    </div>
-    <div class="ba-card">
-        <span class="ba-label good">● After (Clean Site Sketch)</span>
-        
-        <div class="mock-container" style="display:flex; flex-direction:column; align-items:center; border-color:var(--g); color:var(--i);">
-            <div class="mock-header" style="justify-content:space-between; width:100%; border-color:var(--g);">
-                <div style="font-size:.8rem; font-weight:700; font-family:var(--S);">Logo</div>
-            </div>
-            <div style="width:100%; height:80px; background:var(--gl); display:flex; align-items:center; justify-content:center; font-family:var(--S);">Beautiful Image</div>
-            <div style="font-family:var(--S); font-weight:700; font-size:1.5rem; color:var(--i); margin-top:.5rem;">ONE FOCUSED TITLE</div>
-            <div style="padding:0 .5rem; font-size:.7rem; margin-top:.25rem; font-weight:300;">One simple service. Zero distractions. Clear steps.</div>
-            <button style="background:var(--i); color:var(--w); border:none; padding:8px 20px; text-transform:uppercase; font-size:.7rem; margin-top:auto; width:80%; margin-bottom:1rem;">Clear Book Button</button>
-        </div>
+  <div class="ba-grid">
 
-        <p style="font-size: .85rem; color:var(--is);">One clear goal, easy to read, and 1-click booking.</p>
+    <!-- BEFORE -->
+    <div class="ba-card">
+      <div class="ba-pill bad">Before — Typical Med Spa Homepage</div>
+
+      <div class="browser">
+        <div class="browser-bar">
+          <div class="browser-dots"><div class="browser-dot bd-r"></div><div class="browser-dot bd-y"></div><div class="browser-dot bd-g"></div></div>
+          <div class="browser-url">medaestheticsmiami.com</div>
+        </div>
+        <div class="mock-before">
+          <div class="mb-nav">
+            <span class="mb-nav-logo">✦ MedAesthetics Miami</span>
+            <div class="mb-nav-links">
+              <span>About</span><span>Treatments</span><span>Blog</span><span>Gallery</span><span>Shop</span><span>Contact</span>
+              <span class="mb-book-btn">Book Now</span>
+            </div>
+          </div>
+          <div class="mb-hero" style="position:relative">
+            <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=900&q=80&auto=format&fit=crop" alt="spa hero" loading="lazy">
+            <div class="mb-hero-overlay">
+              <div class="mb-hero-tag">Coral Gables · Aventura · Lauderdale</div>
+              <div class="mb-hero-title">Our Promise Is<br>More Than Beauty</div>
+              <div class="mb-hero-btns">
+                <button class="mb-hero-btn filled">Book Appointment</button>
+                <button class="mb-hero-btn">View Treatments</button>
+                <button class="mb-hero-btn">Our Story</button>
+              </div>
+            </div>
+          </div>
+          <div class="mb-services-row">
+            <div class="mb-svc"><span class="mb-svc-icon">✦</span>Laser Hair</div>
+            <div class="mb-svc"><span class="mb-svc-icon">✦</span>Morpheus8</div>
+            <div class="mb-svc"><span class="mb-svc-icon">✦</span>Injectables</div>
+            <div class="mb-svc"><span class="mb-svc-icon">✦</span>Hydrafacial</div>
+            <div class="mb-svc"><span class="mb-svc-icon">✦</span>IV Therapy</div>
+            <div class="mb-svc"><span class="mb-svc-icon">✦</span>+ 14 More</div>
+          </div>
+          <div class="mb-body">
+            <div class="mb-body-left">
+              <div class="mb-body-title">Welcome to MedAesthetics Miami</div>
+              <div class="mb-body-text">Our dream is to inspire others, nourish their skin and bodies, and uplift their spirit. We are a wellness and aesthetic center with locations in Coral Gables, Aventura, and Lauderdale-By-The-Sea. Our team is composed of fully licensed and certified laser technicians and aestheticians with vast knowledge in the latest techniques.</div>
+              <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=600&q=70&auto=format&fit=crop" alt="treatment" loading="lazy" class="mb-body-img">
+              <div class="mb-body-more">Latest blog · Case studies · Shop products · Newsletter signup · Loyalty club · Gift cards · TikTok · Virtual consultations · Office policies · Sitemap</div>
+            </div>
+            <div class="mb-body-right">
+              <div class="mb-sidebar-title">March Specials</div>
+              <div class="mb-sidebar-item">Large area laser (6 sessions)<span>$100 off</span></div>
+              <div class="mb-sidebar-item">Full body laser<span>$200 off</span></div>
+              <div class="mb-sidebar-item">Quantum RF + Morpheus<span>20% off</span></div>
+              <div class="mb-sidebar-item">Chemical peel<span>25% off</span></div>
+              <div class="mb-sidebar-item">Venus Bliss MAX series<span>20% off</span></div>
+            </div>
+          </div>
+          <div class="mb-footer-bar">
+            <div class="mb-footer-links">
+              <a href="#">Privacy</a><a href="#">Terms</a><a href="#">Sitemap</a><a href="#">Refunds</a><a href="#">Office Policies</a>
+            </div>
+            <div class="mb-footer-social">
+              <div class="mb-social-icon">f</div>
+              <div class="mb-social-icon">ig</div>
+              <div class="mb-social-icon">tk</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ba-points">
+        <div class="ba-point x">6 nav links — visitors wander and leave</div>
+        <div class="ba-point x">Generic stock photo says nothing specific</div>
+        <div class="ba-point x">4 different booking buttons — paralysis</div>
+        <div class="ba-point x">14 services listed — no single clear offer</div>
+        <div class="ba-point x">Ad traffic lands here and bounces instantly</div>
+      </div>
     </div>
- </div>
+
+    <!-- AFTER -->
+    <div class="ba-card">
+      <div class="ba-pill good">After — Stealth Lead Trap Page</div>
+
+      <div class="browser">
+        <div class="browser-bar">
+          <div class="browser-dots"><div class="browser-dot bd-r"></div><div class="browser-dot bd-y"></div><div class="browser-dot bd-g"></div></div>
+          <div class="browser-url">glowstudio.com/lip-filler-miami</div>
+        </div>
+        <div class="mock-after">
+          <div class="ma-nav">
+            <span class="ma-nav-logo">Glow Studio</span>
+            <button class="ma-nav-cta">Book Now</button>
+          </div>
+          <div class="ma-hero">
+            <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=900&q=80&auto=format&fit=crop&crop=top" alt="med spa treatment" loading="lazy" class="ma-hero-img">
+            <div class="ma-hero-content">
+              <div class="ma-eyebrow">Miami's #1 Lip Filler Studio · Brickell</div>
+              <div class="ma-h1">Fuller lips.<br><em>Same day.</em></div>
+              <div class="ma-sub">Natural results from a board-certified injector. 30-minute appointments. Walk in, walk out beautiful.</div>
+              <a href="#" class="ma-cta-btn" onclick="return false">Book My Appointment →</a>
+              <div class="ma-trust-row">
+                <span class="ma-trust-item">★★★★★ 340 Reviews</span>
+                <span class="ma-trust-item">· Same-Day Available</span>
+                <span class="ma-trust-item">· Board Certified</span>
+              </div>
+            </div>
+          </div>
+          <div class="ma-proof">
+            <div class="ma-proof-label">What clients say</div>
+            <div class="ma-proof-cards">
+              <div class="ma-proof-card">
+                <div class="ma-proof-quote">"Natural, perfect results. Booked online in 2 minutes."</div>
+                <div class="ma-proof-name">Sofia R. · Miami</div>
+              </div>
+              <div class="ma-proof-card">
+                <div class="ma-proof-quote">"Best injector in Brickell. No bruising, no downtime."</div>
+                <div class="ma-proof-name">Camila V. · Brickell</div>
+              </div>
+            </div>
+          </div>
+          <div class="ma-offer">
+            <div class="ma-offer-label">This month's offer</div>
+            <div class="ma-offer-row">
+              <span class="ma-service-name">1ml Lip Filler</span>
+              <span class="ma-price">$550</span>
+            </div>
+            <button class="ma-book-btn" onclick="return false">Claim Your Spot — Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="ba-points">
+        <div class="ba-point ck">Zero nav links — one action only</div>
+        <div class="ba-point ck">Headline matches the ad they just clicked</div>
+        <div class="ba-point ck">Single service, single CTA, zero confusion</div>
+        <div class="ba-point ck">Social proof and offer above the fold</div>
+        <div class="ba-point ck">Built to convert — not to inform</div>
+      </div>
+    </div>
+
+  </div>
 </section>
+
 <section class="off" id="offer">
- <div>
- <div class="seclbl">The Offer</div>
- <h2>One page.<br>Built to <em>sell.</em></h2>
- <p class="ob">I build a simple, clean page for your spa. I write all the words, build the site, and give it to you in 24 hours. It makes it easy for customers to book appointments.</p>
- <div class="pb">
- <div class="pbl">One-time fee</div>
- <div class="pr">$997</div>
- <div class="pn">7 days of expert marketing tips included. No monthly bills.</div>
- </div><br>
- <a href="https://buy.stripe.com/dRmdR8bBk6Zkas99qmdfG05" class="btn bg">Buy Now — $997</a>
- </div>
- <div>
- <div class="dt">What you get</div>
- <div class="di"><div class="dn">01</div><div><div class="dtt">A Custom Page</div><div class="dd">One clean page for your top service. Designed for bookings.</div></div></div>
- <div class="di"><div class="dn">02</div><div><div class="dtt">Easy Reading</div><div class="dd">I write simple words that make people want to book with you.</div></div></div>
- <div class="di"><div class="dn">03</div><div><div class="dtt">Perfect on Phones</div><div class="dd">Most people book on their phone. Your site will look great.</div></div></div>
- <div class="di"><div class="dn">04</div><div><div class="dtt">Booking Links</div><div class="dd">I connect your booking tool (like Mindbody or Jane) to the page.</div></div></div>
- <div class="di"><div class="dn">05</div><div><div class="dtt">24-Hour Delivery</div><div class="dd">I finish the work in one business day. No long waits.</div></div></div>
- </div>
+  <div>
+    <div class="seclbl">The Offer</div>
+    <h2>One page.<br>Built to <em>sell.</em></h2>
+    <p class="ob">I build a focused, conversion-engineered page for your top service. I write the copy, build the design, connect your booking tool, and deliver in 24 hours. Everything handled by email.</p>
+    <div class="pb">
+      <div class="pbl">One-time fee</div>
+      <div class="pr">$997</div>
+      <div class="pn">Includes 7 days of email support after delivery. No monthly fees.</div>
+    </div><br>
+    <a href="https://buy.stripe.com/dRmdR8bBk6Zkas99qmdfG05" class="btn bg">Buy Now — $997</a>
+  </div>
+  <div>
+    <div class="dt">What you get</div>
+    <div class="di"><div class="dn">01</div><div><div class="dtt">A Custom Landing Page</div><div class="dd">One focused page for your highest-value service. Built to turn ad clicks into booked appointments.</div></div></div>
+    <div class="di"><div class="dn">02</div><div><div class="dtt">Copy Written For You</div><div class="dd">Headlines and descriptions written specifically for your service and your Miami clientele.</div></div></div>
+    <div class="di"><div class="dn">03</div><div><div class="dtt">Mobile-First Design</div><div class="dd">Over 70% of your ad clicks are on phones. Your page loads fast and books easy on any screen.</div></div></div>
+    <div class="di"><div class="dn">04</div><div><div class="dtt">Booking Link Connected</div><div class="dd">I wire in your booking tool — Mindbody, Jane, Vagaro, or a direct link — so clients book without leaving the page.</div></div></div>
+    <div class="di"><div class="dn">05</div><div><div class="dtt">Live in 24 Hours</div><div class="dd">Your page is built, reviewed, and ready to receive traffic within one business day of your intake form.</div></div></div>
+  </div>
 </section>
+
 <section class="proc" id="how">
- <div class="prh">
- <h2>How it <em>works</em></h2>
- <p>Four simple steps. Everything is handled over email. No phone calls.</p>
- </div>
- <div class="steps">
- <div class="step"><div class="sn">01</div><div class="st">Fill Out the Form</div><div class="sd">A short 10-minute form about your spa and your booking link.</div></div>
- <div class="step"><div class="sn">02</div><div class="st">I Write the Words</div><div class="sd">I write headlines and descriptions that speak to your customers.</div></div>
- <div class="step"><div class="sn">03</div><div class="st">I Build the Page</div><div class="sd">I build the design and add your booking tool within 24 hours.</div></div>
- <div class="step"><div class="sn">04</div><div class="st">You Get Bookings</div><div class="sd">Send your ad traffic to the new page. I handle edits over email.</div></div>
- </div>
+  <div class="prh">
+    <h2>How it <em>works</em></h2>
+    <p>Four steps. No calls. Everything handled over email.</p>
+  </div>
+  <div class="steps">
+    <div class="step"><div class="sn">01</div><div class="st">You Pay</div><div class="sd">Secure your spot. I send a short intake form — takes under 10 minutes to complete.</div></div>
+    <div class="step"><div class="sn">02</div><div class="st">I Write the Copy</div><div class="sd">I write conversion-focused headlines and descriptions matched to your specific service and offer.</div></div>
+    <div class="step"><div class="sn">03</div><div class="st">I Build the Page</div><div class="sd">Your custom page is designed, built, and connected to your booking tool within 24 hours.</div></div>
+    <div class="step"><div class="sn">04</div><div class="st">You Get Bookings</div><div class="sd">Point your ads to the new page. I'm available by email for 7 days for any tweaks.</div></div>
+  </div>
 </section>
-<div class="urg">✦ &nbsp; Only 3 spots available this week — first come, first served &nbsp; ✦</div>
+
+<div class="urg">✦ &nbsp; Only 3 spots available this month — 1 already taken &nbsp; ✦</div>
+
 <section class="cta" id="book">
- <h2>Ready for more<br><em>bookings?</em></h2>
- <p>Fill out the form. I build your page in 24 hours. No refunds unless you see zero increase in sales within 60 days of going live.</p>
- <div class="ctab">
- <a href="https://buy.stripe.com/dRmdR8bBk6Zkas99qmdfG05" class="btn bg">START NOW — $997</a>
- </div>
- <p class="cn">No calls. Everything handled by email. 7-day marketing tip guarantee.</p>
+  <h2>Stop paying for clicks<br>that don't <em>convert.</em></h2>
+  <p>One page. One flat fee. Live in 24 hours. Point your ads at it tonight.</p>
+  <div class="ctab">
+    <a href="https://buy.stripe.com/dRmdR8bBk6Zkas99qmdfG05" class="btn bg">START NOW — $997</a>
+  </div>
+  <p class="cn">No calls · Everything by email · 7 days post-launch support included</p>
 </section>
+
 <div style="background:#1A1714;border-top:.5px solid rgba(255,255,255,.1);padding:2rem 5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
- <span style="font-family:'Cormorant Garamond',Georgia,serif;font-size:.95rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(253,252,249,.5);">Stealth Strategist</span>
- <div style="display:flex;gap:2rem;flex-wrap:wrap;">
- <span style="font-size:.78rem;color:rgba(253,252,249,.4);letter-spacing:.06em;">tyra@stealthstrategist.co</span>
- <a href="#offer" style="font-size:.78rem;color:rgba(253,252,249,.4);text-decoration:none;letter-spacing:.06em;">What's Included</a>
- <a href="#how" style="font-size:.78rem;color:rgba(253,252,249,.4);text-decoration:none;letter-spacing:.06em;">How It Works</a>
- </div>
+  <span style="font-family:'Cormorant Garamond',Georgia,serif;font-size:.95rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(253,252,249,.5);">Stealth Strategist</span>
+  <div style="display:flex;gap:2rem;flex-wrap:wrap;align-items:center;">
+    <a href="mailto:tyra@stealthstrategist.co" style="font-size:.78rem;color:rgba(253,252,249,.4);text-decoration:none;letter-spacing:.06em;">tyra@stealthstrategist.co</a>
+    <a href="#offer" style="font-size:.78rem;color:rgba(253,252,249,.4);text-decoration:none;letter-spacing:.06em;">What's Included</a>
+    <a href="#how" style="font-size:.78rem;color:rgba(253,252,249,.4);text-decoration:none;letter-spacing:.06em;">How It Works</a>
+  </div>
 </div>
+
 </body>
 </html>
