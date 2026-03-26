@@ -3,97 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patient Acquisition System | Weight Loss Excellence</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+    <title>Surgical Patient Acquisition | Precision Systems</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #002D62;    /* Medical Navy */
-            --secondary: #008080;  /* Clinical Teal */
-            --accent: #D4AF37;     /* High-Ticket Gold */
-            --bg: #F8F9FA;         /* Clean Sterile White */
-            --text: #1A1A1A;
+            --navy: #002D62;
+            --teal: #008080;
+            --gold: #D4AF37;
+            --white: #FFFFFF;
+            --light-grey: #F4F7F9;
+            --text: #2D3436;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.6; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--light-grey); color: var(--text); line-height: 1.7; }
+        
+        /* Typography */
+        h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--navy); }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
         /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, #004b8d 100%);
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
+        header { background: linear-gradient(rgba(0,45,98,0.9), rgba(0,45,98,0.9)), url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1200') no-repeat center/cover; color: white; padding: 120px 0 80px; text-align: center; }
+        header h1 { color: white; font-size: 3.2rem; margin-bottom: 20px; line-height: 1.1; }
+        header p { font-size: 1.3rem; max-width: 800px; margin: 0 auto 40px; opacity: 0.9; }
+
+        /* The "Why" Section */
+        .problem-solution { padding: 80px 0; background: white; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
+        .feature-card { padding: 40px; background: var(--light-grey); border-radius: 15px; border-bottom: 4px solid var(--teal); transition: 0.3s; }
+        .feature-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .feature-card h3 { margin-bottom: 15px; font-family: 'Inter', sans-serif; font-weight: 800; }
+
+        /* Pricing/Offer */
+        .offer { padding: 80px 0; background: var(--navy); color: white; text-align: center; }
+        .offer h2 { color: var(--gold); font-size: 2.5rem; margin-bottom: 20px; }
+        .price-box { display: inline-block; padding: 40px; border: 2px solid var(--gold); border-radius: 20px; margin: 30px 0; }
+        .price-box span { font-size: 4rem; font-weight: 800; display: block; }
+
+        /* Call to Action Button */
+        .cta-button { 
+            display: inline-block; 
+            background: var(--gold); 
+            color: #000; 
+            padding: 22px 50px; 
+            text-decoration: none; 
+            font-weight: 800; 
+            border-radius: 50px; 
+            text-transform: uppercase; 
+            letter-spacing: 2px;
+            box-shadow: 0 10px 20px rgba(212,175,55,0.3);
+            margin-top: 20px;
         }
 
-        .hero h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 20px; line-height: 1.2; }
-        .hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto 30px; opacity: 0.9; }
+        /* FAQ Section */
+        .faq { padding: 80px 0; background: white; }
+        .faq-item { margin-bottom: 30px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+        .faq-item h4 { color: var(--teal); margin-bottom: 10px; font-family: 'Inter', sans-serif; }
 
-        /* The Strategy Section */
-        .strategy { padding: 60px 20px; max-width: 1000px; margin: 0 auto; }
-        .card { 
-            background: white; 
-            padding: 30px; 
-            border-radius: 12px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
-            border-left: 5px solid var(--secondary);
-            margin-bottom: 30px;
-        }
-        .card h2 { color: var(--primary); margin-bottom: 15px; }
+        /* Footer */
+        footer { padding: 40px 0; text-align: center; font-size: 0.9rem; opacity: 0.7; }
 
-        /* The CTA Button */
-        .cta-btn {
-            display: inline-block;
-            background-color: var(--accent);
-            color: #000;
-            text-decoration: none;
-            padding: 20px 40px;
-            font-size: 1.2rem;
-            font-weight: 800;
-            border-radius: 8px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: transform 0.2s ease;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
-        }
-        .cta-btn:hover { transform: scale(1.03); }
-
-        /* Mobile Sticky Footer */
-        .sticky-footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: white;
-            padding: 15px;
-            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
-            text-align: center;
-            z-index: 1000;
-        }
-
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 1.8rem; }
-            .strategy { padding-bottom: 100px; }
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.2rem; }
+            .cta-button { width: 90%; padding: 20px; font-size: 1rem; }
         }
     </style>
 </head>
 <body>
 
-    <section class="hero">
-        <h1>High-Precision Patient Acquisition for Bariatric Surgeons</h1>
-        <p>Stop chasing leads. Start filling your surgical calendar with qualified, insurance-verified weight loss candidates.</p>
-        <a href="PASTE_YOUR_STRIPE_LINK_HERE" class="cta-btn">Claim Your System</a>
+    <header>
+        <div class="container">
+            <h1>Engineered for Surgical ROI</h1>
+            <p>We deploy high-conversion patient acquisition systems exclusively for Bariatric and Medical Weight Loss practices. Stop paying for "clicks" and start booking qualified surgical candidates.</p>
+            <a href="YOUR_STRIPE_LINK_HERE" class="cta-button">Reserve Your Territory</a>
+        </div>
+    </header>
+
+    <section class="problem-solution">
+        <div class="container">
+            <h2 style="text-align: center;">Why Your Current Website Is Losing Patients</h2>
+            <div class="grid">
+                <div class="feature-card">
+                    <h3>01. Static Friction</h3>
+                    <p>Standard medical sites provide information but fail to capture <strong>intent</strong>. We use psychologically-driven landing pages that turn curious searchers into scheduled consultations.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>02. Zero Lead Filtering</h3>
+                    <p>Most agencies send you everyone. We deploy <strong>Automated Qualification Traps</strong> so your staff only spends time with insurance-verified, surgery-ready leads.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>03. Transparent Data</h3>
+                    <p>You’ll see exactly where every dollar goes with HIPAA-compliant tracking. Know your cost-per-lead and cost-per-surgery with 100% clarity.</p>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section class="strategy">
-        <div class="card">
-            <h2>01. Intent-Based Ad Targeting</h2>
-            <p>We don't "boost posts." We target patients actively searching for bariatric solutions and medical weight loss in the Houston area, ensuring your ROI is surgical in its precision.</p>
+    <section class="offer">
+        <div class="container">
+            <h2>The Acquisition Engine</h2>
+            <p>One System. One Territory. Absolute Dominance.</p>
+            <div class="price-box">
+                <p>COMPLETE SYSTEM SETUP</p>
+                <span>$997</span>
+                <p>One-Time Professional Investment</p>
+            </div>
+            <br>
+            <a href="YOUR_STRIPE_LINK_HERE" class="cta-button">Deploy My System Today</a>
         </div>
+    </section>
 
-        <div class="card">
-            <h2>02. High-Conversion Landing Pages</h2>
-            <p>Your current website is for information; this system is for <strong>results</strong>. We deploy mobile-optimized "traps" designed to get patients to book their consultation immediately.</p>
+    <section class="faq">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 50px;">Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h4>How soon will I see patient lead flow?</h4>
+                <p>The system is typically live and generating inquiries within 7-10 business days of the initial setup.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Is this HIPAA compliant?</h4>
+                <p>Yes. All lead capture and data handling protocols are designed to meet strict medical privacy standards.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Can I target specific procedures (e.g., Gastric Sleeve vs. GLP-1)?</h4>
+                <p>Absolutely. The acquisition engine is tailored to the specific high-margin procedures your practice prioritizes.</p>
+            </div>
         </div>
+    </section>
 
-        <div class="card">
-            <h2>03. Automated Lead
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Stealth Strategist. All Rights Reserved. Not affiliated with Houston Surgical Weight Loss.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
