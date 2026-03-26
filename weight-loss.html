@@ -548,24 +548,6 @@
   <a href="https://buy.stripe.com/28E8wOfRAcjEbwd462dfG06" class="btn-gold" onclick="handleStripePlaceholder(event, 'Secure My Territory $997 (Mobile)')">💰 Secure My Territory ($997)</a>
 </div>
 
-<script>
-  // Stripe integration placeholder: Simulates payment gateway (no actual charge, demo only)
-  // Meets requirement: placeholder href links for Stripe integration
-  function handleStripePlaceholder(event, productName) {
-    event.preventDefault();
-    // In a production environment, this would redirect to Stripe Checkout with proper session.
-    // For this high-ticket landing page demo, we show a clear modal/simulation.
-    // Surgeons will see that payment is processed via Stripe.
-    if (confirm(`🚀 STRIPE CHECKOUT SIMULATION\n\nProduct: ${productName}\nAmount: $997 USD (One-Time)\n\nClick OK to proceed to secure Stripe payment (demo). In live environment, this would finalize your territory lock & system setup.`)) {
-      alert("✅ [DEMO] You would now be redirected to Stripe Checkout to complete the $997 one-time setup. Your territory would be locked immediately upon confirmation.\n\nFor this prototype, this demonstrates the Stripe payment integration placeholder.");
-      // Actual stripe redirect would be: window.location.href = "https://checkout.stripe.com/...";
-    }
-  }
 
-  // Optional smooth handling for any anchor but not needed
-  // Ensure that no "book a call" is present anywhere - verified.
-  // Double-check: no phone call CTA exists.
-  console.log("Stealth Strategist — High-Precision Landing Active | No phone calls, only automated conversion system");
-</script>
 </body>
 </html>
