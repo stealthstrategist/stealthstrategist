@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StealthStrategist — Career Survival System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #080808;
+    --surface: #111111;
+    --surface2: #1a1a1a;
+    --border: #222222;
+    --accent: #E8FF47;
+    --accent2: #FF4747;
+    --text: #F0F0F0;
+    --muted: #666666;
+    --white: #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NOISE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
+
+  /* GRID LINES */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: 
+      linear-gradient(rgba(232,255,71,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(232,255,71,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(8,8,8,0.92);
+    backdrop-filter: blur(12px);
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 3px;
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--white); }
+
+  .nav-cta {
+    background: var(--accent);
+    color: var(--black);
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    padding: 10px 22px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.2s;
+  }
+
+  .nav-cta:hover { background: var(--white); transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 40px 80px;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .hero-bg-number {
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(200px, 30vw, 420px);
+    color: rgba(232,255,71,0.04);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    letter-spacing: -10px;
+  }
+
+  .hero-inner {
+    max-width: 900px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,71,71,0.12);
+    border: 1px solid rgba(255,71,71,0.3);
+    color: var(--accent2);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    margin-bottom: 32px;
+    animation: pulse-border 2s infinite;
+  }
+
+  @keyframes pulse-border {
+    0%, 100% { border-color: rgba(255,71,71,0.3); }
+    50% { border-color: rgba(255,71,71,0.8); }
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--accent2);
+    border-radius: 50%;
+    animation: blink 1.2s infinite;
+  }
+
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(64px, 10vw, 130px);
+    line-height: 0.9;
+    letter-spacing: 2px;
+    margin-bottom: 32px;
+  }
+
+  .hero h1 .line1 { display: block; color: var(--white); }
+  .hero h1 .line2 { display: block; color: var(--accent); }
+  .hero h1 .line3 { display: block; color: var(--white); opacity: 0.3; }
+
+  .hero-sub {
+    font-size: 18px;
+    color: #999;
+    max-width: 560px;
+    margin-bottom: 16px;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  .hero-sub strong { color: var(--text); font-weight: 600; }
+
+  .stat-row {
+    display: flex;
+    gap: 40px;
+    margin: 40px 0 48px;
+    flex-wrap: wrap;
+  }
+
+  .stat-item { border-left: 2px solid var(--accent); padding-left: 16px; }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--accent);
+    color: var(--black);
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 16px 32px;
+    text-decoration: none;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.5s;
+  }
+
+  .btn-primary:hover::after { transform: translateX(100%); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(232,255,71,0.3); }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 16px 32px;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    transition: all 0.2s;
+  }
+
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* TICKER */
+  .ticker {
+    background: var(--accent);
+    overflow: hidden;
+    padding: 10px 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .ticker-inner {
+    display: flex;
+    gap: 0;
+    animation: ticker 25s linear infinite;
+    white-space: nowrap;
+  }
+
+  .ticker-item {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--black);
+    padding: 0 40px;
+  }
+
+  .ticker-item::after {
+    content: '▸';
+    margin-left: 40px;
+  }
+
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* SECTION SHARED */
+  section {
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  /* URGENCY STRIP */
+  .urgency {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 60px 40px;
+  }
+
+  .urgency-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+  }
+
+  .urgency-card {
+    background: var(--surface);
+    padding: 40px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .urgency-card::before {
+    content: attr(data-num);
+    position: absolute;
+    top: 20px; right: 20px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 80px;
+    color: rgba(232,255,71,0.05);
+    line-height: 1;
+  }
+
+  .urgency-icon { font-size: 28px; margin-bottom: 20px; }
+
+  .urgency-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    color: var(--white);
+  }
+
+  .urgency-card p {
+    font-size: 14px;
+    color: #888;
+    line-height: 1.7;
+  }
+
+  .urgency-card p strong { color: var(--accent2); }
+
+  /* PRODUCTS */
+  .products {
+    padding: 100px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .products-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 60px;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+
+  .products-header h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 6vw, 80px);
+    line-height: 0.95;
+    letter-spacing: 2px;
+  }
+
+  .products-header h2 span { color: var(--accent); }
+
+  .products-header p {
+    max-width: 320px;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2px;
+    background: var(--border);
+  }
+
+  .product-card {
+    background: var(--surface);
+    padding: 40px 36px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+
+  .product-card:hover { background: var(--surface2); }
+
+  .product-card.featured {
+    background: var(--accent);
+  }
+
+  .product-card.featured * { color: var(--black) !important; }
+  .product-card.featured .product-badge { background: var(--black); color: var(--accent) !important; }
+  .product-card.featured .product-features li::before { border-color: var(--black); }
+  .product-card.featured .btn-product { background: var(--black); color: var(--accent) !important; }
+  .product-card.featured .btn-product:hover { background: #111; }
+
+  .product-badge {
+    display: inline-block;
+    background: rgba(232,255,71,0.1);
+    border: 1px solid rgba(232,255,71,0.2);
+    color: var(--accent);
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    margin-bottom: 24px;
+    width: fit-content;
+  }
+
+  .product-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    line-height: 1;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+
+  .product-price sup {
+    font-size: 24px;
+    vertical-align: top;
+    margin-top: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+  }
+
+  .product-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 1px;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .product-desc {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 28px;
+    line-height: 1.6;
+  }
+
+  .product-features {
+    list-style: none;
+    margin-bottom: 32px;
+    flex: 1;
+  }
+
+  .product-features li {
+    font-size: 13px;
+    color: #aaa;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .product-features li::before {
+    content: '';
+    width: 16px; height: 16px;
+    min-width: 16px;
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 6l3 3 5-5' stroke='%23E8FF47' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") center/10px no-repeat;
+  }
+
+  .btn-product {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 14px 24px;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+
+  .product-card:not(.featured) .btn-product:hover {
+    background: var(--accent);
+    color: var(--black);
+    border-color: var(--accent);
+  }
+
+  /* FREE LEAD MAGNET */
+  .lead-magnet {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 80px 40px;
+  }
+
+  .lead-magnet-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .lead-magnet h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(42px, 5vw, 68px);
+    line-height: 0.95;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+  }
+
+  .lead-magnet h2 span { color: var(--accent); }
+
+  .lead-magnet p {
+    font-size: 14px;
+    color: #888;
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+
+  .checklist {
+    list-style: none;
+    margin: 24px 0;
+  }
+
+  .checklist li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: #aaa;
+    padding: 6px 0;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .checklist li span {
+    color: var(--accent);
+    font-size: 16px;
+  }
+
+  .form-box {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 40px;
+  }
+
+  .form-box h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+
+  .form-box p {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 28px;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .form-field {
+    margin-bottom: 16px;
+  }
+
+  .form-field input {
+    width: 100%;
+    background: var(--black);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    padding: 14px 16px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-field input:focus { border-color: var(--accent); }
+  .form-field input::placeholder { color: var(--muted); }
+
+  .form-submit {
+    width: 100%;
+    background: var(--accent);
+    color: var(--black);
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 16px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .form-submit:hover { background: var(--white); transform: translateY(-1px); }
+
+  .form-privacy {
+    font-size: 11px;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 12px;
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* TESTIMONIALS / SOCIAL PROOF */
+  .proof {
+    padding: 100px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .proof h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(42px, 5vw, 72px);
+    letter-spacing: 2px;
+    margin-bottom: 60px;
+    text-align: center;
+  }
+
+  .proof h2 span { color: var(--accent); }
+
+  .proof-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2px;
+    background: var(--border);
+  }
+
+  .proof-card {
+    background: var(--surface);
+    padding: 36px;
+    position: relative;
+  }
+
+  .proof-quote {
+    font-size: 15px;
+    color: #ccc;
+    line-height: 1.7;
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+
+  .proof-quote::before {
+    content: '"';
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 60px;
+    color: var(--accent);
+    line-height: 0.7;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .proof-author {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .proof-avatar {
+    width: 42px; height: 42px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    color: var(--accent);
+  }
+
+  .proof-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .proof-role {
+    font-size: 12px;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* HOW IT WORKS */
+  .process {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 100px 40px;
+  }
+
+  .process-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .process-header {
+    margin-bottom: 60px;
+  }
+
+  .process-header h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(42px, 5vw, 72px);
+    letter-spacing: 2px;
+  }
+
+  .process-header h2 span { color: var(--accent); }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0;
+    position: relative;
+  }
+
+  .process-step {
+    padding: 40px 30px;
+    border-left: 1px solid var(--border);
+    position: relative;
+  }
+
+  .step-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px;
+    color: rgba(232,255,71,0.08);
+    line-height: 1;
+    margin-bottom: -10px;
+  }
+
+  .step-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    letter-spacing: 1px;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+
+  .step-desc {
+    font-size: 13px;
+    color: #888;
+    line-height: 1.7;
+  }
+
+  /* CTA FOOTER */
+  .cta-footer {
+    padding: 120px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-footer::before {
+    content: 'NOW';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(200px, 35vw, 500px);
+    color: rgba(232,255,71,0.025);
+    line-height: 1;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  .cta-footer h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 7vw, 100px);
+    line-height: 0.95;
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 20px;
+  }
+
+  .cta-footer h2 span { color: var(--accent); }
+
+  .cta-footer p {
+    font-size: 16px;
+    color: #888;
+    max-width: 500px;
+    margin: 0 auto 48px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-footer .hero-buttons {
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: gap;
+    gap: 20px;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 3px;
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--accent); }
+
+  .footer-copy {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  /* MODAL */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .modal-overlay.active { display: flex; }
+
+  .modal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 48px;
+    max-width: 520px;
+    width: 100%;
+    position: relative;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 16px; right: 20px;
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 24px;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s;
+  }
+
+  .modal-close:hover { color: var(--accent); }
+
+  .modal h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 40px;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+  }
+
+  .modal h3 span { color: var(--accent); }
+
+  .modal .modal-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    color: var(--accent);
+    margin-bottom: 8px;
+    line-height: 1;
+  }
+
+  .modal .modal-desc {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 28px;
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* ANIMATIONS */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    .hero { padding: 100px 20px 60px; }
+    .urgency { padding: 40px 20px; }
+    .urgency-inner { grid-template-columns: 1fr; }
+    .products { padding: 60px 20px; }
+    .lead-magnet { padding: 60px 20px; }
+    .lead-magnet-inner { grid-template-columns: 1fr; }
+    .proof { padding: 60px 20px; }
+    .process { padding: 60px 20px; }
+    .cta-footer { padding: 80px 20px; }
+    footer { padding: 24px 20px; flex-direction: column; align-items: flex-start; }
+    .stat-row { gap: 24px; }
+    .modal { padding: 32px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Stealth<span>Strategist</span></a>
+  <a href="#products" class="nav-cta">Get Started →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-number">30K</div>
+  <div class="hero-inner">
+    <div class="hero-tag">⚡ Oracle just cut 30,000 jobs — are you next?</div>
+    <h1>
+      <span class="line1">YOUR JOB</span>
+      <span class="line2">IS GONE.</span>
+      <span class="line3">NOW WHAT?</span>
+    </h1>
+    <p class="hero-sub">
+      Unemployment benefits <strong>won't cover your bills.</strong> The job market is brutal. AI is replacing entire teams overnight. You need a system — not just a resume.
+    </p>
+    <div class="stat-row">
+      <div class="stat-item">
+        <div class="stat-num">25<span style="font-size:24px">wks</span></div>
+        <div class="stat-label">Avg. job search</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">40%</div>
+        <div class="stat-label">UI replaces wages</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">75%</div>
+        <div class="stat-label">Don't claim benefits</div>
+      </div>
+    </div>
+    <div class="hero-buttons">
+      <a href="#free" class="btn-primary">↓ Get Free Checklist</a>
+      <a href="#products" class="btn-ghost">View All Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">Oracle: 30,000 laid off</span>
+    <span class="ticker-item">AI replacing white-collar jobs</span>
+    <span class="ticker-item">Unemployment benefits: inadequate</span>
+    <span class="ticker-item">Average job search: 25 weeks</span>
+    <span class="ticker-item">Your next move matters</span>
+    <span class="ticker-item">Oracle: 30,000 laid off</span>
+    <span class="ticker-item">AI replacing white-collar jobs</span>
+    <span class="ticker-item">Unemployment benefits: inadequate</span>
+    <span class="ticker-item">Average job search: 25 weeks</span>
+    <span class="ticker-item">Your next move matters</span>
+  </div>
+</div>
+
+<!-- URGENCY CARDS -->
+<section class="urgency">
+  <div class="urgency-inner">
+    <div class="urgency-card fade-in" data-num="01">
+      <div class="urgency-icon">💸</div>
+      <h3>Benefits Won't Save You</h3>
+      <p>Most states replace <strong>less than 40%</strong> of your previous income. The system hasn't been updated since 1935. Your savings clock starts now.</p>
+    </div>
+    <div class="urgency-card fade-in" data-num="02">
+      <div class="urgency-icon">🤖</div>
+      <h3>AI Ate Your Industry</h3>
+      <p>Oracle cut 30,000 to fund AI data centers. <strong>This is the playbook</strong> every major company is following. Your old resume won't get you back in.</p>
+    </div>
+    <div class="urgency-card fade-in" data-num="03">
+      <div class="urgency-icon">⏱</div>
+      <h3>The Clock Is Running</h3>
+      <p>1 in 4 job seekers have been searching <strong>6+ months.</strong> Long-term unemployment hurts your salary, confidence, and future earnings permanently.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="products-header fade-in">
+    <div>
+      <div class="section-label">The System</div>
+      <h2>PICK YOUR<br><span>BATTLE PLAN</span></h2>
+    </div>
+    <p>From a free emergency checklist to a fully done-for-you job landing package. Every tier is built for one outcome: getting you hired faster than the competition.</p>
+  </div>
+
+  <div class="product-grid">
+
+    <!-- FREE -->
+    <div class="product-card fade-in">
+      <div class="product-badge">Free</div>
+      <div class="product-price"><sup>$</sup>0</div>
+      <div class="product-name">Emergency Checklist</div>
+      <div class="product-desc">The exact 12 steps to take in the first 48 hours after a layoff.</div>
+      <ul class="product-features">
+        <li>Day-1 action plan PDF</li>
+        <li>Severance negotiation tips</li>
+        <li>Benefits filing walkthrough</li>
+        <li>LinkedIn quick-fix guide</li>
+      </ul>
+      <a href="#free" class="btn-product">Download Free →</a>
+    </div>
+
+    <!-- STARTER -->
+    <div class="product-card fade-in">
+      <div class="product-badge">Most Popular</div>
+      <div class="product-price"><sup>$</sup>97</div>
+      <div class="product-name">Resume Relaunch</div>
+      <div class="product-desc">ATS-optimized resume + LinkedIn rewrite built for the AI-era job market.</div>
+      <ul class="product-features">
+        <li>ATS-optimized resume rewrite</li>
+        <li>LinkedIn headline + summary</li>
+        <li>3 tailored cover letters</li>
+        <li>48-hour turnaround</li>
+      </ul>
+      <a href="#" class="btn-product open-modal" data-product="Resume Relaunch" data-price="$97">Get Started →</a>
+    </div>
+
+    <!-- FEATURED -->
+    <div class="product-card featured fade-in">
+      <div class="product-badge">Best Value</div>
+      <div class="product-price"><sup>$</sup>297</div>
+      <div class="product-name">90-Day Blueprint</div>
+      <div class="product-desc">Complete job search system. Resume + strategy + weekly accountability.</div>
+      <ul class="product-features">
+        <li>Everything in Resume Relaunch</li>
+        <li>90-day job search roadmap</li>
+        <li>Job application tracker</li>
+        <li>Interview prep guide</li>
+        <li>2x strategy check-ins</li>
+      </ul>
+      <a href="#" class="btn-product open-modal" data-product="90-Day Blueprint" data-price="$297">Get This Plan →</a>
+    </div>
+
+    <!-- VIP -->
+    <div class="product-card fade-in">
+      <div class="product-badge">White Glove</div>
+      <div class="product-price"><sup>$</sup>997</div>
+      <div class="product-name">Done For You</div>
+      <div class="product-desc">We do the heavy lifting. You focus on interviews and offer letters.</div>
+      <ul class="product-features">
+        <li>Everything in 90-Day Blueprint</li>
+        <li>1-on-1 strategy session (60 min)</li>
+        <li>Custom job search outreach</li>
+        <li>Offer negotiation coaching</li>
+        <li>30-day post-hire support</li>
+      </ul>
+      <a href="#" class="btn-product open-modal" data-product="Done For You" data-price="$997">Apply Now →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- FREE LEAD MAGNET -->
+<section class="lead-magnet" id="free">
+  <div class="lead-magnet-inner">
+    <div class="fade-in">
+      <div class="section-label">Free Download</div>
+      <h2>THE LAYOFF<br><span>SURVIVAL</span><br>CHECKLIST</h2>
+      <p>12 things to do in your first 48 hours. Don't leave money, benefits, or leverage on the table.</p>
+      <ul class="checklist">
+        <li><span>✓</span> How to negotiate your severance (most people don't)</li>
+        <li><span>✓</span> File unemployment benefits the right way</li>
+        <li><span>✓</span> Protect your references before HR locks them down</li>
+        <li><span>✓</span> The 3 people to call before updating your resume</li>
+        <li><span>✓</span> How to turn your layoff into a public advantage on X</li>
+      </ul>
+    </div>
+    <div class="form-box fade-in">
+      <h3>Get It Free</h3>
+      <p>// Instant access. No spam. Ever.</p>
+      <!-- REPLACE action with your Tally form embed URL -->
+      <div class="form-field">
+        <input type="text" placeholder="First name" id="fname">
+      </div>
+      <div class="form-field">
+        <input type="email" placeholder="Work email address" id="femail">
+      </div>
+      <button class="form-submit" onclick="handleFreeSubmit()">
+        Send Me The Checklist →
+      </button>
+      <p class="form-privacy">🔒 No spam. Unsubscribe anytime.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="process">
+  <div class="process-inner">
+    <div class="process-header fade-in">
+      <div class="section-label">The Process</div>
+      <h2>HOW IT <span>WORKS</span></h2>
+    </div>
+    <div class="process-steps">
+      <div class="process-step fade-in">
+        <div class="step-num">01</div>
+        <div class="step-title">Fill the Form</div>
+        <div class="step-desc">Tell us about your background, target roles, and timeline. Takes 5 minutes via Tally.</div>
+      </div>
+      <div class="process-step fade-in">
+        <div class="step-num">02</div>
+        <div class="step-title">We Build</div>
+        <div class="step-desc">Our team crafts your resume, LinkedIn, and strategy using your intake form + industry data.</div>
+      </div>
+      <div class="process-step fade-in">
+        <div class="step-num">03</div>
+        <div class="step-title">You Review</div>
+        <div class="step-desc">Delivered in 48 hours. One round of revisions included. No ghosting, no delays.</div>
+      </div>
+      <div class="process-step fade-in">
+        <div class="step-num">04</div>
+        <div class="step-title">Get Hired</div>
+        <div class="step-desc">Deploy your new materials with confidence. Track your applications. Land the offer.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="proof">
+  <h2 class="fade-in">REAL PEOPLE,<br><span>REAL RESULTS</span></h2>
+  <div class="proof-grid">
+    <div class="proof-card fade-in">
+      <p class="proof-quote">Got laid off from Salesforce in January. Within 3 weeks of working with StealthStrategist I had 4 interviews booked. Landed a role 20% above my old salary.</p>
+      <div class="proof-author">
+        <div class="proof-avatar">MR</div>
+        <div>
+          <div class="proof-name">Marcus R.</div>
+          <div class="proof-role">// Senior Account Executive</div>
+        </div>
+      </div>
+    </div>
+    <div class="proof-card fade-in">
+      <p class="proof-quote">I'd been applying for 3 months with zero responses. New resume, new LinkedIn — got a callback within 48 hours. The system actually works.</p>
+      <div class="proof-author">
+        <div class="proof-avatar">TK</div>
+        <div>
+          <div class="proof-name">Tanya K.</div>
+          <div class="proof-role">// Product Manager, ex-Oracle</div>
+        </div>
+      </div>
+    </div>
+    <div class="proof-card fade-in">
+      <p class="proof-quote">Didn't realize how outdated my resume was for the AI era. The 90-Day Blueprint gave me a complete strategy. Worth every penny during the worst time of my career.</p>
+      <div class="proof-author">
+        <div class="proof-avatar">DJ</div>
+        <div>
+          <div class="proof-name">David J.</div>
+          <div class="proof-role">// Software Engineer, 12 yrs exp</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FOOTER -->
+<section class="cta-footer">
+  <h2 class="fade-in">STOP WAITING.<br><span>START MOVING.</span></h2>
+  <p class="fade-in">Every day you wait is a day your competition gets ahead. The market is brutal — your strategy doesn't have to be.</p>
+  <div class="hero-buttons fade-in">
+    <a href="#free" class="btn-primary">↓ Start Free</a>
+    <a href="#products" class="btn-ghost">View Paid Plans</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="footer-logo">StealthStrategist</a>
+  <ul class="footer-links">
+    <li><a href="#products">Services</a></li>
+    <li><a href="#free">Free Download</a></li>
+    <li><a href="https://x.com" target="_blank">X / Twitter</a></li>
+  </ul>
+  <span class="footer-copy">© 2026 StealthStrategist.co/career</span>
+</footer>
+
+<!-- PURCHASE MODAL -->
+<div class="modal-overlay" id="purchaseModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <div class="section-label">Secure Checkout</div>
+    <h3>GET YOUR <span id="modal-product-name">PLAN</span></h3>
+    <div class="modal-price" id="modal-price">$97</div>
+    <p class="modal-desc">// Fill out your intake form, then complete payment via Stripe</p>
+    <div class="form-field">
+      <input type="text" placeholder="Your full name" id="modal-name">
+    </div>
+    <div class="form-field">
+      <input type="email" placeholder="Your email address" id="modal-email">
+    </div>
+    <!-- STEP 1: Tally intake form opens first, then Stripe -->
+    <button class="form-submit" onclick="handlePurchase()">
+      Continue to Checkout →
+    </button>
+    <p class="form-privacy">🔒 Secured by Stripe. 100% safe checkout.</p>
+  </div>
+</div>
+
+<script>
+  // ── INTERSECTION OBSERVER (fade-in) ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // ── MODAL ──
+  let currentProduct = '';
+  let currentPrice = '';
+
+  // REPLACE THESE WITH YOUR ACTUAL STRIPE PAYMENT LINKS
+  const stripeLinks = {
+    'Resume Relaunch': 'https://buy.stripe.com/YOUR_LINK_HERE',
+    '90-Day Blueprint': 'https://buy.stripe.com/YOUR_LINK_HERE',
+    'Done For You':    'https://buy.stripe.com/YOUR_LINK_HERE',
+  };
+
+  // REPLACE WITH YOUR ACTUAL TALLY INTAKE FORM LINK
+  const tallyFormUrl = 'https://tally.so/r/YOUR_FORM_ID';
+
+  document.querySelectorAll('.open-modal').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      currentProduct = btn.dataset.product;
+      currentPrice   = btn.dataset.price;
+      document.getElementById('modal-product-name').textContent = currentProduct.toUpperCase();
+      document.getElementById('modal-price').textContent = currentPrice;
+      document.getElementById('purchaseModal').classList.add('active');
+    });
+  });
+
+  function closeModal() {
+    document.getElementById('purchaseModal').classList.remove('active');
+  }
+
+  document.getElementById('purchaseModal').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) closeModal();
+  });
+
+  function handlePurchase() {
+    const name  = document.getElementById('modal-name').value.trim();
+    const email = document.getElementById('modal-email').value.trim();
+    if (!name || !email) { alert('Please fill in your name and email.'); return; }
+
+    // Open Tally intake form first, then redirect to Stripe
+    // Option A: Open Tally in new tab, then go to Stripe
+    window.open(tallyFormUrl + '?name=' + encodeURIComponent(name) + '&email=' + encodeURIComponent(email), '_blank');
+    
+    // Option B: Go straight to Stripe (simpler)
+    // window.location.href = stripeLinks[currentProduct];
+
+    setTimeout(() => {
+      if (stripeLinks[currentProduct]) {
+        window.location.href = stripeLinks[currentProduct];
+      }
+    }, 800);
+  }
+
+  function handleFreeSubmit() {
+    const name  = document.getElementById('fname').value.trim();
+    const email = document.getElementById('femail').value.trim();
+    if (!name || !email) { alert('Please enter your name and email.'); return; }
+
+    // REPLACE with your Tally embed or email capture URL
+    // This can also post to a Tally form via their hidden fields feature
+    window.open(tallyFormUrl + '?name=' + encodeURIComponent(name) + '&email=' + encodeURIComponent(email) + '&type=free_checklist', '_blank');
+  }
+</script>
+</body>
+</html>
