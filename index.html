@@ -91,28 +91,40 @@ section { padding: 40px 28px; border-bottom: 0.5px solid rgba(14,13,12,0.1); }
 /* WORK */
 #work { background: #fdfcfa; }
 .deck-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-.deck-card {
-  border: 0.5px solid rgba(14,13,12,0.12); border-radius: 10px;
-  overflow: hidden; cursor: pointer; transition: border-color 0.2s, transform 0.2s;
+
+/* Each card is now a full anchor link */
+.deck-card-link {
+  text-decoration: none;
+  display: block;
+  border: 0.5px solid rgba(14,13,12,0.12);
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.2s;
 }
-.deck-card:hover { border-color: #7F77DD; transform: translateY(-2px); }
+.deck-card-link:hover { border-color: #7F77DD; transform: translateY(-2px); }
+
 .deck-preview {
   height: 160px; display: flex; align-items: center;
   justify-content: center; padding: 16px;
 }
 .dp1 { background: #1a1035; }
 .dp2 { background: #042C53; }
-.dp3 { background: #f5f3ff; }
+.dp3 { background: #0a0a0a; }
 .dp4 { background: #082a1a; }
+.dp5 { background: #1c1814; }
+.dp6 { background: #111009; }
 
 .slide-mock {
   width: 88%; aspect-ratio: 16/9; border-radius: 4px;
   padding: 12px 14px; display: flex; flex-direction: column; justify-content: space-between;
 }
-.sm-dp { background: #26215C; border: 1px solid rgba(127,119,221,0.25); }
-.sm-db { background: #0C447C; border: 1px solid rgba(55,138,221,0.25); }
-.sm-lt { background: #fff; border: 1px solid rgba(0,0,0,0.1); }
-.sm-dg { background: #085041; border: 1px solid rgba(29,158,117,0.25); }
+.sm-dp  { background: #26215C; border: 1px solid rgba(127,119,221,0.25); }
+.sm-db  { background: #0C447C; border: 1px solid rgba(55,138,221,0.25); }
+.sm-bk  { background: #111; border: 1px solid rgba(201,168,76,0.2); }
+.sm-dg  { background: #085041; border: 1px solid rgba(29,158,117,0.25); }
+.sm-cr  { background: #2a1e16; border: 1px solid rgba(216,90,48,0.2); }
+.sm-re  { background: #1a1508; border: 1px solid rgba(201,168,76,0.2); }
 
 .sm-badge {
   display: inline-block; font-size: 7px; font-weight: 500;
@@ -121,17 +133,20 @@ section { padding: 40px 28px; border-bottom: 0.5px solid rgba(14,13,12,0.1); }
 }
 .b-purple { background: rgba(127,119,221,0.25); color: #AFA9EC; }
 .b-blue   { background: rgba(55,138,221,0.25);  color: #85B7EB; }
+.b-gold   { background: rgba(201,168,76,0.2);   color: #e8c97a; }
 .b-green  { background: rgba(29,158,117,0.25);  color: #5DCAA5; }
-.b-violet { background: rgba(127,119,221,0.15); color: #7F77DD; }
+.b-coral  { background: rgba(216,90,48,0.2);    color: #F0997B; }
+.b-warm   { background: rgba(201,168,76,0.15);  color: #c9a84c; }
 
 .ln { height: 4px; border-radius: 2px; margin-bottom: 3px; }
 .ln.h { height: 6px; }
-.ln.w80 { width: 80%; } .ln.w60 { width: 60%; } .ln.w40 { width: 40%; }
-.ln.w50 { width: 50%; }
+.ln.w80 { width: 80%; } .ln.w60 { width: 60%; } .ln.w40 { width: 40%; } .ln.w50 { width: 50%; }
 .c-purple { background: rgba(127,119,221,0.7); }
 .c-blue   { background: rgba(55,138,221,0.7); }
+.c-gold   { background: rgba(201,168,76,0.7); }
 .c-green  { background: rgba(29,158,117,0.7); }
-.c-violet { background: rgba(127,119,221,0.7); }
+.c-coral  { background: rgba(216,90,48,0.6); }
+.c-warm   { background: rgba(201,168,76,0.6); }
 .c-dark   { background: rgba(0,0,0,0.12); }
 .c-muted  { background: rgba(255,255,255,0.25); }
 
@@ -165,6 +180,12 @@ section { padding: 40px 28px; border-bottom: 0.5px solid rgba(14,13,12,0.1); }
   font-size: 10px; padding: 2px 8px; border-radius: 3px;
   border: 0.5px solid rgba(14,13,12,0.18); color: #7a776f;
 }
+.view-label {
+  font-size: 11px; color: #534AB7; font-weight: 500;
+  padding: 10px 16px; border-top: 0.5px solid rgba(14,13,12,0.07);
+  display: flex; align-items: center; gap: 6px;
+}
+.view-label::after { content: '→'; }
 
 /* PROCESS */
 #process { background: #f5f2ec; }
@@ -333,7 +354,8 @@ footer {
   <div class="section-label">Selected work</div>
   <div class="deck-grid">
 
-    <div class="deck-card">
+    <!-- 1. Pitch deck -->
+    <a class="deck-card-link" href="portfolio/01-pitch-deck.html" target="_blank">
       <div class="deck-preview dp1">
         <div class="slide-mock sm-dp">
           <div>
@@ -343,24 +365,27 @@ footer {
             <div class="ln c-muted w40"></div>
           </div>
           <div class="bars">
-            <div class="bar" style="background:rgba(127,119,221,0.5);height:45%;"></div>
-            <div class="bar" style="background:rgba(127,119,221,0.65);height:68%;"></div>
-            <div class="bar" style="background:rgba(127,119,221,0.5);height:54%;"></div>
+            <div class="bar" style="background:rgba(127,119,221,0.4);height:42%;"></div>
+            <div class="bar" style="background:rgba(127,119,221,0.55);height:64%;"></div>
+            <div class="bar" style="background:rgba(127,119,221,0.45);height:52%;"></div>
             <div class="bar" style="background:rgba(127,119,221,0.75);height:82%;"></div>
+            <div class="bar" style="background:rgba(127,119,221,0.9);height:100%;"></div>
           </div>
         </div>
       </div>
       <div class="deck-info">
         <div class="deck-tag">Pitch deck</div>
-        <div class="deck-title">SaaS startup — Series A pitch deck</div>
-        <div class="deck-meta">18 slides · Investor-facing</div>
+        <div class="deck-title">NovaPay — Series A fundraise</div>
+        <div class="deck-meta">18 slides · Investor-facing · $8M raise</div>
         <div class="deck-chips">
-          <span class="chip">Dark theme</span><span class="chip">Data viz</span><span class="chip">PowerPoint</span>
+          <span class="chip">Dark purple</span><span class="chip">Data viz</span><span class="chip">Startup</span>
         </div>
       </div>
-    </div>
+      <div class="view-label">View deck</div>
+    </a>
 
-    <div class="deck-card">
+    <!-- 2. Sales deck -->
+    <a class="deck-card-link" href="portfolio/02-sales-deck.html" target="_blank">
       <div class="deck-preview dp2">
         <div class="slide-mock sm-db">
           <div>
@@ -382,42 +407,43 @@ footer {
       </div>
       <div class="deck-info">
         <div class="deck-tag">Sales deck</div>
-        <div class="deck-title">B2B software — enterprise sales deck</div>
-        <div class="deck-meta">22 slides · Revenue-driving</div>
+        <div class="deck-title">Orbis CRM — enterprise sales</div>
+        <div class="deck-meta">22 slides · Revenue-driving · B2B</div>
         <div class="deck-chips">
-          <span class="chip">Corporate</span><span class="chip">Blue palette</span><span class="chip">Google Slides</span>
+          <span class="chip">Navy blue</span><span class="chip">Feature grid</span><span class="chip">Corporate</span>
         </div>
       </div>
-    </div>
+      <div class="view-label">View deck</div>
+    </a>
 
-    <div class="deck-card">
+    <!-- 3. Keynote -->
+    <a class="deck-card-link" href="portfolio/03-keynote.html" target="_blank">
       <div class="deck-preview dp3">
-        <div class="slide-mock sm-lt">
-          <div>
-            <span class="sm-badge b-violet">Keynote</span>
-            <div class="ln h c-violet w80"></div>
-            <div class="ln c-dark w50"></div>
-          </div>
-          <div class="bars" style="height:32px;">
-            <div class="bar" style="background:#EEEDFE;height:36%;"></div>
-            <div class="bar" style="background:#AFA9EC;height:58%;"></div>
-            <div class="bar" style="background:#EEEDFE;height:44%;"></div>
-            <div class="bar" style="background:#534AB7;height:78%;"></div>
-            <div class="bar" style="background:#AFA9EC;height:62%;"></div>
+        <div class="slide-mock sm-bk" style="align-items:center;justify-content:center;gap:6px;">
+          <div style="font-size:7px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(201,168,76,0.6);margin-bottom:4px;">Global Leadership Summit</div>
+          <div class="ln h c-gold" style="width:60%;"></div>
+          <div class="ln c-gold" style="width:44%;"></div>
+          <div class="ln c-muted" style="width:52%;height:3px;margin-top:2px;"></div>
+          <div style="margin-top:6px;display:flex;align-items:center;gap:6px;">
+            <div style="width:20px;height:1px;background:rgba(255,255,255,0.1);"></div>
+            <div style="font-size:6px;color:rgba(255,255,255,0.2);letter-spacing:0.1em;">MARCUS CHEN · CEO</div>
+            <div style="width:20px;height:1px;background:rgba(255,255,255,0.1);"></div>
           </div>
         </div>
       </div>
       <div class="deck-info">
         <div class="deck-tag">Keynote</div>
-        <div class="deck-title">Executive keynote — industry conference</div>
-        <div class="deck-meta">30 slides · Speaking deck</div>
+        <div class="deck-title">The Leadership Edge — keynote</div>
+        <div class="deck-meta">28 slides · Speaking deck · 800 attendees</div>
         <div class="deck-chips">
-          <span class="chip">Light theme</span><span class="chip">Minimal</span><span class="chip">Keynote</span>
+          <span class="chip">Black + gold</span><span class="chip">Bold type</span><span class="chip">Conference</span>
         </div>
       </div>
-    </div>
+      <div class="view-label">View deck</div>
+    </a>
 
-    <div class="deck-card">
+    <!-- 4. Annual report -->
+    <a class="deck-card-link" href="portfolio/04-annual-report.html" target="_blank">
       <div class="deck-preview dp4">
         <div class="slide-mock sm-dg">
           <div>
@@ -427,10 +453,10 @@ footer {
           </div>
           <div style="display:flex;gap:8px;align-items:center;">
             <div class="bars" style="flex:1;height:28px;">
-              <div class="bar" style="background:rgba(29,158,117,0.5);height:40%;"></div>
-              <div class="bar" style="background:rgba(29,158,117,0.65);height:64%;"></div>
-              <div class="bar" style="background:rgba(29,158,117,0.5);height:50%;"></div>
-              <div class="bar" style="background:rgba(29,158,117,0.75);height:84%;"></div>
+              <div class="bar" style="background:rgba(29,158,117,0.4);height:40%;"></div>
+              <div class="bar" style="background:rgba(29,158,117,0.6);height:64%;"></div>
+              <div class="bar" style="background:rgba(29,158,117,0.45);height:50%;"></div>
+              <div class="bar" style="background:rgba(29,158,117,0.8);height:84%;"></div>
             </div>
             <div class="donut"><span>84%</span></div>
           </div>
@@ -438,13 +464,83 @@ footer {
       </div>
       <div class="deck-info">
         <div class="deck-tag">Annual report</div>
-        <div class="deck-title">VC-backed company — annual investor report</div>
-        <div class="deck-meta">28 slides · Board-ready</div>
+        <div class="deck-title">Meridian Capital — investor report</div>
+        <div class="deck-meta">28 slides · Board-ready · Data-heavy</div>
         <div class="deck-chips">
-          <span class="chip">Data-heavy</span><span class="chip">Dark green</span><span class="chip">PowerPoint</span>
+          <span class="chip">Dark green</span><span class="chip">Charts</span><span class="chip">Finance</span>
         </div>
       </div>
-    </div>
+      <div class="view-label">View deck</div>
+    </a>
+
+    <!-- 5. Consulting deck -->
+    <a class="deck-card-link" href="portfolio/05-consulting-deck.html" target="_blank">
+      <div class="deck-preview dp5">
+        <div class="slide-mock sm-cr">
+          <div>
+            <span class="sm-badge b-coral">Strategy recommendation</span>
+            <div class="ln h c-coral w80"></div>
+            <div class="ln c-coral w60"></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:5px;margin-top:auto;">
+            <div style="background:rgba(255,255,255,0.04);border-radius:2px;padding:5px 6px;display:flex;gap:5px;align-items:center;">
+              <div style="font-size:9px;color:rgba(240,230,208,0.2);font-family:Georgia,serif;">01</div>
+              <div style="flex:1;"><div class="ln c-coral w80" style="height:3px;margin-bottom:2px;"></div><div class="ln c-muted w60" style="height:2px;"></div></div>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border-radius:2px;padding:5px 6px;display:flex;gap:5px;align-items:center;">
+              <div style="font-size:9px;color:rgba(240,230,208,0.2);font-family:Georgia,serif;">02</div>
+              <div style="flex:1;"><div class="ln c-coral w80" style="height:3px;margin-bottom:2px;"></div><div class="ln c-muted w60" style="height:2px;"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="deck-info">
+        <div class="deck-tag">Consulting deck</div>
+        <div class="deck-title">Halcyon Strategy — market entry</div>
+        <div class="deck-meta">24 slides · Strategy deliverable · ASEAN</div>
+        <div class="deck-chips">
+          <span class="chip">Warm cream</span><span class="chip">Editorial</span><span class="chip">Consulting</span>
+        </div>
+      </div>
+      <div class="view-label">View deck</div>
+    </a>
+
+    <!-- 6. Real estate -->
+    <a class="deck-card-link" href="portfolio/06-real-estate.html" target="_blank">
+      <div class="deck-preview dp6">
+        <div class="slide-mock sm-re" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 12px;">
+          <div style="display:flex;flex-direction:column;justify-content:space-between;">
+            <div>
+              <span class="sm-badge b-warm" style="margin-bottom:5px;">Luxury · Off-Market</span>
+              <div class="ln h c-warm w80"></div>
+              <div class="ln c-muted w60"></div>
+            </div>
+            <div>
+              <div style="font-size:13px;font-weight:500;color:#c9a84c;line-height:1;">$28.5M</div>
+              <div style="font-size:6px;color:rgba(201,168,76,0.4);margin-top:2px;letter-spacing:0.06em;">ASKING PRICE</div>
+            </div>
+          </div>
+          <div style="background:rgba(201,168,76,0.04);border:0.5px solid rgba(201,168,76,0.15);border-radius:3px;display:flex;flex-direction:column;justify-content:flex-end;padding:6px;gap:4px;">
+            <div style="display:flex;align-items:flex-end;gap:3px;height:26px;">
+              <div style="flex:1;height:50%;background:rgba(201,168,76,0.2);border-radius:1px 1px 0 0;"></div>
+              <div style="flex:1;height:30%;background:rgba(201,168,76,0.15);border-radius:1px 1px 0 0;"></div>
+              <div style="flex:1;height:70%;background:rgba(201,168,76,0.25);border-radius:1px 1px 0 0;"></div>
+              <div style="flex:1;height:55%;background:rgba(201,168,76,0.2);border-radius:1px 1px 0 0;"></div>
+            </div>
+            <div style="font-size:6px;color:rgba(201,168,76,0.3);letter-spacing:0.06em;">PROPERTY DETAILS</div>
+          </div>
+        </div>
+      </div>
+      <div class="deck-info">
+        <div class="deck-tag">Real estate</div>
+        <div class="deck-title">The Harlow Collection — luxury listing</div>
+        <div class="deck-meta">14 slides · Off-market · Beverly Hills</div>
+        <div class="deck-chips">
+          <span class="chip">Dark gold</span><span class="chip">Luxury</span><span class="chip">Property</span>
+        </div>
+      </div>
+      <div class="view-label">View deck</div>
+    </a>
 
   </div>
 </section>
