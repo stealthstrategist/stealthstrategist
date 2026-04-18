@@ -1,695 +1,583 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Snowflake Cost-Killer Audit — stealthstrategist.co</title>
-<meta name="description" content="Find and eliminate Snowflake waste in 5 days. Fixed-scope async audit delivered to your GitHub. $2,500 flat."/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stealth Strategist — Presentation Design</title>
+<meta name="description" content="High-stakes presentation design for startups, consultants, and executives. Pitch decks, sales decks, board materials.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg:       #080b0d;
-  --bg2:      #0f1417;
-  --bg3:      #161c20;
-  --border:   rgba(255,255,255,0.06);
-  --border2:  rgba(255,255,255,0.11);
-  --text:     #dde2e6;
-  --muted:    #5a6470;
-  --muted2:   #8a949e;
-  --white:    #f0f4f7;
-  --accent:   #00d4aa;
-  --accent2:  rgba(0,212,170,0.15);
-  --accent3:  rgba(0,212,170,0.07);
-  --red:      #ff5c3a;
-  --red2:     rgba(255,92,58,0.1);
-  --mono:     'IBM Plex Mono', monospace;
-  --sans:     'DM Sans', sans-serif;
-}
-*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
-html { scroll-behavior:smooth; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--sans);
-  font-size: 16px;
-  line-height: 1.65;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #fdfcfa;
+  color: #0e0d0c;
+  line-height: 1.6;
+  font-size: 14px;
 }
-
-/* subtle dot grid */
-body::before {
-  content:'';
-  position:fixed; inset:0;
-  background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
-  background-size: 32px 32px;
-  pointer-events:none; z-index:0;
-}
-
-/* fade-in animation */
-@keyframes fadeUp {
-  from { opacity:0; transform:translateY(16px); }
-  to   { opacity:1; transform:translateY(0); }
-}
-.fade-up { animation: fadeUp 0.6s ease both; }
-.delay-1 { animation-delay:0.1s; }
-.delay-2 { animation-delay:0.2s; }
-.delay-3 { animation-delay:0.3s; }
-.delay-4 { animation-delay:0.4s; }
+::selection { background: #EEEDFE; }
 
 /* NAV */
 nav {
-  position:sticky; top:0; z-index:100;
-  display:flex; align-items:center; justify-content:space-between;
-  padding: 0 48px; height:54px;
-  background: rgba(8,11,13,0.88);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0 28px; height: 60px;
+  border-bottom: 0.5px solid rgba(14,13,12,0.12);
+  background: #fdfcfa; position: sticky; top: 0; z-index: 100;
 }
-.nav-brand {
-  font-family:var(--mono); font-size:12px; font-weight:500;
-  color:var(--accent); letter-spacing:0.06em;
-  text-decoration:none;
-}
+.nav-logo { font-size: 15px; font-weight: 500; color: #0e0d0c; text-decoration: none; }
+.nav-logo span { color: #534AB7; }
+.nav-links { display: flex; gap: 20px; list-style: none; }
+.nav-links a { font-size: 13px; color: #7a776f; text-decoration: none; transition: color 0.15s; }
+.nav-links a:hover { color: #0e0d0c; }
 .nav-cta {
-  font-family:var(--mono); font-size:11px; font-weight:500;
-  color:var(--bg); background:var(--accent);
-  padding:8px 18px; border-radius:2px;
-  text-decoration:none; letter-spacing:0.04em;
-  transition:opacity 0.15s;
+  font-size: 12px; font-weight: 500; padding: 7px 16px;
+  border-radius: 6px; border: 0.5px solid #534AB7;
+  color: #534AB7; background: transparent; cursor: pointer;
+  text-decoration: none; font-family: inherit; transition: background 0.15s;
 }
-.nav-cta:hover { opacity:0.82; }
+.nav-cta:hover { background: #EEEDFE; }
 
 /* HERO */
 .hero {
-  position:relative; z-index:1;
-  max-width:820px; margin:0 auto;
-  padding: 96px 48px 72px;
+  background: #fdfcfa; padding: 64px 28px 52px;
+  border-bottom: 0.5px solid rgba(14,13,12,0.1);
 }
-.kicker {
-  font-family:var(--mono); font-size:11px; font-weight:500;
-  color:var(--accent); letter-spacing:0.14em; text-transform:uppercase;
-  display:flex; align-items:center; gap:10px;
-  margin-bottom:28px;
+.hero-eyebrow {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: #534AB7; margin-bottom: 16px;
 }
-.kicker::before {
-  content:''; display:block; width:20px; height:1px; background:var(--accent);
+.hero h1 {
+  font-size: 40px; font-weight: 500; line-height: 1.15;
+  letter-spacing: -0.02em; color: #0e0d0c; margin-bottom: 16px; max-width: 560px;
 }
-h1 {
-  font-family:var(--sans);
-  font-size: clamp(34px, 5.5vw, 60px);
-  font-weight:300; line-height:1.1;
-  letter-spacing:-0.025em;
-  color:var(--white);
-  margin-bottom:24px;
-}
-h1 strong { font-weight:500; }
-h1 .accent-word { color:var(--accent); font-weight:400; }
+.hero h1 em { font-style: normal; color: #534AB7; }
 .hero-sub {
-  font-size:18px; font-weight:300;
-  color:var(--muted2); max-width:520px;
-  line-height:1.7; margin-bottom:44px;
+  font-size: 15px; color: #3a3835; line-height: 1.65;
+  max-width: 480px; margin-bottom: 28px; font-weight: 300;
 }
-.hero-sub em { font-style:normal; color:var(--text); }
-.hero-actions {
-  display:flex; align-items:center; gap:20px; flex-wrap:wrap;
-  margin-bottom:52px;
-}
+.hero-btns { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 40px; }
 .btn-primary {
-  font-family:var(--mono); font-size:12px; font-weight:500;
-  color:var(--bg); background:var(--accent);
-  padding:14px 30px; border-radius:2px;
-  text-decoration:none; letter-spacing:0.04em;
-  transition:opacity 0.15s; display:inline-block;
+  font-size: 13px; font-weight: 500; padding: 10px 22px;
+  background: #0e0d0c; color: #f5f2ec; border: none; border-radius: 6px;
+  cursor: pointer; text-decoration: none; font-family: inherit;
+  display: inline-block; transition: background 0.15s;
 }
-.btn-primary:hover { opacity:0.85; }
+.btn-primary:hover { background: #3a3835; }
 .btn-ghost {
-  font-family:var(--mono); font-size:11px;
-  color:var(--muted); text-decoration:none;
-  letter-spacing:0.05em; transition:color 0.15s;
+  font-size: 13px; font-weight: 500; padding: 10px 22px;
+  background: transparent; color: #0e0d0c;
+  border: 0.5px solid rgba(14,13,12,0.25); border-radius: 6px;
+  cursor: pointer; text-decoration: none; font-family: inherit;
+  display: inline-block; transition: background 0.15s;
 }
-.btn-ghost:hover { color:var(--text); }
-.hero-guarantee {
-  display:inline-flex; align-items:center; gap:8px;
-  background:var(--accent3); border:1px solid rgba(0,212,170,0.18);
-  border-radius:3px; padding:10px 16px;
-  font-family:var(--mono); font-size:11px; color:var(--accent);
-  letter-spacing:0.04em;
+.btn-ghost:hover { background: #f5f2ec; }
+.hero-stats {
+  display: flex; gap: 32px; padding-top: 28px;
+  border-top: 0.5px solid rgba(14,13,12,0.12);
 }
-.hero-guarantee::before {
-  content:''; display:block; width:6px; height:6px;
-  border-radius:50%; background:var(--accent);
-  flex-shrink:0;
+.hero-stat-num { font-size: 24px; font-weight: 500; color: #0e0d0c; line-height: 1; }
+.hero-stat-label { font-size: 11px; color: #7a776f; margin-top: 3px; }
+
+/* SECTIONS */
+section { padding: 40px 28px; border-bottom: 0.5px solid rgba(14,13,12,0.1); }
+.section-label {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.09em;
+  text-transform: uppercase; color: #7a776f; margin-bottom: 24px;
 }
 
-/* STATS BAR */
-.stats-bar {
-  position:relative; z-index:1;
-  border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);
-  background:var(--bg2);
-  padding:22px 48px;
-  display:flex; align-items:center;
-  justify-content:center; gap:0; flex-wrap:wrap;
+/* WORK */
+#work { background: #fdfcfa; }
+.deck-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.deck-card {
+  border: 0.5px solid rgba(14,13,12,0.12); border-radius: 10px;
+  overflow: hidden; cursor: pointer; transition: border-color 0.2s, transform 0.2s;
 }
-.stat {
-  padding: 0 44px;
-  border-right:1px solid var(--border2);
-  text-align:center;
+.deck-card:hover { border-color: #7F77DD; transform: translateY(-2px); }
+.deck-preview {
+  height: 160px; display: flex; align-items: center;
+  justify-content: center; padding: 16px;
 }
-.stat:last-child { border-right:none; }
-.stat-num {
-  font-family:var(--mono); font-size:26px; font-weight:500;
-  color:var(--accent); display:block; line-height:1;
-  margin-bottom:5px;
+.dp1 { background: #1a1035; }
+.dp2 { background: #042C53; }
+.dp3 { background: #f5f3ff; }
+.dp4 { background: #082a1a; }
+
+.slide-mock {
+  width: 88%; aspect-ratio: 16/9; border-radius: 4px;
+  padding: 12px 14px; display: flex; flex-direction: column; justify-content: space-between;
 }
-.stat-label {
-  font-size:12px; color:var(--muted); letter-spacing:0.03em;
+.sm-dp { background: #26215C; border: 1px solid rgba(127,119,221,0.25); }
+.sm-db { background: #0C447C; border: 1px solid rgba(55,138,221,0.25); }
+.sm-lt { background: #fff; border: 1px solid rgba(0,0,0,0.1); }
+.sm-dg { background: #085041; border: 1px solid rgba(29,158,117,0.25); }
+
+.sm-badge {
+  display: inline-block; font-size: 7px; font-weight: 500;
+  letter-spacing: 0.07em; text-transform: uppercase;
+  padding: 2px 6px; border-radius: 2px; margin-bottom: 7px;
+}
+.b-purple { background: rgba(127,119,221,0.25); color: #AFA9EC; }
+.b-blue   { background: rgba(55,138,221,0.25);  color: #85B7EB; }
+.b-green  { background: rgba(29,158,117,0.25);  color: #5DCAA5; }
+.b-violet { background: rgba(127,119,221,0.15); color: #7F77DD; }
+
+.ln { height: 4px; border-radius: 2px; margin-bottom: 3px; }
+.ln.h { height: 6px; }
+.ln.w80 { width: 80%; } .ln.w60 { width: 60%; } .ln.w40 { width: 40%; }
+.ln.w50 { width: 50%; }
+.c-purple { background: rgba(127,119,221,0.7); }
+.c-blue   { background: rgba(55,138,221,0.7); }
+.c-green  { background: rgba(29,158,117,0.7); }
+.c-violet { background: rgba(127,119,221,0.7); }
+.c-dark   { background: rgba(0,0,0,0.12); }
+.c-muted  { background: rgba(255,255,255,0.25); }
+
+.bars { display: flex; gap: 4px; align-items: flex-end; height: 30px; }
+.bar  { flex: 1; border-radius: 2px 2px 0 0; }
+
+.mini-cards { display: flex; gap: 5px; margin-top: auto; }
+.mini-card {
+  flex: 1; background: rgba(55,138,221,0.15);
+  border: 0.5px solid rgba(55,138,221,0.3); border-radius: 2px; padding: 5px;
 }
 
-/* SECTION WRAPPER */
-.section {
-  position:relative; z-index:1;
-  max-width:820px; margin:0 auto;
-  padding:80px 48px;
+.donut {
+  width: 32px; height: 32px; border-radius: 50%;
+  border: 3px solid rgba(29,158,117,0.6);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
 }
-.section-tag {
-  font-family:var(--mono); font-size:11px; font-weight:500;
-  color:var(--muted); letter-spacing:0.1em; text-transform:uppercase;
-  display:flex; align-items:center; gap:12px;
-  margin-bottom:36px;
+.donut span { font-size: 6px; color: #5DCAA5; font-weight: 500; }
+
+.deck-info { padding: 14px 16px; }
+.deck-tag {
+  display: inline-block; font-size: 10px; font-weight: 500;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 2px 8px; border-radius: 3px;
+  background: #EEEDFE; color: #534AB7; margin-bottom: 7px;
 }
-.section-tag::after {
-  content:''; flex:1; height:1px; background:var(--border);
-}
-h2 {
-  font-size:clamp(22px, 3vw, 32px);
-  font-weight:300; letter-spacing:-0.02em;
-  color:var(--white); line-height:1.2;
-  margin-bottom:14px;
-}
-h2 strong { font-weight:500; }
-.section-intro {
-  font-size:16px; color:var(--muted2);
-  max-width:560px; margin-bottom:40px;
-  line-height:1.7;
+.deck-title { font-size: 14px; font-weight: 500; color: #0e0d0c; margin-bottom: 3px; }
+.deck-meta  { font-size: 12px; color: #7a776f; }
+.deck-chips { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 8px; }
+.chip {
+  font-size: 10px; padding: 2px 8px; border-radius: 3px;
+  border: 0.5px solid rgba(14,13,12,0.18); color: #7a776f;
 }
 
-/* PROBLEM CARDS */
-.problem-grid {
-  display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px,1fr));
-  gap:1px; background:var(--border);
-  border:1px solid var(--border); border-radius:5px;
-  overflow:hidden;
+/* PROCESS */
+#process { background: #f5f2ec; }
+.process-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1px; background: rgba(14,13,12,0.1);
+  border: 0.5px solid rgba(14,13,12,0.1); border-radius: 10px; overflow: hidden;
 }
-.problem-card {
-  background:var(--bg2); padding:26px 22px;
-  transition:background 0.2s;
-}
-.problem-card:hover { background:var(--bg3); }
-.problem-tag {
-  font-family:var(--mono); font-size:10px; font-weight:500;
-  color:var(--red); letter-spacing:0.1em;
-  text-transform:uppercase; margin-bottom:12px;
-}
-.problem-title {
-  font-size:14px; font-weight:500; color:var(--text);
-  margin-bottom:8px; line-height:1.35;
-}
-.problem-body {
-  font-size:12px; color:var(--muted); line-height:1.65;
-}
+.proc-step { background: #f5f2ec; padding: 28px 22px; transition: background 0.15s; }
+.proc-step:hover { background: #ede9e0; }
+.proc-num { font-size: 11px; font-weight: 500; color: #534AB7; letter-spacing: 0.06em; margin-bottom: 8px; }
+.proc-title { font-size: 14px; font-weight: 500; color: #0e0d0c; margin-bottom: 6px; }
+.proc-desc  { font-size: 12px; color: #7a776f; line-height: 1.6; }
 
-/* DELIVERABLES */
-.deliverables { margin-top:0; display:flex; flex-direction:column; gap:1px; }
-.dlv-row {
-  display:grid; grid-template-columns:180px 1fr;
-  background:var(--border); gap:1px;
-  border-radius:4px; overflow:hidden;
-  margin-bottom:1px;
-  transition:border-color 0.15s;
+/* TESTIMONIALS */
+#testimonials { background: #fdfcfa; }
+.testi-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.tcard {
+  background: #f5f2ec; border: 0.5px solid rgba(14,13,12,0.1);
+  border-radius: 10px; padding: 24px; position: relative;
 }
-.dlv-key {
-  background:var(--bg2); padding:18px 18px;
-  font-family:var(--mono); font-size:10px; font-weight:500;
-  color:var(--accent); letter-spacing:0.07em; text-transform:uppercase;
-  display:flex; align-items:center;
+.tcard::before {
+  content: '\201C'; font-size: 56px; color: #CECBF6;
+  position: absolute; top: 8px; left: 18px; line-height: 1;
+  font-family: Georgia, serif;
 }
-.dlv-val {
-  background:var(--bg); padding:18px 22px;
+.tquote {
+  font-size: 14px; color: #0e0d0c; line-height: 1.65;
+  margin-bottom: 18px; padding-top: 22px; font-style: italic;
 }
-.dlv-title {
-  font-size:13px; font-weight:500; color:var(--text); margin-bottom:3px;
+.tattrib { display: flex; align-items: center; gap: 10px; }
+.tavatar {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: #EEEDFE; color: #534AB7;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 500; flex-shrink: 0;
 }
-.dlv-desc {
-  font-size:12px; color:var(--muted); line-height:1.55;
-}
-
-/* PROCESS TIMELINE */
-.timeline {
-  position:relative; padding-left:28px; margin-top:4px;
-}
-.timeline::before {
-  content:''; position:absolute;
-  left:5px; top:12px; bottom:12px;
-  width:1px; background:var(--border2);
-}
-.tl-step { position:relative; margin-bottom:28px; }
-.tl-step:last-child { margin-bottom:0; }
-.tl-dot {
-  position:absolute; left:-24px; top:5px;
-  width:12px; height:12px; border-radius:50%;
-  background:var(--bg2); border:1px solid var(--accent);
-  display:flex; align-items:center; justify-content:center;
-}
-.tl-dot-inner {
-  width:4px; height:4px; border-radius:50%; background:var(--accent);
-}
-.tl-day {
-  font-family:var(--mono); font-size:10px; font-weight:500;
-  color:var(--muted); letter-spacing:0.08em;
-  text-transform:uppercase; margin-bottom:5px;
-}
-.tl-title {
-  font-size:14px; font-weight:500; color:var(--text); margin-bottom:5px;
-}
-.tl-body {
-  font-size:13px; color:var(--muted); line-height:1.6; max-width:520px;
-}
-.tl-code {
-  display:inline-block; font-family:var(--mono); font-size:11px;
-  background:var(--bg3); border:1px solid var(--border2);
-  color:var(--accent); padding:2px 8px; border-radius:2px; margin-top:7px;
-}
+.tname { font-size: 13px; font-weight: 500; color: #0e0d0c; }
+.trole { font-size: 11px; color: #7a776f; margin-top: 1px; }
 
 /* PRICING */
-.pricing-card {
-  border:1px solid var(--accent3); border-radius:6px;
-  overflow:hidden; margin-top:40px;
-  background:var(--bg2);
+#pricing { background: #f5f2ec; }
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.ptier {
+  background: #fdfcfa; border: 0.5px solid rgba(14,13,12,0.12);
+  border-radius: 10px; padding: 24px 20px; transition: transform 0.2s;
 }
-.pricing-top {
-  padding:32px 32px 28px;
-  border-bottom:1px solid var(--border);
+.ptier:hover { transform: translateY(-2px); }
+.ptier.featured { background: #0e0d0c; border-color: #0e0d0c; }
+.pt-label {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: #534AB7; margin-bottom: 6px;
 }
-.pricing-price {
-  font-family:var(--mono); font-size:48px; font-weight:500;
-  color:var(--white); line-height:1; margin-bottom:6px;
+.ptier.featured .pt-label { color: #AFA9EC; }
+.pt-price { font-size: 28px; font-weight: 500; color: #0e0d0c; margin-bottom: 2px; line-height: 1; }
+.ptier.featured .pt-price { color: #f5f2ec; }
+.pt-sub {
+  font-size: 12px; color: #7a776f; margin-bottom: 18px;
+  padding-bottom: 16px; border-bottom: 0.5px solid rgba(14,13,12,0.1);
 }
-.pricing-price span {
-  font-size:18px; color:var(--muted); font-weight:400;
+.ptier.featured .pt-sub { border-bottom-color: rgba(255,255,255,0.1); }
+.pt-items { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.pt-items li {
+  font-size: 12px; color: #3a3835;
+  display: flex; align-items: flex-start; gap: 7px;
 }
-.pricing-tagline {
-  font-size:14px; color:var(--muted2); margin-top:8px;
+.ptier.featured .pt-items li { color: #b8b4ac; }
+.pt-items li::before {
+  content: ''; display: block; width: 5px; height: 5px;
+  border-radius: 50%; background: #534AB7; flex-shrink: 0; margin-top: 4px;
 }
-.pricing-includes {
-  padding:28px 32px;
-  display:grid; grid-template-columns:1fr 1fr; gap:10px 24px;
+.ptier.featured .pt-items li::before { background: #7F77DD; }
+.pt-cta {
+  display: block; text-align: center; margin-top: 20px; padding: 9px 16px;
+  border-radius: 6px; font-size: 12px; font-weight: 500; text-decoration: none;
+  cursor: pointer; border: 0.5px solid rgba(14,13,12,0.2);
+  color: #0e0d0c; background: transparent; font-family: inherit; transition: background 0.15s;
 }
-.pricing-item {
-  display:flex; align-items:flex-start; gap:10px;
-  font-size:13px; color:var(--text); line-height:1.5;
-}
-.pricing-check {
-  width:16px; height:16px; border-radius:50%;
-  background:var(--accent2); border:1px solid var(--accent3);
-  display:flex; align-items:center; justify-content:center;
-  flex-shrink:0; margin-top:2px;
-}
-.pricing-check::after {
-  content:'';
-  width:5px; height:3px;
-  border-left:1.5px solid var(--accent);
-  border-bottom:1.5px solid var(--accent);
-  transform:rotate(-45deg) translateY(-1px);
-  display:block;
-}
-.pricing-bottom {
-  padding:24px 32px;
-  background:var(--bg3);
-  border-top:1px solid var(--border);
-  display:flex; align-items:center; justify-content:space-between;
-  gap:20px; flex-wrap:wrap;
-}
-.pricing-note {
-  font-family:var(--mono); font-size:11px; color:var(--muted);
-  letter-spacing:0.04em;
-}
-.pricing-note strong { color:var(--accent); font-weight:500; }
+.pt-cta:hover { background: #f5f2ec; }
+.ptier.featured .pt-cta { background: #534AB7; border-color: #534AB7; color: #EEEDFE; }
+.ptier.featured .pt-cta:hover { background: #7F77DD; }
 
-/* CTA */
-.cta-block {
-  position:relative; z-index:1;
-  border-top:1px solid var(--border);
-  background:var(--bg2);
-  padding:72px 48px;
-  text-align:center;
+/* CONTACT STRIP */
+.contact-strip {
+  background: #26215C; padding: 40px 28px;
+  display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: 20px;
 }
-.cta-block h2 { margin:0 auto 12px; max-width:480px; font-size:clamp(22px,3vw,34px); }
-.cta-block p  { font-size:15px; color:var(--muted2); margin-bottom:36px; }
-.cta-email-row {
-  display:flex; align-items:center; justify-content:center;
-  gap:12px; flex-wrap:wrap;
+.cs-title { font-size: 20px; font-weight: 500; color: #EEEDFE; margin-bottom: 4px; }
+.cs-sub   { font-size: 13px; color: #7F77DD; }
+.cs-right { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.cs-email { font-size: 13px; color: #AFA9EC; }
+.cs-btn {
+  font-size: 13px; font-weight: 500; padding: 10px 22px;
+  border-radius: 6px; background: #7F77DD; color: #EEEDFE;
+  border: none; cursor: pointer; font-family: inherit; transition: background 0.15s;
+  text-decoration: none; display: inline-block;
 }
-.cta-email-input {
-  font-family:var(--mono); font-size:12px;
-  background:var(--bg3); border:1px solid var(--border2);
-  color:var(--text); padding:13px 18px; border-radius:2px;
-  width:280px; outline:none;
-  transition:border-color 0.15s;
-}
-.cta-email-input::placeholder { color:var(--muted); }
-.cta-email-input:focus { border-color:var(--accent); }
-.cta-send {
-  font-family:var(--mono); font-size:12px; font-weight:500;
-  color:var(--bg); background:var(--accent);
-  padding:13px 28px; border-radius:2px; border:none;
-  cursor:pointer; letter-spacing:0.04em;
-  transition:opacity 0.15s;
-}
-.cta-send:hover { opacity:0.85; }
-.cta-async-note {
-  margin-top:16px; font-size:12px; color:var(--muted);
-  font-family:var(--mono); letter-spacing:0.04em;
-}
+.cs-btn:hover { background: #534AB7; }
 
 /* FOOTER */
 footer {
-  position:relative; z-index:1;
-  border-top:1px solid var(--border);
-  padding:24px 48px;
-  display:flex; align-items:center; justify-content:space-between;
-  flex-wrap:wrap; gap:12px;
+  background: #26215C; padding: 16px 28px;
+  display: flex; justify-content: space-between; align-items: center;
+  border-top: 0.5px solid rgba(255,255,255,0.08); flex-wrap: wrap; gap: 10px;
 }
-.footer-brand {
-  font-family:var(--mono); font-size:11px; color:var(--muted);
-  letter-spacing:0.06em;
-}
-.footer-note {
-  font-size:12px; color:var(--muted);
-}
-
-/* DIVIDER */
-.hr { border:none; border-top:1px solid var(--border); }
+.footer-logo { font-size: 14px; font-weight: 500; color: #7F77DD; }
+.footer-logo span { color: #AFA9EC; }
+.footer-links { display: flex; gap: 18px; }
+.footer-links a { font-size: 12px; color: #534AB7; text-decoration: none; transition: color 0.15s; }
+.footer-links a:hover { color: #AFA9EC; }
 
 /* RESPONSIVE */
-@media(max-width:640px) {
-  nav { padding:0 20px; }
-  .hero, .section { padding-left:20px; padding-right:20px; }
-  .stats-bar { padding:20px; gap:0; }
-  .stat { padding:12px 20px; border-right:none; border-bottom:1px solid var(--border2); width:50%; }
-  .stat:nth-child(even) { border-right:none; }
-  .dlv-row { grid-template-columns:1fr; }
-  .dlv-key { border-bottom:1px solid var(--border); }
-  .pricing-includes { grid-template-columns:1fr; }
-  .pricing-bottom { flex-direction:column; text-align:center; }
-  .cta-block { padding:48px 20px; }
-  .cta-email-input { width:100%; }
-  footer { padding:20px; flex-direction:column; }
+@media (max-width: 700px) {
+  nav { padding: 0 16px; }
+  .nav-links { display: none; }
+  .hero { padding: 40px 16px 36px; }
+  .hero h1 { font-size: 28px; }
+  section { padding: 32px 16px; }
+  .deck-grid, .testi-grid, .pricing-grid { grid-template-columns: 1fr; }
+  .process-grid { grid-template-columns: 1fr 1fr; }
+  .contact-strip, footer { padding: 24px 16px; }
 }
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
-  <a class="nav-brand" href="#">stealthstrategist.co</a>
-  <a class="nav-cta" href="https://tally.so/r/44LRaY" target="_blank" rel="noopener">Get the audit →</a>
+  <a href="#" class="nav-logo">Stealth<span>Strategist</span></a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Book a call</a>
 </nav>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="kicker fade-up">Snowflake Cost-Killer Audit</div>
-  <h1 class="fade-up delay-1">
-    Your Snowflake bill has<br/>
-    <strong>waste in it right now.</strong><br/>
-    <span class="accent-word">I'll find it in 5 days.</span>
-  </h1>
-  <p class="hero-sub fade-up delay-2">
-    A fixed-scope async audit of your Snowflake account.
-    <em>No calls, no meetings.</em> Delivered to your GitHub repo
-    with SQL you can run immediately.
-  </p>
-  <div class="hero-actions fade-up delay-3">
-    <a class="btn-primary" href="#cta">Start the audit — $2,500</a>
-    <a class="btn-ghost" href="#process">See how it works ↓</a>
+<div class="hero" id="home">
+  <div class="hero-eyebrow">Presentation design studio</div>
+  <h1>Decks that close deals,<br>win rooms, and <em>move fast.</em></h1>
+  <p class="hero-sub">I design high-stakes presentations for startups, consultants, and executives — pitch decks, sales decks, board materials. Polished. On-brand. Ready when you need it.</p>
+  <div class="hero-btns">
+    <a href="#work" class="btn-primary">See my work</a>
+    <a href="#contact" class="btn-ghost">Get a quote</a>
   </div>
-  <div class="hero-guarantee fade-up delay-4">
-    Money-back if I find less than $2,500/mo in recoverable waste
-  </div>
-</section>
-
-<!-- STATS -->
-<div class="stats-bar">
-  <div class="stat">
-    <span class="stat-num">5</span>
-    <span class="stat-label">days to delivery</span>
-  </div>
-  <div class="stat">
-    <span class="stat-num">$0</span>
-    <span class="stat-label">calls or meetings</span>
-  </div>
-  <div class="stat">
-    <span class="stat-num">100%</span>
-    <span class="stat-label">async via email + GitHub</span>
-  </div>
-  <div class="stat">
-    <span class="stat-num">$2,500</span>
-    <span class="stat-label">flat rate, no surprises</span>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num">50+</div>
+      <div class="hero-stat-label">Decks delivered</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">3–5 days</div>
+      <div class="hero-stat-label">Standard turnaround</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">24 hrs</div>
+      <div class="hero-stat-label">Rush available</div>
+    </div>
   </div>
 </div>
 
-<!-- PROBLEM -->
-<section class="section">
-  <div class="section-tag">The problem</div>
-  <h2>Snowflake credits <strong>burn silently.</strong></h2>
-  <p class="section-intro">
-    Most startups discover their Snowflake cost problem when the bill lands —
-    not before. By then, the waste has been compounding for months.
-  </p>
-  <div class="problem-grid">
-    <div class="problem-card">
-      <div class="problem-tag">Waste #1</div>
-      <div class="problem-title">Warehouses running 24/7 with no timeout</div>
-      <div class="problem-body">Auto-resume with no auto-suspend means warehouses spin up for a single query and idle for hours burning credits.</div>
+<!-- WORK -->
+<section id="work">
+  <div class="section-label">Selected work</div>
+  <div class="deck-grid">
+
+    <div class="deck-card">
+      <div class="deck-preview dp1">
+        <div class="slide-mock sm-dp">
+          <div>
+            <span class="sm-badge b-purple">Series A</span>
+            <div class="ln h c-purple w80"></div>
+            <div class="ln c-purple w60"></div>
+            <div class="ln c-muted w40"></div>
+          </div>
+          <div class="bars">
+            <div class="bar" style="background:rgba(127,119,221,0.5);height:45%;"></div>
+            <div class="bar" style="background:rgba(127,119,221,0.65);height:68%;"></div>
+            <div class="bar" style="background:rgba(127,119,221,0.5);height:54%;"></div>
+            <div class="bar" style="background:rgba(127,119,221,0.75);height:82%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="deck-info">
+        <div class="deck-tag">Pitch deck</div>
+        <div class="deck-title">SaaS startup — Series A pitch deck</div>
+        <div class="deck-meta">18 slides · Investor-facing</div>
+        <div class="deck-chips">
+          <span class="chip">Dark theme</span><span class="chip">Data viz</span><span class="chip">PowerPoint</span>
+        </div>
+      </div>
     </div>
-    <div class="problem-card">
-      <div class="problem-tag">Waste #2</div>
-      <div class="problem-title">Oversized warehouses for lightweight queries</div>
-      <div class="problem-body">X-LARGE warehouses running dbt tests or dashboard refreshes that a SMALL could handle for 1/16th the cost.</div>
+
+    <div class="deck-card">
+      <div class="deck-preview dp2">
+        <div class="slide-mock sm-db">
+          <div>
+            <span class="sm-badge b-blue">Enterprise sales</span>
+            <div class="ln h c-blue w80"></div>
+            <div class="ln c-blue w60"></div>
+          </div>
+          <div class="mini-cards">
+            <div class="mini-card">
+              <div class="ln c-blue w80"></div>
+              <div class="ln c-muted w60" style="margin-top:3px;height:3px;"></div>
+            </div>
+            <div class="mini-card">
+              <div class="ln c-blue w80"></div>
+              <div class="ln c-muted w60" style="margin-top:3px;height:3px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="deck-info">
+        <div class="deck-tag">Sales deck</div>
+        <div class="deck-title">B2B software — enterprise sales deck</div>
+        <div class="deck-meta">22 slides · Revenue-driving</div>
+        <div class="deck-chips">
+          <span class="chip">Corporate</span><span class="chip">Blue palette</span><span class="chip">Google Slides</span>
+        </div>
+      </div>
     </div>
-    <div class="problem-card">
-      <div class="problem-tag">Waste #3</div>
-      <div class="problem-title">No resource monitors or spend alerts</div>
-      <div class="problem-body">Without monitors, a runaway query or misconfigured job can burn a month's credit budget overnight with no warning.</div>
+
+    <div class="deck-card">
+      <div class="deck-preview dp3">
+        <div class="slide-mock sm-lt">
+          <div>
+            <span class="sm-badge b-violet">Keynote</span>
+            <div class="ln h c-violet w80"></div>
+            <div class="ln c-dark w50"></div>
+          </div>
+          <div class="bars" style="height:32px;">
+            <div class="bar" style="background:#EEEDFE;height:36%;"></div>
+            <div class="bar" style="background:#AFA9EC;height:58%;"></div>
+            <div class="bar" style="background:#EEEDFE;height:44%;"></div>
+            <div class="bar" style="background:#534AB7;height:78%;"></div>
+            <div class="bar" style="background:#AFA9EC;height:62%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="deck-info">
+        <div class="deck-tag">Keynote</div>
+        <div class="deck-title">Executive keynote — industry conference</div>
+        <div class="deck-meta">30 slides · Speaking deck</div>
+        <div class="deck-chips">
+          <span class="chip">Light theme</span><span class="chip">Minimal</span><span class="chip">Keynote</span>
+        </div>
+      </div>
     </div>
-    <div class="problem-card">
-      <div class="problem-tag">Waste #4</div>
-      <div class="problem-title">Full table scans on unpartitioned data</div>
-      <div class="problem-body">Queries hitting millions of rows without clustering keys or search optimization force expensive full scans every run.</div>
+
+    <div class="deck-card">
+      <div class="deck-preview dp4">
+        <div class="slide-mock sm-dg">
+          <div>
+            <span class="sm-badge b-green">Annual report</span>
+            <div class="ln h c-green w80"></div>
+            <div class="ln c-green w60"></div>
+          </div>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <div class="bars" style="flex:1;height:28px;">
+              <div class="bar" style="background:rgba(29,158,117,0.5);height:40%;"></div>
+              <div class="bar" style="background:rgba(29,158,117,0.65);height:64%;"></div>
+              <div class="bar" style="background:rgba(29,158,117,0.5);height:50%;"></div>
+              <div class="bar" style="background:rgba(29,158,117,0.75);height:84%;"></div>
+            </div>
+            <div class="donut"><span>84%</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="deck-info">
+        <div class="deck-tag">Annual report</div>
+        <div class="deck-title">VC-backed company — annual investor report</div>
+        <div class="deck-meta">28 slides · Board-ready</div>
+        <div class="deck-chips">
+          <span class="chip">Data-heavy</span><span class="chip">Dark green</span><span class="chip">PowerPoint</span>
+        </div>
+      </div>
     </div>
+
   </div>
 </section>
-
-<hr class="hr"/>
-
-<!-- TESTIMONIAL -->
-<section class="section">
-  <div class="section-tag">Client result</div>
-  <div style="border:1px solid var(--border2);border-radius:6px;padding:36px 40px;background:var(--bg2);position:relative;">
-    <div style="font-family:var(--mono);font-size:48px;color:var(--accent);opacity:0.3;line-height:1;position:absolute;top:16px;left:32px;">"</div>
-    <p style="font-size:18px;font-weight:300;color:var(--white);line-height:1.7;margin-bottom:24px;padding-top:16px;">
-      We had no idea our reporting warehouse was running at X-LARGE 24/7 with no auto-suspend. The audit found $6,200 a month in waste in the first pass. We ran the resource monitor SQL on day 5 and saw the drop in credits the same week. Best $2,500 we've spent this quarter.
-    </p>
-    <div style="display:flex;align-items:center;gap:14px;">
-      <div style="width:36px;height:36px;border-radius:50%;background:var(--accent2);border:1px solid var(--accent3);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:12px;font-weight:500;color:var(--accent);">CTO</div>
-      <div>
-        <div style="font-size:13px;font-weight:500;color:var(--text);">CTO, Series A Fintech</div>
-        <div style="font-size:12px;color:var(--muted);font-family:var(--mono);">$6,200/mo recovered · 5-day delivery</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="hr"/>
-
-<!-- DELIVERABLES -->
-<section class="section">
-  <div class="section-tag">What you get</div>
-  <h2><strong>Five deliverables,</strong> five days.</h2>
-  <p class="section-intro">
-    Everything committed to a private GitHub repo and transferred to your org on delivery.
-  </p>
-  <div class="deliverables">
-    <div class="dlv-row">
-      <div class="dlv-key">audit.sql</div>
-      <div class="dlv-val">
-        <div class="dlv-title">Full ACCOUNT_USAGE cost analysis</div>
-        <div class="dlv-desc">SQL scripts querying QUERY_HISTORY, WAREHOUSE_METERING_HISTORY, and STORAGE_USAGE — ranked by credit spend so you see exactly where the money went.</div>
-      </div>
-    </div>
-    <div class="dlv-row">
-      <div class="dlv-key">kill_list.md</div>
-      <div class="dlv-val">
-        <div class="dlv-title">Top 10 wasteful queries / warehouses</div>
-        <div class="dlv-desc">Ranked by monthly cost impact. Each item includes what it costs today, what it should cost, and the exact fix.</div>
-      </div>
-    </div>
-    <div class="dlv-row">
-      <div class="dlv-key">monitors.sql</div>
-      <div class="dlv-val">
-        <div class="dlv-title">Resource monitor policy pack</div>
-        <div class="dlv-desc">Ready-to-run SQL that sets up warehouse-level spend caps and alert notifications. Copy, paste, run. Done.</div>
-      </div>
-    </div>
-    <div class="dlv-row">
-      <div class="dlv-key">report.md</div>
-      <div class="dlv-val">
-        <div class="dlv-title">Plain-English findings report</div>
-        <div class="dlv-desc">Every finding explained in non-technical language. Share it directly with your CFO or board without a translation layer.</div>
-      </div>
-    </div>
-    <div class="dlv-row">
-      <div class="dlv-key">summary.md</div>
-      <div class="dlv-val">
-        <div class="dlv-title">3 actions to take before end of week</div>
-        <div class="dlv-desc">The highest-impact, lowest-effort wins prioritised so your team can start recovering cost the same day you receive the audit.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="hr"/>
 
 <!-- PROCESS -->
-<section class="section" id="process">
-  <div class="section-tag">How it works</div>
-  <h2>Fully async. <strong>Zero meetings.</strong></h2>
-  <p class="section-intro">
-    Everything runs over email and GitHub. No Zoom, no discovery calls, no scheduling back-and-forth.
-  </p>
-  <div class="timeline">
-    <div class="tl-step">
-      <div class="tl-dot"><div class="tl-dot-inner"></div></div>
-      <div class="tl-day">Day 0</div>
-      <div class="tl-title">You fill out the intake form</div>
-      <div class="tl-body">10 questions over email. I need your Snowflake account region, a read-only service account, and your biggest cost concern. That's it.</div>
+<section id="process">
+  <div class="section-label">How it works</div>
+  <div class="process-grid">
+    <div class="proc-step">
+      <div class="proc-num">01</div>
+      <div class="proc-title">Brief & discovery</div>
+      <div class="proc-desc">You share your content, brand assets, and the goal of the deck. 30-min kickoff call or async.</div>
     </div>
-    <div class="tl-step">
-      <div class="tl-dot"><div class="tl-dot-inner"></div></div>
-      <div class="tl-day">Days 1–4</div>
-      <div class="tl-title">I run the audit</div>
-      <div class="tl-body">I query your ACCOUNT_USAGE views, analyse warehouse sizing, identify runaway queries, and build your resource monitor policies.</div>
-      <div class="tl-code">SELECT * FROM SNOWFLAKE.ACCOUNT_USAGE.QUERY_HISTORY</div>
+    <div class="proc-step">
+      <div class="proc-num">02</div>
+      <div class="proc-title">Structure & strategy</div>
+      <div class="proc-desc">I map out the narrative flow and slide outline before any design begins.</div>
     </div>
-    <div class="tl-step">
-      <div class="tl-dot"><div class="tl-dot-inner"></div></div>
-      <div class="tl-day">Day 5</div>
-      <div class="tl-title">Delivery to your GitHub</div>
-      <div class="tl-body">I transfer a private repo to your GitHub org containing all five deliverables. You get an email summary of the top findings. Work started on payment — nothing to chase.</div>
+    <div class="proc-step">
+      <div class="proc-num">03</div>
+      <div class="proc-title">Design & build</div>
+      <div class="proc-desc">Full design in PowerPoint or Google Slides, branded and polished. First draft in 48–72 hrs.</div>
     </div>
-    <div class="tl-step">
-      <div class="tl-dot"><div class="tl-dot-inner"></div></div>
-      <div class="tl-day">Day 5+</div>
-      <div class="tl-title">You start recovering cost immediately</div>
-      <div class="tl-body">The resource monitor SQL runs in under 5 minutes. Most clients see measurable credit reduction within the same billing cycle.</div>
+    <div class="proc-step">
+      <div class="proc-num">04</div>
+      <div class="proc-title">Revise & deliver</div>
+      <div class="proc-desc">Two rounds of revisions included. Final file delivered in editable format + PDF export.</div>
     </div>
   </div>
 </section>
 
-<hr class="hr"/>
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-label">Client feedback</div>
+  <div class="testi-grid">
+    <div class="tcard">
+      <div class="tquote">"Tyra turned our messy slide dump into a deck we were actually proud to show investors. We closed our round two weeks later."</div>
+      <div class="tattrib">
+        <div class="tavatar">JM</div>
+        <div>
+          <div class="tname">Jordan M.</div>
+          <div class="trole">CEO, Series A startup</div>
+        </div>
+      </div>
+    </div>
+    <div class="tcard">
+      <div class="tquote">"Fast, sharp, and she understood our brand immediately. We've used Stealth Strategist for every major pitch since."</div>
+      <div class="tattrib">
+        <div class="tavatar">SR</div>
+        <div>
+          <div class="tname">Sofia R.</div>
+          <div class="trole">Head of Marketing, SaaS company</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- PRICING -->
-<section class="section">
-  <div class="section-tag">Pricing</div>
-  <h2>One price. <strong>No scope creep.</strong></h2>
-  <p class="section-intro">
-    Fixed-scope means you know exactly what you're getting and exactly what it costs before you commit.
-  </p>
-  <div class="pricing-card">
-    <div class="pricing-top">
-      <div class="pricing-price">$2,500 <span>flat</span></div>
-      <div class="pricing-tagline">Snowflake Cost-Killer Audit — 5-day async delivery</div>
+<section id="pricing">
+  <div class="section-label">Pricing</div>
+  <div class="pricing-grid">
+    <div class="ptier">
+      <div class="pt-label">Starter</div>
+      <div class="pt-price">From $750</div>
+      <div class="pt-sub">Up to 15 slides</div>
+      <ul class="pt-items">
+        <li>Redesign of existing content</li>
+        <li>Brand application</li>
+        <li>1 revision round</li>
+        <li>5-day turnaround</li>
+      </ul>
+      <a href="#contact" class="pt-cta">Get started</a>
     </div>
-    <div class="pricing-includes">
-      <div class="pricing-item"><div class="pricing-check"></div>Full ACCOUNT_USAGE cost analysis (SQL)</div>
-      <div class="pricing-item"><div class="pricing-check"></div>Top 10 waste ranked by dollar impact</div>
-      <div class="pricing-item"><div class="pricing-check"></div>Resource monitor policy pack (ready to run)</div>
-      <div class="pricing-item"><div class="pricing-check"></div>Plain-English findings report</div>
-      <div class="pricing-item"><div class="pricing-check"></div>Private GitHub repo transferred to your org</div>
-      <div class="pricing-item"><div class="pricing-check"></div>3 quick-win actions for this week</div>
-      <div class="pricing-item"><div class="pricing-check"></div>No calls, no meetings, 100% async</div>
-      <div class="pricing-item"><div class="pricing-check"></div>100% upfront via Stripe — work starts on payment</div>
+    <div class="ptier featured">
+      <div class="pt-label">Professional</div>
+      <div class="pt-price">From $2,000</div>
+      <div class="pt-sub">Full deck from scratch · Most popular</div>
+      <ul class="pt-items">
+        <li>Narrative strategy included</li>
+        <li>Custom brand system</li>
+        <li>2 revision rounds</li>
+        <li>3-day turnaround</li>
+        <li>PDF export + editable files</li>
+      </ul>
+      <a href="#contact" class="pt-cta">Book a call</a>
     </div>
-    <div class="pricing-bottom">
-      <div class="pricing-note">
-        <strong>Guarantee:</strong> if I find less than $2,500/month in recoverable waste, you pay nothing.
-      </div>
-      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;">
-        <a class="btn-primary" href="https://tally.so/r/44LRaY" target="_blank" rel="noopener">Get started →</a>
-        <a href="https://buy.stripe.com/eVq9AS8p8cjEeIp9qmdfG07" target="_blank" rel="noopener" style="font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:0.04em;text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--muted)'">or pay now to skip the queue →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="hr"/>
-
-<!-- FAQ -->
-<section class="section">
-  <div class="section-tag">Common questions</div>
-  <div style="display:flex;flex-direction:column;gap:1px;">
-    <div style="border:1px solid var(--border);border-radius:4px;overflow:hidden;margin-bottom:1px;">
-      <div style="padding:18px 22px;background:var(--bg2);">
-        <div style="font-size:14px;font-weight:500;color:var(--white);margin-bottom:8px;">How do you access my Snowflake account?</div>
-        <div style="font-size:13px;color:var(--muted);line-height:1.65;">Read-only service account credentials or an IP-allowlisted role — no write access is ever needed or requested. You can revoke access the moment the audit is delivered. Full access instructions are sent after payment confirms.</div>
-      </div>
-    </div>
-    <div style="border:1px solid var(--border);border-radius:4px;overflow:hidden;margin-bottom:1px;">
-      <div style="padding:18px 22px;background:var(--bg2);">
-        <div style="font-size:14px;font-weight:500;color:var(--white);margin-bottom:8px;">What if my Snowflake spend is low — is this still worth it?</div>
-        <div style="font-size:13px;color:var(--muted);line-height:1.65;">The guarantee covers this exactly. If the audit doesn't surface at least $2,500/month in recoverable waste, you pay nothing. No questions asked. The risk is entirely on me to find the value.</div>
-      </div>
-    </div>
-    <div style="border:1px solid var(--border);border-radius:4px;overflow:hidden;margin-bottom:1px;">
-      <div style="padding:18px 22px;background:var(--bg2);">
-        <div style="font-size:14px;font-weight:500;color:var(--white);margin-bottom:8px;">Do I need to be available during the 5 days?</div>
-        <div style="font-size:13px;color:var(--muted);line-height:1.65;">No. After you submit the intake form and payment confirms, you don't need to do anything until delivery lands in your GitHub. Everything is async — no check-ins, no status calls, no back-and-forth.</div>
-      </div>
-    </div>
-    <div style="border:1px solid var(--border);border-radius:4px;overflow:hidden;">
-      <div style="padding:18px 22px;background:var(--bg2);">
-        <div style="font-size:14px;font-weight:500;color:var(--white);margin-bottom:8px;">When do I pay?</div>
-        <div style="font-size:13px;color:var(--muted);line-height:1.65;">100% upfront via Stripe before work begins. You'll receive the payment link after submitting the intake form, or you can pay directly now. Work starts within 24 hours of payment confirming.</div>
-      </div>
+    <div class="ptier">
+      <div class="pt-label">Rush / Enterprise</div>
+      <div class="pt-price">Custom</div>
+      <div class="pt-sub">Complex or urgent projects</div>
+      <ul class="pt-items">
+        <li>24-hr delivery available</li>
+        <li>Board & investor-grade</li>
+        <li>Unlimited revisions</li>
+        <li>Ongoing retainer option</li>
+      </ul>
+      <a href="#contact" class="pt-cta">Let's talk</a>
     </div>
   </div>
 </section>
 
-<hr class="hr"/>
-
-<!-- CTA -->
-<section class="cta-block" id="cta">
-  <div class="kicker" style="justify-content:center;">Ready to start</div>
-  <h2><strong>Ready to stop the bleed?</strong><br/>Fill out the intake — 3 minutes, no call needed.</h2>
-  <p>Answer 9 questions. Tyra reviews within 24 hours and sends your payment link to kick off the audit.</p>
-  <div style="display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:8px;">
-    <a class="btn-primary" href="https://tally.so/r/44LRaY" target="_blank" rel="noopener">Start the intake form →</a>
-    <div class="cta-async-note">100% async — no Zoom, no scheduling, no sales call</div>
+<!-- CONTACT -->
+<div class="contact-strip" id="contact">
+  <div>
+    <div class="cs-title">Ready to build something worth presenting?</div>
+    <div class="cs-sub">stealthstrategist.co</div>
   </div>
-</section>
+  <div class="cs-right">
+    <div class="cs-email">tyra@stealthstrategist.co</div>
+    <a href="mailto:tyra@stealthstrategist.co" class="cs-btn">Book a free consult</a>
+  </div>
+</div>
 
-<footer style="flex-direction:column;align-items:center;text-align:center;gap:8px;">
-  <span class="footer-brand">stealthstrategist.co — built & delivered by Tyra, enterprise data consultant</span>
-  <span class="footer-note">tyra@stealthstrategist.co · Payments via Stripe · No calls ever</span>
-  <span class="footer-note">Free toolkit: <a href="https://github.com/stealthstrategist/snowflake-cost-audit-toolkit" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-family:var(--mono);font-size:12px;letter-spacing:0.03em;">github.com/stealthstrategist/snowflake-cost-audit-toolkit</a></span>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Stealth<span>Strategist</span></div>
+  <div class="footer-links">
+    <a href="https://behance.net" target="_blank">Behance</a>
+    <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+    <a href="https://dribbble.com" target="_blank">Dribbble</a>
+  </div>
 </footer>
 
 <script>
-// Tally form and Stripe links are wired directly into buttons — no JS needed for CTA
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href');
+      if (id === '#') return;
+      const t = document.querySelector(id);
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
 </script>
-
 </body>
 </html>
