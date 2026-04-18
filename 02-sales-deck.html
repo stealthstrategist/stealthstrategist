@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1280">
+<title>Sales Deck — Orbis CRM Enterprise</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,700;1,300;1,600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:1280px;height:720px;overflow:hidden;background:#f8f7f4;}
+body{font-family:'Instrument Sans',sans-serif;color:#1a1a2e;position:relative;}
+
+.slide{width:1280px;height:720px;display:grid;grid-template-columns:380px 1fr;position:relative;}
+
+.sidebar{background:#0f1b3d;padding:56px 40px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;}
+.sidebar::before{content:'';position:absolute;bottom:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:rgba(55,138,221,0.08);}
+.sidebar::after{content:'';position:absolute;top:40px;right:20px;width:80px;height:80px;border-radius:50%;background:rgba(55,138,221,0.05);}
+
+.logo{font-family:'Fraunces',serif;font-size:22px;font-weight:600;color:#fff;letter-spacing:-0.01em;margin-bottom:4px;}
+.logo-sub{font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:0.15em;text-transform:uppercase;}
+
+.sidebar-content{flex:1;display:flex;flex-direction:column;justify-content:center;padding:32px 0;}
+.sidebar h2{font-family:'Fraunces',serif;font-size:36px;font-weight:600;line-height:1.2;color:#fff;letter-spacing:-0.02em;margin-bottom:16px;}
+.sidebar h2 em{font-style:italic;color:#378ADD;}
+.sidebar-desc{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.7;font-weight:400;margin-bottom:32px;}
+
+.sidebar-stats{display:flex;flex-direction:column;gap:10px;}
+.s-stat{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.06);}
+.s-stat-label{font-size:11px;color:rgba(255,255,255,0.35);}
+.s-stat-val{font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:#fff;}
+.s-stat-val span{font-size:11px;font-family:'Instrument Sans',sans-serif;color:#378ADD;margin-left:4px;}
+
+.sidebar-bottom{font-size:10px;color:rgba(255,255,255,0.2);letter-spacing:0.08em;}
+
+.main{background:#f8f7f4;padding:52px 56px 52px 52px;display:flex;flex-direction:column;gap:20px;}
+
+.section-label{font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#378ADD;margin-bottom:20px;}
+
+.feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;flex:1;}
+.feature{background:#fff;border:1px solid rgba(26,26,46,0.08);border-radius:10px;padding:22px;position:relative;overflow:hidden;}
+.feature::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:#378ADD;}
+.feature.accent::before{background:#0f1b3d;}
+.f-num{font-family:'Fraunces',serif;font-size:36px;font-weight:300;color:rgba(26,26,46,0.08);position:absolute;top:12px;right:16px;line-height:1;}
+.f-title{font-size:14px;font-weight:600;color:#1a1a2e;margin-bottom:6px;}
+.f-desc{font-size:12px;color:rgba(26,26,46,0.5);line-height:1.6;}
+.f-tag{display:inline-block;font-size:9px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:3px 8px;background:#E6F1FB;color:#185FA5;border-radius:3px;margin-top:10px;}
+
+.bottom-bar{background:#fff;border:1px solid rgba(26,26,46,0.08);border-radius:10px;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;}
+.bb-label{font-size:11px;color:rgba(26,26,46,0.4);}
+.bb-val{font-family:'Fraunces',serif;font-size:20px;font-weight:600;color:#0f1b3d;}
+.bb-divider{width:1px;height:32px;background:rgba(26,26,46,0.08);}
+
+.slide-num{position:absolute;bottom:24px;right:40px;font-size:10px;color:rgba(26,26,46,0.2);letter-spacing:0.12em;}
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="sidebar">
+    <div>
+      <div class="logo">Orbis</div>
+      <div class="logo-sub">Enterprise CRM</div>
+    </div>
+    <div class="sidebar-content">
+      <h2>Close more deals,<br><em>faster</em> than ever</h2>
+      <p class="sidebar-desc">Orbis gives enterprise sales teams a single intelligence layer across every deal, account, and pipeline — powered by real-time AI.</p>
+      <div class="sidebar-stats">
+        <div class="s-stat">
+          <span class="s-stat-label">Avg. deal velocity increase</span>
+          <span class="s-stat-val">34%<span>faster</span></span>
+        </div>
+        <div class="s-stat">
+          <span class="s-stat-label">Pipeline visibility</span>
+          <span class="s-stat-val">100%<span>real-time</span></span>
+        </div>
+        <div class="s-stat">
+          <span class="s-stat-label">Implementation time</span>
+          <span class="s-stat-val">14<span>days avg</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar-bottom">ORBIS · ENTERPRISE SALES DECK · 2026</div>
+  </div>
+
+  <div class="main">
+    <div class="section-label">Why teams choose Orbis</div>
+    <div class="feature-grid">
+      <div class="feature">
+        <div class="f-num">01</div>
+        <div class="f-title">AI deal scoring</div>
+        <div class="f-desc">Every opportunity scored in real-time based on 140+ signals. Know which deals to push and which to walk away from.</div>
+        <div class="f-tag">AI-powered</div>
+      </div>
+      <div class="feature accent">
+        <div class="f-num">02</div>
+        <div class="f-title">Revenue intelligence</div>
+        <div class="f-desc">Forecast with 94% accuracy using rolling models that learn from your team's historical close patterns.</div>
+        <div class="f-tag">Forecasting</div>
+      </div>
+      <div class="feature">
+        <div class="f-num">03</div>
+        <div class="f-title">Multi-thread tracking</div>
+        <div class="f-desc">Map every stakeholder across complex enterprise accounts. Never lose a deal to blind spots again.</div>
+        <div class="f-tag">Relationship</div>
+      </div>
+      <div class="feature">
+        <div class="f-num">04</div>
+        <div class="f-title">Native integrations</div>
+        <div class="f-desc">Connects with Salesforce, HubSpot, Gong, Outreach, Slack, and 60+ tools your team already uses.</div>
+        <div class="f-tag">Integrations</div>
+      </div>
+    </div>
+    <div class="bottom-bar">
+      <div><div class="bb-label">Trusted by</div><div class="bb-val">480+</div></div>
+      <div class="bb-divider"></div>
+      <div><div class="bb-label">Enterprise customers</div><div class="bb-val">Fortune 500</div></div>
+      <div class="bb-divider"></div>
+      <div><div class="bb-label">G2 rating</div><div class="bb-val">4.9 ★</div></div>
+      <div class="bb-divider"></div>
+      <div><div class="bb-label">SOC 2 Type II</div><div class="bb-val">Certified</div></div>
+    </div>
+  </div>
+</div>
+<div class="slide-num">03 / 22</div>
+</body>
+</html>

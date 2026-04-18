@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1280">
+<title>Real Estate Deck — The Harlow Collection</title>
+<link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Tenor+Sans&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:1280px;height:720px;overflow:hidden;background:#111009;}
+body{font-family:'Didact Gothic',sans-serif;color:#f0e6d0;position:relative;}
+
+.slide{width:1280px;height:720px;display:grid;grid-template-columns:1fr 420px;position:relative;}
+
+.left{padding:56px 60px;display:flex;flex-direction:column;justify-content:space-between;position:relative;}
+
+.arch-lines{position:absolute;top:0;right:0;width:200px;height:100%;opacity:0.04;background-image:repeating-linear-gradient(90deg,#c9a84c 0,#c9a84c 1px,transparent 0,transparent 60px);}
+
+.logo-area{display:flex;align-items:center;gap:12px;}
+.logo-mark{width:32px;height:32px;border:1.5px solid rgba(201,168,76,0.5);border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.logo-mark::after{content:'';width:8px;height:8px;border-radius:50%;background:#c9a84c;}
+.logo-text{font-family:'Tenor Sans',sans-serif;font-size:14px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(240,230,208,0.6);}
+
+.main-content{flex:1;display:flex;flex-direction:column;justify-content:center;padding:24px 0;}
+.prop-type{font-size:10px;font-weight:400;letter-spacing:0.25em;text-transform:uppercase;color:#c9a84c;margin-bottom:20px;}
+h1{font-family:'EB Garamond',serif;font-size:64px;font-weight:400;line-height:1.05;color:#f0e6d0;letter-spacing:-0.01em;margin-bottom:8px;}
+h1 em{font-style:italic;color:rgba(240,230,208,0.5);}
+.address{font-size:13px;color:rgba(240,230,208,0.4);letter-spacing:0.06em;margin-bottom:36px;}
+
+.prop-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid rgba(201,168,76,0.15);border-radius:8px;overflow:hidden;}
+.ps{padding:18px 20px;border-right:1px solid rgba(201,168,76,0.12);}
+.ps:last-child{border-right:none;}
+.ps-val{font-family:'EB Garamond',serif;font-size:24px;font-weight:500;color:#f0e6d0;line-height:1;}
+.ps-label{font-size:10px;color:rgba(240,230,208,0.3);letter-spacing:0.08em;margin-top:6px;}
+
+.price-row{display:flex;align-items:baseline;gap:16px;margin-top:28px;padding-top:28px;border-top:1px solid rgba(201,168,76,0.12);}
+.price{font-family:'EB Garamond',serif;font-size:48px;font-weight:500;color:#c9a84c;line-height:1;}
+.price-label{font-size:11px;color:rgba(240,230,208,0.35);letter-spacing:0.1em;text-transform:uppercase;}
+
+.slide-num{font-size:10px;color:rgba(240,230,208,0.2);letter-spacing:0.15em;}
+
+.right{background:#1a1508;border-left:1px solid rgba(201,168,76,0.1);padding:0;display:flex;flex-direction:column;}
+
+.image-placeholder{flex:1;background:#221d0e;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;position:relative;overflow:hidden;}
+.img-lines{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.03) 1px,transparent 1px);background-size:40px 40px;}
+.img-label{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(201,168,76,0.4);margin-bottom:8px;position:relative;z-index:1;}
+.img-desc{font-size:12px;color:rgba(240,230,208,0.3);position:relative;z-index:1;line-height:1.5;}
+
+.building-vis{position:absolute;bottom:0;left:50%;transform:translateX(-50%);display:flex;align-items:flex-end;gap:8px;opacity:0.12;}
+.bv-col{background:#c9a84c;border-radius:2px 2px 0 0;}
+
+.details{padding:24px 28px;border-top:1px solid rgba(201,168,76,0.1);display:flex;flex-direction:column;gap:10px;}
+.detail-row{display:flex;justify-content:space-between;align-items:center;}
+.dr-label{font-size:10px;color:rgba(240,230,208,0.3);letter-spacing:0.06em;}
+.dr-val{font-size:12px;color:rgba(240,230,208,0.7);font-weight:400;}
+
+.agent{padding:18px 28px;border-top:1px solid rgba(201,168,76,0.1);display:flex;align-items:center;gap:12px;}
+.agent-avatar{width:36px;height:36px;border-radius:50%;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);display:flex;align-items:center;justify-content:center;font-family:'EB Garamond',serif;font-size:14px;color:#c9a84c;}
+.agent-name{font-size:12px;color:rgba(240,230,208,0.7);}
+.agent-title{font-size:10px;color:rgba(240,230,208,0.3);margin-top:2px;letter-spacing:0.04em;}
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="left">
+    <div class="arch-lines"></div>
+    <div class="logo-area">
+      <div class="logo-mark"></div>
+      <div class="logo-text">Harlow Properties</div>
+    </div>
+
+    <div class="main-content">
+      <div class="prop-type">Luxury Residential · Off-Market</div>
+      <h1>The<br>Harlow<br><em>Collection</em></h1>
+      <div class="address">2840 Belmont Drive, Beverly Hills CA 90210</div>
+      <div class="prop-stats">
+        <div class="ps"><div class="ps-val">7</div><div class="ps-label">Bedrooms</div></div>
+        <div class="ps"><div class="ps-val">9.5</div><div class="ps-label">Bathrooms</div></div>
+        <div class="ps"><div class="ps-val">12,400</div><div class="ps-label">Sq ft</div></div>
+        <div class="ps"><div class="ps-val">1.8</div><div class="ps-label">Acres</div></div>
+      </div>
+      <div class="price-row">
+        <div class="price">$28.5M</div>
+        <div class="price-label">Asking price · Off-market</div>
+      </div>
+    </div>
+
+    <div class="slide-num">02 / 14</div>
+  </div>
+
+  <div class="right">
+    <div class="image-placeholder">
+      <div class="img-lines"></div>
+      <div class="building-vis">
+        <div class="bv-col" style="width:30px;height:120px;"></div>
+        <div class="bv-col" style="width:24px;height:80px;"></div>
+        <div class="bv-col" style="width:20px;height:160px;"></div>
+        <div class="bv-col" style="width:16px;height:60px;"></div>
+        <div class="bv-col" style="width:28px;height:100px;"></div>
+      </div>
+      <div class="img-label">Primary residence</div>
+      <div class="img-desc">Modern estate with panoramic canyon views,<br>infinity pool, and private guest pavilion</div>
+    </div>
+    <div class="details">
+      <div class="detail-row">
+        <span class="dr-label">Year built</span>
+        <span class="dr-val">2019 (full renovation 2024)</span>
+      </div>
+      <div class="detail-row">
+        <span class="dr-label">Architectural style</span>
+        <span class="dr-val">Contemporary California Modern</span>
+      </div>
+      <div class="detail-row">
+        <span class="dr-label">Pool / spa</span>
+        <span class="dr-val">Yes · Infinity edge + heated</span>
+      </div>
+      <div class="detail-row">
+        <span class="dr-label">Garage</span>
+        <span class="dr-val">8-car motor court</span>
+      </div>
+    </div>
+    <div class="agent">
+      <div class="agent-avatar">RC</div>
+      <div>
+        <div class="agent-name">Rachel Caldwell</div>
+        <div class="agent-title">Senior Luxury Advisor · DRE #02041882</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

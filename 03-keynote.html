@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1280">
+<title>Executive Keynote — The Leadership Edge</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:1280px;height:720px;overflow:hidden;background:#0a0a0a;}
+body{font-family:'Outfit',sans-serif;color:#fff;position:relative;}
+
+.slide{width:1280px;height:720px;position:relative;display:flex;align-items:center;justify-content:center;}
+
+.bg-text{position:absolute;font-family:'Playfair Display',serif;font-size:260px;font-weight:900;color:rgba(255,255,255,0.025);line-height:1;top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;letter-spacing:-0.05em;user-select:none;}
+
+.gold-line{position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,transparent,#c9a84c,transparent);}
+.gold-line-bottom{position:absolute;bottom:0;left:0;width:100%;height:1px;background:rgba(201,168,76,0.3);}
+
+.left-accent{position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,transparent,#c9a84c 30%,#c9a84c 70%,transparent);}
+
+.content{position:relative;z-index:2;text-align:center;max-width:800px;padding:0 80px;}
+.eyebrow{font-size:11px;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:#c9a84c;margin-bottom:32px;display:flex;align-items:center;justify-content:center;gap:16px;}
+.eyebrow::before,.eyebrow::after{content:'';display:block;width:40px;height:1px;background:#c9a84c;opacity:0.5;}
+
+h1{font-family:'Playfair Display',serif;font-size:80px;font-weight:900;line-height:1.0;letter-spacing:-0.03em;color:#fff;margin-bottom:28px;}
+h1 em{font-style:italic;color:#c9a84c;}
+
+.subtitle{font-size:18px;color:rgba(255,255,255,0.45);line-height:1.6;font-weight:300;letter-spacing:0.01em;margin-bottom:48px;}
+
+.speaker-row{display:flex;align-items:center;justify-content:center;gap:20px;}
+.speaker-line{width:48px;height:1px;background:rgba(255,255,255,0.15);}
+.speaker-name{font-size:14px;font-weight:500;color:rgba(255,255,255,0.7);letter-spacing:0.05em;}
+.speaker-title{font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:0.08em;margin-top:3px;text-align:center;}
+
+.corner-tl{position:absolute;top:28px;left:36px;font-size:10px;color:rgba(255,255,255,0.2);letter-spacing:0.15em;text-transform:uppercase;}
+.corner-tr{position:absolute;top:28px;right:36px;font-size:10px;color:rgba(255,255,255,0.2);letter-spacing:0.15em;}
+.corner-br{position:absolute;bottom:28px;right:36px;font-size:10px;color:rgba(201,168,76,0.4);letter-spacing:0.12em;}
+
+.dot-grid{position:absolute;right:60px;top:50%;transform:translateY(-50%);display:grid;grid-template-columns:repeat(5,1fr);gap:10px;opacity:0.12;}
+.dot{width:4px;height:4px;border-radius:50%;background:#c9a84c;}
+.dot-grid-left{position:absolute;left:60px;top:50%;transform:translateY(-50%);display:grid;grid-template-columns:repeat(5,1fr);gap:10px;opacity:0.12;}
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="gold-line"></div>
+  <div class="gold-line-bottom"></div>
+  <div class="left-accent"></div>
+  <div class="bg-text">LEAD</div>
+
+  <div class="dot-grid">
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+  </div>
+  <div class="dot-grid-left">
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+  </div>
+
+  <div class="content">
+    <div class="eyebrow">Global Leadership Summit 2026</div>
+    <h1>The<br><em>Leadership</em><br>Edge</h1>
+    <p class="subtitle">How elite executives build organizations that<br>outperform in uncertainty, complexity, and change.</p>
+    <div class="speaker-row">
+      <div class="speaker-line"></div>
+      <div>
+        <div class="speaker-name">MARCUS CHEN</div>
+        <div class="speaker-title">CEO · Vertex Capital · Former McKinsey Partner</div>
+      </div>
+      <div class="speaker-line"></div>
+    </div>
+  </div>
+
+  <div class="corner-tl">Keynote</div>
+  <div class="corner-tr">GLS 2026</div>
+  <div class="corner-br">01 / 28</div>
+</div>
+</body>
+</html>

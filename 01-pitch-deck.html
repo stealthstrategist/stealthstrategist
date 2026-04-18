@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1280">
+<title>Pitch Deck — NovaPay Series A</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:1280px;height:720px;overflow:hidden;background:#0d0a1a;}
+body{font-family:'DM Sans',sans-serif;color:#fff;position:relative;}
+
+.bg{position:absolute;inset:0;background:#0d0a1a;}
+.bg::before{content:'';position:absolute;top:-120px;right:-80px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(127,119,221,0.18) 0%,transparent 70%);}
+.bg::after{content:'';position:absolute;bottom:-100px;left:100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(83,74,183,0.12) 0%,transparent 70%);}
+
+.grid-lines{position:absolute;inset:0;opacity:0.04;}
+.grid-lines::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,1) 1px,transparent 1px);background-size:80px 80px;}
+
+.slide{position:relative;z-index:1;width:1280px;height:720px;display:grid;grid-template-columns:1fr 1fr;gap:0;}
+
+.left{padding:72px 64px;display:flex;flex-direction:column;justify-content:center;}
+.right{padding:56px 64px 56px 40px;display:flex;flex-direction:column;justify-content:center;gap:16px;}
+
+.eyebrow{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#7F77DD;margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.eyebrow::before{content:'';display:block;width:24px;height:1px;background:#7F77DD;}
+
+h1{font-family:'Syne',sans-serif;font-size:56px;font-weight:800;line-height:1.05;letter-spacing:-0.03em;margin-bottom:24px;}
+h1 span{color:#7F77DD;}
+
+.tagline{font-size:16px;color:rgba(255,255,255,0.5);line-height:1.6;font-weight:300;max-width:400px;margin-bottom:40px;}
+
+.raise-badge{display:inline-flex;align-items:center;gap:12px;background:rgba(127,119,221,0.12);border:1px solid rgba(127,119,221,0.3);border-radius:8px;padding:14px 20px;}
+.raise-num{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:#AFA9EC;}
+.raise-label{font-size:12px;color:rgba(255,255,255,0.4);font-weight:300;}
+
+.divider{width:1px;background:rgba(255,255,255,0.06);margin:56px 0;}
+
+.metric-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;}
+.metric{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:20px;}
+.metric-num{font-family:'Syne',sans-serif;font-size:30px;font-weight:800;color:#fff;line-height:1;}
+.metric-num span{font-size:14px;font-weight:400;color:#7F77DD;margin-left:2px;}
+.metric-label{font-size:11px;color:rgba(255,255,255,0.35);margin-top:6px;font-weight:300;}
+
+.chart-area{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:20px;flex:1;}
+.chart-title{font-size:11px;color:rgba(255,255,255,0.35);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px;}
+.bars{display:flex;align-items:flex-end;gap:8px;height:80px;}
+.bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;}
+.bar{width:100%;border-radius:3px 3px 0 0;background:rgba(127,119,221,0.25);position:relative;}
+.bar.active{background:rgba(127,119,221,0.8);}
+.bar-label{font-size:9px;color:rgba(255,255,255,0.25);}
+
+.logo-area{position:absolute;top:32px;left:64px;font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:rgba(255,255,255,0.35);letter-spacing:0.08em;}
+.slide-num{position:absolute;bottom:32px;right:64px;font-size:11px;color:rgba(255,255,255,0.2);font-family:'Syne',sans-serif;letter-spacing:0.1em;}
+.deck-label{position:absolute;bottom:32px;left:64px;font-size:10px;color:rgba(255,255,255,0.15);letter-spacing:0.12em;text-transform:uppercase;}
+
+.problem-cards{display:flex;flex-direction:column;gap:10px;}
+.prob{display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:16px;}
+.prob-icon{width:32px;height:32px;border-radius:6px;background:rgba(127,119,221,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.prob-dot{width:8px;height:8px;border-radius:50%;background:#7F77DD;}
+.prob-title{font-size:13px;font-weight:500;color:#fff;margin-bottom:3px;}
+.prob-desc{font-size:11px;color:rgba(255,255,255,0.35);line-height:1.5;}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="grid-lines"></div>
+<div class="logo-area">NOVAPAY</div>
+<div class="slide-num">01 / 12</div>
+<div class="deck-label">Series A · Confidential</div>
+
+<div class="slide">
+  <div class="left">
+    <div class="eyebrow">Series A Fundraise</div>
+    <h1>Payments<br>built for<br><span>the future</span></h1>
+    <p class="tagline">NovaPay eliminates cross-border payment friction for emerging market SMBs — settling in seconds, not days.</p>
+    <div class="raise-badge">
+      <div>
+        <div class="raise-num">$8M</div>
+        <div class="raise-label">Raising</div>
+      </div>
+      <div style="width:1px;height:36px;background:rgba(255,255,255,0.1);"></div>
+      <div>
+        <div class="raise-num" style="font-size:20px;">$2.4M</div>
+        <div class="raise-label">ARR · 3× YoY</div>
+      </div>
+      <div style="width:1px;height:36px;background:rgba(255,255,255,0.1);"></div>
+      <div>
+        <div class="raise-num" style="font-size:20px;">18</div>
+        <div class="raise-label">Countries</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="width:1px;background:rgba(255,255,255,0.06);margin:56px 0;"></div>
+
+  <div class="right">
+    <div class="metric-row">
+      <div class="metric">
+        <div class="metric-num">4,200<span>+</span></div>
+        <div class="metric-label">Active merchants</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">$180<span>M</span></div>
+        <div class="metric-label">Volume processed</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">98<span>%</span></div>
+        <div class="metric-label">Settlement rate</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">2.1<span>s</span></div>
+        <div class="metric-label">Avg. settlement time</div>
+      </div>
+    </div>
+    <div class="chart-area">
+      <div class="chart-title">Monthly volume ($M)</div>
+      <div class="bars">
+        <div class="bar-wrap"><div class="bar" style="height:22%;"></div><div class="bar-label">Q1</div></div>
+        <div class="bar-wrap"><div class="bar" style="height:31%;"></div><div class="bar-label">Q2</div></div>
+        <div class="bar-wrap"><div class="bar" style="height:42%;"></div><div class="bar-label">Q3</div></div>
+        <div class="bar-wrap"><div class="bar" style="height:55%;"></div><div class="bar-label">Q4</div></div>
+        <div class="bar-wrap"><div class="bar" style="height:68%;"></div><div class="bar-label">Q1</div></div>
+        <div class="bar-wrap"><div class="bar" style="height:80%;"></div><div class="bar-label">Q2</div></div>
+        <div class="bar-wrap"><div class="bar active" style="height:100%;"></div><div class="bar-label" style="color:#AFA9EC;">Q3</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

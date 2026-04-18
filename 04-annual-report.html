@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1280">
+<title>Annual Report — Meridian Capital 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:1280px;height:720px;overflow:hidden;background:#f0f4f2;}
+body{font-family:'IBM Plex Sans',sans-serif;color:#0d1f1a;position:relative;}
+
+.slide{width:1280px;height:720px;display:grid;grid-template-columns:1fr 1fr;position:relative;}
+
+.left{background:#0d2a22;padding:64px 56px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;}
+.left::after{content:'';position:absolute;bottom:-80px;right:-80px;width:300px;height:300px;border-radius:50%;background:rgba(29,158,117,0.08);}
+
+.brand{margin-bottom:auto;}
+.brand-name{font-family:'Libre Baskerville',serif;font-size:24px;font-weight:700;color:#fff;letter-spacing:-0.01em;}
+.brand-sub{font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:0.18em;text-transform:uppercase;margin-top:4px;}
+
+.left-center{flex:1;display:flex;flex-direction:column;justify-content:center;padding:40px 0;}
+.report-label{font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#1D9E75;margin-bottom:16px;}
+h1{font-family:'Libre Baskerville',serif;font-size:48px;font-weight:700;line-height:1.15;color:#fff;letter-spacing:-0.02em;margin-bottom:20px;}
+.year-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(29,158,117,0.15);border:1px solid rgba(29,158,117,0.3);border-radius:6px;padding:8px 16px;margin-bottom:28px;}
+.year-badge span{font-size:13px;color:#5DCAA5;font-weight:500;}
+.left-desc{font-size:13px;color:rgba(255,255,255,0.4);line-height:1.7;font-weight:300;}
+
+.perf-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+.perf{border-top:2px solid rgba(29,158,117,0.4);padding-top:14px;}
+.perf-num{font-family:'Libre Baskerville',serif;font-size:26px;font-weight:700;color:#fff;line-height:1;}
+.perf-change{font-size:11px;color:#1D9E75;margin-top:2px;}
+.perf-label{font-size:10px;color:rgba(255,255,255,0.3);margin-top:6px;letter-spacing:0.05em;}
+
+.right{background:#f0f4f2;padding:52px 52px 52px 48px;display:flex;flex-direction:column;gap:16px;}
+.section-label{font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#1D9E75;margin-bottom:4px;}
+
+.chart-card{background:#fff;border:1px solid rgba(13,31,26,0.08);border-radius:10px;padding:24px;flex:1;}
+.chart-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;}
+.chart-title{font-size:13px;font-weight:600;color:#0d1f1a;}
+.chart-period{font-size:10px;color:rgba(13,31,26,0.35);letter-spacing:0.06em;}
+.chart-num{font-family:'Libre Baskerville',serif;font-size:32px;font-weight:700;color:#0d1f1a;line-height:1;}
+.chart-num span{font-size:13px;font-weight:400;color:#1D9E75;margin-left:6px;}
+
+.area-chart{height:80px;display:flex;align-items:flex-end;gap:0;position:relative;}
+.area-bar{flex:1;border-radius:2px 2px 0 0;}
+.area-bar.teal{background:rgba(29,158,117,0.2);}
+.area-bar.teal-dark{background:rgba(29,158,117,0.7);}
+
+.grid-metrics{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.m-card{background:#fff;border:1px solid rgba(13,31,26,0.08);border-radius:10px;padding:18px 20px;}
+.m-label{font-size:10px;color:rgba(13,31,26,0.4);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px;}
+.m-val{font-family:'Libre Baskerville',serif;font-size:24px;font-weight:700;color:#0d1f1a;line-height:1;}
+.m-change{font-size:11px;margin-top:4px;}
+.m-change.up{color:#1D9E75;}
+.m-change.down{color:#D85A30;}
+
+.slide-num{position:absolute;bottom:24px;right:40px;font-size:10px;color:rgba(13,31,26,0.2);letter-spacing:0.12em;}
+
+.donut-wrap{display:flex;align-items:center;gap:20px;}
+.donut{width:72px;height:72px;border-radius:50%;border:8px solid #f0f4f2;background:conic-gradient(#1D9E75 0% 68%,#5DCAA5 68% 84%,rgba(29,158,117,0.2) 84% 100%);flex-shrink:0;}
+.donut-legend{display:flex;flex-direction:column;gap:6px;}
+.dl{display:flex;align-items:center;gap:6px;font-size:11px;color:rgba(13,31,26,0.6);}
+.dl-dot{width:8px;height:8px;border-radius:2px;flex-shrink:0;}
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="left">
+    <div class="brand">
+      <div class="brand-name">Meridian Capital</div>
+      <div class="brand-sub">Investment Group</div>
+    </div>
+    <div class="left-center">
+      <div class="report-label">Annual Investor Report</div>
+      <h1>Year of<br>Exceptional<br>Returns</h1>
+      <div class="year-badge"><span>Fiscal Year 2025 · Audited</span></div>
+      <p class="left-desc">A record year driven by disciplined capital allocation, strategic exits, and expansion into high-growth emerging markets.</p>
+    </div>
+    <div class="perf-row">
+      <div class="perf">
+        <div class="perf-num">$4.2B</div>
+        <div class="perf-change">+22% YoY</div>
+        <div class="perf-label">AUM</div>
+      </div>
+      <div class="perf">
+        <div class="perf-num">31%</div>
+        <div class="perf-change">Net IRR</div>
+        <div class="perf-label">Fund IV</div>
+      </div>
+      <div class="perf">
+        <div class="perf-num">8</div>
+        <div class="perf-change">Successful exits</div>
+        <div class="perf-label">FY 2025</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="section-label">Portfolio performance</div>
+    <div class="chart-card">
+      <div class="chart-header">
+        <div>
+          <div class="chart-title">Realized returns by quarter</div>
+          <div class="chart-period">Jan – Dec 2025</div>
+        </div>
+        <div style="text-align:right;">
+          <div class="chart-num">$840M<span>total realized</span></div>
+        </div>
+      </div>
+      <div class="area-chart">
+        <div class="area-bar teal" style="height:38%;"></div>
+        <div class="area-bar teal" style="height:52%;"></div>
+        <div class="area-bar teal" style="height:44%;"></div>
+        <div class="area-bar teal" style="height:61%;"></div>
+        <div class="area-bar teal" style="height:55%;"></div>
+        <div class="area-bar teal" style="height:72%;"></div>
+        <div class="area-bar teal" style="height:66%;"></div>
+        <div class="area-bar teal" style="height:80%;"></div>
+        <div class="area-bar teal" style="height:74%;"></div>
+        <div class="area-bar teal" style="height:88%;"></div>
+        <div class="area-bar teal-dark" style="height:94%;"></div>
+        <div class="area-bar teal-dark" style="height:100%;"></div>
+      </div>
+    </div>
+    <div class="grid-metrics">
+      <div class="m-card">
+        <div class="m-label">Portfolio companies</div>
+        <div class="m-val">47</div>
+        <div class="m-change up">+9 new investments</div>
+      </div>
+      <div class="m-card">
+        <div class="m-label">Avg. holding period</div>
+        <div class="m-val">4.2 yrs</div>
+        <div class="m-change up">-0.6 vs prior year</div>
+      </div>
+      <div class="m-card">
+        <div class="donut-wrap">
+          <div class="donut"></div>
+          <div class="donut-legend">
+            <div class="dl"><div class="dl-dot" style="background:#1D9E75;"></div>Tech 68%</div>
+            <div class="dl"><div class="dl-dot" style="background:#5DCAA5;"></div>Healthcare 16%</div>
+            <div class="dl"><div class="dl-dot" style="background:rgba(29,158,117,0.2);"></div>Other 16%</div>
+          </div>
+        </div>
+      </div>
+      <div class="m-card">
+        <div class="m-label">DPI (cash-on-cash)</div>
+        <div class="m-val">2.8×</div>
+        <div class="m-change up">Top quartile benchmark</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="slide-num">04 / 28</div>
+</body>
+</html>
