@@ -1,125 +1,578 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=1280">
-<title>Sales Deck — Orbis CRM Enterprise</title>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,700;1,300;1,600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0;}
-html,body{width:1280px;height:720px;overflow:hidden;background:#f8f7f4;}
-body{font-family:'Instrument Sans',sans-serif;color:#1a1a2e;position:relative;}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meridian — Sales Deck | Stealth Strategist</title>
+    <meta name="description" content="How Meridian's revenue intelligence platform compresses sales cycles and increases win rates for B2B software teams.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0b0f;
+            --bg-secondary: #111318;
+            --bg-card: #161920;
+            --bg-card-hover: #1a1e28;
+            --text-primary: #f0f0f2;
+            --text-secondary: #b0b3bd;
+            --text-muted: #6b6f7b;
+            --accent: #f97316;
+            --accent-glow: rgba(249, 115, 22, 0.25);
+            --accent-secondary: #fbbf24;
+            --border: #1e2130;
+            --border-light: #2a2d3a;
+            --success: #34d399;
+            --danger: #f87171;
+            --warning: #fbbf24;
+            --gradient-hero: linear-gradient(160deg, #0a0b0f 0%, #1a1209 40%, #0f1729 70%, #0a0b0f 100%);
+            --gradient-card: linear-gradient(145deg, #161920 0%, #111318 100%);
+            --shadow-lg: 0 25px 60px rgba(0, 0, 0, 0.5);
+            --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.3);
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --radius-xl: 28px;
+            --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+            --font-display: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+        }
+        *{margin:0;padding:0;box-sizing:border-box;}
+        html{font-size:16px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+        body{font-family:var(--font-display);background:var(--bg-primary);color:var(--text-primary);min-height:100vh;overflow-x:hidden;line-height:1.6;letter-spacing:-0.01em;}
 
-.slide{width:1280px;height:720px;display:grid;grid-template-columns:380px 1fr;position:relative;}
+        /* Brand Bar */
+        .brand-bar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 28px;pointer-events:none;transition:opacity 0.4s ease;}
+        .brand-bar>*{pointer-events:auto;}
+        .brand-logo{font-weight:800;font-size:1.25rem;letter-spacing:-0.03em;color:#fff;text-decoration:none;display:flex;align-items:center;gap:10px;transition:opacity 0.3s;}
+        .brand-logo:hover{opacity:0.8;}
+        .brand-logo .logo-mark{width:34px;height:34px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:900;color:#fff;box-shadow:0 0 20px var(--accent-glow);}
+        .brand-back{font-size:0.85rem;font-weight:500;color:var(--text-secondary);text-decoration:none;letter-spacing:-0.01em;transition:color 0.3s;display:flex;align-items:center;gap:6px;}
+        .brand-back:hover{color:#fff;}
+        .brand-back .arrow{display:inline-block;transition:transform 0.3s;}
+        .brand-back:hover .arrow{transform:translateX(-3px);}
 
-.sidebar{background:#0f1b3d;padding:56px 40px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;}
-.sidebar::before{content:'';position:absolute;bottom:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:rgba(55,138,221,0.08);}
-.sidebar::after{content:'';position:absolute;top:40px;right:20px;width:80px;height:80px;border-radius:50%;background:rgba(55,138,221,0.05);}
+        /* Carousel */
+        .carousel-container{width:100%;height:100vh;height:100dvh;position:relative;overflow:hidden;background:var(--bg-primary);}
+        .slides-wrapper{width:100%;height:100%;position:relative;}
 
-.logo{font-family:'Fraunces',serif;font-size:22px;font-weight:600;color:#fff;letter-spacing:-0.01em;margin-bottom:4px;}
-.logo-sub{font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:0.15em;text-transform:uppercase;}
+        /* Slide */
+        .slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.55s var(--transition-smooth),transform 0.55s var(--transition-smooth);transform:scale(0.98);padding:80px 40px 60px;will-change:opacity,transform;}
+        .slide.active{opacity:1;pointer-events:auto;transform:scale(1);z-index:10;}
+        .slide.exit-left{opacity:0;transform:scale(0.96) translateX(-30px);}
+        .slide.exit-right{opacity:0;transform:scale(0.96) translateX(30px);}
+        .slide-inner{width:100%;max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:24px;position:relative;}
 
-.sidebar-content{flex:1;display:flex;flex-direction:column;justify-content:center;padding:32px 0;}
-.sidebar h2{font-family:'Fraunces',serif;font-size:36px;font-weight:600;line-height:1.2;color:#fff;letter-spacing:-0.02em;margin-bottom:16px;}
-.sidebar h2 em{font-style:italic;color:#378ADD;}
-.sidebar-desc{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.7;font-weight:400;margin-bottom:32px;}
+        /* Slide Variants */
+        .slide-cover .slide-inner{text-align:center;align-items:center;gap:32px;max-width:900px;}
+        .slide-cover .tagline{font-size:1rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);font-family:var(--font-mono);font-size:0.8rem;}
+        .slide-cover h1{font-size:clamp(2.6rem,5.5vw,4.2rem);font-weight:800;letter-spacing:-0.04em;line-height:1.08;max-width:750px;background:linear-gradient(180deg,#ffffff 0%,#e0d0c0 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+        .slide-cover .subtitle{font-size:1.2rem;color:var(--text-secondary);max-width:600px;line-height:1.5;font-weight:400;}
+        .slide-label{font-family:var(--font-mono);font-size:0.7rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:4px;}
+        .slide-title{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;letter-spacing:-0.03em;line-height:1.2;margin-bottom:8px;}
+        .slide-subtitle{font-size:1rem;color:var(--text-secondary);max-width:600px;line-height:1.5;}
 
-.sidebar-stats{display:flex;flex-direction:column;gap:10px;}
-.s-stat{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.06);}
-.s-stat-label{font-size:11px;color:rgba(255,255,255,0.35);}
-.s-stat-val{font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:#fff;}
-.s-stat-val span{font-size:11px;font-family:'Instrument Sans',sans-serif;color:#378ADD;margin-left:4px;}
+        /* Executive Summary Grid */
+        .exec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:12px;}
+        .exec-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 26px;transition:all 0.35s ease;position:relative;overflow:hidden;}
+        .exec-card::before{content:'';position:absolute;top:-40px;right:-40px;width:100px;height:100px;border-radius:50%;background:var(--accent-glow);filter:blur(40px);opacity:0;transition:opacity 0.4s;}
+        .exec-card:hover::before{opacity:0.5;}
+        .exec-card:hover{border-color:var(--border-light);background:var(--bg-card-hover);transform:translateY(-2px);box-shadow:var(--shadow-card);}
+        .exec-card .card-label{font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;font-weight:600;}
+        .exec-card h3{font-size:1.05rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:8px;color:#fff;}
+        .exec-card p{font-size:0.9rem;color:var(--text-secondary);line-height:1.5;}
+        .exec-card .stat-highlight{display:inline-block;margin-top:12px;padding:8px 14px;border-radius:20px;font-weight:700;font-size:0.85rem;letter-spacing:-0.01em;background:rgba(249,115,22,0.12);color:var(--accent);}
 
-.sidebar-bottom{font-size:10px;color:rgba(255,255,255,0.2);letter-spacing:0.08em;}
+        /* Problem Grid */
+        .problem-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:12px;}
+        .problem-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 26px;transition:all 0.35s ease;position:relative;overflow:hidden;}
+        .problem-card:hover{border-color:var(--border-light);background:var(--bg-card-hover);transform:translateY(-2px);box-shadow:var(--shadow-card);}
+        .problem-card .card-num{font-family:var(--font-mono);font-size:2rem;font-weight:900;color:rgba(249,115,22,0.15);position:absolute;top:16px;right:20px;line-height:1;}
+        .problem-card h3{font-size:1.05rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:8px;color:#fff;}
+        .problem-card p{font-size:0.9rem;color:var(--text-secondary);line-height:1.5;}
+        .stat-strip{display:flex;gap:24px;flex-wrap:wrap;margin-top:16px;padding-top:16px;border-top:1px solid var(--border);}
+        .stat-item{text-align:center;}
+        .stat-value{font-size:1.4rem;font-weight:800;color:#fff;line-height:1;}
+        .stat-label{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-muted);margin-top:4px;}
 
-.main{background:#f8f7f4;padding:52px 56px 52px 52px;display:flex;flex-direction:column;gap:20px;}
+        /* Solution Grid */
+        .solution-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:12px;}
+        .solution-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 24px;transition:all 0.35s ease;text-align:center;}
+        .solution-card:hover{border-color:var(--border-light);background:var(--bg-card-hover);transform:translateY(-3px);box-shadow:var(--shadow-card);}
+        .solution-card .s-icon{font-size:2rem;margin-bottom:12px;display:block;}
+        .solution-card h3{font-size:1rem;font-weight:700;color:#fff;margin-bottom:6px;}
+        .solution-card p{font-size:0.85rem;color:var(--text-secondary);line-height:1.5;}
+        .solution-card .metric{display:inline-block;margin-top:10px;padding:6px 12px;border-radius:14px;font-size:0.78rem;font-weight:700;background:rgba(52,211,153,0.12);color:var(--success);}
 
-.section-label{font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#378ADD;margin-bottom:20px;}
+        /* Impact Table */
+        .impact-table{width:100%;border-collapse:separate;border-spacing:0;margin-top:12px;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border);}
+        .impact-table th{background:var(--bg-card);padding:16px 20px;text-align:left;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-muted);font-weight:600;border-bottom:1px solid var(--border);}
+        .impact-table td{background:var(--bg-secondary);padding:16px 20px;font-size:0.9rem;color:var(--text-primary);border-bottom:1px solid var(--border);font-weight:500;}
+        .impact-table tr:last-child td{border-bottom:none;}
+        .impact-table .before{color:var(--danger);}
+        .impact-table .after{color:var(--success);font-weight:700;}
+        .impact-table .roi{background:rgba(249,115,22,0.08);color:var(--accent);font-weight:700;}
 
-.feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;flex:1;}
-.feature{background:#fff;border:1px solid rgba(26,26,46,0.08);border-radius:10px;padding:22px;position:relative;overflow:hidden;}
-.feature::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:#378ADD;}
-.feature.accent::before{background:#0f1b3d;}
-.f-num{font-family:'Fraunces',serif;font-size:36px;font-weight:300;color:rgba(26,26,46,0.08);position:absolute;top:12px;right:16px;line-height:1;}
-.f-title{font-size:14px;font-weight:600;color:#1a1a2e;margin-bottom:6px;}
-.f-desc{font-size:12px;color:rgba(26,26,46,0.5);line-height:1.6;}
-.f-tag{display:inline-block;font-size:9px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:3px 8px;background:#E6F1FB;color:#185FA5;border-radius:3px;margin-top:10px;}
+        /* Customer Story */
+        .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:12px;align-items:start;}
+        @media(max-width:768px){.story-grid{grid-template-columns:1fr;}}
+        .story-text{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;}
+        .story-text h3{font-size:1.2rem;font-weight:700;color:#fff;margin-bottom:16px;}
+        .story-step{margin-bottom:14px;padding-left:28px;position:relative;}
+        .story-step .step-num{position:absolute;left:0;top:0;font-weight:800;color:var(--accent);font-size:0.9rem;}
+        .story-step p{font-size:0.85rem;color:var(--text-secondary);line-height:1.5;}
+        .story-metrics{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+        .story-metric{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md);padding:18px;text-align:center;}
+        .story-metric .big{font-size:1.6rem;font-weight:800;color:#fff;line-height:1;}
+        .story-metric .lbl{font-size:0.7rem;color:var(--text-muted);margin-top:4px;text-transform:uppercase;letter-spacing:0.04em;}
 
-.bottom-bar{background:#fff;border:1px solid rgba(26,26,46,0.08);border-radius:10px;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;}
-.bb-label{font-size:11px;color:rgba(26,26,46,0.4);}
-.bb-val{font-family:'Fraunces',serif;font-size:20px;font-weight:600;color:#0f1b3d;}
-.bb-divider{width:1px;height:32px;background:rgba(26,26,46,0.08);}
+        /* Competitor Table */
+        .comp-table{width:100%;border-collapse:separate;border-spacing:0;margin-top:12px;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border);font-size:0.82rem;}
+        .comp-table th{background:var(--bg-card);padding:14px 16px;text-align:center;font-weight:700;color:#fff;font-size:0.78rem;border-bottom:1px solid var(--border);}
+        .comp-table th:first-child{text-align:left;width:200px;}
+        .comp-table td{background:var(--bg-secondary);padding:12px 16px;text-align:center;border-bottom:1px solid var(--border);color:var(--text-secondary);}
+        .comp-table td:first-child{text-align:left;font-weight:600;color:#fff;}
+        .comp-table .check{color:var(--success);font-weight:700;}
+        .comp-table .cross{color:var(--danger);}
+        .comp-table .partial{color:var(--warning);}
+        .comp-table tr:last-child td{border-bottom:none;}
+        .comp-table .highlight-col{background:rgba(249,115,22,0.06);}
 
-.slide-num{position:absolute;bottom:24px;right:40px;font-size:10px;color:rgba(26,26,46,0.2);letter-spacing:0.12em;}
-</style>
+        /* Implementation Timeline */
+        .timeline-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-top:12px;}
+        .tl-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px 18px;text-align:center;transition:all 0.35s ease;}
+        .tl-card:hover{border-color:var(--border-light);background:var(--bg-card-hover);transform:translateY(-2px);}
+        .tl-card .tl-time{font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:6px;}
+        .tl-card .tl-title{font-weight:700;font-size:1rem;color:#fff;margin-bottom:6px;}
+        .tl-card p{font-size:0.78rem;color:var(--text-secondary);line-height:1.5;}
+
+        /* Pricing Cards */
+        .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:12px;}
+        .pricing-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 24px;text-align:center;transition:all 0.35s ease;position:relative;}
+        .pricing-card.recommended{border-color:var(--accent);box-shadow:0 0 30px rgba(249,115,22,0.15);}
+        .pricing-card.recommended::before{content:'RECOMMENDED';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent);color:#000;padding:4px 14px;border-radius:10px;font-size:0.65rem;font-weight:800;letter-spacing:0.05em;}
+        .pricing-card:hover{border-color:var(--border-light);background:var(--bg-card-hover);transform:translateY(-3px);box-shadow:var(--shadow-card);}
+        .pricing-card .plan-name{font-family:var(--font-mono);font-size:0.7rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:8px;}
+        .pricing-card .plan-price{font-size:2rem;font-weight:900;color:#fff;line-height:1;}
+        .pricing-card .plan-unit{font-size:0.8rem;color:var(--text-muted);}
+        .pricing-card .plan-desc{font-size:0.78rem;color:var(--text-secondary);margin:10px 0 16px;line-height:1.5;}
+        .pricing-card ul{list-style:none;font-size:0.78rem;color:var(--text-secondary);line-height:1.8;text-align:left;}
+
+        /* Closing Slide */
+        .slide-closing .slide-inner{text-align:center;align-items:center;justify-content:center;gap:28px;max-width:750px;}
+        .slide-closing h2{font-size:clamp(2rem,4.5vw,3.4rem);font-weight:800;letter-spacing:-0.04em;line-height:1.1;background:linear-gradient(180deg,#ffffff 0%,#e0d0c0 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+        .slide-closing .cta-text{font-size:1.1rem;color:var(--text-secondary);max-width:500px;}
+
+        /* Navigation */
+        .nav-controls{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:20px;z-index:90;background:rgba(22,25,32,0.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:40px;padding:10px 22px;box-shadow:var(--shadow-lg);transition:all 0.3s;}
+        .nav-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--border-light);background:var(--bg-card);color:#fff;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:all 0.3s;-webkit-tap-highlight-color:transparent;user-select:none;}
+        .nav-btn:hover{background:#fff;color:#000;border-color:#fff;box-shadow:0 0 20px rgba(255,255,255,0.2);}
+        .nav-btn:active{transform:scale(0.93);}
+        .nav-btn:disabled{opacity:0.3;cursor:default;pointer-events:none;}
+        .slide-counter{font-family:var(--font-mono);font-size:0.8rem;color:var(--text-secondary);font-weight:500;letter-spacing:0.04em;white-space:nowrap;user-select:none;min-width:70px;text-align:center;}
+        .dot-nav{display:flex;gap:6px;align-items:center;}
+        .dot{width:7px;height:7px;border-radius:50%;background:var(--border-light);cursor:pointer;transition:all 0.35s;-webkit-tap-highlight-color:transparent;}
+        .dot.active{background:#fff;width:20px;border-radius:4px;box-shadow:0 0 10px rgba(255,255,255,0.4);}
+        .dot:hover{background:#aaa;}
+        .kb-hint{position:fixed;bottom:110px;left:50%;transform:translateX(-50%);font-size:0.7rem;color:var(--text-muted);z-index:85;pointer-events:none;transition:opacity 0.6s;font-family:var(--font-mono);letter-spacing:0.04em;}
+
+        /* Responsive */
+        @media (max-width:768px){
+            .slide{padding:70px 16px 40px;}
+            .slide-cover h1{font-size:2rem;}
+            .problem-grid,.solution-grid,.story-grid,.pricing-grid,.timeline-row{grid-template-columns:1fr;}
+            .impact-table,.comp-table{font-size:0.7rem;}
+            .impact-table th,.impact-table td,.comp-table th,.comp-table td{padding:10px 8px;}
+            .nav-controls{gap:10px;padding:8px 14px;border-radius:30px;bottom:16px;}
+            .nav-btn{width:34px;height:34px;font-size:0.9rem;}
+            .slide-counter{font-size:0.7rem;min-width:50px;}
+            .dot{width:5px;height:5px;}
+            .dot.active{width:14px;}
+            .kb-hint{bottom:90px;font-size:0.65rem;}
+            .brand-bar{padding:12px 14px;}
+            .brand-logo{font-size:1rem;}
+            .brand-logo .logo-mark{width:28px;height:28px;font-size:0.65rem;}
+        }
+        @media (max-width:480px){
+            .slide{padding:60px 10px 30px;}
+            .slide-cover h1{font-size:1.6rem;}
+            .slide-title{font-size:1.3rem;}
+            .nav-controls{gap:6px;padding:6px 10px;border-radius:26px;}
+            .nav-btn{width:30px;height:30px;font-size:0.8rem;}
+            .dot-nav{gap:3px;}
+            .dot{width:4px;height:4px;}
+            .dot.active{width:10px;}
+        }
+    </style>
 </head>
 <body>
-<div class="slide">
-  <div class="sidebar">
-    <div>
-      <div class="logo">Orbis</div>
-      <div class="logo-sub">Enterprise CRM</div>
-    </div>
-    <div class="sidebar-content">
-      <h2>Close more deals,<br><em>faster</em> than ever</h2>
-      <p class="sidebar-desc">Orbis gives enterprise sales teams a single intelligence layer across every deal, account, and pipeline — powered by real-time AI.</p>
-      <div class="sidebar-stats">
-        <div class="s-stat">
-          <span class="s-stat-label">Avg. deal velocity increase</span>
-          <span class="s-stat-val">34%<span>faster</span></span>
-        </div>
-        <div class="s-stat">
-          <span class="s-stat-label">Pipeline visibility</span>
-          <span class="s-stat-val">100%<span>real-time</span></span>
-        </div>
-        <div class="s-stat">
-          <span class="s-stat-label">Implementation time</span>
-          <span class="s-stat-val">14<span>days avg</span></span>
-        </div>
-      </div>
-    </div>
-    <div class="sidebar-bottom">ORBIS · ENTERPRISE SALES DECK · 2026</div>
-  </div>
 
-  <div class="main">
-    <div class="section-label">Why teams choose Orbis</div>
-    <div class="feature-grid">
-      <div class="feature">
-        <div class="f-num">01</div>
-        <div class="f-title">AI deal scoring</div>
-        <div class="f-desc">Every opportunity scored in real-time based on 140+ signals. Know which deals to push and which to walk away from.</div>
-        <div class="f-tag">AI-powered</div>
-      </div>
-      <div class="feature accent">
-        <div class="f-num">02</div>
-        <div class="f-title">Revenue intelligence</div>
-        <div class="f-desc">Forecast with 94% accuracy using rolling models that learn from your team's historical close patterns.</div>
-        <div class="f-tag">Forecasting</div>
-      </div>
-      <div class="feature">
-        <div class="f-num">03</div>
-        <div class="f-title">Multi-thread tracking</div>
-        <div class="f-desc">Map every stakeholder across complex enterprise accounts. Never lose a deal to blind spots again.</div>
-        <div class="f-tag">Relationship</div>
-      </div>
-      <div class="feature">
-        <div class="f-num">04</div>
-        <div class="f-title">Native integrations</div>
-        <div class="f-desc">Connects with Salesforce, HubSpot, Gong, Outreach, Slack, and 60+ tools your team already uses.</div>
-        <div class="f-tag">Integrations</div>
-      </div>
-    </div>
-    <div class="bottom-bar">
-      <div><div class="bb-label">Trusted by</div><div class="bb-val">480+</div></div>
-      <div class="bb-divider"></div>
-      <div><div class="bb-label">Enterprise customers</div><div class="bb-val">Fortune 500</div></div>
-      <div class="bb-divider"></div>
-      <div><div class="bb-label">G2 rating</div><div class="bb-val">4.9 ★</div></div>
-      <div class="bb-divider"></div>
-      <div><div class="bb-label">SOC 2 Type II</div><div class="bb-val">Certified</div></div>
-    </div>
-  </div>
-</div>
-<div class="slide-num">03 / 22</div>
+    <!-- ═══════════ Brand Bar ═══════════ -->
+    <header class="brand-bar">
+        <a href="../index.html" class="brand-logo">
+            <span class="logo-mark">M</span> Meridian
+        </a>
+        <a href="../index.html#portfolio" class="brand-back">
+            <span class="arrow">←</span> Portfolio
+        </a>
+    </header>
+
+    <!-- ═══════════ Carousel ═══════════ -->
+    <div class="carousel-container" id="carousel">
+        <div class="slides-wrapper">
+
+            <!-- ── Slide 1: Cover ────────────────────── -->
+            <div class="slide slide-cover active" data-index="0">
+                <div class="slide-inner">
+                    <p class="tagline">Sales Deck · Enterprise · Confidential</p>
+                    <h1>A smarter way to win enterprise deals at scale.</h1>
+                    <p class="subtitle">How Meridian's revenue intelligence platform compresses sales cycles and increases win rates for B2B software teams.</p>
+                </div>
+            </div>
+
+            <!-- ── Slide 2: Executive Summary ────────── -->
+            <div class="slide" data-index="1">
+                <div class="slide-inner">
+                    <p class="slide-label">02 / 10 · Executive Summary</p>
+                    <h2 class="slide-title">The gap between pipeline and revenue is widening.</h2>
+                    <div class="exec-grid">
+                        <div class="exec-card">
+                            <div class="card-label">The Situation</div>
+                            <h3>Longer cycles, harder closes</h3>
+                            <p>Enterprise sales cycles have lengthened by 32% since 2022. More stakeholders, more scrutiny, and less budget certainty.</p>
+                            <span class="stat-highlight">32% longer cycles</span>
+                        </div>
+                        <div class="exec-card">
+                            <div class="card-label">The Complication</div>
+                            <h3>CRM tells you what, not why</h3>
+                            <p>Traditional tools show what happened. They don't tell you why deals stall, which accounts are ready to buy, or what to do next.</p>
+                            <span class="stat-highlight">Reps flying blind</span>
+                        </div>
+                        <div class="exec-card">
+                            <div class="card-label">The Resolution</div>
+                            <h3>AI-driven revenue intelligence</h3>
+                            <p>Meridian layers on top of your existing stack — giving every rep real-time signal on deal health, buyer intent, and next best action.</p>
+                            <span class="stat-highlight">28% more deals closed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── Slide 3: The Challenge ────────────── -->
+            <div class="slide" data-index="2">
+                <div class="slide-inner">
+                    <p class="slide-label">03 / 10 · The Challenge</p>
+                    <h2 class="slide-title">Three forces are killing your close rate.</h2>
+                    <div class="problem-grid">
+                        <div class="problem-card">
+                            <div class="card-num">01</div>
+                            <h3>Deal Visibility Is an Illusion</h3>
+                            <p>Sales leaders think they know their pipeline. But 74% of deals that appear healthy in CRM will slip, stall, or be lost — by the time a manager sees the signal, it's already too late to act.</p>
+                        </div>
+                        <div class="problem-card">
+                            <div class="card-num">02</div>
+                            <h3>Buyer Intent Is Invisible</h3>
+                            <p>Champions go quiet. Economic buyers enter late. Procurement delays. Without real-time multi-threaded engagement data, reps can't distinguish momentum from polite disinterest.</p>
+                        </div>
+                        <div class="problem-card">
+                            <div class="card-num">03</div>
+                            <h3>Coaching Doesn't Scale</h3>
+                            <p>Great managers make great reps. But managers are stretched across 8–12 reps and can only review a fraction of calls, emails, and meetings in any given week.</p>
+                        </div>
+                    </div>
+                    <div class="stat-strip">
+                        <div class="stat-item"><div class="stat-value">74%</div><div class="stat-label">Healthy deals slip or lose</div></div>
+                        <div class="stat-item"><div class="stat-value">32%</div><div class="stat-label">Longer cycles vs 2022</div></div>
+                        <div class="stat-item"><div class="stat-value">61%</div><div class="stat-label">Avg forecast accuracy</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── Slide 4: Our Solution ─────────────── -->
+            <div class="slide" data-index="3">
+                <div class="slide-inner">
+                    <p class="slide-label">04 / 10 · Our Solution</p>
+                    <h2 class="slide-title">Revenue intelligence that acts, not just reports.</h2>
+                    <div class="solution-grid">
+                        <div class="solution-card">
+                            <span class="s-icon">🔍</span>
+                            <h3>Deal Intelligence</h3>
+                            <p>Meridian scores every deal in real time using 140+ behavioral signals — email sentiment, meeting frequency, stakeholder coverage, and competitive mentions.</p>
+                            <span class="metric">Win rate +28% in 90 days</span>
+                        </div>
+                        <div class="solution-card">
+                            <span class="s-icon">👥</span>
+                            <h3>Buyer Intent Signals</h3>
+                            <p>Track champion engagement, economic buyer involvement, and procurement activity across email, calendar, and call data.</p>
+                            <span class="metric">Cycle length –19 days avg.</span>
+                        </div>
+                        <div class="solution-card">
+                            <span class="s-icon">🎯</span>
+                            <h3>Automated Coaching</h3>
+                            <p>Meridian surfaces the three highest-leverage coaching moments for each rep every week — pulled from real deal data.</p>
+                            <span class="metric">Ramp time –35% for new hires</span>
+                        </div>
+                        <div class="solution-card">
+                            <span class="s-icon">📊</span>
+                            <h3>Forecast Precision</h3>
+                            <p>Replace gut-feel forecasting with a model trained on your historical win/loss data. Call your number with confidence.</p>
+                            <span class="metric">Accuracy 61% → 91%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── Slide 5: Business Impact ──────────── -->
+            <div class="slide" data-index="4">
+                <div class="slide-inner">
+                    <p class="slide-label">05 / 10 · Business Impact</p>
+                    <h2 class="slide-title">A measurable return within the first quarter.</h2>
+                    <table class="impact-table">
+                        <thead>
+                            <tr><th>Metric</th><th>Before</th><th>With Meridian</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Average sales cycle length</td><td class="before">74 days</td><td class="after">55 days</td></tr>
+                            <tr><td>Win rate</td><td class="before">22%</td><td class="after">28%</td></tr>
+                            <tr><td>Forecast accuracy</td><td class="before">61%</td><td class="after">91%</td></tr>
+                            <tr><td>Manager time on coaching</td><td class="before">4 hrs/week</td><td class="after">1.5 hrs/week</td></tr>
+                            <tr><td>New hire ramp time</td><td class="before">5.4 months</td><td class="after">3.5 months</td></tr>
+                            <tr><td>Deal slippage rate</td><td class="before">34%</td><td class="after">12%</td></tr>
+                            <tr><td colspan="3" class="roi">4.8× Average ROI in year one · 67 Days to positive ROI · $1.2M Avg. incremental revenue per 20-rep team</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ── Slide 6: Customer Story ───────────── -->
+            <div class="slide" data-index="5">
+                <div class="slide-inner">
+                    <p class="slide-label">06 / 10 · Customer Story</p>
+                    <h2 class="slide-title">How Vanta grew ARR by $4.2M in one quarter.</h2>
+                    <div class="story-grid">
+                        <div class="story-text">
+                            <h3>Vanta's enterprise challenge</h3>
+                            <div class="story-step"><span class="step-num">1</span><p>Meridian connected to Salesforce, Gmail, and Zoom in <strong>under 2 hours</strong> — no IT involvement required.</p></div>
+                            <div class="story-step"><span class="step-num">2</span><p>Within 48 hours, the deal health dashboard surfaced <strong>11 at-risk opportunities</strong> that were showing as "healthy" in CRM.</p></div>
+                            <div class="story-step"><span class="step-num">3</span><p>Reps received automated next-step recommendations based on buyer engagement patterns from Vanta's top historical wins.</p></div>
+                            <div class="story-step"><span class="step-num">4</span><p>Within 90 days, the team closed 7 of the 11 at-risk deals — generating <strong>$2.1M in recovered revenue</strong> in the quarter.</p></div>
+                        </div>
+                        <div class="story-metrics">
+                            <div class="story-metric"><div class="big">+28%</div><div class="lbl">Win rate improvement</div></div>
+                            <div class="story-metric"><div class="big">$4.2M</div><div class="lbl">Incremental ARR in Q1</div></div>
+                            <div class="story-metric"><div class="big">2 hrs</div><div class="lbl">Time to deployment</div></div>
+                            <div class="story-metric"><div class="big">91%</div><div class="lbl">Forecast accuracy EoQ</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── Slide 7: Competitive Landscape ────── -->
+            <div class="slide" data-index="6">
+                <div class="slide-inner">
+                    <p class="slide-label">07 / 10 · Competitive Landscape</p>
+                    <h2 class="slide-title">Built for action, not just visibility.</h2>
+                    <table class="comp-table">
+                        <thead>
+                            <tr><th>Capability</th><th class="highlight-col">MERIDIAN</th><th>Gong</th><th>Clari</th><th>Salesforce Einstein</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Real-time deal health scoring</td><td class="check highlight-col">✓ 140+ signals</td><td class="partial">Calls only</td><td class="partial">CRM data</td><td class="partial">Partial</td></tr>
+                            <tr><td>Automated next-best-action</td><td class="check highlight-col">✓ Personalized</td><td class="cross">✗</td><td class="cross">✗</td><td class="cross">✗</td></tr>
+                            <tr><td>Multi-threaded buyer intent</td><td class="check highlight-col">✓</td><td class="partial">Partial</td><td class="cross">✗</td><td class="cross">✗</td></tr>
+                            <tr><td>Deployment time</td><td class="check highlight-col">2 hours</td><td>3–4 weeks</td><td>4–6 weeks</td><td>8–16 weeks</td></tr>
+                            <tr><td>Works with existing CRM</td><td class="check highlight-col">✓ No migration</td><td class="check">✓</td><td class="check">✓</td><td class="partial">Salesforce only</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ── Slide 8: Implementation ──────────── -->
+            <div class="slide" data-index="7">
+                <div class="slide-inner">
+                    <p class="slide-label">08 / 10 · Implementation</p>
+                    <h2 class="slide-title">Live in 2 hours. Full value in 30 days.</h2>
+                    <p class="slide-subtitle">No IT resources required. No data migration. No disruption to existing workflows.</p>
+                    <div class="timeline-row">
+                        <div class="tl-card">
+                            <div class="tl-time">Day 1</div>
+                            <div class="tl-title">Connect</div>
+                            <p>CRM integration · Email & calendar sync · Call recording setup</p>
+                        </div>
+                        <div class="tl-card">
+                            <div class="tl-time">Week 1</div>
+                            <div class="tl-title">Calibrate</div>
+                            <p>Win/loss model training · ICP definition · Stage mapping</p>
+                        </div>
+                        <div class="tl-card">
+                            <div class="tl-time">Week 2–3</div>
+                            <div class="tl-title">Activate</div>
+                            <p>Deal health live · Rep onboarding (1 hr) · First forecast call</p>
+                        </div>
+                        <div class="tl-card">
+                            <div class="tl-time">Day 30</div>
+                            <div class="tl-title">Optimize</div>
+                            <p>Coaching flows live · QBR dashboard ready · ROI baseline set</p>
+                        </div>
+                    </div>
+                    <p style="color:var(--text-muted);font-size:0.85rem;margin-top:16px;text-align:center;">
+                        Your dedicated Meridian implementation specialist handles everything — average customer live within 72 hours.
+                    </p>
+                </div>
+            </div>
+
+            <!-- ── Slide 9: Pricing ──────────────────── -->
+            <div class="slide" data-index="8">
+                <div class="slide-inner">
+                    <p class="slide-label">09 / 10 · Pricing</p>
+                    <h2 class="slide-title">Simple, transparent pricing. Scales with your team.</h2>
+                    <div class="pricing-grid">
+                        <div class="pricing-card">
+                            <div class="plan-name">Team</div>
+                            <div class="plan-price">$89</div>
+                            <div class="plan-unit">per seat / month</div>
+                            <div class="plan-desc">5–25 reps</div>
+                            <ul>
+                                <li>✓ Deal health dashboard</li>
+                                <li>✓ Email & calendar intelligence</li>
+                                <li>✓ Basic forecasting</li>
+                                <li>✓ Salesforce + HubSpot</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-card recommended">
+                            <div class="plan-name">Growth</div>
+                            <div class="plan-price">$149</div>
+                            <div class="plan-unit">per seat / month</div>
+                            <div class="plan-desc">25–150 reps</div>
+                            <ul>
+                                <li>✓ Everything in Team</li>
+                                <li>✓ Automated next-best-action</li>
+                                <li>✓ Multi-threaded buyer intent</li>
+                                <li>✓ AI coaching recommendations</li>
+                                <li>✓ Advanced forecast model</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-card">
+                            <div class="plan-name">Enterprise</div>
+                            <div class="plan-price">Custom</div>
+                            <div class="plan-unit">150+ reps · Annual contract</div>
+                            <div class="plan-desc">Everything in Growth plus:</div>
+                            <ul>
+                                <li>✓ Custom integrations</li>
+                                <li>✓ SSO + SCIM provisioning</li>
+                                <li>✓ Dedicated CSM + SA</li>
+                                <li>✓ SLA + data residency options</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── Slide 10: Closing ─────────────────── -->
+            <div class="slide slide-closing" data-index="9">
+                <div class="slide-inner">
+                    <p class="slide-label">10 / 10</p>
+                    <h2>Ready to close more deals with the data you already have?</h2>
+                    <p class="cta-text">Most teams see their first actionable insight within 48 hours of connecting Meridian. No risk, no long-term commitment until you're certain of the value.</p>
+                    <div style="margin-top:12px;">
+                        <span style="display:inline-block;padding:14px 32px;border-radius:30px;background:var(--accent);color:#000;font-weight:700;font-size:1rem;letter-spacing:-0.01em;cursor:default;">
+                            alex@meridian.io
+                        </span>
+                    </div>
+                    <p style="color:var(--text-muted);font-size:0.8rem;margin-top:8px;">Your Account Executive: Alex Torres · BOOK A PILOT: meridian.io/demo</p>
+                </div>
+            </div>
+
+        </div><!-- /slides-wrapper -->
+    </div><!-- /carousel-container -->
+
+    <!-- ═══════════ Navigation Bar ═══════════ -->
+    <nav class="nav-controls" id="navControls" aria-label="Slide navigation">
+        <button class="nav-btn" id="prevBtn" aria-label="Previous slide" title="Previous (← key)">←</button>
+        <div class="dot-nav" id="dotNav" aria-label="Slide indicators"></div>
+        <span class="slide-counter" id="slideCounter" aria-live="polite">01 / 10</span>
+        <button class="nav-btn" id="nextBtn" aria-label="Next slide" title="Next (→ key)">→</button>
+    </nav>
+    <div class="kb-hint" id="kbHint">Use ← → arrow keys to navigate</div>
+
+    <script>
+        (function() {
+            const slides = document.querySelectorAll('.slide');
+            const totalSlides = slides.length;
+            let currentIndex = 0;
+            let isTransitioning = false;
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const slideCounter = document.getElementById('slideCounter');
+            const dotNav = document.getElementById('dotNav');
+            const kbHint = document.getElementById('kbHint');
+
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('span');
+                dot.className = 'dot';
+                dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+                dot.setAttribute('role', 'button');
+                dot.setAttribute('tabindex', '0');
+                dot.addEventListener('click', () => goToSlide(i));
+                dotNav.appendChild(dot);
+            }
+            const dots = dotNav.querySelectorAll('.dot');
+
+            function updateUI() {
+                const num = String(currentIndex + 1).padStart(2, '0');
+                slideCounter.textContent = num + ' / ' + totalSlides;
+                dots.forEach((d, i) => d.classList.toggle('active', i === currentIndex));
+                prevBtn.disabled = currentIndex === 0;
+                nextBtn.disabled = currentIndex === totalSlides - 1;
+                slides.forEach((s, i) => { s.classList.remove('active', 'exit-left', 'exit-right'); if (i === currentIndex) s.classList.add('active'); });
+            }
+
+            function goToSlide(index) {
+                if (isTransitioning || index < 0 || index >= totalSlides || index === currentIndex) return;
+                isTransitioning = true;
+                const oldIndex = currentIndex;
+                const goingForward = index > oldIndex;
+                slides[oldIndex].classList.remove('active');
+                slides[oldIndex].classList.add(goingForward ? 'exit-left' : 'exit-right');
+                currentIndex = index;
+                updateUI();
+                setTimeout(() => { slides[oldIndex].classList.remove('exit-left', 'exit-right'); isTransitioning = false; }, 550);
+            }
+
+            function goNext() { if (currentIndex < totalSlides - 1) goToSlide(currentIndex + 1); }
+            function goPrev() { if (currentIndex > 0) goToSlide(currentIndex - 1); }
+            nextBtn.addEventListener('click', goNext);
+            prevBtn.addEventListener('click', goPrev);
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowRight' || e.key === 'Right') { e.preventDefault(); goNext(); hideKbHint(); }
+                else if (e.key === 'ArrowLeft' || e.key === 'Left') { e.preventDefault(); goPrev(); hideKbHint(); }
+                else if (e.key === 'Home') { e.preventDefault(); goToSlide(0); }
+                else if (e.key === 'End') { e.preventDefault(); goToSlide(totalSlides - 1); }
+            });
+
+            let touchStartX = 0;
+            const carousel = document.getElementById('carousel');
+            carousel.addEventListener('touchstart', function(e) { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+            carousel.addEventListener('touchend', function(e) {
+                const diff = touchStartX - e.changedTouches[0].screenX;
+                if (Math.abs(diff) > 60) { if (diff > 0) goNext(); else goPrev(); hideKbHint(); }
+            }, { passive: true });
+
+            let wheelTimeout;
+            carousel.addEventListener('wheel', function(e) {
+                if (wheelTimeout) return;
+                wheelTimeout = setTimeout(() => { wheelTimeout = null; }, 800);
+                if (Math.abs(e.deltaY) > 30 || Math.abs(e.deltaX) > 30) { if (e.deltaY > 0 || e.deltaX > 0) goNext(); else goPrev(); hideKbHint(); }
+            }, { passive: true });
+
+            function hideKbHint() { if (kbHint) { kbHint.style.opacity = '0'; setTimeout(() => { if (kbHint) kbHint.style.display = 'none'; }, 600); } }
+            setTimeout(() => { if (kbHint && kbHint.style.opacity !== '0') { kbHint.style.transition = 'opacity 0.8s'; kbHint.style.opacity = '0'; setTimeout(() => { if (kbHint) kbHint.style.display = 'none'; }, 800); } }, 10000);
+
+            updateUI();
+            slides[0].classList.add('active');
+            console.log('🚀 Meridian Sales Deck ready · ' + totalSlides + ' slides · Use ← → to navigate');
+        })();
+    </script>
 </body>
 </html>
