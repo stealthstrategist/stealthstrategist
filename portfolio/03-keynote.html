@@ -1,90 +1,308 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=1280">
-<title>Executive Keynote — The Leadership Edge</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0;}
-html,body{width:1280px;height:720px;overflow:hidden;background:#0a0a0a;}
-body{font-family:'Outfit',sans-serif;color:#fff;position:relative;}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Leadership Edge — Keynote | Stealth Strategist</title>
+    <meta name="description" content="Executive keynote for Horizon Group Leadership Summit 2025. The decade that will define everything.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0b0f; --bg-secondary: #111318; --bg-card: #161920; --bg-card-hover: #1a1e28;
+            --text-primary: #f0f0f2; --text-secondary: #b0b3bd; --text-muted: #6b6f7b;
+            --accent: #c9a84c; --accent-glow: rgba(201,168,76,0.25); --accent-secondary: #e8c97a;
+            --border: #1e2130; --border-light: #2a2d3a; --success: #34d399; --danger: #f87171; --warning: #fbbf24;
+            --gradient-hero: linear-gradient(160deg, #0a0b0f 0%, #1c1814 40%, #0f1729 70%, #0a0b0f 100%);
+            --gradient-card: linear-gradient(145deg, #161920 0%, #111318 100%);
+            --shadow-lg: 0 25px 60px rgba(0,0,0,0.5); --shadow-card: 0 4px 20px rgba(0,0,0,0.3);
+            --radius-sm: 8px; --radius-md: 14px; --radius-lg: 20px; --radius-xl: 28px;
+            --transition-smooth: cubic-bezier(0.4,0,0.2,1);
+            --font-display: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+        }
+        *{margin:0;padding:0;box-sizing:border-box;}
+        html{font-size:16px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+        body{font-family:var(--font-display);background:var(--bg-primary);color:var(--text-primary);min-height:100vh;overflow-x:hidden;line-height:1.6;letter-spacing:-0.01em;}
+        .brand-bar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 28px;pointer-events:none;transition:opacity 0.4s ease;}
+        .brand-bar>*{pointer-events:auto;}
+        .brand-logo{font-weight:800;font-size:1.25rem;letter-spacing:-0.03em;color:#fff;text-decoration:none;display:flex;align-items:center;gap:10px;transition:opacity 0.3s;}
+        .brand-logo:hover{opacity:0.8;}
+        .brand-logo .logo-mark{width:34px;height:34px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:900;color:#000;box-shadow:0 0 20px var(--accent-glow);}
+        .brand-back{font-size:0.85rem;font-weight:500;color:var(--text-secondary);text-decoration:none;letter-spacing:-0.01em;transition:color 0.3s;display:flex;align-items:center;gap:6px;}
+        .brand-back:hover{color:#fff;}
+        .brand-back .arrow{display:inline-block;transition:transform 0.3s;}
+        .brand-back:hover .arrow{transform:translateX(-3px);}
 
-.slide{width:1280px;height:720px;position:relative;display:flex;align-items:center;justify-content:center;}
+        .carousel-container{width:100%;height:100vh;height:100dvh;position:relative;overflow:hidden;background:var(--bg-primary);}
+        .slides-wrapper{width:100%;height:100%;position:relative;}
+        .slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.55s var(--transition-smooth),transform 0.55s var(--transition-smooth);transform:scale(0.98);padding:80px 40px 60px;will-change:opacity,transform;}
+        .slide.active{opacity:1;pointer-events:auto;transform:scale(1);z-index:10;}
+        .slide.exit-left{opacity:0;transform:scale(0.96) translateX(-30px);}
+        .slide.exit-right{opacity:0;transform:scale(0.96) translateX(30px);}
+        .slide-inner{width:100%;max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:24px;position:relative;}
 
-.bg-text{position:absolute;font-family:'Playfair Display',serif;font-size:260px;font-weight:900;color:rgba(255,255,255,0.025);line-height:1;top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;letter-spacing:-0.05em;user-select:none;}
+        .slide-cover .slide-inner{text-align:center;align-items:center;gap:32px;max-width:900px;}
+        .slide-cover .tagline{font-size:1rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);font-family:var(--font-mono);font-size:0.8rem;}
+        .slide-cover h1{font-size:clamp(2.6rem,5.5vw,4.2rem);font-weight:800;letter-spacing:-0.04em;line-height:1.08;max-width:750px;background:linear-gradient(180deg,#ffffff 0%,#e8d5a0 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+        .slide-cover .subtitle{font-size:1.2rem;color:var(--text-secondary);max-width:600px;line-height:1.5;font-weight:400;}
 
-.gold-line{position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,transparent,#c9a84c,transparent);}
-.gold-line-bottom{position:absolute;bottom:0;left:0;width:100%;height:1px;background:rgba(201,168,76,0.3);}
+        .slide-label{font-family:var(--font-mono);font-size:0.7rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:4px;}
+        .slide-title{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;letter-spacing:-0.03em;line-height:1.2;margin-bottom:8px;}
+        .slide-subtitle{font-size:1rem;color:var(--text-secondary);max-width:600px;line-height:1.5;}
 
-.left-accent{position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,transparent,#c9a84c 30%,#c9a84c 70%,transparent);}
+        .chapter-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px 28px;transition:all 0.35s ease;position:relative;overflow:hidden;border-left:3px solid var(--accent);}
+        .chapter-card:hover{border-color:var(--border-light);background:var(--bg-card-hover);transform:translateY(-2px);box-shadow:var(--shadow-card);}
+        .chapter-card h3{font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:8px;}
+        .chapter-card p{font-size:0.9rem;color:var(--text-secondary);line-height:1.5;}
 
-.content{position:relative;z-index:2;text-align:center;max-width:800px;padding:0 80px;}
-.eyebrow{font-size:11px;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:#c9a84c;margin-bottom:32px;display:flex;align-items:center;justify-content:center;gap:16px;}
-.eyebrow::before,.eyebrow::after{content:'';display:block;width:40px;height:1px;background:#c9a84c;opacity:0.5;}
+        .principles-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:12px;}
+        .principle-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 24px;transition:all 0.35s ease;position:relative;}
+        .principle-card:hover{border-color:var(--border-light);background:var(--bg-card-hover);transform:translateY(-2px);box-shadow:var(--shadow-card);}
+        .principle-card .p-num{font-family:var(--font-mono);font-size:2.5rem;font-weight:900;color:rgba(201,168,76,0.1);position:absolute;top:12px;right:16px;line-height:1;}
+        .principle-card h3{font-size:1rem;font-weight:700;color:var(--accent-secondary);margin-bottom:6px;}
+        .principle-card p{font-size:0.85rem;color:var(--text-secondary);line-height:1.5;}
 
-h1{font-family:'Playfair Display',serif;font-size:80px;font-weight:900;line-height:1.0;letter-spacing:-0.03em;color:#fff;margin-bottom:28px;}
-h1 em{font-style:italic;color:#c9a84c;}
+        .quote-block{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:40px 36px;text-align:center;position:relative;}
+        .quote-block .quote-mark{font-size:5rem;color:rgba(201,168,76,0.15);position:absolute;top:10px;left:24px;font-family:Georgia,serif;line-height:1;}
+        .quote-block .quote-text{font-size:1.2rem;font-weight:500;color:#fff;font-style:italic;line-height:1.5;position:relative;z-index:2;}
+        .quote-block .quote-author{font-size:0.85rem;color:var(--text-muted);margin-top:12px;}
 
-.subtitle{font-size:18px;color:rgba(255,255,255,0.45);line-height:1.6;font-weight:300;letter-spacing:0.01em;margin-bottom:48px;}
+        .response-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:12px;}
+        .resp-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 24px;transition:all 0.35s ease;border-top:3px solid var(--accent);}
+        .resp-card:hover{border-color:var(--border-light);background:var(--bg-card-hover);transform:translateY(-2px);box-shadow:var(--shadow-card);}
+        .resp-card .resp-tag{font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;font-weight:600;}
+        .resp-card h3{font-size:1rem;font-weight:700;color:#fff;margin-bottom:8px;}
+        .resp-card p{font-size:0.85rem;color:var(--text-secondary);line-height:1.5;}
 
-.speaker-row{display:flex;align-items:center;justify-content:center;gap:20px;}
-.speaker-line{width:48px;height:1px;background:rgba(255,255,255,0.15);}
-.speaker-name{font-size:14px;font-weight:500;color:rgba(255,255,255,0.7);letter-spacing:0.05em;}
-.speaker-title{font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:0.08em;margin-top:3px;text-align:center;}
+        .slide-closing .slide-inner{text-align:center;align-items:center;justify-content:center;gap:28px;max-width:750px;}
+        .slide-closing h2{font-size:clamp(2rem,4.5vw,3.4rem);font-weight:800;letter-spacing:-0.04em;line-height:1.1;background:linear-gradient(180deg,#ffffff 0%,#e8d5a0 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+        .slide-closing .cta-text{font-size:1.1rem;color:var(--text-secondary);max-width:500px;}
 
-.corner-tl{position:absolute;top:28px;left:36px;font-size:10px;color:rgba(255,255,255,0.2);letter-spacing:0.15em;text-transform:uppercase;}
-.corner-tr{position:absolute;top:28px;right:36px;font-size:10px;color:rgba(255,255,255,0.2);letter-spacing:0.15em;}
-.corner-br{position:absolute;bottom:28px;right:36px;font-size:10px;color:rgba(201,168,76,0.4);letter-spacing:0.12em;}
+        .stat-row{display:flex;gap:32px;flex-wrap:wrap;justify-content:center;margin-top:8px;}
+        .stat-item{text-align:center;min-width:100px;}
+        .stat-value{font-size:2rem;font-weight:800;letter-spacing:-0.03em;color:#fff;line-height:1;}
+        .stat-label{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-muted);margin-top:4px;font-weight:500;}
 
-.dot-grid{position:absolute;right:60px;top:50%;transform:translateY(-50%);display:grid;grid-template-columns:repeat(5,1fr);gap:10px;opacity:0.12;}
-.dot{width:4px;height:4px;border-radius:50%;background:#c9a84c;}
-.dot-grid-left{position:absolute;left:60px;top:50%;transform:translateY(-50%);display:grid;grid-template-columns:repeat(5,1fr);gap:10px;opacity:0.12;}
-</style>
+        .nav-controls{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:20px;z-index:90;background:rgba(22,25,32,0.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:40px;padding:10px 22px;box-shadow:var(--shadow-lg);transition:all 0.3s;}
+        .nav-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--border-light);background:var(--bg-card);color:#fff;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:all 0.3s;-webkit-tap-highlight-color:transparent;user-select:none;}
+        .nav-btn:hover{background:#fff;color:#000;border-color:#fff;box-shadow:0 0 20px rgba(255,255,255,0.2);}
+        .nav-btn:active{transform:scale(0.93);}
+        .nav-btn:disabled{opacity:0.3;cursor:default;pointer-events:none;}
+        .slide-counter{font-family:var(--font-mono);font-size:0.8rem;color:var(--text-secondary);font-weight:500;letter-spacing:0.04em;white-space:nowrap;user-select:none;min-width:70px;text-align:center;}
+        .dot-nav{display:flex;gap:6px;align-items:center;}
+        .dot{width:7px;height:7px;border-radius:50%;background:var(--border-light);cursor:pointer;transition:all 0.35s;-webkit-tap-highlight-color:transparent;}
+        .dot.active{background:#fff;width:20px;border-radius:4px;box-shadow:0 0 10px rgba(255,255,255,0.4);}
+        .dot:hover{background:#aaa;}
+        .kb-hint{position:fixed;bottom:110px;left:50%;transform:translateX(-50%);font-size:0.7rem;color:var(--text-muted);z-index:85;pointer-events:none;transition:opacity 0.6s;font-family:var(--font-mono);letter-spacing:0.04em;}
+
+        @media(max-width:768px){
+            .slide{padding:70px 16px 40px;}
+            .slide-cover h1{font-size:2rem;}
+            .principles-grid,.response-grid{grid-template-columns:1fr;}
+            .nav-controls{gap:10px;padding:8px 14px;border-radius:30px;bottom:16px;}
+            .nav-btn{width:34px;height:34px;font-size:0.9rem;}
+            .slide-counter{font-size:0.7rem;min-width:50px;}
+            .dot{width:5px;height:5px;}
+            .dot.active{width:14px;}
+            .kb-hint{bottom:90px;font-size:0.65rem;}
+            .brand-bar{padding:12px 14px;}
+            .brand-logo{font-size:1rem;}
+            .brand-logo .logo-mark{width:28px;height:28px;font-size:0.65rem;}
+        }
+    </style>
 </head>
 <body>
-<div class="slide">
-  <div class="gold-line"></div>
-  <div class="gold-line-bottom"></div>
-  <div class="left-accent"></div>
-  <div class="bg-text">LEAD</div>
+    <header class="brand-bar">
+        <a href="../index.html" class="brand-logo"><span class="logo-mark">H</span> Horizon</a>
+        <a href="../index.html#work" class="brand-back"><span class="arrow">←</span> Portfolio</a>
+    </header>
 
-  <div class="dot-grid">
-    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
-    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
-    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
-    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
-    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
-    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
-    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
-  </div>
-  <div class="dot-grid-left">
-    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
-    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
-    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
-    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
-    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
-    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
-    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
-  </div>
+    <div class="carousel-container" id="carousel">
+        <div class="slides-wrapper">
 
-  <div class="content">
-    <div class="eyebrow">Global Leadership Summit 2026</div>
-    <h1>The<br><em>Leadership</em><br>Edge</h1>
-    <p class="subtitle">How elite executives build organizations that<br>outperform in uncertainty, complexity, and change.</p>
-    <div class="speaker-row">
-      <div class="speaker-line"></div>
-      <div>
-        <div class="speaker-name">MARCUS CHEN</div>
-        <div class="speaker-title">CEO · Vertex Capital · Former McKinsey Partner</div>
-      </div>
-      <div class="speaker-line"></div>
+            <!-- Slide 1: Cover -->
+            <div class="slide slide-cover active" data-index="0">
+                <div class="slide-inner">
+                    <p class="tagline">Executive Keynote · Leadership Summit 2025</p>
+                    <h1>The decade that will define everything.</h1>
+                    <p class="subtitle">Elena Vasquez · Chief Executive Officer, Horizon Group</p>
+                </div>
+            </div>
+
+            <!-- Slide 2: The Moment -->
+            <div class="slide" data-index="1">
+                <div class="slide-inner">
+                    <p class="slide-label">02 / 10 · Chapter One — The Moment</p>
+                    <h2 class="slide-title">We are not living through a disruption. We are living through a reordering.</h2>
+                    <p class="slide-subtitle">The defining question of our era.</p>
+                    <div class="chapter-card">
+                        <h3>The Scale of Change</h3>
+                        <p>McKinsey estimates the economic opportunity from AI, climate transition, and digital infrastructure will create <strong>$100 trillion</strong> in value over the next decade — most of it concentrated in companies that act in the next 24 months.</p>
+                    </div>
+                    <div class="stat-row">
+                        <div class="stat-item"><div class="stat-value" style="color:var(--accent-secondary);">$100T</div><div class="stat-label">Value to be created</div></div>
+                        <div class="stat-item"><div class="stat-value">24</div><div class="stat-label">Months to act</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3: Yesterday vs Today -->
+            <div class="slide" data-index="2">
+                <div class="slide-inner">
+                    <p class="slide-label">03 / 10 · The Shift</p>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px;">
+                        <div class="chapter-card" style="border-left-color:#6b6f7b;">
+                            <h3 style="color:#6b6f7b;">Yesterday's Playbook</h3>
+                            <p style="font-size:1.1rem;font-weight:600;color:#fff;margin-bottom:8px;">Optimize what you have.</p>
+                            <p>For thirty years, competitive advantage meant operational efficiency. Cost reduction. Incremental improvement. The companies that won did so by doing the same things slightly better than everyone else.</p>
+                        </div>
+                        <div class="chapter-card" style="border-left-color:var(--accent);">
+                            <h3 style="color:var(--accent-secondary);">Today's Imperative</h3>
+                            <p style="font-size:1.1rem;font-weight:600;color:#fff;margin-bottom:8px;">Invent what comes next.</p>
+                            <p>The rules have changed. The companies positioned to win the next decade are not optimizing. They are building new categories, new capabilities, and new ways of creating value that didn't exist before.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4: Three Principles -->
+            <div class="slide" data-index="3">
+                <div class="slide-inner">
+                    <p class="slide-label">04 / 10 · Chapter Two — The Framework</p>
+                    <h2 class="slide-title">Three principles for the decade ahead.</h2>
+                    <div class="principles-grid">
+                        <div class="principle-card" style="position:relative;">
+                            <span style="position:absolute;top:12px;right:16px;font-family:var(--font-mono);font-size:2.5rem;font-weight:900;color:rgba(201,168,76,0.1);line-height:1;">I</span>
+                            <h3>Move at the speed of trust.</h3>
+                            <p>Speed without trust destroys capital. The fastest-growing organizations in our sector have built decision architectures that compress cycle time without sacrificing the stakeholder confidence required to execute at scale.</p>
+                        </div>
+                        <div class="principle-card" style="position:relative;">
+                            <span style="position:absolute;top:12px;right:16px;font-family:var(--font-mono);font-size:2.5rem;font-weight:900;color:rgba(201,168,76,0.1);line-height:1;">II</span>
+                            <h3>Make intelligence a multiplier.</h3>
+                            <p>AI is not a cost reduction tool. Used correctly, it is a force multiplier for your highest-value people. The organizations that win will be those that augment their best thinkers — not replace their most replaceable.</p>
+                        </div>
+                        <div class="principle-card" style="position:relative;">
+                            <span style="position:absolute;top:12px;right:16px;font-family:var(--font-mono);font-size:2.5rem;font-weight:900;color:rgba(201,168,76,0.1);line-height:1;">III</span>
+                            <h3>Bet on the compounding edge.</h3>
+                            <p>Sustainable competitive advantage compounds. Small structural edges — in talent, in data, in distribution — create exponential separation over five to ten years. Short-term thinking is the only true competitive risk.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 5: The Evidence -->
+            <div class="slide" data-index="4">
+                <div class="slide-inner">
+                    <p class="slide-label">05 / 10 · The Evidence</p>
+                    <h2 class="slide-title">Companies that invest through uncertainty outperform by 4×.</h2>
+                    <div class="stat-row" style="justify-content:flex-start;gap:40px;">
+                        <div class="stat-item"><div class="stat-value" style="color:var(--accent-secondary);">4×</div><div class="stat-label">Outperformance vs. peers who cut investment</div></div>
+                        <div class="stat-item"><div class="stat-value">78%</div><div class="stat-label">Of top-quartile companies maintained R&D spend</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 6: Drucker Quote -->
+            <div class="slide" data-index="5">
+                <div class="slide-inner">
+                    <p class="slide-label">06 / 10 · Chapter Three — The Mindset</p>
+                    <div class="quote-block">
+                        <div class="quote-mark">"</div>
+                        <p class="quote-text">The greatest danger in times of turbulence is not the turbulence itself, but to act with yesterday's logic.</p>
+                        <p class="quote-author">Peter Drucker · Management Consultant & Author</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 7: Our Response -->
+            <div class="slide" data-index="6">
+                <div class="slide-inner">
+                    <p class="slide-label">07 / 10 · Our Response</p>
+                    <h2 class="slide-title">What we are building.</h2>
+                    <div class="response-grid">
+                        <div class="resp-card">
+                            <div class="resp-tag">In Motion Now</div>
+                            <h3>01 — An AI-native operating model</h3>
+                            <p>By Q3 2025, every core business process will have an AI layer — not as a bolt-on, but as the primary interface through which our people engage with data, decisions, and each other.</p>
+                        </div>
+                        <div class="resp-card">
+                            <div class="resp-tag">Launching Q2</div>
+                            <h3>02 — A talent architecture for the new era</h3>
+                            <p>We are rebuilding our leadership development system from first principles — focused on judgment, not knowledge. The half-life of specific expertise is now shorter than most career plans.</p>
+                        </div>
+                        <div class="resp-card">
+                            <div class="resp-tag">Announcing H2</div>
+                            <h3>03 — A new growth architecture</h3>
+                            <p>We are entering two new markets in 2025 — not through acquisition, but through platform extension. The infrastructure we've built over the last three years is now a genuine distribution advantage.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 8: The Ask -->
+            <div class="slide" data-index="7">
+                <div class="slide-inner" style="text-align:center;align-items:center;max-width:700px;">
+                    <p class="slide-label">08 / 10 · The Ask</p>
+                    <h2 class="slide-title">Lead with conviction.</h2>
+                    <p class="slide-subtitle" style="margin:0 auto;">The teams that will define Horizon's next chapter are the ones in this room. Not because of what they know today — but because of the decisions they make in the next 90 days.</p>
+                </div>
+            </div>
+
+            <!-- Slide 9: Closing -->
+            <div class="slide slide-closing" data-index="8">
+                <div class="slide-inner">
+                    <p class="slide-label">09 / 10</p>
+                    <h2>The future belongs to the builders.</h2>
+                    <p class="cta-text">Elena Vasquez<br>Chief Executive Officer, Horizon Group</p>
+                </div>
+            </div>
+
+            <!-- Slide 10: Event Info -->
+            <div class="slide slide-closing" data-index="9">
+                <div class="slide-inner">
+                    <p class="slide-label">10 / 10</p>
+                    <h2 style="font-size:clamp(1.6rem,3vw,2.4rem);">Horizon Leadership Summit 2025</h2>
+                    <p style="color:var(--text-secondary);font-size:1rem;">San Francisco · March 2025</p>
+                    <p style="color:var(--text-muted);font-size:0.8rem;">Confidential · Horizon Group</p>
+                </div>
+            </div>
+
+        </div>
     </div>
-  </div>
 
-  <div class="corner-tl">Keynote</div>
-  <div class="corner-tr">GLS 2026</div>
-  <div class="corner-br">01 / 28</div>
-</div>
+    <nav class="nav-controls" id="navControls" aria-label="Slide navigation">
+        <button class="nav-btn" id="prevBtn" aria-label="Previous slide">←</button>
+        <div class="dot-nav" id="dotNav" aria-label="Slide indicators"></div>
+        <span class="slide-counter" id="slideCounter" aria-live="polite">01 / 10</span>
+        <button class="nav-btn" id="nextBtn" aria-label="Next slide">→</button>
+    </nav>
+    <div class="kb-hint" id="kbHint">Use ← → arrow keys to navigate</div>
+
+    <script>
+        (function() {
+            const slides = document.querySelectorAll('.slide');
+            const totalSlides = slides.length;
+            let currentIndex = 0, isTransitioning = false;
+            const prevBtn = document.getElementById('prevBtn'), nextBtn = document.getElementById('nextBtn');
+            const slideCounter = document.getElementById('slideCounter'), dotNav = document.getElementById('dotNav'), kbHint = document.getElementById('kbHint');
+            for(let i=0;i<totalSlides;i++){const dot=document.createElement('span');dot.className='dot';dot.setAttribute('aria-label','Go to slide '+(i+1));dot.setAttribute('role','button');dot.setAttribute('tabindex','0');dot.addEventListener('click',()=>goToSlide(i));dotNav.appendChild(dot);}
+            const dots=dotNav.querySelectorAll('.dot');
+            function updateUI(){const num=String(currentIndex+1).padStart(2,'0');slideCounter.textContent=num+' / '+totalSlides;dots.forEach((d,i)=>d.classList.toggle('active',i===currentIndex));prevBtn.disabled=currentIndex===0;nextBtn.disabled=currentIndex===totalSlides-1;slides.forEach((s,i)=>{s.classList.remove('active','exit-left','exit-right');if(i===currentIndex)s.classList.add('active');});}
+            function goToSlide(index){if(isTransitioning||index<0||index>=totalSlides||index===currentIndex)return;isTransitioning=true;const oldIndex=currentIndex;const goingForward=index>oldIndex;slides[oldIndex].classList.remove('active');slides[oldIndex].classList.add(goingForward?'exit-left':'exit-right');currentIndex=index;updateUI();setTimeout(()=>{slides[oldIndex].classList.remove('exit-left','exit-right');isTransitioning=false;},550);}
+            function goNext(){if(currentIndex<totalSlides-1)goToSlide(currentIndex+1);}
+            function goPrev(){if(currentIndex>0)goToSlide(currentIndex-1);}
+            nextBtn.addEventListener('click',goNext);prevBtn.addEventListener('click',goPrev);
+            document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='Right'){e.preventDefault();goNext();hideKbHint();}else if(e.key==='ArrowLeft'||e.key==='Left'){e.preventDefault();goPrev();hideKbHint();}else if(e.key==='Home'){e.preventDefault();goToSlide(0);}else if(e.key==='End'){e.preventDefault();goToSlide(totalSlides-1);}});
+            let touchStartX=0;const carousel=document.getElementById('carousel');
+            carousel.addEventListener('touchstart',function(e){touchStartX=e.changedTouches[0].screenX;},{passive:true});
+            carousel.addEventListener('touchend',function(e){const diff=touchStartX-e.changedTouches[0].screenX;if(Math.abs(diff)>60){if(diff>0)goNext();else goPrev();hideKbHint();}},{passive:true});
+            let wheelTimeout;carousel.addEventListener('wheel',function(e){if(wheelTimeout)return;wheelTimeout=setTimeout(()=>{wheelTimeout=null;},800);if(Math.abs(e.deltaY)>30||Math.abs(e.deltaX)>30){if(e.deltaY>0||e.deltaX>0)goNext();else goPrev();hideKbHint();}},{passive:true});
+            function hideKbHint(){if(kbHint){kbHint.style.opacity='0';setTimeout(()=>{if(kbHint)kbHint.style.display='none';},600);}}
+            setTimeout(()=>{if(kbHint&&kbHint.style.opacity!=='0'){kbHint.style.transition='opacity 0.8s';kbHint.style.opacity='0';setTimeout(()=>{if(kbHint)kbHint.style.display='none';},800);}},10000);
+            updateUI();slides[0].classList.add('active');
+        })();
+    </script>
 </body>
 </html>
