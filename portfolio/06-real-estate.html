@@ -1,1342 +1,315 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Harlow Collection — Stealth Strategist</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Harlow Collection — Luxury Real Estate | Stealth Strategist</title>
+    <meta name="description" content="2840 Belmont Drive · Beverly Hills, CA 90210. 7 Bed · 9.5 Bath · 12,400 Sq ft · 1.8 Acres. Asking price $28.5M.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0d0c09;
+            --bg-secondary: #111010;
+            --bg-card: #1a1914;
+            --text-primary: #f0ede1;
+            --text-secondary: #b8b5a8;
+            --text-muted: #7a776f;
+            --accent: #c9a84c;
+            --accent-glow: rgba(201,168,76,0.25);
+            --border: #2a2820;
+            --border-light: #3d3a30;
+            --gold: #c9a84c;
+            --shadow-lg: 0 25px 60px rgba(0,0,0,0.6);
+            --radius-lg: 16px;
+            --transition-smooth: cubic-bezier(0.4,0,0.2,1);
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+        *{margin:0;padding:0;box-sizing:border-box;}
+        html{font-size:16px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased;}
+        body{font-family:var(--font-body);background:var(--bg-primary);color:var(--text-primary);min-height:100vh;overflow-x:hidden;line-height:1.6;}
 
-  :root {
-    --gold: #C9A96E;
-    --gold-light: #E8D5B0;
-    --gold-dark: #8B6914;
-    --black: #0A0A0A;
-    --dark: #111111;
-    --dark-2: #1A1A1A;
-    --dark-3: #222222;
-    --text: #F5F0E8;
-    --text-muted: #9A9080;
-    --serif: 'Cormorant Garamond', Georgia, serif;
-    --sans: 'Montserrat', sans-serif;
-  }
+        .brand-bar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 28px;pointer-events:none;}
+        .brand-bar>*{pointer-events:auto;}
+        .brand-logo{font-weight:700;font-size:1.25rem;color:#fff;text-decoration:none;display:flex;align-items:center;gap:10px;font-family:var(--font-display);}
+        .brand-logo .logo-mark{width:34px;height:34px;border-radius:8px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700;color:#000;}
+        .brand-back{font-size:0.85rem;font-weight:500;color:var(--text-secondary);text-decoration:none;transition:color 0.3s;display:flex;align-items:center;gap:6px;}
+        .brand-back:hover{color:#fff;}
+        .brand-back .arrow{transition:transform 0.3s;}
+        .brand-back:hover .arrow{transform:translateX(-3px);}
 
-  body {
-    background: var(--black);
-    color: var(--text);
-    font-family: var(--sans);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
+        .carousel-container{width:100%;height:100vh;height:100dvh;position:relative;overflow:hidden;background:var(--bg-primary);}
+        .slides-wrapper{width:100%;height:100%;position:relative;}
+        .slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.55s var(--transition-smooth),transform 0.55s var(--transition-smooth);transform:scale(0.98);padding:80px 40px 60px;will-change:opacity,transform;}
+        .slide.active{opacity:1;pointer-events:auto;transform:scale(1);z-index:10;}
+        .slide.exit-left{opacity:0;transform:scale(0.96) translateX(-30px);}
+        .slide.exit-right{opacity:0;transform:scale(0.96) translateX(30px);}
+        .slide-inner{width:100%;max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:24px;}
 
-  /* NAV */
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 3rem;
-    border-bottom: 1px solid rgba(201,169,110,0.15);
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    background: rgba(10,10,10,0.95);
-    backdrop-filter: blur(8px);
-    z-index: 100;
-  }
+        .slide-cover .slide-inner{justify-content:center;text-align:center;align-items:center;}
+        .slide-cover h1{font-family:var(--font-display);font-size:clamp(2.8rem,5.5vw,4.5rem);font-weight:500;letter-spacing:-0.02em;line-height:1.08;color:#fff;}
+        .slide-cover .subtitle{font-size:1.2rem;color:var(--text-secondary);}
+        .slide-cover .address{font-family:var(--font-mono);font-size:0.85rem;color:var(--gold);letter-spacing:0.07em;text-transform:uppercase;margin-top:8px;}
+        .stats-strip{display:flex;gap:32px;flex-wrap:wrap;justify-content:center;margin-top:20px;}
+        .stat-item{text-align:center;}
+        .stat-value{font-size:1.8rem;font-weight:600;color:#fff;font-family:var(--font-display);}
+        .stat-label{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);}
 
-  .nav-logo {
-    font-family: var(--sans);
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--gold);
-    text-decoration: none;
-  }
+        .slide-label{font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:4px;}
+        .slide-title{font-family:var(--font-display);font-size:clamp(2rem,4vw,2.8rem);font-weight:500;letter-spacing:-0.02em;line-height:1.2;margin-bottom:8px;}
+        .overview-text{font-size:1rem;color:var(--text-secondary);max-width:700px;line-height:1.7;margin-bottom:16px;}
+        .detail-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:8px;}
+        .detail-item{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px;}
+        .detail-label{font-size:0.65rem;text-transform:uppercase;letter-spacing:0.07em;color:var(--gold);}
+        .detail-value{font-size:1rem;font-weight:500;color:#fff;margin-top:4px;}
 
-  .nav-back {
-    font-size: 0.65rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .nav-back:hover { color: var(--gold); }
+        .img-full{width:100%;border-radius:var(--radius-lg);border:1px solid var(--border);object-fit:cover;aspect-ratio:16/10;}
+        .two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;}
+        @media(max-width:768px){.two-col{grid-template-columns:1fr;}}
 
-  /* DECK WRAPPER */
-  .deck-wrapper {
-    margin-top: 72px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 3rem 1.5rem 5rem;
-  }
+        .nav-controls{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:20px;z-index:90;background:rgba(22,22,20,0.85);backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:40px;padding:10px 22px;box-shadow:var(--shadow-lg);}
+        .nav-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--border-light);background:var(--bg-card);color:#fff;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:all 0.3s;user-select:none;}
+        .nav-btn:hover{background:#fff;color:#000;border-color:#fff;}
+        .nav-btn:disabled{opacity:0.3;pointer-events:none;}
+        .slide-counter{font-family:var(--font-mono);font-size:0.8rem;color:var(--text-secondary);min-width:70px;text-align:center;}
+        .dot-nav{display:flex;gap:6px;}
+        .dot{width:7px;height:7px;border-radius:50%;background:var(--border-light);cursor:pointer;transition:all 0.35s;}
+        .dot.active{background:#fff;width:20px;border-radius:4px;}
+        .kb-hint{position:fixed;bottom:110px;left:50%;transform:translateX(-50%);font-size:0.7rem;color:var(--text-muted);z-index:85;pointer-events:none;font-family:var(--font-mono);}
 
-  /* SLIDE CONTAINER */
-  .slide-container {
-    width: 100%;
-    max-width: 960px;
-    position: relative;
-  }
-
-  /* SLIDES */
-  .slide {
-    display: none;
-    width: 100%;
-    aspect-ratio: 16/9;
-    position: relative;
-    overflow: hidden;
-    border: 1px solid rgba(201,169,110,0.2);
-  }
-  .slide.active { display: flex; }
-
-  /* NAVIGATION */
-  .nav-controls {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    margin-top: 2rem;
-  }
-
-  .arrow-btn {
-    background: none;
-    border: 1px solid rgba(201,169,110,0.3);
-    color: var(--gold);
-    width: 44px;
-    height: 44px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s;
-    font-size: 1.1rem;
-  }
-  .arrow-btn:hover {
-    background: rgba(201,169,110,0.1);
-    border-color: var(--gold);
-  }
-  .arrow-btn:disabled {
-    opacity: 0.25;
-    cursor: not-allowed;
-  }
-
-  .dots {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: center;
-    max-width: 320px;
-  }
-
-  .dot {
-    width: 6px;
-    height: 6px;
-    background: rgba(201,169,110,0.25);
-    border: 1px solid rgba(201,169,110,0.4);
-    cursor: pointer;
-    transition: all 0.2s;
-    flex-shrink: 0;
-  }
-  .dot.active {
-    background: var(--gold);
-    border-color: var(--gold);
-  }
-  .dot:hover { background: rgba(201,169,110,0.6); }
-
-  .slide-counter {
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    min-width: 70px;
-    text-align: center;
-  }
-
-  /* ===== SLIDE STYLES ===== */
-  .s-bg { position: absolute; inset: 0; }
-  .s-content { position: relative; z-index: 2; width: 100%; height: 100%; }
-
-  /* Gold line decorator */
-  .gold-line {
-    display: block;
-    width: 40px;
-    height: 1px;
-    background: var(--gold);
-    margin-bottom: 1rem;
-  }
-  .gold-line.center { margin: 0 auto 1rem; }
-
-  /* SLIDE 1 — Cover */
-  .slide-1 {
-    background: var(--dark);
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 8% 10%;
-  }
-  .slide-1 .eyebrow {
-    font-size: clamp(0.5rem, 1vw, 0.65rem);
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 1.5rem;
-  }
-  .slide-1 h1 {
-    font-family: var(--serif);
-    font-weight: 300;
-    font-size: clamp(2rem, 5vw, 3.8rem);
-    line-height: 1.1;
-    color: var(--text);
-    margin-bottom: 0.5rem;
-  }
-  .slide-1 h1 em { font-style: italic; color: var(--gold-light); }
-  .slide-1 .address {
-    font-size: clamp(0.55rem, 1.1vw, 0.7rem);
-    letter-spacing: 0.15em;
-    color: var(--text-muted);
-    margin-bottom: 3rem;
-    text-transform: uppercase;
-  }
-  .slide-1 .stats-row {
-    display: flex;
-    gap: 2.5rem;
-  }
-  .slide-1 .stat-item { display: flex; flex-direction: column; gap: 4px; }
-  .slide-1 .stat-num {
-    font-family: var(--serif);
-    font-size: clamp(1.4rem, 3vw, 2rem);
-    font-weight: 300;
-    color: var(--gold-light);
-  }
-  .slide-1 .stat-label {
-    font-size: clamp(0.45rem, 0.9vw, 0.6rem);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .slide-1 .price-badge {
-    position: absolute;
-    right: 10%;
-    bottom: 12%;
-    text-align: right;
-  }
-  .slide-1 .price-badge .price-label {
-    font-size: clamp(0.45rem, 0.9vw, 0.6rem);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    display: block;
-    margin-bottom: 6px;
-  }
-  .slide-1 .price-badge .price-num {
-    font-family: var(--serif);
-    font-size: clamp(1.6rem, 3.5vw, 2.8rem);
-    font-weight: 300;
-    color: var(--gold);
-  }
-  .slide-1 .corner-line {
-    position: absolute;
-    top: 0; right: 0;
-    width: 180px; height: 180px;
-    border-top: 1px solid rgba(201,169,110,0.2);
-    border-right: 1px solid rgba(201,169,110,0.2);
-  }
-  .slide-1 .corner-line-bl {
-    position: absolute;
-    bottom: 0; left: 0;
-    width: 120px; height: 120px;
-    border-bottom: 1px solid rgba(201,169,110,0.2);
-    border-left: 1px solid rgba(201,169,110,0.2);
-  }
-
-  /* SLIDE 2 — Property Overview */
-  .slide-2 {
-    background: var(--dark-2);
-    flex-direction: row;
-  }
-  .slide-2 .left-panel {
-    width: 42%;
-    background: var(--dark-3);
-    padding: 8% 6%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-right: 1px solid rgba(201,169,110,0.15);
-  }
-  .slide-2 .right-panel {
-    flex: 1;
-    padding: 8% 6%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .panel-eyebrow {
-    font-size: clamp(0.45rem, 0.9vw, 0.6rem);
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 1rem;
-  }
-  .panel-title {
-    font-family: var(--serif);
-    font-size: clamp(1.2rem, 2.8vw, 2rem);
-    font-weight: 300;
-    line-height: 1.2;
-    margin-bottom: 1.2rem;
-  }
-  .panel-body {
-    font-size: clamp(0.55rem, 1.1vw, 0.7rem);
-    line-height: 1.8;
-    color: var(--text-muted);
-    letter-spacing: 0.03em;
-  }
-  .spec-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-top: 1.5rem;
-  }
-  .spec-item { display: flex; flex-direction: column; gap: 4px; }
-  .spec-label {
-    font-size: clamp(0.4rem, 0.8vw, 0.55rem);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .spec-val {
-    font-size: clamp(0.55rem, 1.1vw, 0.72rem);
-    color: var(--text);
-    font-weight: 500;
-  }
-
-  /* SLIDE 3 — Photo Feature */
-  .slide-3 {
-    background: var(--dark);
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 0;
-  }
-  .slide-3 .photo-bg {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .photo-placeholder {
-    font-family: var(--serif);
-    font-size: clamp(0.6rem, 1.2vw, 0.8rem);
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: rgba(201,169,110,0.3);
-  }
-  .slide-3 .photo-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
-  }
-  .slide-3 .photo-caption {
-    padding: 6% 8%;
-    position: relative;
-    z-index: 3;
-  }
-  .slide-3 .photo-caption h2 {
-    font-family: var(--serif);
-    font-weight: 300;
-    font-size: clamp(1.5rem, 3.5vw, 2.6rem);
-    line-height: 1.1;
-    margin-bottom: 0.5rem;
-  }
-  .slide-3 .photo-caption p {
-    font-size: clamp(0.5rem, 1vw, 0.65rem);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--gold);
-  }
-  .slide-3 .slide-num {
-    position: absolute;
-    top: 6%; right: 7%;
-    font-size: clamp(0.4rem, 0.8vw, 0.55rem);
-    letter-spacing: 0.2em;
-    color: rgba(201,169,110,0.5);
-    z-index: 3;
-  }
-
-  /* SLIDE 4 — Interior Features */
-  .slide-4 {
-    background: var(--dark-2);
-    flex-direction: column;
-    justify-content: center;
-    padding: 7% 9%;
-  }
-  .slide-4 .section-header {
-    display: flex;
-    align-items: center;
-    gap: 1.2rem;
-    margin-bottom: 2.5rem;
-  }
-  .slide-4 .section-header h2 {
-    font-family: var(--serif);
-    font-weight: 300;
-    font-size: clamp(1.2rem, 2.5vw, 1.9rem);
-  }
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: rgba(201,169,110,0.1);
-  }
-  .feature-cell {
-    background: var(--dark-2);
-    padding: 5% 6%;
-  }
-  .feature-icon {
-    width: 28px;
-    height: 1px;
-    background: var(--gold);
-    margin-bottom: 1rem;
-  }
-  .feature-name {
-    font-size: clamp(0.55rem, 1.1vw, 0.7rem);
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-    color: var(--text);
-  }
-  .feature-desc {
-    font-size: clamp(0.48rem, 0.95vw, 0.62rem);
-    color: var(--text-muted);
-    line-height: 1.6;
-  }
-
-  /* SLIDE 5 — Kitchen */
-  .slide-5 { background: var(--dark-3); }
-  .slide-5 .split-layout {
-    display: flex;
-    width: 100%;
-    height: 100%;
-  }
-  .slide-5 .img-side {
-    width: 55%;
-    background: linear-gradient(160deg, #1c1c1c, #2a2010, #1a1a0a);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-right: 1px solid rgba(201,169,110,0.12);
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  .slide-5 .text-side {
-    flex: 1;
-    padding: 9% 7%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .amenity-list {
-    margin-top: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-  }
-  .amenity-item {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    font-size: clamp(0.5rem, 1vw, 0.65rem);
-    color: var(--text-muted);
-    letter-spacing: 0.05em;
-  }
-  .amenity-dot {
-    width: 4px;
-    height: 4px;
-    background: var(--gold);
-    flex-shrink: 0;
-  }
-
-  /* SLIDE 6 — Primary Suite */
-  .slide-6 {
-    background: var(--dark);
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 8% 12%;
-  }
-  .slide-6 h2 {
-    font-family: var(--serif);
-    font-size: clamp(1.6rem, 3.5vw, 2.8rem);
-    font-weight: 300;
-    line-height: 1.15;
-    margin-bottom: 1.5rem;
-  }
-  .slide-6 h2 em { font-style: italic; color: var(--gold-light); }
-  .slide-6 .suite-stats {
-    display: flex;
-    gap: 3rem;
-    justify-content: center;
-    margin-top: 2.5rem;
-    padding-top: 2.5rem;
-    border-top: 1px solid rgba(201,169,110,0.2);
-  }
-  .suite-stat-num {
-    font-family: var(--serif);
-    font-size: clamp(1.4rem, 3vw, 2.2rem);
-    font-weight: 300;
-    color: var(--gold-light);
-    display: block;
-  }
-  .suite-stat-label {
-    font-size: clamp(0.42rem, 0.85vw, 0.58rem);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    display: block;
-    margin-top: 4px;
-  }
-
-  /* SLIDE 7 — Outdoor / Pool */
-  .slide-7 {
-    background: var(--dark-2);
-    flex-direction: row;
-  }
-  .slide-7 .img-col {
-    width: 50%;
-    background: linear-gradient(135deg, #0a1628, #0d2240, #0a1a35);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 0.5rem;
-    border-right: 1px solid rgba(201,169,110,0.1);
-  }
-  .slide-7 .content-col {
-    flex: 1;
-    padding: 8% 7%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .outdoor-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-top: 1.5rem;
-  }
-  .outdoor-item {
-    padding-left: 1rem;
-    border-left: 1px solid rgba(201,169,110,0.3);
-  }
-  .outdoor-item-title {
-    font-size: clamp(0.52rem, 1.05vw, 0.68rem);
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text);
-    margin-bottom: 3px;
-  }
-  .outdoor-item-desc {
-    font-size: clamp(0.46rem, 0.92vw, 0.6rem);
-    color: var(--text-muted);
-    line-height: 1.6;
-  }
-
-  /* SLIDE 8 — Guest Pavilion */
-  .slide-8 {
-    background: var(--dark-3);
-    flex-direction: column;
-    padding: 8% 10%;
-    justify-content: center;
-  }
-  .two-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    margin-top: 2rem;
-  }
-  .col-label {
-    font-size: clamp(0.45rem, 0.9vw, 0.6rem);
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 0.8rem;
-  }
-  .col-text {
-    font-size: clamp(0.52rem, 1.05vw, 0.68rem);
-    line-height: 1.85;
-    color: var(--text-muted);
-  }
-
-  /* SLIDE 9 — Motor Court / Garage */
-  .slide-9 {
-    background: var(--dark);
-    flex-direction: column;
-    justify-content: center;
-    padding: 7% 9%;
-  }
-  .garage-stats {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    background: rgba(201,169,110,0.1);
-    margin-top: 2rem;
-  }
-  .garage-stat {
-    background: var(--dark);
-    padding: 6% 5%;
-    text-align: center;
-  }
-  .garage-stat-num {
-    font-family: var(--serif);
-    font-size: clamp(1.5rem, 3.2vw, 2.4rem);
-    font-weight: 300;
-    color: var(--gold-light);
-    display: block;
-    margin-bottom: 6px;
-  }
-  .garage-stat-label {
-    font-size: clamp(0.4rem, 0.8vw, 0.55rem);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-
-  /* SLIDE 10 — Smart Home / Tech */
-  .slide-10 {
-    background: var(--dark-2);
-    flex-direction: column;
-    padding: 7% 9%;
-    justify-content: center;
-  }
-  .tech-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    margin-top: 1.8rem;
-  }
-  .tech-item {
-    background: var(--dark-3);
-    border: 1px solid rgba(201,169,110,0.1);
-    padding: 5% 5%;
-  }
-  .tech-title {
-    font-size: clamp(0.52rem, 1.05vw, 0.68rem);
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--gold-light);
-    margin-bottom: 6px;
-  }
-  .tech-desc {
-    font-size: clamp(0.46rem, 0.92vw, 0.6rem);
-    color: var(--text-muted);
-    line-height: 1.65;
-  }
-
-  /* SLIDE 11 — Location */
-  .slide-11 {
-    background: var(--dark);
-    flex-direction: row;
-  }
-  .slide-11 .map-col {
-    width: 50%;
-    background: linear-gradient(135deg, #0f1a0f, #1a2a1a, #0a150a);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 0.5rem;
-    border-right: 1px solid rgba(201,169,110,0.1);
-    position: relative;
-  }
-  .map-grid-overlay {
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(201,169,110,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(201,169,110,0.04) 1px, transparent 1px);
-    background-size: 30px 30px;
-  }
-  .slide-11 .location-col {
-    flex: 1;
-    padding: 8% 7%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .proximity-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-    margin-top: 1.5rem;
-  }
-  .proximity-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 0.7rem;
-    border-bottom: 1px solid rgba(201,169,110,0.08);
-    font-size: clamp(0.48rem, 0.95vw, 0.62rem);
-  }
-  .proximity-place { color: var(--text-muted); }
-  .proximity-dist { color: var(--gold); font-weight: 500; letter-spacing: 0.05em; }
-
-  /* SLIDE 12 — Investment Value */
-  .slide-12 {
-    background: var(--dark-3);
-    flex-direction: column;
-    justify-content: center;
-    padding: 7% 10%;
-  }
-  .value-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin-top: 2rem;
-  }
-  .value-card {
-    border: 1px solid rgba(201,169,110,0.15);
-    padding: 6% 6%;
-  }
-  .value-card-label {
-    font-size: clamp(0.42rem, 0.85vw, 0.58rem);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 0.5rem;
-  }
-  .value-card-num {
-    font-family: var(--serif);
-    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
-    font-weight: 300;
-    color: var(--gold-light);
-    margin-bottom: 0.3rem;
-  }
-  .value-card-sub {
-    font-size: clamp(0.42rem, 0.85vw, 0.55rem);
-    color: var(--text-muted);
-    line-height: 1.5;
-  }
-
-  /* SLIDE 13 — Terms */
-  .slide-13 {
-    background: var(--dark-2);
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 8% 12%;
-    text-align: center;
-  }
-  .slide-13 h2 {
-    font-family: var(--serif);
-    font-weight: 300;
-    font-size: clamp(1.4rem, 3vw, 2.2rem);
-    margin-bottom: 0.5rem;
-  }
-  .terms-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1px;
-    background: rgba(201,169,110,0.1);
-    width: 100%;
-    margin-top: 2.5rem;
-  }
-  .terms-cell {
-    background: var(--dark-2);
-    padding: 5% 6%;
-    text-align: left;
-  }
-  .terms-label {
-    font-size: clamp(0.42rem, 0.85vw, 0.58rem);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 6px;
-  }
-  .terms-value {
-    font-size: clamp(0.55rem, 1.1vw, 0.72rem);
-    color: var(--text);
-    font-weight: 500;
-  }
-
-  /* SLIDE 14 — Contact / Close */
-  .slide-14 {
-    background: var(--dark);
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 8% 10%;
-  }
-  .slide-14 .close-eyebrow {
-    font-size: clamp(0.45rem, 0.9vw, 0.6rem);
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 1.2rem;
-  }
-  .slide-14 h2 {
-    font-family: var(--serif);
-    font-weight: 300;
-    font-size: clamp(1.6rem, 3.5vw, 2.8rem);
-    line-height: 1.15;
-    margin-bottom: 2.5rem;
-  }
-  .slide-14 h2 em { font-style: italic; color: var(--gold-light); }
-  .agent-block {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    padding: 4% 5%;
-    border: 1px solid rgba(201,169,110,0.2);
-    margin-bottom: 1.5rem;
-    width: 100%;
-    max-width: 480px;
-  }
-  .agent-avatar {
-    width: 48px;
-    height: 48px;
-    border: 1px solid rgba(201,169,110,0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--serif);
-    font-size: 1.1rem;
-    color: var(--gold);
-    flex-shrink: 0;
-  }
-  .agent-name {
-    font-size: clamp(0.6rem, 1.2vw, 0.78rem);
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text);
-    margin-bottom: 4px;
-  }
-  .agent-title {
-    font-size: clamp(0.46rem, 0.92vw, 0.6rem);
-    color: var(--text-muted);
-    margin-bottom: 4px;
-  }
-  .agent-contact {
-    font-size: clamp(0.46rem, 0.92vw, 0.6rem);
-    color: var(--gold);
-    letter-spacing: 0.05em;
-  }
-  .slide-14 .disclaimer {
-    font-size: clamp(0.38rem, 0.75vw, 0.5rem);
-    color: var(--text-muted);
-    opacity: 0.6;
-    line-height: 1.6;
-    max-width: 480px;
-  }
-  .slide-14 .logo-mark {
-    position: absolute;
-    right: 8%;
-    bottom: 10%;
-    font-size: clamp(0.4rem, 0.8vw, 0.55rem);
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: rgba(201,169,110,0.3);
-  }
-  .slide-14 .corner-deco {
-    position: absolute;
-    top: 0; right: 0;
-    width: 160px; height: 160px;
-    border-top: 1px solid rgba(201,169,110,0.15);
-    border-right: 1px solid rgba(201,169,110,0.15);
-  }
-
-  /* FOOTER */
-  footer {
-    text-align: center;
-    padding: 2rem;
-    font-size: 0.6rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: rgba(201,169,110,0.3);
-    border-top: 1px solid rgba(201,169,110,0.08);
-    margin-top: 1rem;
-  }
-
-  @media (max-width: 600px) {
-    nav { padding: 1rem 1.5rem; }
-    .deck-wrapper { padding: 2rem 1rem 4rem; }
-    .nav-controls { gap: 1rem; }
-    .dots { max-width: 220px; }
-  }
-</style>
+        @media(max-width:768px){
+            .slide{padding:60px 16px 40px;}
+            .detail-grid{grid-template-columns:1fr 1fr;}
+            .nav-controls{gap:10px;padding:8px 14px;}
+        }
+    </style>
 </head>
 <body>
+    <header class="brand-bar">
+        <a href="../index.html" class="brand-logo"><span class="logo-mark">H</span> The Harlow</a>
+        <a href="../index.html#work" class="brand-back"><span class="arrow">←</span> Portfolio</a>
+    </header>
 
-<nav>
-  <a href="https://stealthstrategist.co" class="nav-logo">Stealth Strategist</a>
-  <a href="https://stealthstrategist.co" class="nav-back">← Back to portfolio</a>
-</nav>
+    <div class="carousel-container" id="carousel">
+        <div class="slides-wrapper">
 
-<div class="deck-wrapper">
-  <div class="slide-container">
+            <!-- Slide 1: Cover -->
+            <div class="slide slide-cover active" data-index="0">
+                <div class="slide-inner">
+                    <p class="subtitle" style="font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.1em;color:var(--gold);">Confidential · Off-Market Offering · Beverly Hills</p>
+                    <h1>The Harlow<br>Collection</h1>
+                    <p class="address">2840 Belmont Drive · Beverly Hills, CA 90210</p>
+                    <div class="stats-strip">
+                        <div class="stat-item"><div class="stat-value">7</div><div class="stat-label">Bedrooms</div></div>
+                        <div class="stat-item"><div class="stat-value">9.5</div><div class="stat-label">Bathrooms</div></div>
+                        <div class="stat-item"><div class="stat-value">12,400</div><div class="stat-label">Sq ft</div></div>
+                        <div class="stat-item"><div class="stat-value">1.8</div><div class="stat-label">Acres</div></div>
+                    </div>
+                    <p style="font-size:1.4rem;font-weight:500;color:var(--gold);margin-top:20px;">Asking price · Off-market $28.5M</p>
+                </div>
+            </div>
 
-    <!-- SLIDE 1: COVER -->
-    <div class="slide slide-1 active" style="position:relative;">
-      <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?w=1200&q=80&fit=crop"
-           alt="Luxury Beverly Hills estate"
-           style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.18;z-index:0;">
-      <div class="corner-line"></div>
-      <div class="corner-line-bl"></div>
-      <p class="eyebrow">Confidential · Off-Market Offering · Beverly Hills</p>
-      <h1>The Harlow<br><em>Collection</em></h1>
-      <p class="address">2840 Belmont Drive · Beverly Hills, CA 90210</p>
-      <div class="stats-row">
-        <div class="stat-item">
-          <span class="stat-num">7</span>
-          <span class="stat-label">Bedrooms</span>
+            <!-- Slide 2: Overview -->
+            <div class="slide" data-index="1">
+                <div class="slide-inner">
+                    <p class="slide-label">02 / 14 · Overview</p>
+                    <h2 class="slide-title">A landmark estate built for those who move quietly at the top.</h2>
+                    <p class="overview-text">Completed in 2019 and comprehensively renovated in 2024, The Harlow Collection represents a rare intersection of architectural excellence and absolute privacy — a compound designed for principals, not pretenders.</p>
+                    <div class="detail-grid">
+                        <div class="detail-item"><span class="detail-label">Year built</span><span class="detail-value">2019 (reno 2024)</span></div>
+                        <div class="detail-item"><span class="detail-label">Style</span><span class="detail-value">Contemporary California Modern</span></div>
+                        <div class="detail-item"><span class="detail-label">Lot size</span><span class="detail-value">1.8 acres</span></div>
+                        <div class="detail-item"><span class="detail-label">Livable area</span><span class="detail-value">12,400 sq ft</span></div>
+                        <div class="detail-item"><span class="detail-label">Pool / spa</span><span class="detail-value">Infinity edge + heated</span></div>
+                        <div class="detail-item"><span class="detail-label">Garage</span><span class="detail-value">8-car motor court</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3: Exterior -->
+            <div class="slide" data-index="2">
+                <div class="slide-inner">
+                    <img class="img-full" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&h=675&fit=crop" alt="Modern mansion exterior with landscaped grounds" loading="lazy">
+                    <p style="color:var(--text-muted);font-style:italic;">The estate's east façade captures first light across the canyon.</p>
+                </div>
+            </div>
+
+            <!-- Slide 4: Interior -->
+            <div class="slide" data-index="3">
+                <div class="slide-inner">
+                    <p class="slide-label">04 / 14 · Interior</p>
+                    <h2 class="slide-title">Signature finishes throughout</h2>
+                    <div class="detail-grid two-col">
+                        <div><strong style="color:#fff;">Grand foyer</strong><br><span style="color:var(--text-secondary);">24-ft vaulted entry with hand-plastered ceilings and custom chandelier installation by Ochre London.</span></div>
+                        <div><strong style="color:#fff;">Great room</strong><br><span style="color:var(--text-secondary);">Open-plan living and dining with 14-ft pocket glass walls opening fully to the terrace and canyon view.</span></div>
+                        <div><strong style="color:#fff;">Home cinema</strong><br><span style="color:var(--text-secondary);">12-seat private screening room with Dolby Atmos sound, velvet seating, and wet bar.</span></div>
+                        <div><strong style="color:#fff;">Wine cellar</strong><br><span style="color:var(--text-secondary);">Temperature-controlled cellar with 2,000-bottle capacity and tasting lounge adjacent.</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 5: Kitchen -->
+            <div class="slide" data-index="4">
+                <div class="slide-inner">
+                    <p class="slide-label">05 / 14 · Kitchen</p>
+                    <h2 class="slide-title">Chef-grade. Gallery-level design.</h2>
+                    <p class="overview-text">The primary kitchen was designed in collaboration with Bulthaup, featuring Calacatta Oro marble slabs, unlacquered brass fixtures, and full professional appliance suite.</p>
+                    <img class="img-full" src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&h=675&fit=crop" alt="Luxury kitchen with marble island and professional appliances">
+                </div>
+            </div>
+
+            <!-- Slide 6: Primary Suite -->
+            <div class="slide" data-index="5">
+                <div class="slide-inner two-col">
+                    <div>
+                        <p class="slide-label">06 / 14 · Primary suite</p>
+                        <h2 class="slide-title">A retreat within a retreat.</h2>
+                        <p class="overview-text">The 3,200 sq ft primary wing occupies the entire west side of the second floor, with private terrace, dual dressing rooms, and a spa bathroom that rivals boutique hotels.</p>
+                        <div class="detail-grid">
+                            <div class="detail-item"><span class="detail-value">3,200</span><span class="detail-label">Suite sq ft</span></div>
+                            <div class="detail-item"><span class="detail-value">2</span><span class="detail-label">Dressing rooms</span></div>
+                            <div class="detail-item"><span class="detail-value">1</span><span class="detail-label">Private terrace</span></div>
+                        </div>
+                    </div>
+                    <img class="img-full" src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=600&h=400&fit=crop" alt="Luxury primary bedroom with canyon view">
+                </div>
+            </div>
+
+            <!-- Slide 7: Outdoor Living (FIXED IMAGE) -->
+            <div class="slide" data-index="6">
+                <div class="slide-inner">
+                    <p class="slide-label">07 / 14 · Outdoor living</p>
+                    <h2 class="slide-title">1.8 acres of curated outdoor space.</h2>
+                    <img class="img-full" src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&h=675&fit=crop" alt="Infinity pool with canyon view and landscaped gardens">
+                    <div class="detail-grid">
+                        <div class="detail-item"><span class="detail-label">Infinity pool + spa</span><span class="detail-value">90ft heated</span></div>
+                        <div class="detail-item"><span class="detail-label">Entertaining terrace</span><span class="detail-value">3,600 sq ft</span></div>
+                        <div class="detail-item"><span class="detail-label">Tennis court</span><span class="detail-value">Regulation</span></div>
+                        <div class="detail-item"><span class="detail-label">Organic gardens</span><span class="detail-value">Rios Clementi Hale</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 8: Guest Pavilion -->
+            <div class="slide" data-index="7">
+                <div class="slide-inner two-col">
+                    <div>
+                        <p class="slide-label">08 / 14 · Guest pavilion</p>
+                        <h2 class="slide-title">Fully independent. Architecturally resolved.</h2>
+                        <p class="overview-text">The 2,100 sq ft detached guest pavilion sits at the south end of the property, connected by a covered breezeway.</p>
+                    </div>
+                    <img class="img-full" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&h=400&fit=crop" alt="Detached guest house with modern architecture">
+                </div>
+            </div>
+
+            <!-- Slide 9: Motor Court -->
+            <div class="slide" data-index="8">
+                <div class="slide-inner">
+                    <p class="slide-label">09 / 14 · Motor court</p>
+                    <h2 class="slide-title">Engineered for collectors.</h2>
+                    <img class="img-full" src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c1?w=1200&h=675&fit=crop" alt="Climate-controlled luxury garage">
+                    <div class="detail-grid">
+                        <div class="detail-item"><span class="detail-value">8</span><span class="detail-label">Vehicle capacity</span></div>
+                        <div class="detail-item"><span class="detail-value">68°</span><span class="detail-label">Climate controlled</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 10: Technology -->
+            <div class="slide" data-index="9">
+                <div class="slide-inner">
+                    <p class="slide-label">10 / 14 · Technology</p>
+                    <h2 class="slide-title">Control Centre. Invisible by design.</h2>
+                    <div class="detail-grid">
+                        <div class="detail-item"><span class="detail-label">Crestron automation</span><span class="detail-value">Whole-estate control</span></div>
+                        <div class="detail-item"><span class="detail-label">Security & access</span><span class="detail-value">Biometric, 64 cameras</span></div>
+                        <div class="detail-item"><span class="detail-label">Network</span><span class="detail-value">Gigabit fiber</span></div>
+                        <div class="detail-item"><span class="detail-label">Energy systems</span><span class="detail-value">280kW solar + Powerwall</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 11: Location -->
+            <div class="slide" data-index="10">
+                <div class="slide-inner">
+                    <p class="slide-label">11 / 14 · Location</p>
+                    <h2 class="slide-title">Beverly Hills. The address that needs no explanation.</h2>
+                    <div class="detail-grid">
+                        <div class="detail-item"><span class="detail-value">Rodeo Drive</span><span class="detail-label">4 min</span></div>
+                        <div class="detail-item"><span class="detail-value">LAX (private terminal)</span><span class="detail-label">22 min</span></div>
+                        <div class="detail-item"><span class="detail-value">Cedars-Sinai Medical</span><span class="detail-label">6 min</span></div>
+                        <div class="detail-item"><span class="detail-value">Soho House WeHo</span><span class="detail-label">8 min</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 12: Market Context -->
+            <div class="slide" data-index="11">
+                <div class="slide-inner">
+                    <p class="slide-label">12 / 14 · Market context</p>
+                    <h2 class="slide-title">Positioned at the ceiling of a rising market.</h2>
+                    <div class="detail-grid">
+                        <div class="detail-item"><span class="detail-label">Asking price</span><span class="detail-value">$28.5M</span></div>
+                        <div class="detail-item"><span class="detail-label">Price per sq ft</span><span class="detail-value">$2,298</span></div>
+                        <div class="detail-item"><span class="detail-label">2024 renovation</span><span class="detail-value">$4.2M</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 13: Transaction Terms -->
+            <div class="slide" data-index="12">
+                <div class="slide-inner">
+                    <p class="slide-label">13 / 14 · Transaction terms</p>
+                    <h2 class="slide-title">Offered with discretion. Structured for principals.</h2>
+                    <div class="detail-grid">
+                        <div class="detail-item"><span class="detail-label">Listing price</span><span class="detail-value">$28,500,000</span></div>
+                        <div class="detail-item"><span class="detail-label">Sale type</span><span class="detail-value">Off-market · Introduction only</span></div>
+                        <div class="detail-item"><span class="detail-label">Showing availability</span><span class="detail-value">By private appointment</span></div>
+                        <div class="detail-item"><span class="detail-label">Proof of funds</span><span class="detail-value">Required prior to access</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 14: Inquire -->
+            <div class="slide slide-cover" data-index="13">
+                <div class="slide-inner">
+                    <h2>Ready to move<br>at this level?</h2>
+                    <p class="address">Rachel Caldwell · Senior Luxury Advisor · Harlow Properties</p>
+                    <p style="color:var(--gold);">rachel@harlowproperties.com · (310) 555-0194</p>
+                </div>
+            </div>
+
         </div>
-        <div class="stat-item">
-          <span class="stat-num">9.5</span>
-          <span class="stat-label">Bathrooms</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-num">12,400</span>
-          <span class="stat-label">Sq ft</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-num">1.8</span>
-          <span class="stat-label">Acres</span>
-        </div>
-      </div>
-      <div class="price-badge">
-        <span class="price-label">Asking price · Off-market</span>
-        <span class="price-num">$28.5M</span>
-      </div>
     </div>
 
-    <!-- SLIDE 2: PROPERTY OVERVIEW -->
-    <div class="slide slide-2">
-      <div class="left-panel">
-        <p class="panel-eyebrow">02 / 14 · Overview</p>
-        <h2 class="panel-title">A landmark estate built for those who move quietly at the top.</h2>
-        <p class="panel-body">Completed in 2019 and comprehensively renovated in 2024, The Harlow Collection represents a rare intersection of architectural excellence and absolute privacy — a compound designed for principals, not pretenders.</p>
-      </div>
-      <div class="right-panel">
-        <p class="col-label">Property details</p>
-        <div class="spec-grid">
-          <div class="spec-item">
-            <span class="spec-label">Year built</span>
-            <span class="spec-val">2019 (reno 2024)</span>
-          </div>
-          <div class="spec-item">
-            <span class="spec-label">Style</span>
-            <span class="spec-val">Contemporary California Modern</span>
-          </div>
-          <div class="spec-item">
-            <span class="spec-label">Lot size</span>
-            <span class="spec-val">1.8 acres</span>
-          </div>
-          <div class="spec-item">
-            <span class="spec-label">Livable area</span>
-            <span class="spec-val">12,400 sq ft</span>
-          </div>
-          <div class="spec-item">
-            <span class="spec-label">Pool / spa</span>
-            <span class="spec-val">Infinity edge + heated</span>
-          </div>
-          <div class="spec-item">
-            <span class="spec-label">Garage</span>
-            <span class="spec-val">8-car motor court</span>
-          </div>
-          <div class="spec-item">
-            <span class="spec-label">Listing agent</span>
-            <span class="spec-val">Rachel Caldwell · DRE #02041882</span>
-          </div>
-          <div class="spec-item">
-            <span class="spec-label">Status</span>
-            <span class="spec-val">Off-market · by introduction</span>
-          </div>
-        </div>
-      </div>
-    </div>
+    <nav class="nav-controls" id="navControls">
+        <button class="nav-btn" id="prevBtn">←</button>
+        <div class="dot-nav" id="dotNav"></div>
+        <span class="slide-counter" id="slideCounter">01 / 14</span>
+        <button class="nav-btn" id="nextBtn">→</button>
+    </nav>
+    <div class="kb-hint" id="kbHint">Use ← → arrow keys to navigate</div>
 
-    <!-- SLIDE 3: EXTERIOR HERO -->
-    <div class="slide slide-3">
-      <div class="photo-bg" style="background:#0a0a0a;">
-        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=80&fit=crop"
-             alt="Modern luxury mansion exterior Beverly Hills"
-             style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;opacity:0.85;">
-      </div>
-      <div class="photo-overlay" style="background:linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.35) 45%, rgba(0,0,0,0.1) 100%);"></div>
-      <span class="slide-num">03 / 14</span>
-      <div class="photo-caption">
-        <h2>Panoramic canyon views.<br>Absolute seclusion.</h2>
-        <p>West-facing main facade · Beverly Hills hills backdrop</p>
-      </div>
-    </div>
-
-    <!-- SLIDE 4: INTERIOR FEATURES -->
-    <div class="slide slide-4">
-      <div class="section-header">
-        <span class="gold-line" style="margin:0;"></span>
-        <div>
-          <p class="panel-eyebrow">04 / 14 · Interior</p>
-          <h2 style="font-family:var(--serif);font-weight:300;font-size:clamp(1.1rem,2.2vw,1.7rem);">Signature finishes throughout</h2>
-        </div>
-      </div>
-      <div class="features-grid">
-        <div class="feature-cell">
-          <div class="feature-icon"></div>
-          <p class="feature-name">Grand foyer</p>
-          <p class="feature-desc">24-ft vaulted entry with hand-plastered ceilings and custom chandelier installation by Ochre London.</p>
-        </div>
-        <div class="feature-cell">
-          <div class="feature-icon"></div>
-          <p class="feature-name">Great room</p>
-          <p class="feature-desc">Open-plan living and dining with 14-ft pocket glass walls opening fully to the terrace and canyon view.</p>
-        </div>
-        <div class="feature-cell">
-          <div class="feature-icon"></div>
-          <p class="feature-name">Home cinema</p>
-          <p class="feature-desc">12-seat private screening room with Dolby Atmos sound, velvet seating, and wet bar.</p>
-        </div>
-        <div class="feature-cell">
-          <div class="feature-icon"></div>
-          <p class="feature-name">Wine cellar</p>
-          <p class="feature-desc">Temperature-controlled cellar with 2,000-bottle capacity and tasting lounge adjacent.</p>
-        </div>
-        <div class="feature-cell">
-          <div class="feature-icon"></div>
-          <p class="feature-name">Wellness level</p>
-          <p class="feature-desc">Full gym, sauna, steam room, and massage suite on dedicated lower level.</p>
-        </div>
-        <div class="feature-cell">
-          <div class="feature-icon"></div>
-          <p class="feature-name">Office / library</p>
-          <p class="feature-desc">Paneled executive office with bespoke millwork, private entrance, and separate guest waiting room.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- SLIDE 5: KITCHEN -->
-    <div class="slide slide-5">
-      <div class="split-layout">
-        <div class="img-side" style="background:#0a0a0a;position:relative;overflow:hidden;">
-          <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80&fit=crop"
-               alt="Luxury kitchen marble Bulthaup"
-               style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;opacity:0.75;">
-        </div>
-        <div class="text-side">
-          <p class="panel-eyebrow">05 / 14 · Kitchen</p>
-          <h2 class="panel-title">Chef-grade. Gallery-level design.</h2>
-          <p class="panel-body">The primary kitchen was designed in collaboration with Bulthaup, featuring Calacatta Oro marble slabs, unlacquered brass fixtures, and full professional appliance suite.</p>
-          <div class="amenity-list">
-            <div class="amenity-item"><span class="amenity-dot"></span>La Cornue grand chef range (110cm)</div>
-            <div class="amenity-item"><span class="amenity-dot"></span>Sub-Zero refrigeration column set</div>
-            <div class="amenity-item"><span class="amenity-dot"></span>Miele built-in espresso + steam oven</div>
-            <div class="amenity-item"><span class="amenity-dot"></span>Integrated Gaggenau dishwashers × 2</div>
-            <div class="amenity-item"><span class="amenity-dot"></span>Secondary prep kitchen + walk-in pantry</div>
-            <div class="amenity-item"><span class="amenity-dot"></span>Bulthaup cabinetry throughout</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- SLIDE 6: PRIMARY SUITE -->
-    <div class="slide slide-6" style="position:relative;">
-      <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80&fit=crop"
-           alt="Luxury primary bedroom suite"
-           style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.15;z-index:0;">
-      <span class="gold-line center" style="position:relative;z-index:1;"></span>
-      <p class="panel-eyebrow" style="text-align:center;">06 / 14 · Primary suite</p>
-      <h2>A retreat within a retreat.<br><em>Designed for rest at the highest level.</em></h2>
-      <p class="panel-body" style="text-align:center;max-width:520px;">The 3,200 sq ft primary wing occupies the entire west side of the second floor, with private terrace, dual dressing rooms, and a spa bathroom that rivals boutique hotels.</p>
-      <div class="suite-stats">
-        <div>
-          <span class="suite-stat-num">3,200</span>
-          <span class="suite-stat-label">Suite sq ft</span>
-        </div>
-        <div>
-          <span class="suite-stat-num">2</span>
-          <span class="suite-stat-label">Dressing rooms</span>
-        </div>
-        <div>
-          <span class="suite-stat-num">1</span>
-          <span class="suite-stat-label">Private terrace</span>
-        </div>
-        <div>
-          <span class="suite-stat-num">Canyon</span>
-          <span class="suite-stat-label">View orientation</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- SLIDE 7: OUTDOOR / POOL -->
-    <div class="slide slide-7">
-      <div class="img-col" style="background:#0a0a0a;position:relative;overflow:hidden;">
-        <img src="https://images.unsplash.com/photo-1575517111839-3a3843ee7f5d?w=800&q=80&fit=crop"
-             alt="Luxury infinity pool canyon view"
-             style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;opacity:0.75;">
-      </div>
-      <div class="content-col">
-        <p class="panel-eyebrow">07 / 14 · Outdoor living</p>
-        <h2 class="panel-title">1.8 acres of curated outdoor space.</h2>
-        <div class="outdoor-list">
-          <div class="outdoor-item">
-            <p class="outdoor-item-title">Infinity pool + spa</p>
-            <p class="outdoor-item-desc">90ft heated infinity pool with tanning shelf, automated cover, and canyon view infinity edge.</p>
-          </div>
-          <div class="outdoor-item">
-            <p class="outdoor-item-title">Entertaining terrace</p>
-            <p class="outdoor-item-desc">3,600 sq ft stone terrace with outdoor kitchen, fireplace, and dining pavilion for 24 guests.</p>
-          </div>
-          <div class="outdoor-item">
-            <p class="outdoor-item-title">Tennis court</p>
-            <p class="outdoor-item-desc">Regulation hard court with night lighting and viewing gallery. Convertible to pickleball.</p>
-          </div>
-          <div class="outdoor-item">
-            <p class="outdoor-item-title">Organic gardens</p>
-            <p class="outdoor-item-desc">Landscaped by Rios Clementi Hale Studios. Native planting, olive grove, and raised vegetable garden.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- SLIDE 8: GUEST PAVILION -->
-    <div class="slide slide-8">
-      <p class="panel-eyebrow">08 / 14 · Guest pavilion</p>
-      <h2 class="panel-title" style="font-family:var(--serif);font-weight:300;font-size:clamp(1.2rem,2.5vw,1.9rem);margin-top:0.8rem;">Fully independent. Architecturally resolved.</h2>
-      <div class="two-col">
-        <div>
-          <p class="col-label">The pavilion</p>
-          <p class="col-text">The 2,100 sq ft detached guest pavilion sits at the south end of the property, connected to the main residence by a covered breezeway. It functions as a fully independent residence — ideal for extended family, a live-in estate manager, or visiting principals who require separation and discretion.</p>
-        </div>
-        <div>
-          <p class="col-label">Specifications</p>
-          <p class="col-text">3 bedrooms · 3 bathrooms · Full kitchen and laundry · Private entrance and motor court · Dedicated HVAC and utilities · Separate mailing address available · Terrace with pool view · Furnished optional</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- SLIDE 9: MOTOR COURT -->
-    <div class="slide slide-9">
-      <p class="panel-eyebrow">09 / 14 · Motor court</p>
-      <h2 style="font-family:var(--serif);font-weight:300;font-size:clamp(1.2rem,2.5vw,1.9rem);margin-top:0.8rem;margin-bottom:0.5rem;">Engineered for collectors.</h2>
-      <p class="panel-body" style="color:var(--text-muted);font-size:clamp(0.52rem,1.05vw,0.68rem);line-height:1.7;max-width:580px;">The motor court and garage complex was designed as a destination in itself — climate-controlled, show-quality finishes, with a hydraulic lift for multi-level storage and a full detailing station.</p>
-      <div class="garage-stats">
-        <div class="garage-stat">
-          <span class="garage-stat-num">8</span>
-          <span class="garage-stat-label">Vehicle capacity</span>
-        </div>
-        <div class="garage-stat">
-          <span class="garage-stat-num">68°</span>
-          <span class="garage-stat-label">Climate controlled</span>
-        </div>
-        <div class="garage-stat">
-          <span class="garage-stat-num">1</span>
-          <span class="garage-stat-label">Hydraulic lift</span>
-        </div>
-        <div class="garage-stat">
-          <span class="garage-stat-num">EV</span>
-          <span class="garage-stat-label">4× charging bays</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- SLIDE 10: SMART HOME -->
-    <div class="slide slide-10">
-      <p class="panel-eyebrow">10 / 14 · Technology</p>
-      <h2 style="font-family:var(--serif);font-weight:300;font-size:clamp(1.2rem,2.5vw,1.9rem);margin-top:0.8rem;">Control Centre. Invisible by design.</h2>
-      <div class="tech-grid">
-        <div class="tech-item">
-          <p class="tech-title">Crestron automation</p>
-          <p class="tech-desc">Whole-estate Crestron control system managing lighting, climate, AV, security, and access from any device — on-site or remote.</p>
-        </div>
-        <div class="tech-item">
-          <p class="tech-title">Security & access</p>
-          <p class="tech-desc">Biometric entry, 64-camera perimeter surveillance, panic room with independent power and comms, and 24/7 monitoring integration.</p>
-        </div>
-        <div class="tech-item">
-          <p class="tech-title">Network infrastructure</p>
-          <p class="tech-desc">Gigabit fiber throughout with enterprise-grade mesh Wi-Fi, dedicated server room, and redundant power backup for all critical systems.</p>
-        </div>
-        <div class="tech-item">
-          <p class="tech-title">Energy systems</p>
-          <p class="tech-desc">280kW rooftop solar array with Tesla Powerwall backup, smart grid integration, and net-zero energy certification.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- SLIDE 11: LOCATION -->
-    <div class="slide slide-11">
-      <div class="map-col" style="background:#0a0a0a;position:relative;overflow:hidden;">
-        <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&q=80&fit=crop"
-             alt="Beverly Hills aerial luxury neighborhood"
-             style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;opacity:0.6;">
-        <div class="map-grid-overlay" style="position:absolute;inset:0;z-index:1;"></div>
-      </div>
-      <div class="location-col">
-        <p class="panel-eyebrow">11 / 14 · Location</p>
-        <h2 class="panel-title">Beverly Hills. The address that needs no explanation.</h2>
-        <div class="proximity-list">
-          <div class="proximity-row">
-            <span class="proximity-place">Rodeo Drive</span>
-            <span class="proximity-dist">4 min</span>
-          </div>
-          <div class="proximity-row">
-            <span class="proximity-place">LAX (private terminal)</span>
-            <span class="proximity-dist">22 min</span>
-          </div>
-          <div class="proximity-row">
-            <span class="proximity-place">Cedars-Sinai Medical</span>
-            <span class="proximity-dist">6 min</span>
-          </div>
-          <div class="proximity-row">
-            <span class="proximity-place">Soho House WeHo</span>
-            <span class="proximity-dist">8 min</span>
-          </div>
-          <div class="proximity-row">
-            <span class="proximity-place">Downtown LA</span>
-            <span class="proximity-dist">28 min</span>
-          </div>
-          <div class="proximity-row">
-            <span class="proximity-place">Malibu</span>
-            <span class="proximity-dist">35 min</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- SLIDE 12: INVESTMENT VALUE -->
-    <div class="slide slide-12">
-      <p class="panel-eyebrow">12 / 14 · Market context</p>
-      <h2 style="font-family:var(--serif);font-weight:300;font-size:clamp(1.2rem,2.5vw,1.9rem);margin-top:0.8rem;">Positioned at the ceiling of a rising market.</h2>
-      <div class="value-row">
-        <div class="value-card">
-          <p class="value-card-label">Asking price</p>
-          <p class="value-card-num">$28.5M</p>
-          <p class="value-card-sub">Off-market, introduction only. No public listing.</p>
-        </div>
-        <div class="value-card">
-          <p class="value-card-label">Price per sq ft</p>
-          <p class="value-card-num">$2,298</p>
-          <p class="value-card-sub">Comparable Beverly Hills comps at $2,100–$2,600/sqft.</p>
-        </div>
-        <div class="value-card">
-          <p class="value-card-label">2024 renovation</p>
-          <p class="value-card-num">$4.2M</p>
-          <p class="value-card-sub">Full architectural renovation completed Q3 2024, receipts available.</p>
-        </div>
-      </div>
-      <p style="margin-top:1.8rem;font-size:clamp(0.5rem,1vw,0.65rem);color:var(--text-muted);line-height:1.75;max-width:600px;">The Flats and lower Trousdale Estates continue to see sustained demand from international and domestic ultra-high-net-worth buyers. Off-market inventory at this price point represents less than 3% of annual Beverly Hills transactions.</p>
-    </div>
-
-    <!-- SLIDE 13: TERMS -->
-    <div class="slide slide-13">
-      <span class="gold-line center"></span>
-      <p class="panel-eyebrow" style="text-align:center;">13 / 14 · Transaction terms</p>
-      <h2>Offered with discretion.<br>Structured for principals.</h2>
-      <div class="terms-grid">
-        <div class="terms-cell">
-          <p class="terms-label">Listing price</p>
-          <p class="terms-value">$28,500,000</p>
-        </div>
-        <div class="terms-cell">
-          <p class="terms-label">Sale type</p>
-          <p class="terms-value">Off-market · Introduction only</p>
-        </div>
-        <div class="terms-cell">
-          <p class="terms-label">Showing availability</p>
-          <p class="terms-value">By private appointment · 48hr notice</p>
-        </div>
-        <div class="terms-cell">
-          <p class="terms-label">Proof of funds</p>
-          <p class="terms-value">Required prior to access</p>
-        </div>
-        <div class="terms-cell">
-          <p class="terms-label">Furnishings</p>
-          <p class="terms-value">Negotiable · Designer-sourced throughout</p>
-        </div>
-        <div class="terms-cell">
-          <p class="terms-label">Closing timeline</p>
-          <p class="terms-value">Flexible · 30–90 days preferred</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- SLIDE 14: CONTACT / CLOSE -->
-    <div class="slide slide-14">
-      <div class="corner-deco"></div>
-      <p class="close-eyebrow">14 / 14 · Inquire</p>
-      <h2>Ready to move<br><em>at this level?</em></h2>
-      <div class="agent-block">
-        <div class="agent-avatar">RC</div>
-        <div>
-          <p class="agent-name">Rachel Caldwell</p>
-          <p class="agent-title">Senior Luxury Advisor · Harlow Properties · DRE #02041882</p>
-          <p class="agent-contact">rachel@harlowproperties.com · (310) 555-0194</p>
-        </div>
-      </div>
-      <p class="disclaimer">This offering is strictly confidential and intended solely for qualified principals introduced through authorized channels. All information is provided in good faith and subject to verification. Prospective buyers must execute an NDA and provide proof of funds prior to property access. Harlow Properties represents the seller exclusively. Co-representation available.</p>
-      <span class="logo-mark">Stealth Strategist · stealthstrategist.co</span>
-    </div>
-
-  </div><!-- /slide-container -->
-
-  <!-- NAVIGATION CONTROLS -->
-  <div class="nav-controls">
-    <button class="arrow-btn" id="prevBtn" onclick="changeSlide(-1)" disabled>&#8592;</button>
-    <div class="dots" id="dotsContainer"></div>
-    <span class="slide-counter" id="slideCounter">1 / 14</span>
-    <button class="arrow-btn" id="nextBtn" onclick="changeSlide(1)">&#8594;</button>
-  </div>
-
-</div><!-- /deck-wrapper -->
-
-<footer>Designed by Stealth Strategist &nbsp;·&nbsp; stealthstrategist.co &nbsp;·&nbsp; Confidential presentation</footer>
-
-<script>
-  const slides = document.querySelectorAll('.slide');
-  const dotsContainer = document.getElementById('dotsContainer');
-  const slideCounter = document.getElementById('slideCounter');
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-  let current = 0;
-  const total = slides.length;
-
-  // Build dots
-  slides.forEach((_, i) => {
-    const dot = document.createElement('span');
-    dot.className = 'dot' + (i === 0 ? ' active' : '');
-    dot.onclick = () => goTo(i);
-    dotsContainer.appendChild(dot);
-  });
-
-  function goTo(n) {
-    slides[current].classList.remove('active');
-    dotsContainer.children[current].classList.remove('active');
-    current = n;
-    slides[current].classList.add('active');
-    dotsContainer.children[current].classList.add('active');
-    slideCounter.textContent = (current + 1) + ' / ' + total;
-    prevBtn.disabled = current === 0;
-    nextBtn.disabled = current === total - 1;
-  }
-
-  function changeSlide(dir) {
-    const next = current + dir;
-    if (next >= 0 && next < total) goTo(next);
-  }
-
-  // Keyboard navigation
-  document.addEventListener('keydown', e => {
-    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changeSlide(1);
-    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') changeSlide(-1);
-  });
-</script>
+    <script>
+        (()=>{
+            const slides=document.querySelectorAll('.slide'), total=slides.length;
+            let idx=0, trans=false;
+            const prev=document.getElementById('prevBtn'), next=document.getElementById('nextBtn');
+            const counter=document.getElementById('slideCounter'), dots=document.getElementById('dotNav'), hint=document.getElementById('kbHint');
+            for(let i=0;i<total;i++){const d=document.createElement('span');d.className='dot';d.onclick=()=>go(i);dots.appendChild(d);}
+            const allDots=dots.querySelectorAll('.dot');
+            function update(){counter.textContent=String(idx+1).padStart(2,'0')+' / '+total;allDots.forEach((d,i)=>d.classList.toggle('active',i===idx));prev.disabled=idx===0;next.disabled=idx===total-1;slides.forEach((s,i)=>{s.classList.remove('active','exit-left','exit-right');if(i===idx)s.classList.add('active');});}
+            function go(i){if(trans||i<0||i>=total||i===idx)return;trans=true;const old=idx, fwd=i>old;slides[old].classList.remove('active');slides[old].classList.add(fwd?'exit-left':'exit-right');idx=i;update();setTimeout(()=>{slides[old].classList.remove('exit-left','exit-right');trans=false;},550);}
+            next.onclick=()=>{if(idx<total-1)go(idx+1);};
+            prev.onclick=()=>{if(idx>0)go(idx-1);};
+            document.onkeydown=e=>{if(e.key==='ArrowRight'){e.preventDefault();if(idx<total-1)go(idx+1);hide();}else if(e.key==='ArrowLeft'){e.preventDefault();if(idx>0)go(idx-1);hide();}};
+            function hide(){if(hint){hint.style.opacity='0';setTimeout(()=>hint.style.display='none',600);}}
+            setTimeout(()=>{if(hint&&hint.style.opacity!=='0'){hint.style.transition='opacity 0.8s';hint.style.opacity='0';setTimeout(()=>hint.style.display='none',800);}},10000);
+            update();slides[0].classList.add('active');
+        })();
+    </script>
 </body>
 </html>
