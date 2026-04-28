@@ -7,315 +7,521 @@
 <meta name="description" content="High-stakes presentation design for startups, consultants, and executives. Pitch decks, sales decks, board materials.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
 <style>
-  /* ---------- GLOBAL & RESET ---------- */
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: #fdfcfa;
-    color: #0e0d0c;
-    line-height: 1.6;
-    font-size: 14px;
-  }
-  ::selection { background: #EEEDFE; }
+/* ---- TOKENS ---- */
+:root {
+  --ink:     #0a0908;
+  --ink-2:   #1c1a18;
+  --ink-3:   #2e2b27;
+  --cream:   #f0ece4;
+  --cream-2: #e2ddd4;
+  --cream-3: #c8c2b6;
+  --muted:   #7a7570;
+  --accent:  #c9a96e;
+  --accent-2:#a8844a;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans:  'DM Sans', system-ui, sans-serif;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
 
-  /* ---------- NAV ---------- */
-  nav {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 0 28px; height: 60px;
-    border-bottom: 0.5px solid rgba(14,13,12,0.12);
-    background: #fdfcfa; position: sticky; top: 0; z-index: 100;
-  }
-  .nav-logo { font-size: 15px; font-weight: 500; color: #0e0d0c; text-decoration: none; }
-  .nav-logo span { color: #534AB7; }
-  .nav-links { display: flex; gap: 20px; list-style: none; }
-  .nav-links a { font-size: 13px; color: #7a776f; text-decoration: none; transition: color 0.15s; }
-  .nav-links a:hover { color: #0e0d0c; }
-  .nav-cta {
-    font-size: 12px; font-weight: 500; padding: 7px 16px;
-    border-radius: 6px; border: 0.5px solid #534AB7;
-    color: #534AB7; background: transparent; cursor: pointer;
-    text-decoration: none; font-family: inherit; transition: background 0.15s;
-  }
-  .nav-cta:hover { background: #EEEDFE; }
+/* ---- RESET ---- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
-  /* ---------- HERO ---------- */
-  .hero {
-    background: #fdfcfa; padding: 64px 28px 52px;
-    border-bottom: 0.5px solid rgba(14,13,12,0.1);
-  }
-  .hero-eyebrow {
-    font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
-    text-transform: uppercase; color: #534AB7; margin-bottom: 16px;
-  }
-  .hero h1 {
-    font-size: 40px; font-weight: 500; line-height: 1.15;
-    letter-spacing: -0.02em; color: #0e0d0c; margin-bottom: 16px; max-width: 560px;
-  }
-  .hero h1 em { font-style: normal; color: #534AB7; }
-  .hero-sub {
-    font-size: 15px; color: #3a3835; line-height: 1.65;
-    max-width: 480px; margin-bottom: 28px; font-weight: 300;
-  }
-  .hero-btns { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 40px; }
-  .btn-primary {
-    font-size: 13px; font-weight: 500; padding: 10px 22px;
-    background: #0e0d0c; color: #f5f2ec; border: none; border-radius: 6px;
-    cursor: pointer; text-decoration: none; font-family: inherit;
-    display: inline-block; transition: background 0.15s;
-  }
-  .btn-primary:hover { background: #3a3835; }
-  .btn-ghost {
-    font-size: 13px; font-weight: 500; padding: 10px 22px;
-    background: transparent; color: #0e0d0c;
-    border: 0.5px solid rgba(14,13,12,0.25); border-radius: 6px;
-    cursor: pointer; text-decoration: none; font-family: inherit;
-    display: inline-block; transition: background 0.15s;
-  }
-  .btn-ghost:hover { background: #f5f2ec; }
-  .hero-stats {
-    display: flex; gap: 32px; padding-top: 28px;
-    border-top: 0.5px solid rgba(14,13,12,0.12);
-  }
-  .hero-stat-num { font-size: 24px; font-weight: 500; color: #0e0d0c; line-height: 1; }
-  .hero-stat-label { font-size: 11px; color: #7a776f; margin-top: 3px; }
+body {
+  font-family: var(--sans);
+  background: var(--ink);
+  color: var(--cream);
+  line-height: 1.6;
+  font-size: 15px;
+  cursor: none;
+  -webkit-font-smoothing: antialiased;
+}
 
-  /* ---------- SECTIONS ---------- */
-  section { padding: 40px 28px; border-bottom: 0.5px solid rgba(14,13,12,0.1); }
-  .section-label {
-    font-size: 11px; font-weight: 500; letter-spacing: 0.09em;
-    text-transform: uppercase; color: #7a776f; margin-bottom: 24px;
-  }
+/* ---- CURSOR ---- */
+.cursor {
+  position: fixed; top: 0; left: 0;
+  width: 10px; height: 10px;
+  background: var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.08s var(--ease), width 0.3s var(--ease), height 0.3s var(--ease), background 0.3s;
+  mix-blend-mode: normal;
+}
+.cursor.hovering {
+  width: 40px; height: 40px;
+  background: transparent;
+  border: 1px solid var(--accent);
+}
+a, button, .deck-card-link { cursor: none; }
 
-  /* ---------- WORK (DECK CARDS) ---------- */
-  #work { background: #fdfcfa; }
-  .deck-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+/* ---- SCROLLBAR ---- */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--ink); }
+::-webkit-scrollbar-thumb { background: var(--ink-3); border-radius: 2px; }
+::selection { background: var(--accent-2); color: var(--cream); }
 
-  .deck-card-link {
-    text-decoration: none;
-    display: block;
-    border: 0.5px solid rgba(14,13,12,0.12);
-    border-radius: 10px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: border-color 0.2s, transform 0.2s;
-  }
-  .deck-card-link:hover { border-color: #7F77DD; transform: translateY(-2px); }
+/* ---- REVEAL ANIMATION ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
 
-  .deck-preview {
-    height: 160px; display: flex; align-items: center;
-    justify-content: center; padding: 16px;
-  }
-  .dp1 { background: #1a1035; }
-  .dp2 { background: #1a1209; }
-  .dp3 { background: #0a0a0a; }
-  .dp4 { background: #082a1a; }
-  .dp5 { background: #1c1412; }
-  .dp6 { background: #111009; }
+/* ---- NAV ---- */
+nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0 40px; height: 64px;
+  border-bottom: 0.5px solid rgba(240,236,228,0.08);
+  background: rgba(10,9,8,0.92);
+  backdrop-filter: blur(12px);
+  position: sticky; top: 0; z-index: 100;
+}
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 18px; font-weight: 400;
+  color: var(--cream); text-decoration: none;
+  letter-spacing: 0.04em;
+}
+.nav-logo em { font-style: italic; color: var(--accent); }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  font-size: 12px; font-weight: 400;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--muted); text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--cream); }
+.nav-cta {
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 9px 20px;
+  border: 0.5px solid rgba(201,169,110,0.5);
+  color: var(--accent);
+  background: transparent;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s;
+}
+.nav-cta:hover { background: rgba(201,169,110,0.08); border-color: var(--accent); }
 
-  .slide-mock {
-    width: 88%; aspect-ratio: 16/9; border-radius: 4px;
-    padding: 12px 14px; display: flex; flex-direction: column; justify-content: space-between;
-  }
-  .sm-dp  { background: #26215C; border: 1px solid rgba(127,119,221,0.25); }
-  .sm-db  { background: #2a1e16; border: 1px solid rgba(249,115,22,0.25); }
-  .sm-bk  { background: #111; border: 1px solid rgba(201,168,76,0.2); }
-  .sm-dg  { background: #085041; border: 1px solid rgba(29,158,117,0.25); }
-  .sm-cr  { background: #2a1e16; border: 1px solid rgba(216,90,48,0.2); }
-  .sm-re  { background: #1a1508; border: 1px solid rgba(201,168,76,0.2); }
+/* ---- HERO ---- */
+.hero {
+  min-height: 86vh;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 0 40px 60px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 0.5px solid rgba(240,236,228,0.08);
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 50% at 70% 40%, rgba(201,169,110,0.06) 0%, transparent 70%),
+              radial-gradient(ellipse 40% 60% at 20% 80%, rgba(201,169,110,0.03) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-grid-lines {
+  position: absolute; inset: 0; pointer-events: none; opacity: 0.04;
+  background-image: linear-gradient(rgba(240,236,228,1) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(240,236,228,1) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+.hero-eyebrow {
+  font-size: 11px; font-weight: 400; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--accent);
+  margin-bottom: 24px;
+  display: flex; align-items: center; gap: 12px;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: block; width: 32px; height: 0.5px;
+  background: var(--accent); flex-shrink: 0;
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(52px, 7vw, 96px);
+  font-weight: 300; line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--cream);
+  margin-bottom: 28px; max-width: 820px;
+}
+.hero h1 em {
+  font-style: italic; color: var(--accent);
+}
+.hero-bottom {
+  display: flex; align-items: flex-end;
+  justify-content: space-between; gap: 40px;
+  flex-wrap: wrap;
+}
+.hero-sub {
+  font-size: 15px; font-weight: 300;
+  color: var(--cream-3); line-height: 1.7;
+  max-width: 420px;
+}
+.hero-right { display: flex; flex-direction: column; align-items: flex-end; gap: 24px; }
+.hero-btns { display: flex; gap: 12px; }
+.btn-primary {
+  font-size: 12px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 13px 28px;
+  background: var(--cream); color: var(--ink);
+  border: none; text-decoration: none;
+  display: inline-block; transition: background 0.2s;
+}
+.btn-primary:hover { background: var(--cream-2); }
+.btn-ghost {
+  font-size: 12px; font-weight: 400;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 13px 28px;
+  background: transparent; color: var(--cream-3);
+  border: 0.5px solid rgba(240,236,228,0.2);
+  text-decoration: none; display: inline-block;
+  transition: color 0.2s, border-color 0.2s;
+}
+.btn-ghost:hover { color: var(--cream); border-color: rgba(240,236,228,0.5); }
+.hero-stats {
+  display: flex; gap: 32px;
+}
+.hero-stat-num {
+  font-family: var(--serif);
+  font-size: 28px; font-weight: 300;
+  color: var(--cream); line-height: 1;
+}
+.hero-stat-label {
+  font-size: 10px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--muted);
+  margin-top: 4px;
+}
 
-  .sm-badge {
-    display: inline-block; font-size: 7px; font-weight: 500;
-    letter-spacing: 0.07em; text-transform: uppercase;
-    padding: 2px 6px; border-radius: 2px; margin-bottom: 7px;
-  }
-  .b-purple { background: rgba(127,119,221,0.25); color: #AFA9EC; }
-  .b-blue   { background: rgba(55,138,221,0.25);  color: #85B7EB; }
-  .b-gold   { background: rgba(201,168,76,0.2);   color: #e8c97a; }
-  .b-green  { background: rgba(29,158,117,0.25);  color: #5DCAA5; }
-  .b-coral  { background: rgba(216,90,48,0.2);    color: #F0997B; }
-  .b-warm   { background: rgba(201,168,76,0.15);  color: #c9a84c; }
+/* ---- AVAILABILITY BAND ---- */
+.avail-band {
+  background: rgba(201,169,110,0.08);
+  border-top: 0.5px solid rgba(201,169,110,0.2);
+  border-bottom: 0.5px solid rgba(201,169,110,0.2);
+  padding: 12px 40px;
+  display: flex; align-items: center; gap: 10px;
+}
+.avail-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%; background: var(--accent);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.7); }
+}
+.avail-text {
+  font-size: 12px; font-weight: 400;
+  letter-spacing: 0.06em; color: var(--accent);
+}
 
-  .ln { height: 4px; border-radius: 2px; margin-bottom: 3px; }
-  .ln.h { height: 6px; }
-  .ln.w80 { width: 80%; } .ln.w60 { width: 60%; } .ln.w40 { width: 40%; } .ln.w50 { width: 50%; }
-  .c-purple { background: rgba(127,119,221,0.7); }
-  .c-blue   { background: rgba(55,138,221,0.7); }
-  .c-gold   { background: rgba(201,168,76,0.7); }
-  .c-green  { background: rgba(29,158,117,0.7); }
-  .c-coral  { background: rgba(216,90,48,0.6); }
-  .c-warm   { background: rgba(201,168,76,0.6); }
-  .c-dark   { background: rgba(0,0,0,0.12); }
-  .c-muted  { background: rgba(255,255,255,0.25); }
+/* ---- SECTIONS ---- */
+section { padding: 80px 40px; border-bottom: 0.5px solid rgba(240,236,228,0.08); }
+.section-label {
+  font-size: 10px; font-weight: 400;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 48px;
+  display: flex; align-items: center; gap: 12px;
+}
+.section-label::after {
+  content: ''; flex: 1; height: 0.5px;
+  background: rgba(240,236,228,0.1);
+}
 
-  .bars { display: flex; gap: 4px; align-items: flex-end; height: 30px; }
-  .bar  { flex: 1; border-radius: 2px 2px 0 0; }
+/* ---- WORK ---- */
+#work { background: var(--ink); }
+.deck-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: rgba(240,236,228,0.08); }
+.deck-card-link {
+  text-decoration: none; display: block;
+  background: var(--ink);
+  transition: background 0.3s;
+  position: relative; overflow: hidden;
+}
+.deck-card-link:hover { background: var(--ink-2); }
+.deck-card-link:hover .deck-preview-overlay { opacity: 1; }
+.deck-card-link:hover .view-arrow { transform: translateX(4px); }
+.deck-preview { height: 200px; display: flex; align-items: center; justify-content: center; padding: 20px; position: relative; overflow: hidden; }
+.deck-preview-overlay {
+  position: absolute; inset: 0;
+  background: rgba(201,169,110,0.04);
+  opacity: 0; transition: opacity 0.3s;
+  display: flex; align-items: center; justify-content: center;
+}
+.dp1 { background: #100d20; }
+.dp2 { background: #130f08; }
+.dp3 { background: #080808; }
+.dp4 { background: #051a10; }
+.dp5 { background: #120e0a; }
+.dp6 { background: #0d0a1a; }
+.slide-mock {
+  width: 85%; aspect-ratio: 16/9;
+  border-radius: 3px; padding: 12px 14px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  transition: transform 0.4s var(--ease);
+}
+.deck-card-link:hover .slide-mock { transform: scale(1.02) translateY(-2px); }
+.sm-dp  { background: #1e1845; border: 0.5px solid rgba(127,119,221,0.2); }
+.sm-db  { background: #231808; border: 0.5px solid rgba(249,115,22,0.2); }
+.sm-bk  { background: #0e0e0e; border: 0.5px solid rgba(201,168,76,0.15); }
+.sm-dg  { background: #062b1a; border: 0.5px solid rgba(29,158,117,0.2); }
+.sm-cr  { background: #1e1209; border: 0.5px solid rgba(216,90,48,0.15); }
+.sm-mg  { background: #150b1e; border: 0.5px solid rgba(233,30,99,0.2); }
+.sm-badge {
+  display: inline-block; font-size: 6px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 2px 6px; margin-bottom: 8px;
+}
+.b-purple { background: rgba(127,119,221,0.2); color: #AFA9EC; }
+.b-coral  { background: rgba(216,90,48,0.2);   color: #F0997B; }
+.b-gold   { background: rgba(201,168,76,0.15);  color: #e8c97a; }
+.b-green  { background: rgba(29,158,117,0.2);   color: #5DCAA5; }
+.b-mag    { background: rgba(233,30,99,0.2);    color: #f06292; }
+.ln { height: 3px; border-radius: 1px; margin-bottom: 3px; }
+.ln.h { height: 6px; }
+.ln.w80 { width: 80%; } .ln.w60 { width: 60%; } .ln.w40 { width: 40%; } .ln.w50 { width: 50%; }
+.c-purple { background: rgba(127,119,221,0.7); }
+.c-coral  { background: rgba(216,90,48,0.65); }
+.c-gold   { background: rgba(201,168,76,0.7); }
+.c-green  { background: rgba(29,158,117,0.7); }
+.c-mag    { background: rgba(233,30,99,0.8); }
+.c-muted  { background: rgba(255,255,255,0.15); }
+.bars { display: flex; gap: 3px; align-items: flex-end; height: 28px; }
+.bar  { flex: 1; border-radius: 1px 1px 0 0; }
+.donut { width: 28px; height: 28px; border-radius: 50%; border: 2.5px solid rgba(29,158,117,0.6); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.donut span { font-size: 5px; color: #5DCAA5; font-weight: 500; }
+.mini-card { flex: 1; border-radius: 2px; padding: 5px; }
+.deck-info { padding: 20px 24px; }
+.deck-outcome {
+  font-family: var(--serif); font-style: italic;
+  font-size: 13px; color: var(--accent);
+  margin-bottom: 8px; font-weight: 400;
+}
+.deck-title { font-size: 15px; font-weight: 400; color: var(--cream); margin-bottom: 4px; }
+.deck-meta  { font-size: 12px; color: var(--muted); margin-bottom: 10px; }
+.deck-chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.chip {
+  font-size: 10px; letter-spacing: 0.05em;
+  padding: 3px 9px;
+  border: 0.5px solid rgba(240,236,228,0.12);
+  color: var(--muted);
+}
+.view-label {
+  font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted); padding: 14px 24px;
+  border-top: 0.5px solid rgba(240,236,228,0.06);
+  display: flex; align-items: center; gap: 8px;
+  transition: color 0.2s;
+}
+.deck-card-link:hover .view-label { color: var(--accent); }
+.view-arrow { transition: transform 0.25s var(--ease); }
 
-  .mini-cards { display: flex; gap: 5px; margin-top: auto; }
-  .mini-card {
-    flex: 1; background: rgba(55,138,221,0.15);
-    border: 0.5px solid rgba(55,138,221,0.3); border-radius: 2px; padding: 5px;
-  }
+/* ---- PROCESS ---- */
+#process { background: var(--ink-2); }
+.process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(240,236,228,0.08); }
+.proc-step {
+  background: var(--ink-2); padding: 36px 28px;
+  transition: background 0.2s;
+}
+.proc-step:hover { background: var(--ink-3); }
+.proc-num {
+  font-family: var(--serif); font-size: 13px; font-weight: 300;
+  color: var(--accent); margin-bottom: 16px; letter-spacing: 0.06em;
+}
+.proc-title { font-size: 14px; font-weight: 500; color: var(--cream); margin-bottom: 8px; }
+.proc-desc  { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.65; }
 
-  .donut {
-    width: 32px; height: 32px; border-radius: 50%;
-    border: 3px solid rgba(29,158,117,0.6);
-    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-  }
-  .donut span { font-size: 6px; color: #5DCAA5; font-weight: 500; }
+/* ---- TESTIMONIALS ---- */
+#testimonials { background: var(--ink); }
+.testi-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.tcard {
+  background: var(--ink-2);
+  border: 0.5px solid rgba(240,236,228,0.08);
+  padding: 36px 32px;
+  position: relative;
+}
+.tcard::before {
+  content: '\201C';
+  font-family: var(--serif); font-size: 72px; font-weight: 300;
+  color: var(--accent); opacity: 0.3;
+  position: absolute; top: 16px; left: 24px; line-height: 1;
+}
+.tquote {
+  font-family: var(--serif); font-style: italic;
+  font-size: 18px; font-weight: 300;
+  color: var(--cream-2); line-height: 1.6;
+  margin-bottom: 28px; padding-top: 28px;
+}
+.tattrib { display: flex; align-items: center; gap: 12px; }
+.tavatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 0.5px solid rgba(201,169,110,0.3);
+  color: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 500; letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+.tname { font-size: 13px; font-weight: 500; color: var(--cream); }
+.trole { font-size: 11px; letter-spacing: 0.05em; color: var(--muted); margin-top: 2px; }
 
-  .deck-info { padding: 14px 16px; }
-  .deck-tag {
-    display: inline-block; font-size: 10px; font-weight: 500;
-    letter-spacing: 0.06em; text-transform: uppercase;
-    padding: 2px 8px; border-radius: 3px;
-    background: #EEEDFE; color: #534AB7; margin-bottom: 7px;
-  }
-  .deck-title { font-size: 14px; font-weight: 500; color: #0e0d0c; margin-bottom: 3px; }
-  .deck-meta  { font-size: 12px; color: #7a776f; }
-  .deck-chips { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 8px; }
-  .chip {
-    font-size: 10px; padding: 2px 8px; border-radius: 3px;
-    border: 0.5px solid rgba(14,13,12,0.18); color: #7a776f;
-  }
-  .view-label {
-    font-size: 11px; color: #534AB7; font-weight: 500;
-    padding: 10px 16px; border-top: 0.5px solid rgba(14,13,12,0.07);
-    display: flex; align-items: center; gap: 6px;
-  }
-  .view-label::after { content: '→'; }
+/* ---- PRICING ---- */
+#pricing { background: var(--ink-2); }
+.pricing-header {
+  display: flex; justify-content: space-between;
+  align-items: flex-end; margin-bottom: 48px;
+}
+.pricing-intro {
+  font-family: var(--serif); font-size: 36px; font-weight: 300;
+  color: var(--cream); line-height: 1.2; max-width: 400px;
+}
+.pricing-intro em { font-style: italic; color: var(--accent); }
+.pricing-note {
+  font-size: 12px; font-weight: 300; color: var(--muted);
+  max-width: 220px; text-align: right; line-height: 1.6;
+}
+.pricing-grid { display: grid; grid-template-columns: 1fr 1.15fr 1fr; gap: 12px; align-items: start; }
+.ptier {
+  background: var(--ink);
+  border: 0.5px solid rgba(240,236,228,0.1);
+  padding: 32px 28px;
+  transition: border-color 0.2s;
+}
+.ptier:hover { border-color: rgba(240,236,228,0.25); }
+.ptier.featured {
+  background: var(--cream);
+  border-color: var(--cream);
+  padding: 40px 32px;
+}
+.ptier.featured:hover { border-color: var(--cream-2); }
+.pt-label {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 16px;
+}
+.ptier.featured .pt-label { color: var(--accent-2); }
+.pt-price {
+  font-family: var(--serif); font-size: 42px; font-weight: 300;
+  color: var(--cream); line-height: 1; margin-bottom: 6px;
+}
+.ptier.featured .pt-price { color: var(--ink); font-size: 52px; }
+.pt-sub {
+  font-size: 12px; font-weight: 300; color: var(--muted);
+  margin-bottom: 24px; padding-bottom: 24px;
+  border-bottom: 0.5px solid rgba(240,236,228,0.1);
+}
+.ptier.featured .pt-sub { color: var(--ink-3); border-bottom-color: rgba(10,9,8,0.15); }
+.pt-items { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.pt-items li {
+  font-size: 13px; font-weight: 300; color: var(--cream-3);
+  display: flex; align-items: flex-start; gap: 10px;
+}
+.ptier.featured .pt-items li { color: var(--ink-3); }
+.pt-items li::before {
+  content: ''; display: block; width: 16px; height: 0.5px;
+  background: var(--accent); flex-shrink: 0; margin-top: 9px;
+}
+.ptier.featured .pt-items li::before { background: var(--accent-2); }
+.pt-cta {
+  display: block; text-align: center; margin-top: 28px; padding: 12px 20px;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  text-decoration: none; border: 0.5px solid rgba(240,236,228,0.2);
+  color: var(--cream-3); background: transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+.pt-cta:hover { color: var(--cream); border-color: rgba(240,236,228,0.5); }
+.ptier.featured .pt-cta {
+  background: var(--ink); border-color: var(--ink);
+  color: var(--cream);
+}
+.ptier.featured .pt-cta:hover { background: var(--ink-2); border-color: var(--ink-2); }
+.pt-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--accent-2); margin-bottom: 8px;
+}
 
-  /* ---------- PROCESS ---------- */
-  #process { background: #f5f2ec; }
-  .process-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr);
-    gap: 1px; background: rgba(14,13,12,0.1);
-    border: 0.5px solid rgba(14,13,12,0.1); border-radius: 10px; overflow: hidden;
-  }
-  .proc-step { background: #f5f2ec; padding: 28px 22px; transition: background 0.15s; }
-  .proc-step:hover { background: #ede9e0; }
-  .proc-num { font-size: 11px; font-weight: 500; color: #534AB7; letter-spacing: 0.06em; margin-bottom: 8px; }
-  .proc-title { font-size: 14px; font-weight: 500; color: #0e0d0c; margin-bottom: 6px; }
-  .proc-desc  { font-size: 12px; color: #7a776f; line-height: 1.6; }
+/* ---- CONTACT ---- */
+#contact {
+  background: var(--ink); padding: 100px 40px;
+  position: relative; overflow: hidden;
+}
+.contact-bg {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse 50% 80% at 80% 50%, rgba(201,169,110,0.05) 0%, transparent 70%);
+}
+.contact-inner { max-width: 700px; }
+.contact-eyebrow {
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 24px;
+  display: flex; align-items: center; gap: 12px;
+}
+.contact-eyebrow::before { content: ''; display: block; width: 32px; height: 0.5px; background: var(--accent); }
+.contact-title {
+  font-family: var(--serif); font-size: clamp(36px, 4vw, 60px);
+  font-weight: 300; color: var(--cream);
+  line-height: 1.1; margin-bottom: 24px;
+}
+.contact-title em { font-style: italic; color: var(--accent); }
+.contact-sub {
+  font-size: 14px; font-weight: 300; color: var(--muted);
+  margin-bottom: 40px; max-width: 460px; line-height: 1.7;
+}
+.contact-row { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.contact-email { font-size: 14px; color: var(--cream-3); letter-spacing: 0.03em; }
 
-  /* ---------- TESTIMONIALS ---------- */
-  #testimonials { background: #fdfcfa; }
-  .testi-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  .tcard {
-    background: #f5f2ec; border: 0.5px solid rgba(14,13,12,0.1);
-    border-radius: 10px; padding: 24px; position: relative;
-  }
-  .tcard::before {
-    content: '\201C'; font-size: 56px; color: #CECBF6;
-    position: absolute; top: 8px; left: 18px; line-height: 1;
-    font-family: Georgia, serif;
-  }
-  .tquote {
-    font-size: 14px; color: #0e0d0c; line-height: 1.65;
-    margin-bottom: 18px; padding-top: 22px; font-style: italic;
-  }
-  .tattrib { display: flex; align-items: center; gap: 10px; }
-  .tavatar {
-    width: 32px; height: 32px; border-radius: 50%;
-    background: #EEEDFE; color: #534AB7;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 11px; font-weight: 500; flex-shrink: 0;
-  }
-  .tname { font-size: 13px; font-weight: 500; color: #0e0d0c; }
-  .trole { font-size: 11px; color: #7a776f; margin-top: 1px; }
+/* ---- FOOTER ---- */
+footer {
+  background: var(--ink-2); padding: 28px 40px;
+  display: flex; justify-content: space-between; align-items: center;
+  border-top: 0.5px solid rgba(240,236,228,0.06); flex-wrap: wrap; gap: 12px;
+}
+.footer-logo { font-family: var(--serif); font-size: 16px; font-weight: 300; color: var(--muted); }
+.footer-logo em { font-style: italic; color: var(--cream-3); }
+.footer-copy { font-size: 11px; color: var(--muted); letter-spacing: 0.05em; }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--cream-3); }
 
-  /* ---------- PRICING ---------- */
-  #pricing { background: #f5f2ec; }
-  .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-  .ptier {
-    background: #fdfcfa; border: 0.5px solid rgba(14,13,12,0.12);
-    border-radius: 10px; padding: 24px 20px; transition: transform 0.2s;
-  }
-  .ptier:hover { transform: translateY(-2px); }
-  .ptier.featured { background: #0e0d0c; border-color: #0e0d0c; }
-  .pt-label {
-    font-size: 10px; font-weight: 500; letter-spacing: 0.1em;
-    text-transform: uppercase; color: #534AB7; margin-bottom: 6px;
-  }
-  .ptier.featured .pt-label { color: #AFA9EC; }
-  .pt-price { font-size: 28px; font-weight: 500; color: #0e0d0c; margin-bottom: 2px; line-height: 1; }
-  .ptier.featured .pt-price { color: #f5f2ec; }
-  .pt-sub {
-    font-size: 12px; color: #7a776f; margin-bottom: 18px;
-    padding-bottom: 16px; border-bottom: 0.5px solid rgba(14,13,12,0.1);
-  }
-  .ptier.featured .pt-sub { border-bottom-color: rgba(255,255,255,0.1); }
-  .pt-items { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-  .pt-items li {
-    font-size: 12px; color: #3a3835;
-    display: flex; align-items: flex-start; gap: 7px;
-  }
-  .ptier.featured .pt-items li { color: #b8b4ac; }
-  .pt-items li::before {
-    content: ''; display: block; width: 5px; height: 5px;
-    border-radius: 50%; background: #534AB7; flex-shrink: 0; margin-top: 4px;
-  }
-  .ptier.featured .pt-items li::before { background: #7F77DD; }
-  .pt-cta {
-    display: block; text-align: center; margin-top: 20px; padding: 9px 16px;
-    border-radius: 6px; font-size: 12px; font-weight: 500; text-decoration: none;
-    cursor: pointer; border: 0.5px solid rgba(14,13,12,0.2);
-    color: #0e0d0c; background: transparent; font-family: inherit; transition: background 0.15s;
-  }
-  .pt-cta:hover { background: #f5f2ec; }
-  .ptier.featured .pt-cta { background: #534AB7; border-color: #534AB7; color: #EEEDFE; }
-  .ptier.featured .pt-cta:hover { background: #7F77DD; }
-
-  /* ---------- CONTACT STRIP ---------- */
-  .contact-strip {
-    background: #26215C; padding: 40px 28px;
-    display: flex; justify-content: space-between;
-    align-items: center; flex-wrap: wrap; gap: 20px;
-  }
-  .cs-title { font-size: 20px; font-weight: 500; color: #EEEDFE; margin-bottom: 4px; }
-  .cs-sub   { font-size: 13px; color: #7F77DD; }
-  .cs-right { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
-  .cs-email { font-size: 13px; color: #AFA9EC; }
-  .cs-btn {
-    font-size: 13px; font-weight: 500; padding: 10px 22px;
-    border-radius: 6px; background: #7F77DD; color: #EEEDFE;
-    border: none; cursor: pointer; font-family: inherit; transition: background 0.15s;
-    text-decoration: none; display: inline-block;
-  }
-  .cs-btn:hover { background: #534AB7; }
-
-  /* ---------- FOOTER ---------- */
-  footer {
-    background: #26215C; padding: 16px 28px;
-    display: flex; justify-content: space-between; align-items: center;
-    border-top: 0.5px solid rgba(255,255,255,0.08); flex-wrap: wrap; gap: 10px;
-  }
-  .footer-logo { font-size: 14px; font-weight: 500; color: #7F77DD; }
-  .footer-logo span { color: #AFA9EC; }
-  .footer-links { display: flex; gap: 18px; }
-  .footer-links a { font-size: 12px; color: #534AB7; text-decoration: none; transition: color 0.15s; }
-  .footer-links a:hover { color: #AFA9EC; }
-
-  /* ---------- RESPONSIVE ---------- */
-  @media (max-width: 700px) {
-    nav { padding: 0 16px; }
-    .nav-links { display: none; }
-    .hero { padding: 40px 16px 36px; }
-    .hero h1 { font-size: 28px; }
-    section { padding: 32px 16px; }
-    .deck-grid, .testi-grid, .pricing-grid { grid-template-columns: 1fr; }
-    .process-grid { grid-template-columns: 1fr 1fr; }
-    .contact-strip, footer { padding: 24px 16px; }
-  }
+/* ---- RESPONSIVE ---- */
+@media (max-width: 860px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .hero { padding: 0 20px 48px; min-height: 80vh; }
+  .hero-btns { flex-wrap: wrap; }
+  .hero-right { align-items: flex-start; }
+  .hero-stats { gap: 20px; }
+  section { padding: 60px 20px; }
+  .avail-band { padding: 12px 20px; }
+  .deck-grid { grid-template-columns: 1fr; }
+  .process-grid { grid-template-columns: 1fr 1fr; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .pricing-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .pricing-note { text-align: left; max-width: 100%; }
+  .ptier.featured { padding: 32px 28px; }
+  #contact { padding: 72px 20px; }
+  footer { padding: 24px 20px; }
+  .cursor { display: none; }
+  body { cursor: auto; }
+  a, button, .deck-card-link { cursor: auto; }
+}
 </style>
 </head>
 <body>
 
+<!-- CURSOR -->
+<div class="cursor" id="cursor"></div>
+
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">Stealth<span>Strategist</span></a>
+  <a href="#" class="nav-logo">Stealth <em>Strategist</em></a>
   <ul class="nav-links">
     <li><a href="#work">Work</a></li>
     <li><a href="#process">Process</a></li>
@@ -326,27 +532,39 @@
 
 <!-- HERO -->
 <div class="hero" id="home">
-  <div class="hero-eyebrow">Presentation design studio</div>
-  <h1>Decks that close deals,<br>win rooms, and <em>move fast.</em></h1>
-  <p class="hero-sub">I design high-stakes presentations for startups, consultants, and executives — pitch decks, sales decks, board materials. Polished. On-brand. Ready when you need it.</p>
-  <div class="hero-btns">
-    <a href="#work" class="btn-primary">See my work</a>
-    <a href="#contact" class="btn-ghost">Get a quote</a>
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-eyebrow reveal">Presentation design studio</div>
+  <h1 class="reveal reveal-delay-1">Decks that close deals,<br>win rooms, and <em>move fast.</em></h1>
+  <div class="hero-bottom reveal reveal-delay-2">
+    <p class="hero-sub">High-stakes presentations for startups, consultants, and executives — pitch decks, sales decks, board materials. Polished. On-brand. Ready when you need it.</p>
+    <div class="hero-right">
+      <div class="hero-btns">
+        <a href="#work" class="btn-primary">See the work</a>
+        <a href="#contact" class="btn-ghost">Get a quote</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num" data-count="50">50+</div>
+          <div class="hero-stat-label">Decks delivered</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">3–5 days</div>
+          <div class="hero-stat-label">Standard turnaround</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">24 hrs</div>
+          <div class="hero-stat-label">Rush available</div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="hero-stats">
-    <div class="hero-stat">
-      <div class="hero-stat-num">50+</div>
-      <div class="hero-stat-label">Decks delivered</div>
-    </div>
-    <div class="hero-stat">
-      <div class="hero-stat-num">3–5 days</div>
-      <div class="hero-stat-label">Standard turnaround</div>
-    </div>
-    <div class="hero-stat">
-      <div class="hero-stat-num">24 hrs</div>
-      <div class="hero-stat-label">Rush available</div>
-    </div>
-  </div>
+</div>
+
+<!-- AVAILABILITY BAND -->
+<div class="avail-band">
+  <div class="avail-dot"></div>
+  <span class="avail-text">2 project spots available for May — <a href="#contact" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">inquire now</a></span>
 </div>
 
 <!-- WORK -->
@@ -355,8 +573,9 @@
   <div class="deck-grid">
 
     <!-- 01 PITCH DECK: Nova -->
-    <a class="deck-card-link" href="portfolio/01-pitch-deck.html">
+    <a class="deck-card-link reveal" href="portfolio/01-pitch-deck.html">
       <div class="deck-preview dp1">
+        <div class="deck-preview-overlay"></div>
         <div class="slide-mock sm-dp">
           <div>
             <span class="sm-badge b-purple">Series A</span>
@@ -365,86 +584,83 @@
             <div class="ln c-muted w40"></div>
           </div>
           <div class="bars">
-            <div class="bar" style="background:rgba(127,119,221,0.4);height:42%;"></div>
-            <div class="bar" style="background:rgba(127,119,221,0.55);height:64%;"></div>
-            <div class="bar" style="background:rgba(127,119,221,0.45);height:52%;"></div>
-            <div class="bar" style="background:rgba(127,119,221,0.75);height:82%;"></div>
+            <div class="bar" style="background:rgba(127,119,221,0.35);height:42%;"></div>
+            <div class="bar" style="background:rgba(127,119,221,0.5);height:64%;"></div>
+            <div class="bar" style="background:rgba(127,119,221,0.4);height:52%;"></div>
+            <div class="bar" style="background:rgba(127,119,221,0.7);height:82%;"></div>
             <div class="bar" style="background:rgba(127,119,221,0.9);height:100%;"></div>
           </div>
         </div>
       </div>
       <div class="deck-info">
-        <div class="deck-tag">Pitch deck</div>
+        <div class="deck-outcome">$8.5M raised · 2 weeks post-delivery</div>
         <div class="deck-title">Nova — Series A fundraise</div>
-        <div class="deck-meta">10 slides · Investor-facing · $8.5M raise</div>
-        <div class="deck-chips">
-          <span class="chip">Dark purple</span><span class="chip">Data viz</span><span class="chip">Startup</span>
-        </div>
+        <div class="deck-meta">10 slides · Investor-facing</div>
+        <div class="deck-chips"><span class="chip">Dark purple</span><span class="chip">Data viz</span><span class="chip">Startup</span></div>
       </div>
-      <div class="view-label">View deck</div>
+      <div class="view-label">View deck <span class="view-arrow">→</span></div>
     </a>
 
     <!-- 02 SALES DECK: Meridian -->
-    <a class="deck-card-link" href="portfolio/02-sales-deck.html">
+    <a class="deck-card-link reveal reveal-delay-1" href="portfolio/02-sales-deck.html">
       <div class="deck-preview dp2">
+        <div class="deck-preview-overlay"></div>
         <div class="slide-mock sm-db">
           <div>
             <span class="sm-badge b-coral">Enterprise sales</span>
             <div class="ln h c-coral w80"></div>
             <div class="ln c-coral w60"></div>
           </div>
-          <div style="display:flex; gap:5px; margin-top:auto;">
-            <div class="mini-card" style="flex:1; background:rgba(249,115,22,0.15); border-color:rgba(249,115,22,0.3);">
+          <div style="display:flex;gap:5px;margin-top:auto;">
+            <div class="mini-card" style="background:rgba(249,115,22,0.12);border:0.5px solid rgba(249,115,22,0.2);">
               <div class="ln c-coral w80"></div>
-              <div class="ln c-muted w60" style="margin-top:3px;height:3px;"></div>
+              <div class="ln c-muted w60" style="margin-top:3px;height:2px;"></div>
             </div>
-            <div class="mini-card" style="flex:1; background:rgba(249,115,22,0.15); border-color:rgba(249,115,22,0.3);">
+            <div class="mini-card" style="background:rgba(249,115,22,0.12);border:0.5px solid rgba(249,115,22,0.2);">
               <div class="ln c-coral w80"></div>
-              <div class="ln c-muted w60" style="margin-top:3px;height:3px;"></div>
+              <div class="ln c-muted w60" style="margin-top:3px;height:2px;"></div>
             </div>
           </div>
         </div>
       </div>
       <div class="deck-info">
-        <div class="deck-tag">Sales deck</div>
+        <div class="deck-outcome">B2B enterprise · Used across 12-country sales rollout</div>
         <div class="deck-title">Meridian — revenue intelligence</div>
-        <div class="deck-meta">10 slides · B2B enterprise · Interactive</div>
-        <div class="deck-chips">
-          <span class="chip">Dark + orange</span><span class="chip">Feature grid</span><span class="chip">Sales</span>
-        </div>
+        <div class="deck-meta">10 slides · Interactive sales deck</div>
+        <div class="deck-chips"><span class="chip">Dark + orange</span><span class="chip">Feature grid</span><span class="chip">Sales</span></div>
       </div>
-      <div class="view-label">View deck</div>
+      <div class="view-label">View deck <span class="view-arrow">→</span></div>
     </a>
 
-    <!-- 03 KEYNOTE: The Leadership Edge -->
-    <a class="deck-card-link" href="portfolio/03-keynote.html">
+    <!-- 03 KEYNOTE -->
+    <a class="deck-card-link reveal" href="portfolio/03-keynote.html">
       <div class="deck-preview dp3">
+        <div class="deck-preview-overlay"></div>
         <div class="slide-mock sm-bk" style="align-items:center;justify-content:center;gap:6px;">
-          <div style="font-size:7px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(201,168,76,0.6);margin-bottom:4px;">Global Leadership Summit</div>
+          <div style="font-size:6px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(201,168,76,0.5);margin-bottom:4px;">Global Leadership Summit</div>
           <div class="ln h c-gold" style="width:60%;"></div>
           <div class="ln c-gold" style="width:44%;"></div>
-          <div class="ln c-muted" style="width:52%;height:3px;margin-top:2px;"></div>
+          <div class="ln c-muted" style="width:52%;height:2px;margin-top:2px;"></div>
           <div style="margin-top:6px;display:flex;align-items:center;gap:6px;">
-            <div style="width:20px;height:1px;background:rgba(255,255,255,0.1);"></div>
-            <div style="font-size:6px;color:rgba(255,255,255,0.2);letter-spacing:0.1em;">ELENA VASQUEZ · CEO</div>
-            <div style="width:20px;height:1px;background:rgba(255,255,255,0.1);"></div>
+            <div style="width:16px;height:0.5px;background:rgba(255,255,255,0.08);"></div>
+            <div style="font-size:5px;color:rgba(255,255,255,0.15);letter-spacing:0.1em;">ELENA VASQUEZ · CEO</div>
+            <div style="width:16px;height:0.5px;background:rgba(255,255,255,0.08);"></div>
           </div>
         </div>
       </div>
       <div class="deck-info">
-        <div class="deck-tag">Keynote</div>
+        <div class="deck-outcome">Presented to 400+ delegates · Horizon Group summit</div>
         <div class="deck-title">The Leadership Edge — keynote</div>
-        <div class="deck-meta">10 slides · Speaking deck · Horizon Group</div>
-        <div class="deck-chips">
-          <span class="chip">Black + gold</span><span class="chip">Bold type</span><span class="chip">Conference</span>
-        </div>
+        <div class="deck-meta">10 slides · Speaking deck</div>
+        <div class="deck-chips"><span class="chip">Black + gold</span><span class="chip">Bold type</span><span class="chip">Conference</span></div>
       </div>
-      <div class="view-label">View deck</div>
+      <div class="view-label">View deck <span class="view-arrow">→</span></div>
     </a>
 
-    <!-- 04 ANNUAL REPORT: Verdant Capital -->
-    <a class="deck-card-link" href="portfolio/04-annual-report.html">
+    <!-- 04 ANNUAL REPORT -->
+    <a class="deck-card-link reveal reveal-delay-1" href="portfolio/04-annual-report.html">
       <div class="deck-preview dp4">
+        <div class="deck-preview-overlay"></div>
         <div class="slide-mock sm-dg">
           <div>
             <span class="sm-badge b-green">Annual report</span>
@@ -452,80 +668,76 @@
             <div class="ln c-green w60"></div>
           </div>
           <div style="display:flex;gap:8px;align-items:center;">
-            <div class="bars" style="flex:1;height:28px;">
-              <div class="bar" style="background:rgba(29,158,117,0.4);height:40%;"></div>
-              <div class="bar" style="background:rgba(29,158,117,0.6);height:64%;"></div>
-              <div class="bar" style="background:rgba(29,158,117,0.45);height:50%;"></div>
-              <div class="bar" style="background:rgba(29,158,117,0.8);height:84%;"></div>
+            <div class="bars" style="flex:1;height:26px;">
+              <div class="bar" style="background:rgba(29,158,117,0.35);height:40%;"></div>
+              <div class="bar" style="background:rgba(29,158,117,0.55);height:64%;"></div>
+              <div class="bar" style="background:rgba(29,158,117,0.4);height:50%;"></div>
+              <div class="bar" style="background:rgba(29,158,117,0.75);height:84%;"></div>
             </div>
             <div class="donut"><span>84%</span></div>
           </div>
         </div>
       </div>
       <div class="deck-info">
-        <div class="deck-tag">Annual report</div>
+        <div class="deck-outcome">$142M AUM · Board-ready annual materials</div>
         <div class="deck-title">Verdant Capital — investor report</div>
-        <div class="deck-meta">10 slides · Board-ready · $142M AUM</div>
-        <div class="deck-chips">
-          <span class="chip">Dark green</span><span class="chip">Charts</span><span class="chip">Finance</span>
-        </div>
+        <div class="deck-meta">10 slides · Finance deck</div>
+        <div class="deck-chips"><span class="chip">Dark green</span><span class="chip">Charts</span><span class="chip">Finance</span></div>
       </div>
-      <div class="view-label">View deck</div>
+      <div class="view-label">View deck <span class="view-arrow">→</span></div>
     </a>
 
-    <!-- 05 CONSULTING: Arcana Strategy -->
-    <a class="deck-card-link" href="portfolio/05-consulting-strategy.html">
+    <!-- 05 CONSULTING -->
+    <a class="deck-card-link reveal" href="portfolio/05-consulting-strategy.html">
       <div class="deck-preview dp5">
+        <div class="deck-preview-overlay"></div>
         <div class="slide-mock sm-cr">
           <div>
             <span class="sm-badge b-coral">Strategy recommendation</span>
             <div class="ln h c-coral w80"></div>
             <div class="ln c-coral w60"></div>
           </div>
-          <div style="display:flex;flex-direction:column;gap:5px;margin-top:auto;">
-            <div style="background:rgba(255,255,255,0.04);border-radius:2px;padding:5px 6px;display:flex;gap:5px;align-items:center;">
-              <div style="font-size:9px;color:rgba(240,230,208,0.2);font-family:Georgia,serif;">01</div>
-              <div style="flex:1;"><div class="ln c-coral w80" style="height:3px;margin-bottom:2px;"></div><div class="ln c-muted w60" style="height:2px;"></div></div>
+          <div style="display:flex;flex-direction:column;gap:4px;margin-top:auto;">
+            <div style="background:rgba(255,255,255,0.03);padding:5px 6px;display:flex;gap:5px;align-items:center;">
+              <div style="font-size:8px;color:rgba(240,230,208,0.15);font-family:Georgia,serif;">01</div>
+              <div style="flex:1;"><div class="ln c-coral w80" style="height:2px;margin-bottom:2px;"></div><div class="ln c-muted w60" style="height:2px;"></div></div>
             </div>
-            <div style="background:rgba(255,255,255,0.04);border-radius:2px;padding:5px 6px;display:flex;gap:5px;align-items:center;">
-              <div style="font-size:9px;color:rgba(240,230,208,0.2);font-family:Georgia,serif;">02</div>
-              <div style="flex:1;"><div class="ln c-coral w80" style="height:3px;margin-bottom:2px;"></div><div class="ln c-muted w60" style="height:2px;"></div></div>
+            <div style="background:rgba(255,255,255,0.03);padding:5px 6px;display:flex;gap:5px;align-items:center;">
+              <div style="font-size:8px;color:rgba(240,230,208,0.15);font-family:Georgia,serif;">02</div>
+              <div style="flex:1;"><div class="ln c-coral w80" style="height:2px;margin-bottom:2px;"></div><div class="ln c-muted w60" style="height:2px;"></div></div>
             </div>
           </div>
         </div>
       </div>
       <div class="deck-info">
-        <div class="deck-tag">Consulting deck</div>
-        <div class="deck-title">Arcana Strategy — growth transformation</div>
-        <div class="deck-meta">10 slides · Strategy deliverable · Stellarton Foods</div>
-        <div class="deck-chips">
-          <span class="chip">Warm coral</span><span class="chip">Editorial</span><span class="chip">Consulting</span>
-        </div>
+        <div class="deck-outcome">Strategy deliverable · Stellarton Foods growth transformation</div>
+        <div class="deck-title">Arcana Strategy — growth deck</div>
+        <div class="deck-meta">10 slides · Consulting deliverable</div>
+        <div class="deck-chips"><span class="chip">Warm coral</span><span class="chip">Editorial</span><span class="chip">Consulting</span></div>
       </div>
-      <div class="view-label">View deck</div>
+      <div class="view-label">View deck <span class="view-arrow">→</span></div>
     </a>
 
-    
-<!-- 07 VALOR LEAGUE -->
-<a class="deck-card-link" href="portfolio/07-valor-league.html">
-  <div class="deck-preview" style="background:#0e0b1a;">
-    <div class="slide-mock" style="background:#1a112e; border:1px solid #E91E63; padding:14px; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:8px;">
-      <span class="sm-badge" style="background:rgba(233,30,99,0.25);color:#E91E63;">Sports Brand</span>
-      <div class="ln h" style="background:#E91E63; width:70%;"></div>
-      <div class="ln" style="background:rgba(255,179,0,0.7); width:50%;"></div>
-      <div class="ln" style="background:rgba(255,255,255,0.2); width:40%;"></div>
-    </div>
-  </div>
-  <div class="deck-info">
-    <div class="deck-tag">Sports deck</div>
-    <div class="deck-title">VALOR League — women's sport</div>
-    <div class="deck-meta">10 slides · Brand launch · Global tour</div>
-    <div class="deck-chips">
-      <span class="chip">Dark + magenta</span><span class="chip">Bold type</span><span class="chip">Sports</span>
-    </div>
-  </div>
-  <div class="view-label">View deck</div>
-</a>
+    <!-- 06 VALOR LEAGUE -->
+    <a class="deck-card-link reveal reveal-delay-1" href="portfolio/07-valor-league.html">
+      <div class="deck-preview dp6">
+        <div class="deck-preview-overlay"></div>
+        <div class="slide-mock sm-mg" style="align-items:center;justify-content:center;gap:7px;">
+          <span class="sm-badge b-mag">Sports Brand</span>
+          <div class="ln h c-mag" style="width:70%;"></div>
+          <div class="ln" style="background:rgba(255,179,0,0.65);width:50%;"></div>
+          <div class="ln c-muted w40"></div>
+        </div>
+      </div>
+      <div class="deck-info">
+        <div class="deck-outcome">Brand launch · Global women's sport tour</div>
+        <div class="deck-title">VALOR League — brand deck</div>
+        <div class="deck-meta">10 slides · Brand launch</div>
+        <div class="deck-chips"><span class="chip">Dark + magenta</span><span class="chip">Bold type</span><span class="chip">Sports</span></div>
+      </div>
+      <div class="view-label">View deck <span class="view-arrow">→</span></div>
+    </a>
+
   </div>
 </section>
 
@@ -533,25 +745,25 @@
 <section id="process">
   <div class="section-label">How it works</div>
   <div class="process-grid">
-    <div class="proc-step">
+    <div class="proc-step reveal">
       <div class="proc-num">01</div>
       <div class="proc-title">Brief & discovery</div>
-      <div class="proc-desc">You share your content, brand assets, and the goal of the deck. 30-min kickoff call or async.</div>
+      <div class="proc-desc">You share your content, brand assets, and the goal of the deck. 30-min kickoff call or async — your choice.</div>
     </div>
-    <div class="proc-step">
+    <div class="proc-step reveal reveal-delay-1">
       <div class="proc-num">02</div>
       <div class="proc-title">Structure & strategy</div>
-      <div class="proc-desc">I map out the narrative flow and slide outline before any design begins.</div>
+      <div class="proc-desc">I map the narrative flow and slide outline before any design begins. Story first, slides second.</div>
     </div>
-    <div class="proc-step">
+    <div class="proc-step reveal reveal-delay-2">
       <div class="proc-num">03</div>
       <div class="proc-title">Design & build</div>
       <div class="proc-desc">Full design in PowerPoint or Google Slides, branded and polished. First draft in 48–72 hrs.</div>
     </div>
-    <div class="proc-step">
+    <div class="proc-step reveal reveal-delay-3">
       <div class="proc-num">04</div>
       <div class="proc-title">Revise & deliver</div>
-      <div class="proc-desc">Two rounds of revisions included. Final file delivered in editable format + PDF export.</div>
+      <div class="proc-desc">Two rounds of revisions included. Final file in editable format + PDF — ready to present.</div>
     </div>
   </div>
 </section>
@@ -560,7 +772,7 @@
 <section id="testimonials">
   <div class="section-label">Client feedback</div>
   <div class="testi-grid">
-    <div class="tcard">
+    <div class="tcard reveal">
       <div class="tquote">"Tyra turned our messy slide dump into a deck we were actually proud to show investors. We closed our round two weeks later."</div>
       <div class="tattrib">
         <div class="tavatar">JM</div>
@@ -570,7 +782,7 @@
         </div>
       </div>
     </div>
-    <div class="tcard">
+    <div class="tcard reveal reveal-delay-1">
       <div class="tquote">"Fast, sharp, and she understood our brand immediately. We've used Stealth Strategist for every major pitch since."</div>
       <div class="tattrib">
         <div class="tavatar">SR</div>
@@ -585,12 +797,15 @@
 
 <!-- PRICING -->
 <section id="pricing">
-  <div class="section-label">Pricing</div>
+  <div class="pricing-header reveal">
+    <div class="pricing-intro">Investment in a deck that <em>actually works.</em></div>
+    <div class="pricing-note">All projects include a strategy session. You're not just buying slides — you're buying a story.</div>
+  </div>
   <div class="pricing-grid">
-    <div class="ptier">
-      <div class="pt-label">Starter</div>
+    <div class="ptier reveal">
+      <div class="pt-label">Refresh</div>
       <div class="pt-price">From $750</div>
-      <div class="pt-sub">Up to 15 slides</div>
+      <div class="pt-sub">Up to 15 slides · Existing content</div>
       <ul class="pt-items">
         <li>Redesign of existing content</li>
         <li>Brand application</li>
@@ -599,21 +814,25 @@
       </ul>
       <a href="#contact" class="pt-cta">Get started</a>
     </div>
-    <div class="ptier featured">
-      <div class="pt-label">Professional</div>
+    <div class="ptier featured reveal reveal-delay-1">
+      <div class="pt-badge">
+        <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent-2);"></span>
+        Most requested
+      </div>
+      <div class="pt-label">Signature</div>
       <div class="pt-price">From $2,000</div>
-      <div class="pt-sub">Full deck from scratch · Most popular</div>
+      <div class="pt-sub">Full deck from scratch · Strategy included</div>
       <ul class="pt-items">
-        <li>Narrative strategy included</li>
+        <li>Narrative strategy session</li>
         <li>Custom brand system</li>
         <li>2 revision rounds</li>
         <li>3-day turnaround</li>
-        <li>PDF export + editable files</li>
+        <li>PDF + editable source files</li>
       </ul>
       <a href="#contact" class="pt-cta">Book a call</a>
     </div>
-    <div class="ptier">
-      <div class="pt-label">Rush / Enterprise</div>
+    <div class="ptier reveal reveal-delay-2">
+      <div class="pt-label">Advisory</div>
       <div class="pt-price">Custom</div>
       <div class="pt-sub">Complex or urgent projects</div>
       <ul class="pt-items">
@@ -628,39 +847,63 @@
 </section>
 
 <!-- CONTACT -->
-<div class="contact-strip" id="contact">
-  <div>
-    <div class="cs-title">Ready to build something worth presenting?</div>
-    <div class="cs-sub">stealthstrategist.co</div>
-  </div>
-  <div class="cs-right">
-    <div class="cs-email">tyra@stealthstrategist.co</div>
-    <a href="mailto:tyra@stealthstrategist.co" class="cs-btn">Book a free consult</a>
+<div id="contact">
+  <div class="contact-bg"></div>
+  <div class="contact-inner reveal" style="padding:100px 40px;">
+    <div class="contact-eyebrow">Get in touch</div>
+    <h2 class="contact-title">Ready to build something <em>worth presenting?</em></h2>
+    <p class="contact-sub">Two spots available in May. Projects book 1–2 weeks out — if you have a deadline, let's talk now.</p>
+    <div class="contact-row">
+      <a href="mailto:tyra@stealthstrategist.co" class="btn-primary">Book a free consult</a>
+      <span class="contact-email">tyra@stealthstrategist.co</span>
+    </div>
   </div>
 </div>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">Stealth<span>Strategist</span></div>
+  <div class="footer-logo">Stealth <em>Strategist</em></div>
+  <div class="footer-copy">© 2025 Stealth Strategist</div>
   <div class="footer-links">
-    <a href="https://behance.net" target="_blank">Behance</a>
-    <a href="https://dribbble.com" target="_blank">Dribbble</a>
+    <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+    <a href="mailto:tyra@stealthstrategist.co">Contact</a>
   </div>
 </footer>
 
 <script>
-  // Smooth scroll for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const id = a.getAttribute('href');
-      if (id === '#') return;
-      const t = document.querySelector(id);
-      if (t) {
-        e.preventDefault();
-        t.scrollIntoView({ behavior: 'smooth' });
-      }
-    });
+// Custom cursor
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top  = e.clientY + 'px';
+});
+document.querySelectorAll('a, button, .deck-card-link').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+});
+
+// Scroll reveal
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Hero reveals on load
+window.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    document.querySelectorAll('.hero .reveal').forEach(el => el.classList.add('visible'));
+  }, 100);
+});
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href');
+    if (id === '#') return;
+    const t = document.querySelector(id);
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
   });
+});
 </script>
 </body>
 </html>
