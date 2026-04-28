@@ -3,328 +3,1074 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verdant Capital — Annual Report 2024 | Stealth Strategist</title>
-    <meta name="description" content="Verdant Capital Annual Report 2024. A year of meaningful growth — $142M AUM, 2.8× TVPI, record LP distributions.">
+    <title>Fund III Annual Report 2024 — Verdant Capital | Stealth Strategist</title>
+    <meta name="description" content="Institutional-grade annual report for Verdant Capital's Fund III. A story of performance, portfolio, and the future.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-primary: #0a0b0f; --bg-secondary: #111318; --bg-card: #161920; --bg-card-hover: #1a1e28;
-            --text-primary: #f0f0f2; --text-secondary: #b0b3bd; --text-muted: #6b6f7b;
-            --accent: #1d9e75; --accent-glow: rgba(29,158,117,0.25); --accent-secondary: #5DCAA5;
-            --border: #1e2130; --border-light: #2a2d3a; --success: #34d399; --danger: #f87171; --warning: #fbbf24;
-            --gradient-hero: linear-gradient(160deg, #0a0b0f 0%, #081a14 40%, #0f1729 70%, #0a0b0f 100%);
-            --gradient-card: linear-gradient(145deg, #161920 0%, #111318 100%);
-            --shadow-lg: 0 25px 60px rgba(0,0,0,0.5); --shadow-card: 0 4px 20px rgba(0,0,0,0.3);
-            --radius-sm: 8px; --radius-md: 14px; --radius-lg: 20px; --radius-xl: 28px;
+            --bg: #060a0c;
+            --panel: #0f1417;
+            --accent: #0b8a5e;        /* Verdant green — trust & growth */
+            --accent-glow: rgba(11,138,94,0.25);
+            --data-gold: #c9a84c;     /* subtle prestige accent for numbers */
+            --text: #f0f2f5;
+            --text-secondary: #b0b8c1;
+            --muted: #7b8691;
+            --mid: #1e252b;
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
             --transition-smooth: cubic-bezier(0.4,0,0.2,1);
-            --font-display: 'Inter', system-ui, -apple-system, sans-serif;
-            --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
         }
-        *{margin:0;padding:0;box-sizing:border-box;}
-        html{font-size:16px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
-        body{font-family:var(--font-display);background:var(--bg-primary);color:var(--text-primary);min-height:100vh;overflow-x:hidden;line-height:1.6;letter-spacing:-0.01em;}
-        .brand-bar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 28px;pointer-events:none;transition:opacity 0.4s ease;}
-        .brand-bar>*{pointer-events:auto;}
-        .brand-logo{font-weight:800;font-size:1.25rem;letter-spacing:-0.03em;color:#fff;text-decoration:none;display:flex;align-items:center;gap:10px;transition:opacity 0.3s;}
-        .brand-logo:hover{opacity:0.8;}
-        .brand-logo .logo-mark{width:34px;height:34px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:900;color:#fff;box-shadow:0 0 20px var(--accent-glow);}
-        .brand-back{font-size:0.85rem;font-weight:500;color:var(--text-secondary);text-decoration:none;letter-spacing:-0.01em;transition:color 0.3s;display:flex;align-items:center;gap:6px;}
-        .brand-back:hover{color:#fff;}
-        .brand-back .arrow{display:inline-block;transition:transform 0.3s;}
-        .brand-back:hover .arrow{transform:translateX(-3px);}
 
-        .carousel-container{width:100%;height:100vh;height:100dvh;position:relative;overflow:hidden;background:var(--bg-primary);}
-        .slides-wrapper{width:100%;height:100%;position:relative;}
-        .slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.55s var(--transition-smooth),transform 0.55s var(--transition-smooth);transform:scale(0.98);padding:80px 40px 60px;will-change:opacity,transform;}
-        .slide.active{opacity:1;pointer-events:auto;transform:scale(1);z-index:10;}
-        .slide.exit-left{opacity:0;transform:scale(0.96) translateX(-30px);}
-        .slide.exit-right{opacity:0;transform:scale(0.96) translateX(30px);}
-        .slide-inner{width:100%;max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:24px;position:relative;}
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font-body);
+            font-weight: 300;
+            overflow-x: hidden;
+        }
 
-        .slide-cover .slide-inner{text-align:center;align-items:center;gap:32px;max-width:900px;}
-        .slide-cover .tagline{font-size:1rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);font-family:var(--font-mono);font-size:0.8rem;}
-        .slide-cover h1{font-size:clamp(2.6rem,5.5vw,4.2rem);font-weight:800;letter-spacing:-0.04em;line-height:1.08;max-width:750px;background:linear-gradient(180deg,#ffffff 0%,#b8e0d0 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-        .slide-cover .subtitle{font-size:1.2rem;color:var(--text-secondary);max-width:600px;line-height:1.5;font-weight:400;}
+        /* Custom cursor (DNA) */
+        .cursor {
+            width: 12px; height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+            position: fixed;
+            top: 0; left: 0;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: transform 0.15s ease;
+        }
+        .cursor-ring {
+            width: 36px; height: 36px;
+            border: 1px solid rgba(11,138,94,0.5);
+            border-radius: 50%;
+            position: fixed;
+            top: 0; left: 0;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.4s ease, width 0.3s, height 0.3s;
+        }
 
-        .slide-label{font-family:var(--font-mono);font-size:0.7rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:4px;}
-        .slide-title{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;letter-spacing:-0.03em;line-height:1.2;margin-bottom:8px;}
-        .slide-subtitle{font-size:1rem;color:var(--text-secondary);max-width:600px;line-height:1.5;}
+        /* NAV */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0;
+            z-index: 100;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 24px 48px;
+            mix-blend-mode: difference;
+        }
+        .nav-logo {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text);
+            text-decoration: none;
+            opacity: 0.7;
+        }
+        .nav-back {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text);
+            text-decoration: none;
+            opacity: 0.5;
+            transition: opacity 0.2s;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .nav-back:hover { opacity: 1; }
+        .nav-back::before { content: '←'; }
 
-        .metrics-strip{display:flex;gap:30px;flex-wrap:wrap;justify-content:center;margin-top:8px;}
-        .metric-item{text-align:center;min-width:100px;}
-        .metric-value{font-size:2rem;font-weight:800;letter-spacing:-0.03em;color:#fff;line-height:1;}
-        .metric-value.accent{color:var(--accent-secondary);}
-        .metric-label{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-muted);margin-top:4px;font-weight:500;}
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex; flex-direction: column; justify-content: flex-end;
+            padding: 0 48px 64px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute; inset: 0;
+            background:
+                radial-gradient(ellipse 70% 50% at 60% 30%, rgba(11,138,94,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 40% at 30% 80%, rgba(13,27,42,0.2) 0%, transparent 50%),
+                linear-gradient(180deg, #060a0c 0%, #060a0c 100%);
+        }
+        .hero-bg::after {
+            content: '';
+            position: absolute; inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+            opacity: 0.3;
+            mix-blend-mode: overlay;
+            pointer-events: none;
+        }
+        .hero-tag {
+            position: relative;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 32px;
+            display: flex; align-items: center; gap: 16px;
+        }
+        .hero-tag::before {
+            content: '';
+            display: inline-block;
+            width: 32px; height: 1px;
+            background: var(--accent);
+        }
+        .hero-title {
+            position: relative;
+            font-family: var(--font-display);
+            font-size: clamp(58px, 9vw, 120px);
+            line-height: 0.92;
+            letter-spacing: -0.02em;
+            color: var(--text);
+            font-weight: 700;
+        }
+        .hero-title span {
+            display: block;
+            font-style: italic;
+            font-weight: 400;
+            color: var(--accent);
+        }
+        .hero-meta {
+            position: relative;
+            margin-top: 48px;
+            display: flex; gap: 64px; align-items: flex-end;
+        }
+        .hero-desc {
+            max-width: 380px;
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+        .hero-stats {
+            display: flex; gap: 48px;
+            margin-left: auto;
+        }
+        .stat-item { text-align: right; }
+        .stat-num {
+            font-family: var(--font-display);
+            font-size: 42px;
+            line-height: 1;
+            color: var(--data-gold);
+            display: block;
+        }
+        .stat-label {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-top: 4px;
+        }
+        .scroll-indicator {
+            position: absolute;
+            right: 48px; bottom: 64px;
+            display: flex; flex-direction: column; align-items: center; gap: 8px;
+            opacity: 0.3;
+        }
+        .scroll-indicator span {
+            font-family: var(--font-mono);
+            font-size: 9px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            writing-mode: vertical-rl;
+        }
+        .scroll-line {
+            width: 1px; height: 60px;
+            background: linear-gradient(to bottom, var(--accent), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.3; transform: scaleY(1); }
+            50% { opacity: 1; transform: scaleY(0.7); }
+        }
 
-        .letter-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px 28px;border-left:3px solid var(--accent);transition:all 0.35s ease;}
-        .letter-card p{font-size:0.92rem;color:var(--text-secondary);line-height:1.7;}
+        /* SECTION DIVIDER */
+        .section-label {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--muted);
+            display: flex; align-items: center; gap: 20px;
+        }
+        .section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--mid);
+        }
 
-        .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:12px;}
-        .kpi-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md);padding:20px 16px;text-align:center;transition:all 0.35s ease;}
-        .kpi-card:hover{border-color:var(--border-light);background:var(--bg-card-hover);transform:translateY(-2px);box-shadow:var(--shadow-card);}
-        .kpi-card .kpi-val{font-size:1.6rem;font-weight:800;color:#fff;line-height:1;}
-        .kpi-card .kpi-lbl{font-size:0.68rem;color:var(--text-muted);margin-top:4px;text-transform:uppercase;letter-spacing:0.04em;}
-        .kpi-card .kpi-change{font-size:0.72rem;color:var(--accent-secondary);margin-top:2px;font-weight:600;}
+        /* OVERVIEW */
+        .overview {
+            padding: 120px 48px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        .overview-left h2 {
+            font-family: var(--font-display);
+            font-size: clamp(48px, 6vw, 80px);
+            line-height: 1.1;
+            margin-bottom: 32px;
+            font-weight: 700;
+        }
+        .overview-left h2 em {
+            font-style: italic;
+            color: var(--accent);
+        }
+        .overview-left p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            max-width: 420px;
+            margin-bottom: 48px;
+        }
+        .pill-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+        .pill {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 8px 16px;
+            border: 1px solid var(--mid);
+            color: var(--muted);
+            border-radius: 100px;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .pill:hover { border-color: var(--accent); color: var(--accent); }
+        .pill.active { border-color: var(--accent); color: var(--accent); }
+        .overview-right {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+            border-radius: 4px; overflow: hidden;
+        }
+        .overview-card {
+            background: var(--panel);
+            padding: 40px 32px;
+            position: relative;
+            overflow: hidden;
+            transition: background 0.3s;
+        }
+        .overview-card:hover { background: #1a2027; }
+        .overview-card-num {
+            font-family: var(--font-display);
+            font-size: 64px;
+            line-height: 1;
+            color: rgba(240,242,245,0.04);
+            position: absolute;
+            top: 16px; right: 20px;
+        }
+        .overview-card-title {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+        .overview-card-value {
+            font-family: var(--font-display);
+            font-size: 36px;
+            line-height: 1;
+            color: var(--text);
+        }
+        .overview-card-sub {
+            font-size: 13px;
+            color: var(--muted);
+            margin-top: 8px;
+            line-height: 1.5;
+        }
 
-        .portfolio-table{width:100%;border-collapse:separate;border-spacing:0;margin-top:12px;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border);font-size:0.82rem;}
-        .portfolio-table th{background:var(--bg-card);padding:14px 16px;text-align:left;font-weight:700;color:#fff;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid var(--border);}
-        .portfolio-table td{background:var(--bg-secondary);padding:12px 16px;border-bottom:1px solid var(--border);color:var(--text-secondary);}
-        .portfolio-table tr:last-child td{border-bottom:none;}
-        .portfolio-table .status-ahead{color:var(--accent-secondary);font-weight:600;}
-        .portfolio-table .status-onplan{color:#fff;}
+        /* REPORT SHOWCASE */
+        .slides-section {
+            padding: 0 48px 120px;
+        }
+        .slides-header {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 48px;
+        }
+        .slides-header h3 {
+            font-family: var(--font-display);
+            font-size: 48px;
+            line-height: 1;
+        }
+        .slide-hero {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: var(--panel);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 2px;
+            position: relative;
+            display: flex; flex-direction: column; justify-content: flex-end;
+            padding: 56px 64px;
+            background: linear-gradient(135deg, #0a1215 0%, #0f1a1f 50%, #0a1215 100%);
+        }
+        .slide-hero-bg {
+            position: absolute; inset: 0;
+            background:
+                radial-gradient(ellipse 60% 80% at 80% 20%, rgba(11,138,94,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 40% 60% at 10% 90%, rgba(201,168,76,0.06) 0%, transparent 50%);
+        }
+        .slide-hero-grid {
+            position: absolute;
+            top: -10%; right: -5%;
+            width: 50%;
+            aspect-ratio: 1;
+            border: 1px solid rgba(11,138,94,0.12);
+            display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;
+            opacity: 0.3;
+        }
+        .grid-cell { border: 1px solid rgba(11,138,94,0.12); }
+        .slide-hero-wordmark {
+            position: absolute;
+            top: 48px; left: 64px;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(240,242,245,0.25);
+        }
+        .slide-hero-tag {
+            position: relative;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            color: var(--accent);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .slide-hero-title {
+            position: relative;
+            font-family: var(--font-display);
+            font-size: clamp(48px, 7vw, 96px);
+            line-height: 1.0;
+            color: var(--text);
+            max-width: 65%;
+            font-weight: 700;
+        }
+        .slide-hero-title span {
+            color: var(--data-gold);
+            font-style: italic;
+        }
+        .slide-hero-meta {
+            position: relative;
+            margin-top: 32px;
+            display: flex; gap: 40px;
+            align-items: center;
+        }
+        .slide-hero-meta-item {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(240,242,245,0.35);
+        }
+        .slide-hero-meta-item strong {
+            display: block;
+            font-size: 22px;
+            color: var(--data-gold);
+            font-family: var(--font-display);
+            letter-spacing: 0.02em;
+            margin-bottom: 2px;
+        }
 
-        .timeline-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:12px;}
-        .tl-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px 18px;transition:all 0.35s ease;}
-        .tl-card:hover{border-color:var(--border-light);background:var(--bg-card-hover);transform:translateY(-2px);}
-        .tl-card .tl-q{font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:8px;}
-        .tl-card ul{list-style:none;font-size:0.78rem;color:var(--text-secondary);line-height:1.7;}
-        .tl-card ul li::before{content:'— ';color:var(--text-muted);}
+        .slides-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+        }
+        .slide-card {
+            aspect-ratio: 16/9;
+            position: relative;
+            overflow: hidden;
+            background: var(--panel);
+            display: flex; align-items: flex-end;
+            padding: 24px 28px;
+            cursor: pointer;
+            transition: transform 0.4s ease;
+        }
+        .slide-card:hover { transform: scale(0.98); }
+        .slide-card:hover .slide-card-overlay { opacity: 1; }
+        .slide-card-overlay {
+            position: absolute; inset: 0;
+            background: rgba(11,138,94,0.04);
+            border: 1px solid rgba(11,138,94,0.2);
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+        /* Custom card styles */
+        .card-bar {
+            background: linear-gradient(135deg, #121a1e 0%, #1a2429 100%);
+            display: flex; flex-direction: column; justify-content: flex-end;
+            padding-bottom: 28px;
+        }
+        .mini-chart {
+            display: flex; align-items: flex-end; gap: 4px;
+            height: 50px; margin-bottom: 16px;
+        }
+        .bar {
+            width: 10px;
+            background: var(--mid);
+            border-radius: 2px 2px 0 0;
+            transition: background 0.3s;
+        }
+        .bar.fill { background: var(--accent); }
+        .bar.gold { background: var(--data-gold); }
+        .card-value {
+            font-family: var(--font-display);
+            font-size: clamp(36px, 5vw, 56px);
+            color: var(--text);
+            line-height: 1;
+        }
+        .card-value span { color: var(--accent); }
+        .card-label {
+            font-family: var(--font-mono);
+            font-size: 9px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-top: 8px;
+        }
+        .donut-ring {
+            width: 60px; height: 60px;
+            border-radius: 50%;
+            border: 6px solid var(--mid);
+            position: relative;
+            margin-bottom: 12px;
+        }
+        .donut-fill {
+            position: absolute; inset: -6px;
+            border-radius: 50%;
+            border: 6px solid transparent;
+            border-top-color: var(--accent);
+            border-right-color: var(--accent);
+            transform: rotate(45deg);
+            clip: rect(0, 60px, 30px, 0);
+        }
+        .quote-mini {
+            font-family: var(--font-display);
+            font-size: 24px;
+            font-style: italic;
+            color: var(--text-secondary);
+            line-height: 1.2;
+        }
+        .timeline-dots {
+            display: flex; gap: 12px; margin-top: 12px;
+        }
+        .dot {
+            width: 8px; height: 8px; border-radius: 50%; background: var(--mid);
+        }
+        .dot.active { background: var(--accent); box-shadow: 0 0 8px rgba(11,138,94,0.5); }
 
-        .risk-table{width:100%;border-collapse:separate;border-spacing:0;margin-top:12px;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border);font-size:0.8rem;}
-        .risk-table th{background:var(--bg-card);padding:12px 14px;text-align:left;font-weight:700;color:#fff;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid var(--border);}
-        .risk-table td{background:var(--bg-secondary);padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text-secondary);}
-        .risk-table tr:last-child td{border-bottom:none;}
-        .risk-table .risk-low{color:var(--accent-secondary);}
-        .risk-table .risk-moderate{color:var(--warning);}
-        .risk-table .risk-high{color:var(--danger);}
+        /* PROCESS */
+        .process-section {
+            padding: 120px 48px;
+            background: var(--panel);
+        }
+        .process-section .section-label { margin-bottom: 64px; }
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2px;
+        }
+        .process-card {
+            padding: 48px 36px;
+            background: #080c0f;
+            position: relative;
+            overflow: hidden;
+        }
+        .process-card:first-child { background: var(--accent); }
+        .process-num {
+            font-family: var(--font-display);
+            font-size: 80px;
+            line-height: 1;
+            color: rgba(240,242,245,0.05);
+            position: absolute;
+            top: -8px; left: 24px;
+        }
+        .process-card:first-child .process-num { color: rgba(8,8,8,0.12); }
+        .process-icon {
+            width: 40px; height: 40px;
+            margin-bottom: 24px;
+            position: relative;
+            color: var(--accent);
+            stroke-width: 1.5;
+        }
+        .process-card:first-child .process-icon { color: #fff; }
+        .process-title {
+            font-family: var(--font-display);
+            font-size: 28px;
+            line-height: 1;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        .process-card:first-child .process-title { color: #fff; }
+        .process-body {
+            font-size: 13px;
+            line-height: 1.7;
+            color: var(--muted);
+        }
+        .process-card:first-child .process-body { color: rgba(255,255,255,0.7); }
 
-        .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:12px;}
-        .team-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 16px;text-align:center;transition:all 0.35s ease;}
-        .team-card:hover{border-color:var(--border-light);background:var(--bg-card-hover);transform:translateY(-2px);box-shadow:var(--shadow-card);}
-        .team-card h3{font-size:0.95rem;font-weight:700;color:#fff;margin-bottom:2px;}
-        .team-card .role{font-size:0.72rem;color:var(--accent);font-weight:600;margin-bottom:6px;}
-        .team-card .prev{font-size:0.68rem;color:var(--text-muted);font-family:var(--font-mono);letter-spacing:0.02em;}
+        /* RESULTS */
+        .results-section {
+            padding: 120px 48px;
+        }
+        .results-header {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+            align-items: end; margin-bottom: 80px;
+        }
+        .results-header h2 {
+            font-family: var(--font-display);
+            font-size: clamp(56px, 7vw, 96px);
+            line-height: 0.92;
+            font-weight: 700;
+        }
+        .results-header h2 span { color: var(--accent); }
+        .results-header p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            max-width: 360px;
+        }
+        .results-metrics {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            border: 1px solid var(--mid);
+        }
+        .metric {
+            padding: 56px 48px;
+            border-right: 1px solid var(--mid);
+            position: relative;
+            overflow: hidden;
+        }
+        .metric:last-child { border-right: none; }
+        .metric-bar {
+            position: absolute;
+            bottom: 0; left: 0;
+            height: 3px;
+            background: var(--accent);
+            transition: width 1.5s ease;
+        }
+        .metric-value {
+            font-family: var(--font-display);
+            font-size: 72px;
+            line-height: 1;
+            color: var(--text);
+            display: block;
+        }
+        .metric-label {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-top: 8px;
+        }
+        .metric-desc {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 12px;
+            line-height: 1.6;
+        }
 
-        .slide-closing .slide-inner{text-align:center;align-items:center;justify-content:center;gap:28px;max-width:750px;}
-        .slide-closing h2{font-size:clamp(2rem,4.5vw,3.4rem);font-weight:800;letter-spacing:-0.04em;line-height:1.1;background:linear-gradient(180deg,#ffffff 0%,#b8e0d0 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+        /* TESTIMONIAL */
+        .testimonial-section {
+            padding: 80px 48px 120px;
+            background: var(--accent);
+            position: relative;
+            overflow: hidden;
+        }
+        .testimonial-section::before {
+            content: '"';
+            position: absolute;
+            top: -40px; left: 32px;
+            font-family: var(--font-display);
+            font-size: 400px;
+            color: rgba(255,255,255,0.07);
+            line-height: 1;
+            pointer-events: none;
+        }
+        .testimonial-content {
+            max-width: 800px;
+            position: relative;
+        }
+        .testimonial-quote {
+            font-family: var(--font-display);
+            font-size: clamp(32px, 4vw, 56px);
+            line-height: 1.05;
+            color: #fff;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+        .testimonial-author {
+            display: flex; align-items: center; gap: 20px;
+        }
+        .testimonial-avatar {
+            width: 48px; height: 48px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-family: var(--font-display);
+            font-size: 18px;
+            color: var(--accent);
+        }
+        .testimonial-name {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #fff;
+            display: block;
+        }
+        .testimonial-role {
+            font-size: 12px;
+            color: rgba(255,255,255,0.6);
+            margin-top: 2px;
+        }
 
-        .nav-controls{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:20px;z-index:90;background:rgba(22,25,32,0.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:40px;padding:10px 22px;box-shadow:var(--shadow-lg);transition:all 0.3s;}
-        .nav-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--border-light);background:var(--bg-card);color:#fff;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:all 0.3s;-webkit-tap-highlight-color:transparent;user-select:none;}
-        .nav-btn:hover{background:#fff;color:#000;border-color:#fff;box-shadow:0 0 20px rgba(255,255,255,0.2);}
-        .nav-btn:active{transform:scale(0.93);}
-        .nav-btn:disabled{opacity:0.3;cursor:default;pointer-events:none;}
-        .slide-counter{font-family:var(--font-mono);font-size:0.8rem;color:var(--text-secondary);font-weight:500;letter-spacing:0.04em;white-space:nowrap;user-select:none;min-width:70px;text-align:center;}
-        .dot-nav{display:flex;gap:6px;align-items:center;}
-        .dot{width:7px;height:7px;border-radius:50%;background:var(--border-light);cursor:pointer;transition:all 0.35s;-webkit-tap-highlight-color:transparent;}
-        .dot.active{background:#fff;width:20px;border-radius:4px;box-shadow:0 0 10px rgba(255,255,255,0.4);}
-        .dot:hover{background:#aaa;}
-        .kb-hint{position:fixed;bottom:110px;left:50%;transform:translateX(-50%);font-size:0.7rem;color:var(--text-muted);z-index:85;pointer-events:none;transition:opacity 0.6s;font-family:var(--font-mono);letter-spacing:0.04em;}
+        /* CTA */
+        .cta-section {
+            padding: 120px 48px;
+            display: flex; flex-direction: column; align-items: center;
+            text-align: center;
+            position: relative;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(11,138,94,0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .cta-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 32px;
+        }
+        .cta-title {
+            font-family: var(--font-display);
+            font-size: clamp(64px, 9vw, 120px);
+            line-height: 0.92;
+            color: var(--text);
+            margin-bottom: 48px;
+            font-weight: 700;
+        }
+        .cta-title span {
+            font-style: italic;
+            font-weight: 400;
+        }
+        .cta-btn {
+            display: inline-flex; align-items: center; gap: 16px;
+            background: var(--text);
+            color: var(--bg);
+            font-family: var(--font-mono);
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 18px 40px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .cta-btn:hover { background: var(--accent); color: #fff; transform: scale(1.02); }
+        .cta-btn-arrow { font-size: 16px; }
 
-        @media(max-width:768px){
-            .slide{padding:70px 16px 40px;}
-            .slide-cover h1{font-size:2rem;}
-            .kpi-grid,.timeline-grid,.team-grid{grid-template-columns:1fr 1fr;}
-            .portfolio-table,.risk-table{font-size:0.7rem;}
-            .portfolio-table th,.portfolio-table td,.risk-table th,.risk-table td{padding:8px 6px;}
-            .nav-controls{gap:10px;padding:8px 14px;border-radius:30px;bottom:16px;}
-            .nav-btn{width:34px;height:34px;font-size:0.9rem;}
-            .slide-counter{font-size:0.7rem;min-width:50px;}
-            .dot{width:5px;height:5px;}
-            .dot.active{width:14px;}
-            .kb-hint{bottom:90px;font-size:0.65rem;}
-            .brand-bar{padding:12px 14px;}
-            .brand-logo{font-size:1rem;}
-            .brand-logo .logo-mark{width:28px;height:28px;font-size:0.65rem;}
+        /* FOOTER */
+        footer {
+            border-top: 1px solid var(--mid);
+            padding: 40px 48px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .footer-logo {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+        .footer-right {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        /* Animations */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .fade-up-delay-1 { transition-delay: 0.1s; }
+        .fade-up-delay-2 { transition-delay: 0.2s; }
+        .fade-up-delay-3 { transition-delay: 0.3s; }
+        .fade-up-delay-4 { transition-delay: 0.4s; }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(60px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hero-tag { animation: fadeInUp 0.8s ease 0.2s both; }
+        .hero-title { animation: fadeInUp 0.9s ease 0.35s both; }
+        .hero-meta { animation: fadeInUp 0.8s ease 0.55s both; }
+
+        @media (max-width: 900px) {
+            nav { padding: 20px 24px; }
+            .hero { padding: 0 24px 48px; }
+            .hero-stats { display: none; }
+            .overview { grid-template-columns: 1fr; padding: 80px 24px; }
+            .slides-section { padding: 0 24px 80px; }
+            .slides-grid { grid-template-columns: 1fr 1fr; }
+            .process-section { padding: 80px 24px; }
+            .process-grid { grid-template-columns: 1fr 1fr; }
+            .results-section { padding: 80px 24px; }
+            .results-header { grid-template-columns: 1fr; gap: 32px; }
+            .results-metrics { grid-template-columns: 1fr; }
+            .metric { border-right: none; border-bottom: 1px solid var(--mid); }
+            .testimonial-section { padding: 64px 24px; }
+            .cta-section { padding: 80px 24px; }
+            footer { padding: 32px 24px; flex-direction: column; gap: 16px; text-align: center; }
         }
     </style>
 </head>
 <body>
-    <header class="brand-bar">
-        <a href="../index.html" class="brand-logo"><span class="logo-mark">V</span> Verdant</a>
-        <a href="../index.html#work" class="brand-back"><span class="arrow">←</span> Portfolio</a>
-    </header>
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-ring" id="cursorRing" style="transform: translate(-18px, -18px);"></div>
 
-    <div class="carousel-container" id="carousel">
-        <div class="slides-wrapper">
-
-            <!-- Slide 1: Cover -->
-            <div class="slide slide-cover active" data-index="0">
-                <div class="slide-inner">
-                    <p class="tagline">Annual Report 2024 · Fund III</p>
-                    <h1>A year of meaningful growth.</h1>
-                    <p class="subtitle">For our investors, board members, and partners — a transparent account of where we've been, what we built, and where we go next.</p>
-                    <div class="metrics-strip">
-                        <div class="metric-item"><div class="metric-value accent">$142M</div><div class="metric-label">Assets Under Management</div></div>
-                        <div class="metric-item"><div class="metric-value accent">2.8×</div><div class="metric-label">Portfolio TVPI</div></div>
-                        <div class="metric-item"><div class="metric-value">14</div><div class="metric-label">Active Companies</div></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 2: Letter -->
-            <div class="slide" data-index="1">
-                <div class="slide-inner">
-                    <p class="slide-label">02 / 10 · Letter to Investors</p>
-                    <div class="letter-card">
-                        <p>Dear partners and fellow shareholders,</p>
-                        <p>2024 was a year that tested conviction. Markets were uncertain, deployment windows compressed, and the macro environment demanded more from every underwriting decision we made. And yet — this was, by most meaningful measures, <strong style="color:#fff;">the best year in Verdant's eight-year history</strong>.</p>
-                        <p>We closed three category-defining investments. Two portfolio companies reached profitability ahead of schedule. One company we've backed since seed completed an oversubscribed Series C at a valuation that returned <strong style="color:var(--accent-secondary);">14× on our initial capital</strong>.</p>
-                        <p style="color:var(--text-muted);">— Marcus Ibe, Managing Partner</p>
-                    </div>
-                    <div class="metrics-strip">
-                        <div class="metric-item"><div class="metric-value accent">$38M</div><div class="metric-label">Distributed to LPs</div></div>
-                        <div class="metric-item"><div class="metric-value accent">14×</div><div class="metric-label">Return on Lattice exit</div></div>
-                        <div class="metric-item"><div class="metric-value">84%</div><div class="metric-label">Portfolio on/ahead of plan</div></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 3: The Year in Numbers -->
-            <div class="slide" data-index="2">
-                <div class="slide-inner">
-                    <p class="slide-label">03 / 10 · The Year in Numbers</p>
-                    <h2 class="slide-title">2024 by the metrics that matter.</h2>
-                    <div class="kpi-grid">
-                        <div class="kpi-card"><div class="kpi-val">$142M</div><div class="kpi-lbl">AUM</div><div class="kpi-change">↑ 38% YoY</div></div>
-                        <div class="kpi-card"><div class="kpi-val">2.8×</div><div class="kpi-lbl">Portfolio TVPI</div><div class="kpi-change">↑ from 2.1×</div></div>
-                        <div class="kpi-card"><div class="kpi-val">$38M</div><div class="kpi-lbl">LP Distributions</div><div class="kpi-change">↑ Record year</div></div>
-                        <div class="kpi-card"><div class="kpi-val">3</div><div class="kpi-lbl">New Investments</div></div>
-                        <div class="kpi-card"><div class="kpi-val">$340M</div><div class="kpi-lbl">Combined Portfolio ARR</div><div class="kpi-change">↑ 2.4× aggregate</div></div>
-                        <div class="kpi-card"><div class="kpi-val">61</div><div class="kpi-lbl">Avg NPS</div><div class="kpi-change">vs industry avg 42</div></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 4: Portfolio Performance -->
-            <div class="slide" data-index="3">
-                <div class="slide-inner">
-                    <p class="slide-label">04 / 10 · Portfolio Performance</p>
-                    <h2 class="slide-title">Aggregate ARR growth across the portfolio.</h2>
-                    <div class="metrics-strip" style="justify-content:flex-start;">
-                        <div class="metric-item"><div class="metric-value accent">$340M</div><div class="metric-label">Combined Portfolio ARR</div></div>
-                        <div class="metric-item"><div class="metric-value accent">2.4×</div><div class="metric-label">Aggregate Revenue Growth</div></div>
-                        <div class="metric-item"><div class="metric-value">3</div><div class="metric-label">Companies $50M+ ARR</div></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 5: Milestones Timeline -->
-            <div class="slide" data-index="4">
-                <div class="slide-inner">
-                    <p class="slide-label">05 / 10 · Key Milestones</p>
-                    <h2 class="slide-title">A year of decisive moments.</h2>
-                    <div class="timeline-grid">
-                        <div class="tl-card"><div class="tl-q">Q1 2024</div><ul><li>Led Celerity Series A ($18M)</li><li>Lattice Systems Series C closed</li><li>Returned $14M to LPs</li></ul></div>
-                        <div class="tl-card"><div class="tl-q">Q2 2024</div><ul><li>Cascade hits $50M ARR</li><li>Lattice acquisition closes</li><li>$24M additional LP dist.</li></ul></div>
-                        <div class="tl-card"><div class="tl-q">Q3 2024</div><ul><li>Invested in Meridios (seed)</li><li>Fund III first close</li><li>3 companies reach profitability</li></ul></div>
-                        <div class="tl-card"><div class="tl-q">Q4 2024</div><ul><li>AUM reaches $142M</li><li>84% of portfolio on plan</li><li>Fund III 60% deployed</li></ul></div>
-                    </div>
-                    <p style="color:var(--text-muted);font-size:0.8rem;margin-top:8px;"><strong style="color:var(--accent-secondary);">2025 Outlook:</strong> 2–3 new investments · 1–2 exit events expected · Fund IV thesis in development</p>
-                </div>
-            </div>
-
-            <!-- Slide 6: Portfolio Companies Table -->
-            <div class="slide" data-index="5">
-                <div class="slide-inner">
-                    <p class="slide-label">06 / 10 · Portfolio Companies</p>
-                    <h2 class="slide-title">The companies we back.</h2>
-                    <table class="portfolio-table">
-                        <thead><tr><th>Company</th><th>Sector</th><th>Stage</th><th>ARR</th><th>YoY Growth</th><th>Status</th></tr></thead>
-                        <tbody>
-                            <tr><td style="color:#fff;font-weight:600;">Cascade</td><td>Climate infrastructure</td><td>Series B</td><td>$54M</td><td style="color:var(--accent-secondary);">↑ 3.1×</td><td class="status-ahead">Ahead of plan</td></tr>
-                            <tr><td style="color:#fff;font-weight:600;">Celerity</td><td>AI enterprise software</td><td>Series A</td><td>$12M</td><td style="color:var(--accent-secondary);">↑ 4.2×</td><td class="status-onplan">On plan</td></tr>
-                            <tr><td style="color:#fff;font-weight:600;">Fieldwork</td><td>Next-gen logistics</td><td>Series B</td><td>$38M</td><td style="color:var(--accent-secondary);">↑ 2.8×</td><td class="status-ahead">Ahead of plan</td></tr>
-                            <tr><td style="color:#fff;font-weight:600;">Meridios</td><td>Healthcare data</td><td>Seed</td><td>$2M</td><td style="color:var(--text-muted);">New</td><td class="status-onplan">On plan</td></tr>
-                            <tr><td style="color:#fff;font-weight:600;">Archon</td><td>Developer tools</td><td>Series A</td><td>$18M</td><td style="color:var(--accent-secondary);">↑ 2.2×</td><td class="status-onplan">On plan</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Slide 7: Forward Outlook -->
-            <div class="slide" data-index="6">
-                <div class="slide-inner">
-                    <p class="slide-label">07 / 10 · Forward Outlook</p>
-                    <h2 class="slide-title">What we are watching in 2025.</h2>
-                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
-                        <div class="letter-card"><h3 style="color:var(--accent-secondary);margin-bottom:10px;">Opportunities</h3><p style="font-size:0.85rem;">→ AI-native infrastructure companies reaching Series B<br>→ Climate hardware with software moats<br>→ Healthcare data interoperability<br>→ Portfolio expansion into EMEA & APAC</p></div>
-                        <div class="letter-card"><h3 style="color:var(--accent-secondary);margin-bottom:10px;">2025 Targets</h3><p style="font-size:0.85rem;">→ $200M AUM by year-end<br>→ $60M additional LP distributions<br>→ $500M combined portfolio ARR<br>→ 3.2× or higher portfolio TVPI</p></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 8: Risk Overview -->
-            <div class="slide" data-index="7">
-                <div class="slide-inner">
-                    <p class="slide-label">08 / 10 · Risk Overview</p>
-                    <h2 class="slide-title">Material risks and how we are managing them.</h2>
-                    <table class="risk-table">
-                        <thead><tr><th>Risk</th><th>Likelihood</th><th>Impact</th><th>Mitigation</th></tr></thead>
-                        <tbody>
-                            <tr><td style="color:#fff;font-weight:600;">Macro environment & rates</td><td class="risk-high">High</td><td class="risk-high">High</td><td>Fund III weighted toward capital-efficient software with positive unit economics</td></tr>
-                            <tr><td style="color:#fff;font-weight:600;">AI market saturation</td><td class="risk-moderate">Moderate</td><td class="risk-moderate">Moderate</td><td>Two companies repositioned to emphasize data network effects</td></tr>
-                            <tr><td style="color:#fff;font-weight:600;">Key person concentration</td><td class="risk-moderate">Moderate</td><td class="risk-high">High</td><td>Board-level succession planning initiated at all four single-founder companies</td></tr>
-                            <tr><td style="color:#fff;font-weight:600;">LP concentration</td><td class="risk-low">Low</td><td class="risk-moderate">Moderate</td><td>Fund IV targets no single LP above 15% of capital</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Slide 9: Governance & Leadership -->
-            <div class="slide" data-index="8">
-                <div class="slide-inner">
-                    <p class="slide-label">09 / 10 · Governance & Leadership</p>
-                    <h2 class="slide-title">The people stewarding your capital.</h2>
-                    <div class="team-grid">
-                        <div class="team-card"><h3>Marcus Ibe</h3><div class="role">Managing Partner</div><div class="prev">Goldman Sachs MD, Sequoia Capital · Harvard MBA</div></div>
-                        <div class="team-card"><h3>Sophia Dietrich</h3><div class="role">General Partner</div><div class="prev">Bessemer Venture Partners, Palantir · MIT Sloan</div></div>
-                        <div class="team-card"><h3>James Okafor</h3><div class="role">General Partner</div><div class="prev">a16z Partner, Stripe early team · Oxford PPE</div></div>
-                        <div class="team-card"><h3>Nadia Khouri</h3><div class="role">CFO & COO</div><div class="prev">BlackRock Portfolio Mgmt, KPMG · CPA, CFA</div></div>
-                        <div class="team-card"><h3>Robert Langley</h3><div class="role">Independent Director</div><div class="prev">General Atlantic MD · 3× public company board</div></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 10: Closing -->
-            <div class="slide slide-closing" data-index="9">
-                <div class="slide-inner">
-                    <p class="slide-label">10 / 10</p>
-                    <h2>Thank you for your continued trust.</h2>
-                    <p style="color:var(--text-secondary);">Contact: investors@verdantcapital.com<br>Website: verdantcapital.com</p>
-                    <div class="metrics-strip">
-                        <div class="metric-item"><div class="metric-value accent">2.8×</div><div class="metric-label">2024 TVPI</div></div>
-                        <div class="metric-item"><div class="metric-value">$142M</div><div class="metric-label">AUM</div></div>
-                    </div>
-                    <p style="color:var(--text-muted);font-size:0.8rem;">Next Investor Call: March 15, 2025 · 10:00 AM ET</p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <nav class="nav-controls" id="navControls" aria-label="Slide navigation">
-        <button class="nav-btn" id="prevBtn" aria-label="Previous slide">←</button>
-        <div class="dot-nav" id="dotNav" aria-label="Slide indicators"></div>
-        <span class="slide-counter" id="slideCounter" aria-live="polite">01 / 10</span>
-        <button class="nav-btn" id="nextBtn" aria-label="Next slide">→</button>
+    <nav>
+        <a href="https://stealthstrategist.co" class="nav-logo">Stealth Strategist</a>
+        <a href="https://stealthstrategist.co" class="nav-back">All work</a>
     </nav>
-    <div class="kb-hint" id="kbHint">Use ← → arrow keys to navigate</div>
+
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="scroll-indicator">
+            <div class="scroll-line"></div>
+            <span>Scroll</span>
+        </div>
+        <div class="hero-tag">Annual Report 2024 · Fund III</div>
+        <h1 class="hero-title">
+            The numbers
+            <span>build the vision.</span>
+        </h1>
+        <div class="hero-meta">
+            <p class="hero-desc">A data‑rich investor report designed to convey Verdant Capital’s performance, philosophy, and path forward — with the rigor of institutional finance and the soul of a VC.</p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-num">$245M</span>
+                    <span class="stat-label">Fund Size</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">22</span>
+                    <span class="stat-label">Portfolio Cos</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">18.7%</span>
+                    <span class="stat-label">Net IRR</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="overview">
+        <div class="overview-left fade-up">
+            <h2>Performance<br>meets <em>transparency.</em></h2>
+            <p>Verdant Capital needed an annual report that could stand shoulder-to-shoulder with the world's top asset managers. We married BlackRock‑level data architecture with a modern VC narrative — designed to build trust with existing LPs and attract new institutional capital.</p>
+            <div class="pill-tags">
+                <span class="pill active">Annual Report</span>
+                <span class="pill">Investor Relations</span>
+                <span class="pill">Data Visualization</span>
+                <span class="pill">Compliance</span>
+                <span class="pill">48 Pages</span>
+                <span class="pill">Print & Digital</span>
+            </div>
+        </div>
+        <div class="overview-right fade-up fade-up-delay-2">
+            <div class="overview-card">
+                <span class="overview-card-num">01</span>
+                <div class="overview-card-title">Deliverable</div>
+                <div class="overview-card-value">Report</div>
+                <div class="overview-card-sub">Print‑ready PDF + interactive web version</div>
+            </div>
+            <div class="overview-card">
+                <span class="overview-card-num">02</span>
+                <div class="overview-card-title">Timeline</div>
+                <div class="overview-card-value">21 Days</div>
+                <div class="overview-card-sub">From data lock to final delivery</div>
+            </div>
+            <div class="overview-card">
+                <span class="overview-card-num">03</span>
+                <div class="overview-card-title">Sector</div>
+                <div class="overview-card-value">Venture Capital</div>
+                <div class="overview-card-sub">Climate tech, fintech, health</div>
+            </div>
+            <div class="overview-card">
+                <span class="overview-card-num">04</span>
+                <div class="overview-card-title">Output</div>
+                <div class="overview-card-value">INDD + PDF</div>
+                <div class="overview-card-sub">Fully editable InDesign source files</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="slides-section">
+        <div class="slides-header fade-up">
+            <div class="section-label" style="flex:1">Report Preview</div>
+        </div>
+
+        <!-- Hero spread mockup -->
+        <div class="slide-hero fade-up">
+            <div class="slide-hero-bg"></div>
+            <div class="slide-hero-grid">
+                <div class="grid-cell"></div><div class="grid-cell"></div>
+                <div class="grid-cell"></div><div class="grid-cell"></div>
+            </div>
+            <div class="slide-hero-wordmark">Verdant Capital · Fund III · 2024</div>
+            <div class="slide-hero-tag">Annual Report</div>
+            <h2 class="slide-hero-title">BUILDING<br><span>RESILIENT</span><br>FUTURES.</h2>
+            <div class="slide-hero-meta">
+                <div class="slide-hero-meta-item">
+                    <strong>$245M</strong>
+                    Fund III
+                </div>
+                <div class="slide-hero-meta-item">
+                    <strong>18.7%</strong>
+                    Net IRR
+                </div>
+                <div class="slide-hero-meta-item">
+                    <strong>22</strong>
+                    Active investments
+                </div>
+            </div>
+        </div>
+
+        <!-- Report page grid -->
+        <div class="slides-grid">
+            <!-- Financial highlights -->
+            <div class="slide-card card-bar fade-up">
+                <div class="slide-card-overlay"></div>
+                <div class="mini-chart">
+                    <div class="bar" style="height:20px"></div>
+                    <div class="bar fill" style="height:35px"></div>
+                    <div class="bar fill" style="height:48px"></div>
+                    <div class="bar gold" style="height:28px"></div>
+                    <div class="bar fill" style="height:40px"></div>
+                </div>
+                <div>
+                    <div class="card-value">$245<span>M</span></div>
+                    <div class="card-label">Committed capital · Fund III</div>
+                </div>
+            </div>
+
+            <!-- Portfolio snapshot (donut) -->
+            <div class="slide-card fade-up fade-up-delay-1" style="background:linear-gradient(135deg, #11191f 0%, #172026 100%); align-items:center; justify-content:center; flex-direction:column;">
+                <div class="slide-card-overlay"></div>
+                <div class="donut-ring">
+                    <div class="donut-fill"></div>
+                </div>
+                <div style="font-family:var(--font-mono); font-size:10px; letter-spacing:0.15em; color:var(--muted); margin-top:12px;">SECTOR ALLOCATION</div>
+                <div style="display:flex; gap:16px; margin-top:8px;">
+                    <span style="color:var(--accent); font-size:12px;">■ Climate 42%</span>
+                    <span style="color:var(--data-gold); font-size:12px;">■ Fintech 35%</span>
+                    <span style="color:var(--muted); font-size:12px;">■ Health 23%</span>
+                </div>
+            </div>
+
+            <!-- Letter from GP -->
+            <div class="slide-card fade-up fade-up-delay-2" style="background:#0f1417; flex-direction:column; justify-content:center;">
+                <div class="slide-card-overlay"></div>
+                <div class="quote-mini">"Our conviction has never been stronger."</div>
+                <div style="font-family:var(--font-mono); font-size:9px; letter-spacing:0.15em; color:var(--accent); margin-top:16px;">LETTER FROM THE MANAGING PARTNER</div>
+            </div>
+
+            <!-- ESG Impact -->
+            <div class="slide-card fade-up fade-up-delay-3" style="background:#0c1317; flex-direction:column; justify-content:flex-end;">
+                <div class="slide-card-overlay"></div>
+                <div class="card-value">2.4<span>°C</span></div>
+                <div class="card-label">Portfolio alignment · Paris Agreement</div>
+                <div class="timeline-dots" style="margin-top:12px;">
+                    <div class="dot active"></div>
+                    <div class="dot active"></div>
+                    <div class="dot active"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+            </div>
+
+            <!-- 2025 Outlook -->
+            <div class="slide-card fade-up" style="background:#12171b; flex-direction:column; justify-content:center;">
+                <div class="slide-card-overlay"></div>
+                <div class="card-value" style="font-size:32px;">2025<span style="color:var(--accent);"> Outlook</span></div>
+                <div style="font-family:var(--font-mono); font-size:9px; color:var(--muted); margin-top:12px; line-height:1.6;">Deepening climate infrastructure exposure<br>Expanding LP base into institutional mandates</div>
+            </div>
+
+            <!-- Fund performance -->
+            <div class="slide-card card-bar fade-up fade-up-delay-1">
+                <div class="slide-card-overlay"></div>
+                <div style="display:flex; gap:4px; height:45px; margin-bottom:16px;">
+                    <div class="bar fill" style="height:18px"></div>
+                    <div class="bar gold" style="height:25px"></div>
+                    <div class="bar fill" style="height:32px"></div>
+                    <div class="bar fill" style="height:40px"></div>
+                    <div class="bar gold" style="height:45px"></div>
+                </div>
+                <div>
+                    <div class="card-value">18.7<span>%</span></div>
+                    <div class="card-label">Net IRR since inception</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="process-section">
+        <div class="section-label fade-up">How it was built</div>
+        <div class="process-grid" style="margin-top:64px">
+            <div class="process-card fade-up">
+                <div class="process-num">01</div>
+                <div class="process-icon">
+                    <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <circle cx="20" cy="20" r="16"></circle>
+                        <path d="M20 8v12l8 4"></path>
+                    </svg>
+                </div>
+                <div class="process-title">Discovery</div>
+                <div class="process-body">LP interview synthesis, audit partner alignment, and identification of key performance narratives.</div>
+            </div>
+            <div class="process-card fade-up fade-up-delay-1">
+                <div class="process-num">02</div>
+                <div class="process-icon">
+                    <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="8" y="8" width="24" height="4"></rect>
+                        <rect x="8" y="18" width="16" height="4"></rect>
+                        <rect x="8" y="28" width="20" height="4"></rect>
+                    </svg>
+                </div>
+                <div class="process-title">Data Modeling</div>
+                <div class="process-body">Structured raw portfolio data, built compliant financial tables, and designed a visual hierarchy that puts performance first.</div>
+            </div>
+            <div class="process-card fade-up fade-up-delay-2">
+                <div class="process-num">03</div>
+                <div class="process-icon">
+                    <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M8 32L20 8l12 24"></path>
+                        <path d="M12 24h16"></path>
+                    </svg>
+                </div>
+                <div class="process-title">Narrative & Design</div>
+                <div class="process-body">Wove the numbers into a forward‑looking story, then applied a clean, institutional aesthetic with a modern VC edge.</div>
+            </div>
+            <div class="process-card fade-up fade-up-delay-3">
+                <div class="process-num">04</div>
+                <div class="process-icon">
+                    <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <polyline points="8,20 16,28 32,12"></polyline>
+                    </svg>
+                </div>
+                <div class="process-title">Deliver</div>
+                <div class="process-body">Final package included print‑ready InDesign files, an interactive PDF, and a web‑optimized version for LP portals.</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="results-section">
+        <div class="results-header">
+            <h2 class="fade-up">The report<br>that <span>raised the bar.</span></h2>
+            <p class="fade-up fade-up-delay-2">Post‑distribution, LP feedback was unanimous: the report set a new standard for transparency and strategic storytelling within Verdant’s ecosystem.</p>
+        </div>
+        <div class="results-metrics fade-up">
+            <div class="metric">
+                <div class="metric-bar" style="width:92%"></div>
+                <span class="metric-value">92%</span>
+                <div class="metric-label">LP Satisfaction</div>
+                <div class="metric-desc">Surveyed LPs rated the report “institutional grade” and “best in class” among VC peers.</div>
+            </div>
+            <div class="metric">
+                <div class="metric-bar" style="width:65%"></div>
+                <span class="metric-value">+40%</span>
+                <div class="metric-label">LP Engagement</div>
+                <div class="metric-desc">Follow‑up meeting requests and inbound capital inquiries increased by 40% within 60 days.</div>
+            </div>
+            <div class="metric">
+                <div class="metric-bar" style="width:100%"></div>
+                <span class="metric-value">1.8×</span>
+                <div class="metric-label">Fund III Oversubscribed</div>
+                <div class="metric-desc">The report played a pivotal role in closing the fund above its initial target, with new institutional mandates.</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonial-section">
+        <div class="testimonial-content fade-up">
+            <p class="testimonial-quote">"This is more than a report — it’s the articulation of our entire investment philosophy. Our LPs now understand not just what we do, but why it matters."</p>
+            <div class="testimonial-author">
+                <div class="testimonial-avatar">MK</div>
+                <div>
+                    <span class="testimonial-name">Michael Kessel</span>
+                    <span class="testimonial-role">Managing Partner, Verdant Capital</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="cta-eyebrow">Ready to build?</div>
+        <h2 class="cta-title">
+            READY TO<br><span>BUILD TRUST?</span>
+        </h2>
+        <a href="https://stealthstrategist.co/#contact" class="cta-btn">
+            Start a project
+            <span class="cta-btn-arrow">→</span>
+        </a>
+    </section>
+
+    <footer>
+        <div class="footer-logo">Stealth Strategist</div>
+        <div class="footer-right">© 2025 · Investor Communication Design</div>
+    </footer>
 
     <script>
-        (function() {
-            const slides = document.querySelectorAll('.slide');
-            const totalSlides = slides.length;
-            let currentIndex = 0, isTransitioning = false;
-            const prevBtn = document.getElementById('prevBtn'), nextBtn = document.getElementById('nextBtn');
-            const slideCounter = document.getElementById('slideCounter'), dotNav = document.getElementById('dotNav'), kbHint = document.getElementById('kbHint');
-            for(let i=0;i<totalSlides;i++){const dot=document.createElement('span');dot.className='dot';dot.setAttribute('aria-label','Go to slide '+(i+1));dot.setAttribute('role','button');dot.setAttribute('tabindex','0');dot.addEventListener('click',()=>goToSlide(i));dotNav.appendChild(dot);}
-            const dots=dotNav.querySelectorAll('.dot');
-            function updateUI(){const num=String(currentIndex+1).padStart(2,'0');slideCounter.textContent=num+' / '+totalSlides;dots.forEach((d,i)=>d.classList.toggle('active',i===currentIndex));prevBtn.disabled=currentIndex===0;nextBtn.disabled=currentIndex===totalSlides-1;slides.forEach((s,i)=>{s.classList.remove('active','exit-left','exit-right');if(i===currentIndex)s.classList.add('active');});}
-            function goToSlide(index){if(isTransitioning||index<0||index>=totalSlides||index===currentIndex)return;isTransitioning=true;const oldIndex=currentIndex;const goingForward=index>oldIndex;slides[oldIndex].classList.remove('active');slides[oldIndex].classList.add(goingForward?'exit-left':'exit-right');currentIndex=index;updateUI();setTimeout(()=>{slides[oldIndex].classList.remove('exit-left','exit-right');isTransitioning=false;},550);}
-            function goNext(){if(currentIndex<totalSlides-1)goToSlide(currentIndex+1);}
-            function goPrev(){if(currentIndex>0)goToSlide(currentIndex-1);}
-            nextBtn.addEventListener('click',goNext);prevBtn.addEventListener('click',goPrev);
-            document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='Right'){e.preventDefault();goNext();hideKbHint();}else if(e.key==='ArrowLeft'||e.key==='Left'){e.preventDefault();goPrev();hideKbHint();}else if(e.key==='Home'){e.preventDefault();goToSlide(0);}else if(e.key==='End'){e.preventDefault();goToSlide(totalSlides-1);}});
-            let touchStartX=0;const carousel=document.getElementById('carousel');
-            carousel.addEventListener('touchstart',function(e){touchStartX=e.changedTouches[0].screenX;},{passive:true});
-            carousel.addEventListener('touchend',function(e){const diff=touchStartX-e.changedTouches[0].screenX;if(Math.abs(diff)>60){if(diff>0)goNext();else goPrev();hideKbHint();}},{passive:true});
-            let wheelTimeout;carousel.addEventListener('wheel',function(e){if(wheelTimeout)return;wheelTimeout=setTimeout(()=>{wheelTimeout=null;},800);if(Math.abs(e.deltaY)>30||Math.abs(e.deltaX)>30){if(e.deltaY>0||e.deltaX>0)goNext();else goPrev();hideKbHint();}},{passive:true});
-            function hideKbHint(){if(kbHint){kbHint.style.opacity='0';setTimeout(()=>{if(kbHint)kbHint.style.display='none';},600);}}
-            setTimeout(()=>{if(kbHint&&kbHint.style.opacity!=='0'){kbHint.style.transition='opacity 0.8s';kbHint.style.opacity='0';setTimeout(()=>{if(kbHint)kbHint.style.display='none';},800);}},10000);
-            updateUI();slides[0].classList.add('active');
-        })();
+        const cursor = document.getElementById('cursor');
+        const cursorRing = document.getElementById('cursorRing');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.transform = `translate(${e.clientX - 6}px, ${e.clientY - 6}px)`;
+            cursorRing.style.transform = `translate(${e.clientX - 18}px, ${e.clientY - 18}px)`;
+        });
+
+        const fadeEls = document.querySelectorAll('.fade-up');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+        fadeEls.forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
