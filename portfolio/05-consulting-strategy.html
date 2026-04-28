@@ -3,314 +3,1078 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arcana Strategy — Consulting Deck | Stealth Strategist</title>
-    <meta name="description" content="Arcana Strategy Group: Rebuilding for sustainable growth. Strategy deliverable for Stellarton Foods Executive Committee.">
+    <title>Stellarton Foods — Turnaround Strategy | Stealth Strategist</title>
+    <meta name="description" content="Data-driven strategy deck for Stellarton Foods' operational turnaround and growth blueprint. The presentation that secured board approval.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-primary: #0a0b0f; --bg-secondary: #111318; --bg-card: #161920; --bg-card-hover: #1a1e28;
-            --text-primary: #f0f0f2; --text-secondary: #b0b3bd; --text-muted: #6b6f7b;
-            --accent: #d85a30; --accent-glow: rgba(216,90,48,0.25); --accent-secondary: #F0997B;
-            --border: #1e2130; --border-light: #2a2d3a; --success: #34d399; --danger: #f87171; --warning: #fbbf24;
-            --gradient-hero: linear-gradient(160deg, #0a0b0f 0%, #1c1412 40%, #0f1729 70%, #0a0b0f 100%);
-            --gradient-card: linear-gradient(145deg, #161920 0%, #111318 100%);
-            --shadow-lg: 0 25px 60px rgba(0,0,0,0.5); --shadow-card: 0 4px 20px rgba(0,0,0,0.3);
-            --radius-sm: 8px; --radius-md: 14px; --radius-lg: 20px; --radius-xl: 28px;
+            --bg: #060a0e;
+            --white: #ffffff;
+            --navy: #0d1b2a;
+            --slate: #1b2229;
+            --panel-light: #f4f6f9;
+            --text-dark: #1a1e24;
+            --text-secondary-dark: #4a5568;
+            --muted-dark: #7b8794;
+            --mid: #2d3748;
+            --accent: #e53e3e;           /* boardroom red - urgency & action */
+            --accent-blue: #3182ce;      /* calm strategic blue */
+            --accent-teal: #319795;      /* growth green/teal */
+            --data-gold: #c9a84c;
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
             --transition-smooth: cubic-bezier(0.4,0,0.2,1);
-            --font-display: 'Inter', system-ui, -apple-system, sans-serif;
-            --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
         }
-        *{margin:0;padding:0;box-sizing:border-box;}
-        html{font-size:16px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
-        body{font-family:var(--font-display);background:var(--bg-primary);color:var(--text-primary);min-height:100vh;overflow-x:hidden;line-height:1.6;letter-spacing:-0.01em;}
-        .brand-bar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 28px;pointer-events:none;transition:opacity 0.4s ease;}
-        .brand-bar>*{pointer-events:auto;}
-        .brand-logo{font-weight:800;font-size:1.25rem;letter-spacing:-0.03em;color:#fff;text-decoration:none;display:flex;align-items:center;gap:10px;transition:opacity 0.3s;}
-        .brand-logo:hover{opacity:0.8;}
-        .brand-logo .logo-mark{width:34px;height:34px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:900;color:#fff;box-shadow:0 0 20px var(--accent-glow);}
-        .brand-back{font-size:0.85rem;font-weight:500;color:var(--text-secondary);text-decoration:none;letter-spacing:-0.01em;transition:color 0.3s;display:flex;align-items:center;gap:6px;}
-        .brand-back:hover{color:#fff;}
-        .brand-back .arrow{display:inline-block;transition:transform 0.3s;}
-        .brand-back:hover .arrow{transform:translateX(-3px);}
 
-        .carousel-container{width:100%;height:100vh;height:100dvh;position:relative;overflow:hidden;background:var(--bg-primary);}
-        .slides-wrapper{width:100%;height:100%;position:relative;}
-        .slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.55s var(--transition-smooth),transform 0.55s var(--transition-smooth);transform:scale(0.98);padding:80px 40px 60px;will-change:opacity,transform;}
-        .slide.active{opacity:1;pointer-events:auto;transform:scale(1);z-index:10;}
-        .slide.exit-left{opacity:0;transform:scale(0.96) translateX(-30px);}
-        .slide.exit-right{opacity:0;transform:scale(0.96) translateX(30px);}
-        .slide-inner{width:100%;max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:24px;position:relative;}
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            background: var(--bg);
+            color: var(--text-dark);
+            font-family: var(--font-body);
+            font-weight: 400;
+            overflow-x: hidden;
+        }
 
-        .slide-cover .slide-inner{text-align:center;align-items:center;gap:32px;max-width:900px;}
-        .slide-cover .tagline{font-size:1rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);font-family:var(--font-mono);font-size:0.8rem;}
-        .slide-cover h1{font-size:clamp(2.6rem,5.5vw,4.2rem);font-weight:800;letter-spacing:-0.04em;line-height:1.08;max-width:750px;background:linear-gradient(180deg,#ffffff 0%,#f0d0c0 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-        .slide-cover .subtitle{font-size:1.2rem;color:var(--text-secondary);max-width:600px;line-height:1.5;font-weight:400;}
-        .slide-cover .meta-strip{display:flex;gap:24px;flex-wrap:wrap;justify-content:center;font-size:0.8rem;color:var(--text-muted);font-family:var(--font-mono);}
+        /* Custom cursor */
+        .cursor {
+            width: 12px; height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+            position: fixed;
+            top: 0; left: 0;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: transform 0.15s ease;
+        }
+        .cursor-ring {
+            width: 36px; height: 36px;
+            border: 1px solid rgba(229,62,62,0.5);
+            border-radius: 50%;
+            position: fixed;
+            top: 0; left: 0;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.4s ease, width 0.3s, height 0.3s;
+        }
 
-        .slide-label{font-family:var(--font-mono);font-size:0.7rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:4px;}
-        .slide-title{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;letter-spacing:-0.03em;line-height:1.2;margin-bottom:8px;}
-        .slide-subtitle{font-size:1rem;color:var(--text-secondary);max-width:600px;line-height:1.5;}
+        /* NAV */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0;
+            z-index: 100;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 24px 48px;
+            mix-blend-mode: difference;
+        }
+        .nav-logo {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+        }
+        .nav-back {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.6;
+            transition: opacity 0.2s;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .nav-back:hover { opacity: 1; }
+        .nav-back::before { content: '←'; }
 
-        .scr-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 22px;transition:all 0.35s ease;}
-        .scr-card:hover{border-color:var(--border-light);background:var(--bg-card-hover);transform:translateY(-2px);box-shadow:var(--shadow-card);}
-        .scr-card h3{font-size:1rem;font-weight:700;color:#fff;margin-bottom:6px;}
-        .scr-card p{font-size:0.85rem;color:var(--text-secondary);line-height:1.5;}
+        /* HERO (with Bain newspaper grittiness) */
+        .hero {
+            min-height: 100vh;
+            display: flex; flex-direction: column; justify-content: flex-end;
+            padding: 0 48px 64px;
+            position: relative;
+            overflow: hidden;
+            color: var(--white);
+        }
+        .hero-bg {
+            position: absolute; inset: 0;
+            background:
+                /* gritty B&W photo effect via gradient + noise */
+                radial-gradient(ellipse 70% 50% at 50% 30%, rgba(6,10,14,0.8) 0%, rgba(6,10,14,0.9) 70%),
+                linear-gradient(135deg, #0a0f14 0%, #1a2027 100%);
+            background-blend-mode: multiply;
+        }
+        .hero-bg::after {
+            content: '';
+            position: absolute; inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        .hero-accent-line {
+            position: absolute; top: 35%; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(229,62,62,0.4), transparent);
+            box-shadow: 0 0 20px rgba(229,62,62,0.3);
+        }
+        .hero-tag {
+            position: relative;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 32px;
+            display: flex; align-items: center; gap: 16px;
+        }
+        .hero-tag::before {
+            content: '';
+            display: inline-block;
+            width: 32px; height: 1px;
+            background: var(--accent);
+        }
+        .hero-title {
+            position: relative;
+            font-family: var(--font-display);
+            font-size: clamp(56px, 9vw, 120px);
+            line-height: 0.92;
+            letter-spacing: -0.02em;
+            font-weight: 700;
+        }
+        .hero-title span {
+            display: block;
+            font-style: italic;
+            font-weight: 400;
+        }
+        .hero-meta {
+            position: relative;
+            margin-top: 48px;
+            display: flex; gap: 64px; align-items: flex-end;
+        }
+        .hero-desc {
+            max-width: 380px;
+            font-size: 15px;
+            line-height: 1.7;
+            color: #b0b8c1;
+        }
+        .hero-stats {
+            display: flex; gap: 48px;
+            margin-left: auto;
+        }
+        .stat-item { text-align: right; }
+        .stat-num {
+            font-family: var(--font-display);
+            font-size: 42px;
+            line-height: 1;
+            color: var(--data-gold);
+            display: block;
+        }
+        .stat-label {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #8899aa;
+            margin-top: 4px;
+        }
+        .scroll-indicator {
+            position: absolute;
+            right: 48px; bottom: 64px;
+            display: flex; flex-direction: column; align-items: center; gap: 8px;
+            opacity: 0.3;
+        }
+        .scroll-indicator span {
+            font-family: var(--font-mono);
+            font-size: 9px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            writing-mode: vertical-rl;
+            color: var(--white);
+        }
+        .scroll-line {
+            width: 1px; height: 60px;
+            background: linear-gradient(to bottom, var(--accent), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.3; transform: scaleY(1); }
+            50% { opacity: 1; transform: scaleY(0.7); }
+        }
 
-        .rec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:12px;}
-        .rec-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 20px;transition:all 0.35s ease;border-left:3px solid var(--accent);}
-        .rec-card:hover{border-color:var(--border-light);background:var(--bg-card-hover);transform:translateY(-2px);box-shadow:var(--shadow-card);}
-        .rec-card .rec-num{font-family:var(--font-mono);font-size:0.7rem;color:var(--accent);font-weight:700;margin-bottom:6px;}
-        .rec-card h3{font-size:1rem;font-weight:700;color:#fff;margin-bottom:8px;}
-        .rec-card p{font-size:0.82rem;color:var(--text-secondary);line-height:1.5;}
-        .rec-card .impact-tag{display:inline-block;margin-top:8px;padding:4px 10px;border-radius:10px;font-size:0.7rem;font-weight:700;background:rgba(216,90,48,0.12);color:var(--accent-secondary);}
+        /* SECTION DIVIDER */
+        .section-label {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--muted-dark);
+            display: flex; align-items: center; gap: 20px;
+        }
+        .section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #cbd5e0;
+        }
 
-        .fin-table{width:100%;border-collapse:separate;border-spacing:0;margin-top:12px;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border);font-size:0.82rem;}
-        .fin-table th{background:var(--bg-card);padding:14px 16px;text-align:center;font-weight:700;color:#fff;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid var(--border);}
-        .fin-table th:first-child{text-align:left;}
-        .fin-table td{background:var(--bg-secondary);padding:12px 16px;text-align:center;border-bottom:1px solid var(--border);color:var(--text-secondary);}
-        .fin-table td:first-child{text-align:left;font-weight:600;color:#fff;}
-        .fin-table .positive{color:var(--success);font-weight:600;}
+        /* OVERVIEW (light background for contrast) */
+        .overview {
+            padding: 120px 48px;
+            background: var(--white);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        .overview-left h2 {
+            font-family: var(--font-display);
+            font-size: clamp(48px, 6vw, 80px);
+            line-height: 1.1;
+            margin-bottom: 32px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        .overview-left h2 em {
+            font-style: italic;
+            color: var(--accent);
+        }
+        .overview-left p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-secondary-dark);
+            max-width: 420px;
+            margin-bottom: 48px;
+        }
+        .pill-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+        .pill {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 8px 16px;
+            border: 1px solid #cbd5e0;
+            color: var(--text-secondary-dark);
+            border-radius: 100px;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .pill:hover { border-color: var(--accent); color: var(--accent); }
+        .pill.active { border-color: var(--accent); color: var(--accent); background: rgba(229,62,62,0.05); }
+        .overview-right {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+            border-radius: 4px; overflow: hidden;
+        }
+        .overview-card {
+            background: #f8fafc;
+            padding: 40px 32px;
+            position: relative;
+            overflow: hidden;
+            transition: background 0.3s;
+        }
+        .overview-card:hover { background: #eef2f6; }
+        .overview-card-num {
+            font-family: var(--font-display);
+            font-size: 64px;
+            line-height: 1;
+            color: rgba(26,30,36,0.06);
+            position: absolute;
+            top: 16px; right: 20px;
+        }
+        .overview-card-title {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+        .overview-card-value {
+            font-family: var(--font-display);
+            font-size: 36px;
+            line-height: 1;
+            color: var(--text-dark);
+        }
+        .overview-card-sub {
+            font-size: 13px;
+            color: var(--muted-dark);
+            margin-top: 8px;
+            line-height: 1.5;
+        }
 
-        .phase-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:12px;}
-        .phase-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px 18px;transition:all 0.35s ease;}
-        .phase-card:hover{border-color:var(--border-light);background:var(--bg-card-hover);transform:translateY(-2px);}
-        .phase-card .phase-tag{font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:6px;}
-        .phase-card h3{font-size:0.95rem;font-weight:700;color:#fff;margin-bottom:6px;}
-        .phase-card p{font-size:0.78rem;color:var(--text-secondary);line-height:1.5;}
+        /* SLIDES SECTION (clean McKinsey-style white panels) */
+        .slides-section {
+            padding: 0 48px 120px;
+            background: var(--white);
+        }
+        .slides-header {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 48px;
+        }
+        .slides-header h3 {
+            font-family: var(--font-display);
+            font-size: 48px;
+            line-height: 1;
+            color: var(--text-dark);
+        }
+        .slide-hero {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #f0f2f5;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 2px;
+            position: relative;
+            display: flex; flex-direction: column; justify-content: flex-end;
+            padding: 48px 64px;
+            background: linear-gradient(135deg, #ffffff 0%, #f4f6f9 100%);
+        }
+        .slide-hero-grid {
+            position: absolute;
+            top: -8%; right: -5%;
+            width: 50%;
+            aspect-ratio: 1;
+            background:
+                repeating-linear-gradient(45deg, rgba(49,130,206,0.06) 0px, rgba(49,130,206,0.06) 2px, transparent 2px, transparent 8px);
+            border: 1px solid rgba(49,130,206,0.15);
+        }
+        .slide-hero-wordmark {
+            position: absolute;
+            top: 40px; left: 64px;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--muted-dark);
+        }
+        .slide-hero-tag {
+            position: relative;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .slide-hero-title {
+            position: relative;
+            font-family: var(--font-display);
+            font-size: clamp(42px, 6vw, 80px);
+            line-height: 1.0;
+            color: var(--text-dark);
+            max-width: 60%;
+            font-weight: 700;
+        }
+        .slide-hero-title span {
+            color: var(--accent-blue);
+            font-style: italic;
+        }
+        .slide-hero-meta {
+            position: relative;
+            margin-top: 24px;
+            display: flex; gap: 32px;
+            align-items: center;
+        }
+        .slide-hero-meta-item {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--muted-dark);
+        }
+        .slide-hero-meta-item strong {
+            display: block;
+            font-size: 20px;
+            color: var(--accent);
+            font-family: var(--font-display);
+            letter-spacing: 0.02em;
+            margin-bottom: 2px;
+        }
 
-        .risk-table{width:100%;border-collapse:separate;border-spacing:0;margin-top:12px;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border);font-size:0.78rem;}
-        .risk-table th{background:var(--bg-card);padding:12px 14px;text-align:left;font-weight:700;color:#fff;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid var(--border);}
-        .risk-table td{background:var(--bg-secondary);padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text-secondary);}
-        .risk-table tr:last-child td{border-bottom:none;}
+        .slides-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+        }
+        .slide-card {
+            aspect-ratio: 16/9;
+            position: relative;
+            overflow: hidden;
+            background: #f8fafc;
+            display: flex; align-items: flex-end;
+            padding: 20px 24px;
+            cursor: pointer;
+            transition: transform 0.4s ease;
+        }
+        .slide-card:hover { transform: scale(0.98); }
+        .slide-card:hover .slide-card-overlay { opacity: 1; }
+        .slide-card-overlay {
+            position: absolute; inset: 0;
+            border: 2px solid rgba(229,62,62,0.3);
+            background: rgba(229,62,62,0.04);
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
 
-        .decision-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:12px;}
-        .decision-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 20px;transition:all 0.35s ease;border-top:3px solid var(--accent);}
-        .decision-card:hover{border-color:var(--border-light);background:var(--bg-card-hover);transform:translateY(-2px);box-shadow:var(--shadow-card);}
-        .decision-card .dec-num{font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);font-weight:700;margin-bottom:8px;}
-        .decision-card h3{font-size:0.95rem;font-weight:700;color:#fff;margin-bottom:6px;}
-        .decision-card p{font-size:0.8rem;color:var(--text-secondary);line-height:1.5;}
+        /* Chart style cards */
+        .bar-chart-mini {
+            display: flex; align-items: flex-end; gap: 6px;
+            height: 45px; margin-bottom: 8px;
+        }
+        .bar {
+            width: 14px;
+            background: #cbd5e0;
+            border-radius: 2px 2px 0 0;
+        }
+        .bar.red { background: var(--accent); }
+        .bar.blue { background: var(--accent-blue); }
+        .bar.teal { background: var(--accent-teal); }
+        .card-num {
+            font-family: var(--font-display);
+            font-size: 36px;
+            line-height: 1;
+            color: var(--text-dark);
+        }
+        .card-num span { color: var(--accent); }
+        .card-label {
+            font-family: var(--font-mono);
+            font-size: 9px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--muted-dark);
+            margin-top: 6px;
+        }
+        .matrix-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+            width: 60%; margin: 8px 0;
+        }
+        .matrix-cell {
+            background: #e2e8f0; padding: 6px 10px;
+            font-family: var(--font-mono); font-size: 8px; letter-spacing: 0.05em;
+            color: var(--text-dark); text-transform: uppercase;
+        }
+        .matrix-cell.highlight { background: var(--accent); color: #fff; }
+        .waterfall {
+            display: flex; align-items: flex-end; gap: 4px; height: 50px;
+        }
+        .waterfall-bar {
+            width: 10px; background: var(--accent-blue);
+            position: relative;
+        }
+        .waterfall-bar.total { background: var(--accent); height: 50px; }
+        .waterfall-bar.negative { background: #e53e3e; }
+        .waterfall-connector {
+            width: 4px; height: 1px; background: #cbd5e0; align-self: flex-end;
+        }
 
-        .slide-closing .slide-inner{text-align:center;align-items:center;justify-content:center;gap:28px;max-width:750px;}
-        .slide-closing h2{font-size:clamp(2rem,4.5vw,3.4rem);font-weight:800;letter-spacing:-0.04em;line-height:1.1;background:linear-gradient(180deg,#ffffff 0%,#f0d0c0 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+        /* PROCESS SECTION (dark background) */
+        .process-section {
+            padding: 120px 48px;
+            background: var(--bg);
+            color: var(--white);
+        }
+        .process-section .section-label {
+            color: #8899aa;
+            margin-bottom: 64px;
+        }
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2px;
+        }
+        .process-card {
+            padding: 48px 36px;
+            background: #0d1218;
+            position: relative;
+            overflow: hidden;
+        }
+        .process-card:first-child { background: var(--accent); }
+        .process-num {
+            font-family: var(--font-display);
+            font-size: 80px;
+            line-height: 1;
+            color: rgba(255,255,255,0.06);
+            position: absolute;
+            top: -8px; left: 24px;
+        }
+        .process-card:first-child .process-num { color: rgba(0,0,0,0.15); }
+        .process-icon {
+            width: 40px; height: 40px;
+            margin-bottom: 24px;
+            position: relative;
+            color: var(--accent);
+            stroke-width: 1.5;
+        }
+        .process-card:first-child .process-icon { color: #fff; }
+        .process-title {
+            font-family: var(--font-display);
+            font-size: 28px;
+            line-height: 1;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        .process-card:first-child .process-title { color: #fff; }
+        .process-body {
+            font-size: 13px;
+            line-height: 1.7;
+            color: #8899aa;
+        }
+        .process-card:first-child .process-body { color: rgba(255,255,255,0.8); }
 
-        .nav-controls{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:20px;z-index:90;background:rgba(22,25,32,0.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:40px;padding:10px 22px;box-shadow:var(--shadow-lg);transition:all 0.3s;}
-        .nav-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--border-light);background:var(--bg-card);color:#fff;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:all 0.3s;-webkit-tap-highlight-color:transparent;user-select:none;}
-        .nav-btn:hover{background:#fff;color:#000;border-color:#fff;box-shadow:0 0 20px rgba(255,255,255,0.2);}
-        .nav-btn:active{transform:scale(0.93);}
-        .nav-btn:disabled{opacity:0.3;cursor:default;pointer-events:none;}
-        .slide-counter{font-family:var(--font-mono);font-size:0.8rem;color:var(--text-secondary);font-weight:500;letter-spacing:0.04em;white-space:nowrap;user-select:none;min-width:70px;text-align:center;}
-        .dot-nav{display:flex;gap:6px;align-items:center;}
-        .dot{width:7px;height:7px;border-radius:50%;background:var(--border-light);cursor:pointer;transition:all 0.35s;-webkit-tap-highlight-color:transparent;}
-        .dot.active{background:#fff;width:20px;border-radius:4px;box-shadow:0 0 10px rgba(255,255,255,0.4);}
-        .dot:hover{background:#aaa;}
-        .kb-hint{position:fixed;bottom:110px;left:50%;transform:translateX(-50%);font-size:0.7rem;color:var(--text-muted);z-index:85;pointer-events:none;transition:opacity 0.6s;font-family:var(--font-mono);letter-spacing:0.04em;}
+        /* RESULTS (light) */
+        .results-section {
+            padding: 120px 48px;
+            background: var(--white);
+        }
+        .results-header {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+            align-items: end; margin-bottom: 80px;
+        }
+        .results-header h2 {
+            font-family: var(--font-display);
+            font-size: clamp(56px, 7vw, 96px);
+            line-height: 0.92;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        .results-header h2 span { color: var(--accent); }
+        .results-header p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: var(--text-secondary-dark);
+            max-width: 360px;
+        }
+        .results-metrics {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            border: 1px solid #e2e8f0;
+        }
+        .metric {
+            padding: 56px 48px;
+            border-right: 1px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+        }
+        .metric:last-child { border-right: none; }
+        .metric-bar {
+            position: absolute;
+            bottom: 0; left: 0;
+            height: 3px;
+            background: var(--accent);
+            transition: width 1.5s ease;
+        }
+        .metric-value {
+            font-family: var(--font-display);
+            font-size: 72px;
+            line-height: 1;
+            color: var(--text-dark);
+            display: block;
+        }
+        .metric-label {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--muted-dark);
+            margin-top: 8px;
+        }
+        .metric-desc {
+            font-size: 13px;
+            color: var(--text-secondary-dark);
+            margin-top: 12px;
+            line-height: 1.6;
+        }
 
-        @media(max-width:768px){
-            .slide{padding:70px 16px 40px;}
-            .slide-cover h1{font-size:2rem;}
-            .rec-grid,.phase-grid,.decision-grid{grid-template-columns:1fr;}
-            .fin-table,.risk-table{font-size:0.7rem;}
-            .fin-table th,.fin-table td,.risk-table th,.risk-table td{padding:8px 6px;}
-            .nav-controls{gap:10px;padding:8px 14px;border-radius:30px;bottom:16px;}
-            .nav-btn{width:34px;height:34px;font-size:0.9rem;}
-            .slide-counter{font-size:0.7rem;min-width:50px;}
-            .dot{width:5px;height:5px;}
-            .dot.active{width:14px;}
-            .kb-hint{bottom:90px;font-size:0.65rem;}
-            .brand-bar{padding:12px 14px;}
-            .brand-logo{font-size:1rem;}
-            .brand-logo .logo-mark{width:28px;height:28px;font-size:0.65rem;}
+        /* TESTIMONIAL (red accent) */
+        .testimonial-section {
+            padding: 80px 48px 120px;
+            background: var(--accent);
+            position: relative;
+            overflow: hidden;
+            color: #fff;
+        }
+        .testimonial-section::before {
+            content: '"';
+            position: absolute;
+            top: -40px; left: 32px;
+            font-family: var(--font-display);
+            font-size: 400px;
+            color: rgba(255,255,255,0.08);
+            line-height: 1;
+            pointer-events: none;
+        }
+        .testimonial-content {
+            max-width: 800px;
+            position: relative;
+        }
+        .testimonial-quote {
+            font-family: var(--font-display);
+            font-size: clamp(32px, 4vw, 56px);
+            line-height: 1.05;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+        .testimonial-author {
+            display: flex; align-items: center; gap: 20px;
+        }
+        .testimonial-avatar {
+            width: 48px; height: 48px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-family: var(--font-display);
+            font-size: 18px;
+            color: var(--accent);
+        }
+        .testimonial-name {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            display: block;
+        }
+        .testimonial-role {
+            font-size: 12px;
+            color: rgba(255,255,255,0.7);
+            margin-top: 2px;
+        }
+
+        /* CTA (dark) */
+        .cta-section {
+            padding: 120px 48px;
+            background: var(--bg);
+            display: flex; flex-direction: column; align-items: center;
+            text-align: center;
+            position: relative;
+            color: var(--white);
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(229,62,62,0.07) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .cta-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 32px;
+        }
+        .cta-title {
+            font-family: var(--font-display);
+            font-size: clamp(64px, 9vw, 120px);
+            line-height: 0.92;
+            margin-bottom: 48px;
+            font-weight: 700;
+        }
+        .cta-title span {
+            font-style: italic;
+            font-weight: 400;
+        }
+        .cta-btn {
+            display: inline-flex; align-items: center; gap: 16px;
+            background: var(--white);
+            color: var(--bg);
+            font-family: var(--font-mono);
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 18px 40px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .cta-btn:hover { background: var(--accent); color: #fff; transform: scale(1.02); }
+        .cta-btn-arrow { font-size: 16px; }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid var(--mid);
+            padding: 40px 48px;
+            display: flex; align-items: center; justify-content: space-between;
+            background: var(--bg);
+            color: #8899aa;
+        }
+        .footer-logo {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+        .footer-right {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* Animations */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .fade-up-delay-1 { transition-delay: 0.1s; }
+        .fade-up-delay-2 { transition-delay: 0.2s; }
+        .fade-up-delay-3 { transition-delay: 0.3s; }
+        .fade-up-delay-4 { transition-delay: 0.4s; }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(60px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hero-tag { animation: fadeInUp 0.8s ease 0.2s both; }
+        .hero-title { animation: fadeInUp 0.9s ease 0.35s both; }
+        .hero-meta { animation: fadeInUp 0.8s ease 0.55s both; }
+
+        @media (max-width: 900px) {
+            nav { padding: 20px 24px; }
+            .hero { padding: 0 24px 48px; }
+            .hero-stats { display: none; }
+            .overview { grid-template-columns: 1fr; padding: 80px 24px; }
+            .slides-section { padding: 0 24px 80px; }
+            .slides-grid { grid-template-columns: 1fr 1fr; }
+            .process-section { padding: 80px 24px; }
+            .process-grid { grid-template-columns: 1fr 1fr; }
+            .results-section { padding: 80px 24px; }
+            .results-header { grid-template-columns: 1fr; gap: 32px; }
+            .results-metrics { grid-template-columns: 1fr; }
+            .metric { border-right: none; border-bottom: 1px solid #e2e8f0; }
+            .testimonial-section { padding: 64px 24px; }
+            .cta-section { padding: 80px 24px; }
+            footer { padding: 32px 24px; flex-direction: column; gap: 16px; text-align: center; }
         }
     </style>
 </head>
 <body>
-    <header class="brand-bar">
-        <a href="../index.html" class="brand-logo"><span class="logo-mark">A</span> Arcana</a>
-        <a href="../index.html#work" class="brand-back"><span class="arrow">←</span> Portfolio</a>
-    </header>
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-ring" id="cursorRing" style="transform: translate(-18px, -18px);"></div>
 
-    <div class="carousel-container" id="carousel">
-        <div class="slides-wrapper">
-
-            <!-- Slide 1: Cover -->
-            <div class="slide slide-cover active" data-index="0">
-                <div class="slide-inner">
-                    <p class="tagline">Confidential · Strategy Deliverable</p>
-                    <h1>Rebuilding for sustainable growth.</h1>
-                    <p class="subtitle">Prepared for Stellarton Foods — Executive Committee</p>
-                    <div class="meta-strip">
-                        <span>Growth & transformation strategy</span>
-                        <span>·</span>
-                        <span>January 2025</span>
-                        <span>·</span>
-                        <span>Privileged & Confidential</span>
-                    </div>
-                    <p style="color:var(--text-muted);font-size:0.85rem;margin-top:12px;"><em>"Growth is a strategy. Scale is an architecture. Most organizations confuse the two."</em></p>
-                </div>
-            </div>
-
-            <!-- Slide 2: Situation · Complication · Resolution -->
-            <div class="slide" data-index="1">
-                <div class="slide-inner">
-                    <p class="slide-label">02 / 10 · Situation · Complication · Resolution</p>
-                    <h2 class="slide-title">Stellarton has the assets. The structure is holding growth back.</h2>
-                    <div class="rec-grid" style="grid-template-columns:1fr;">
-                        <div class="scr-card" style="border-left:3px solid var(--accent-secondary);"><h3 style="color:var(--accent-secondary);">Situation</h3><p>Stellarton holds a #2 market position in premium prepared foods with 22% revenue growth over 3 years — yet EBITDA has compressed from 18% to 11% in the same period.</p></div>
-                        <div class="scr-card" style="border-left:3px solid var(--warning);"><h3 style="color:var(--warning);">Complication</h3><p>Three structural inefficiencies: SKU proliferation (487 SKUs, 38% generating under 1% of revenue), fragmented distribution (6 overlapping logistics partners), and a 22-month product development cycle.</p></div>
-                        <div class="scr-card" style="border-left:3px solid var(--success);"><h3 style="color:var(--success);">Resolution</h3><p>Focused structural change can restore 600–800 basis points of margin. A three-phase transformation can return Stellarton to 17–19% EBITDA within 18 months without sacrificing revenue momentum.</p></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 3: SKU Portfolio Analysis -->
-            <div class="slide" data-index="2">
-                <div class="slide-inner">
-                    <p class="slide-label">03 / 10 · SKU Portfolio Analysis</p>
-                    <h2 class="slide-title">Not all growth is worth keeping.</h2>
-                    <div class="rec-grid">
-                        <div class="rec-card"><div class="rec-num">142 SKUs — Discontinue</div><h3>Exit immediately</h3><p>Below 8% contribution margin and declining volume. Eliminating them frees $12M in working capital and reduces complexity by 29%.</p><span class="impact-tag">Phase out in 90 days</span></div>
-                        <div class="rec-card"><div class="rec-num">67 SKUs — Invest</div><h3>Strategic intervention</h3><p>High-growth, margin-negative products that can reach profitability with targeted price increases of 4–7% and volume scale.</p><span class="impact-tag">Price + volume intervention</span></div>
-                        <div class="rec-card"><div class="rec-num">Top 80 SKUs</div><h3>Core contributors</h3><p>These 80 products generate 74% of profit. Concentrating resources here meaningfully expands margin without cannibalizing revenue.</p><span class="impact-tag">Primary innovation focus</span></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 4: Strategic Recommendations -->
-            <div class="slide" data-index="3">
-                <div class="slide-inner">
-                    <p class="slide-label">04 / 10 · Strategic Recommendations</p>
-                    <h2 class="slide-title">Three moves. Eighteen months. 600 basis points of margin.</h2>
-                    <div class="rec-grid">
-                        <div class="rec-card"><div class="rec-num">01</div><h3>SKU Rationalization & Portfolio Discipline</h3><p>Discontinue 142 underperforming SKUs, restructure around 80 core contributors, establish margin-gating process. Free $12M in working capital.</p><span class="impact-tag">+220–280 bps · 90 days</span></div>
-                        <div class="rec-card"><div class="rec-num">02</div><h3>Distribution Network Consolidation</h3><p>Consolidate from 6 logistics partners to 2 strategic partners. Renegotiate with volume-based pricing leverage. Improve OTIF to 96%+.</p><span class="impact-tag">+180–220 bps · 6 months</span></div>
-                        <div class="rec-card"><div class="rec-num">03</div><h3>Product Development Acceleration</h3><p>Compress 22-month cycle to 9 months through stage-gate redesign, co-manufacturer pre-qualification, and consumer testing overhaul.</p><span class="impact-tag">+200–300 bps revenue · 12 months</span></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 5: Financial Impact -->
-            <div class="slide" data-index="4">
-                <div class="slide-inner">
-                    <p class="slide-label">05 / 10 · Financial Impact</p>
-                    <h2 class="slide-title">The case for action is clear.</h2>
-                    <table class="fin-table">
-                        <thead><tr><th>Metric</th><th>2024 Baseline</th><th>2025 Target</th><th>2026 Target</th><th>Change</th></tr></thead>
-                        <tbody>
-                            <tr><td>Revenue</td><td>$480M</td><td>$492M</td><td>$560M</td><td class="positive">↑ 17%</td></tr>
-                            <tr><td>Gross margin</td><td>38.4%</td><td>41.2%</td><td>44.0%</td><td class="positive">↑ +560 bps</td></tr>
-                            <tr><td>EBITDA margin</td><td>11.2%</td><td>14.8%</td><td>18.5%</td><td class="positive">↑ +730 bps</td></tr>
-                            <tr><td>Working capital (days)</td><td>48 days</td><td>38 days</td><td>32 days</td><td class="positive">↓ 33%</td></tr>
-                            <tr><td>Active SKU count</td><td>487</td><td>320</td><td>280</td><td class="positive">↓ –43%</td></tr>
-                        </tbody>
-                    </table>
-                    <p style="color:var(--accent-secondary);font-weight:700;margin-top:8px;">$54M Incremental EBITDA over 24 months · $12M Working capital freed · 7.3× Return on transformation investment</p>
-                </div>
-            </div>
-
-            <!-- Slide 6: Implementation Plan -->
-            <div class="slide" data-index="5">
-                <div class="slide-inner">
-                    <p class="slide-label">06 / 10 · Implementation Plan</p>
-                    <h2 class="slide-title">Who does what and when.</h2>
-                    <div class="phase-grid">
-                        <div class="phase-card"><div class="phase-tag">Phase 1 · Days 1–90</div><h3>Foundation</h3><p>Identify and flag 142 discontinuation-candidate SKUs. Issue RFPs for consolidated logistics. Establish transformation steering committee. Freeze new SKU approvals pending review.</p><p style="color:var(--text-muted);font-size:0.7rem;margin-top:6px;">Lead: CCO + CSC Officer</p></div>
-                        <div class="phase-card"><div class="phase-tag">Phase 2 · Months 3–9</div><h3>Execution</h3><p>Complete SKU discontinuation with customer communication. Execute distribution partner transition in 3 regional waves. Redesign stage-gate process with 3 pilot projects.</p><p style="color:var(--text-muted);font-size:0.7rem;margin-top:6px;">Lead: COO + Transformation Office</p></div>
-                        <div class="phase-card"><div class="phase-tag">Phase 3 · Months 9–18</div><h3>Value Realization</h3><p>Full stage-gate system live. New distribution model fully operational with OTIF tracking. SKU governance embedded in annual planning. Mid-point financial review vs targets.</p><p style="color:var(--text-muted);font-size:0.7rem;margin-top:6px;">Lead: Full Executive Team</p></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 7: Risk Register -->
-            <div class="slide" data-index="6">
-                <div class="slide-inner">
-                    <p class="slide-label">07 / 10 · Risk Register</p>
-                    <h2 class="slide-title">Known risks and mitigation strategies.</h2>
-                    <table class="risk-table">
-                        <thead><tr><th>Risk</th><th>Likelihood</th><th>Impact</th><th>Mitigation</th></tr></thead>
-                        <tbody>
-                            <tr><td style="color:#fff;font-weight:600;">Customer backlash on SKU exits</td><td style="color:var(--warning);">Moderate</td><td style="color:var(--danger);">High</td><td>Proactive retail partner communication; 90-day notice with suggested substitutes</td></tr>
-                            <tr><td style="color:#fff;font-weight:600;">Distribution transition disruption</td><td style="color:var(--warning);">Moderate</td><td style="color:var(--danger);">High</td><td>Phased regional rollout; 90-day parallel run; contingency carrier on retainer</td></tr>
-                            <tr><td style="color:#fff;font-weight:600;">Internal resistance to change</td><td style="color:var(--danger);">High</td><td style="color:var(--warning);">Moderate</td><td>CEO-sponsored transformation office; individual business case for each P&L owner</td></tr>
-                            <tr><td style="color:#fff;font-weight:600;">Market share loss during transition</td><td style="color:var(--success);">Low</td><td style="color:var(--warning);">Moderate</td><td>Core 80 SKUs fully supported; dedicated trade spend maintained at 2024 levels</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Slide 8: 18-Month Roadmap -->
-            <div class="slide" data-index="7">
-                <div class="slide-inner">
-                    <p class="slide-label">08 / 10 · 18-Month Roadmap</p>
-                    <h2 class="slide-title">The path to 18.5% EBITDA.</h2>
-                    <div class="phase-grid">
-                        <div class="phase-card"><div class="phase-tag">Q1 2025</div><h3>Foundation</h3><p>Steering committee formed. 142 SKUs flagged and exit plan approved by board. Logistics RFP issued and shortlist selected.</p></div>
-                        <div class="phase-card"><div class="phase-tag">Q2 2025</div><h3>Execution Phase 1</h3><p>SKU discontinuations complete. Distribution transition begins in Region 1 (Northeast). Stage-gate redesign complete; innovation pilot launched.</p></div>
-                        <div class="phase-card"><div class="phase-tag">Q3–Q4 2025</div><h3>Execution Phase 2</h3><p>Distribution fully consolidated; OTIF target reached (96%). Manufacturer terms renegotiated. Full stage-gate system live; 9-month cycle validated.</p></div>
-                        <div class="phase-card"><div class="phase-tag">H1 2026</div><h3>Value Realization</h3><p>EBITDA target of 17–19% confirmed in financial results. Board presentation: transformation outcomes vs. plan. Next phase growth strategy begins.</p></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 9: Key Decisions -->
-            <div class="slide" data-index="8">
-                <div class="slide-inner">
-                    <p class="slide-label">09 / 10 · Key Messages for the Executive Committee</p>
-                    <h2 class="slide-title">Three things we need leadership to decide today.</h2>
-                    <div class="decision-grid">
-                        <div class="decision-card"><div class="dec-num">01 · SKU GOVERNANCE</div><h3>Authorize 142 discontinuations</h3><p>Do we approve the list and authorize the CCO to proceed with retailer communications? This decision gates the entire financial impact timeline — delay of 30 days costs approximately $1.8M in margin.</p></div>
-                        <div class="decision-card"><div class="dec-num">02 · DISTRIBUTION MANDATE</div><h3>Commit to 2 strategic partners</h3><p>Are we committed to reducing to 2 logistics partners? This requires explicit CEO mandate to override current informal relationships with legacy partners.</p></div>
-                        <div class="decision-card"><div class="dec-num">03 · TRANSFORMATION RESOURCING</div><h3>Resource the transformation</h3><p>CEO to confirm mandate by Jan 24. CCO to present discontinuation list for ratification by Jan 31. CSC officer to issue logistics RFP by Feb 7. Stage-gate audit begins Feb 10.</p></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 10: Closing -->
-            <div class="slide slide-closing" data-index="9">
-                <div class="slide-inner">
-                    <p class="slide-label">10 / 10</p>
-                    <h2>The window to act with structural advantage is now.</h2>
-                    <p style="color:var(--text-secondary);">Engagement Partner: Victoria Osei-Mensah<br>Contact: v.osei@arcana.co · +1 212 555 0144</p>
-                    <p style="color:var(--text-muted);font-size:0.8rem;">Document Classification: Privileged & Confidential · Do not distribute</p>
-                    <p style="color:var(--text-muted);font-size:0.75rem;">Arcana Strategy Group · arcana.co</p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <nav class="nav-controls" id="navControls" aria-label="Slide navigation">
-        <button class="nav-btn" id="prevBtn" aria-label="Previous slide">←</button>
-        <div class="dot-nav" id="dotNav" aria-label="Slide indicators"></div>
-        <span class="slide-counter" id="slideCounter" aria-live="polite">01 / 10</span>
-        <button class="nav-btn" id="nextBtn" aria-label="Next slide">→</button>
+    <nav>
+        <a href="https://stealthstrategist.co" class="nav-logo">Stealth Strategist</a>
+        <a href="https://stealthstrategist.co" class="nav-back">All work</a>
     </nav>
-    <div class="kb-hint" id="kbHint">Use ← → arrow keys to navigate</div>
+
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-accent-line"></div>
+        <div class="scroll-indicator">
+            <div class="scroll-line"></div>
+            <span>Scroll</span>
+        </div>
+        <div class="hero-tag">Board Presentation · Operational Turnaround</div>
+        <h1 class="hero-title">
+            BUILT FOR
+            <span>THE BOARDROOM.</span>
+        </h1>
+        <div class="hero-meta">
+            <p class="hero-desc">Stellarton Foods needed a strategy to unlock <strong>$28M in cost savings</strong>, overhaul logistics, and pivot toward high-growth channels. This deck turned analysis into board-approved action.</p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-num">48</span>
+                    <span class="stat-label">Slides</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">3 Mo</span>
+                    <span class="stat-label">Engagement</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">Board</span>
+                    <span class="stat-label">Audience</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="overview">
+        <div class="overview-left fade-up">
+            <h2>A plan built<br>to be <em>approved.</em></h2>
+            <p>Stellarton's board needed confidence, not just concepts. We built a data‑backed narrative connecting cost optimization, operational restructuring, and a bold growth blueprint — anchored to a $28M EBITDA uplift.</p>
+            <div class="pill-tags">
+                <span class="pill active">Turnaround Strategy</span>
+                <span class="pill">Cost Optimization</span>
+                <span class="pill">Supply Chain</span>
+                <span class="pill">Growth Blueprint</span>
+                <span class="pill">48 Slides</span>
+                <span class="pill">Editable PPTX</span>
+            </div>
+        </div>
+        <div class="overview-right fade-up fade-up-delay-2">
+            <div class="overview-card">
+                <span class="overview-card-num">01</span>
+                <div class="overview-card-title">Deliverable</div>
+                <div class="overview-card-value">Strategy Deck</div>
+                <div class="overview-card-sub">Full narrative + supporting data pack</div>
+            </div>
+            <div class="overview-card">
+                <span class="overview-card-num">02</span>
+                <div class="overview-card-title">Timeline</div>
+                <div class="overview-card-value">12 Weeks</div>
+                <div class="overview-card-sub">Discovery → Analysis → Synthesis → Delivery</div>
+            </div>
+            <div class="overview-card">
+                <span class="overview-card-num">03</span>
+                <div class="overview-card-title">Sector</div>
+                <div class="overview-card-value">Food & Bev</div>
+                <div class="overview-card-sub">Frozen & ambient categories, North America</div>
+            </div>
+            <div class="overview-card">
+                <span class="overview-card-num">04</span>
+                <div class="overview-card-title">Output</div>
+                <div class="overview-card-value">PPTX + PDF</div>
+                <div class="overview-card-sub">Fully editable, board‑ready presentation</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="slides-section">
+        <div class="slides-header fade-up">
+            <div class="section-label" style="flex:1">Strategy Preview</div>
+        </div>
+
+        <!-- Hero slide mockup (clean McKinsey) -->
+        <div class="slide-hero fade-up">
+            <div class="slide-hero-grid"></div>
+            <div class="slide-hero-wordmark">Stellarton Foods · Board of Directors · Q2 2025</div>
+            <div class="slide-hero-tag">Confidential — Strategy & Transformation</div>
+            <h2 class="slide-hero-title">PROJECT<br><span>HORIZON</span><br>REVITALIZATION.</h2>
+            <div class="slide-hero-meta">
+                <div class="slide-hero-meta-item">
+                    <strong>$28M</strong>
+                    EBITDA uplift
+                </div>
+                <div class="slide-hero-meta-item">
+                    <strong>18 months</strong>
+                    Implementation
+                </div>
+                <div class="slide-hero-meta-item">
+                    <strong>3 pillars</strong>
+                    Transformation
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide grid (data-forward) -->
+        <div class="slides-grid">
+            <!-- Cost waterfall -->
+            <div class="slide-card fade-up">
+                <div class="slide-card-overlay"></div>
+                <div class="waterfall" style="margin-bottom:12px">
+                    <div class="waterfall-bar" style="height:30px"></div>
+                    <div class="waterfall-bar" style="height:22px"></div>
+                    <div class="waterfall-bar negative" style="height:15px"></div>
+                    <div class="waterfall-bar" style="height:35px"></div>
+                    <div class="waterfall-bar total" style="height:50px"></div>
+                </div>
+                <div>
+                    <div class="card-num">$28<span>M</span></div>
+                    <div class="card-label">Total identified savings</div>
+                </div>
+            </div>
+
+            <!-- 2x2 matrix (portfolio) -->
+            <div class="slide-card fade-up fade-up-delay-1">
+                <div class="slide-card-overlay"></div>
+                <div style="display:flex; flex-direction:column; gap:6px; width:100%">
+                    <div style="font-family:var(--font-mono); font-size:9px; letter-spacing:0.15em; color:var(--muted-dark);">PORTFOLIO PRIORITIZATION</div>
+                    <div class="matrix-grid">
+                        <div class="matrix-cell">High Growth / Low Share</div>
+                        <div class="matrix-cell highlight">Core (72% EBITDA)</div>
+                        <div class="matrix-cell">Invest to Grow</div>
+                        <div class="matrix-cell">Divest / Exit</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Supply chain map -->
+            <div class="slide-card fade-up fade-up-delay-2" style="background:linear-gradient(135deg, #f0f4f8, #e6edf5);">
+                <div class="slide-card-overlay"></div>
+                <div style="display:flex; gap:8px; align-items:center;">
+                    <div style="width:12px; height:12px; background:var(--accent); border-radius:50%;"></div>
+                    <div style="border-top:1px dashed var(--accent); width:20px;"></div>
+                    <div style="width:12px; height:12px; background:var(--accent-blue); border-radius:50%;"></div>
+                    <div style="border-top:1px dashed var(--accent-blue); width:30px;"></div>
+                    <div style="width:12px; height:12px; background:var(--accent-teal); border-radius:50%;"></div>
+                </div>
+                <div style="position:absolute; bottom:20px; left:24px; font-family:var(--font-mono); font-size:9px; color:var(--muted-dark);">SUPPLY CHAIN REDESIGN</div>
+            </div>
+
+            <!-- Benchmark bar chart -->
+            <div class="slide-card fade-up fade-up-delay-3">
+                <div class="slide-card-overlay"></div>
+                <div style="width:100%">
+                    <div style="font-family:var(--font-mono); font-size:9px; letter-spacing:0.1em; color:var(--muted-dark); margin-bottom:8px;">PEER BENCHMARK: GROSS MARGIN</div>
+                    <div class="bar-chart-mini">
+                        <div class="bar" style="height:18px"></div>
+                        <div class="bar blue" style="height:28px"></div>
+                        <div class="bar blue" style="height:34px"></div>
+                        <div class="bar red" style="height:42px"></div>
+                    </div>
+                    <div class="card-label">Stellarton target: +420 bps</div>
+                </div>
+            </div>
+
+            <!-- Timeline -->
+            <div class="slide-card fade-up">
+                <div class="slide-card-overlay"></div>
+                <div style="width:100%">
+                    <div style="font-family:var(--font-mono); font-size:9px; letter-spacing:0.15em; color:var(--muted-dark); margin-bottom:8px;">IMPLEMENTATION ROADMAP</div>
+                    <div style="display:flex; align-items:center; gap:6px;">
+                        <div style="width:10px; height:10px; background:var(--accent); border-radius:50%;"></div>
+                        <div style="border-top:1px solid var(--accent); width:30px;"></div>
+                        <div style="width:10px; height:10px; background:var(--accent-blue); border-radius:50%;"></div>
+                        <div style="border-top:1px solid var(--accent-blue); width:30px;"></div>
+                        <div style="width:10px; height:10px; background:var(--accent-teal); border-radius:50%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KPI card -->
+            <div class="slide-card fade-up fade-up-delay-1" style="background:#f4f6f9; flex-direction:column; justify-content:center; align-items:center;">
+                <div class="slide-card-overlay"></div>
+                <div style="font-family:var(--font-display); font-size:52px; color:var(--accent); line-height:1;">3.2×</div>
+                <div style="font-family:var(--font-mono); font-size:9px; letter-spacing:0.15em; color:var(--muted-dark); margin-top:6px;">ROI within 24 months</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="process-section">
+        <div class="section-label fade-up">How it was built</div>
+        <div class="process-grid" style="margin-top:64px">
+            <div class="process-card fade-up">
+                <div class="process-num">01</div>
+                <div class="process-icon">
+                    <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <circle cx="20" cy="20" r="16"></circle>
+                        <path d="M20 8v12l8 4"></path>
+                    </svg>
+                </div>
+                <div class="process-title">Discovery</div>
+                <div class="process-body">Deep-dive interviews with C-suite, plant visits, and financial data aggregation to pinpoint value levers.</div>
+            </div>
+            <div class="process-card fade-up fade-up-delay-1">
+                <div class="process-num">02</div>
+                <div class="process-icon">
+                    <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="8" y="8" width="24" height="4"></rect>
+                        <rect x="8" y="18" width="16" height="4"></rect>
+                        <rect x="8" y="28" width="20" height="4"></rect>
+                    </svg>
+                </div>
+                <div class="process-title">Analysis</div>
+                <div class="process-body">Rigorous quantification of cost, logistics, and revenue opportunities with sanity checks against industry benchmarks.</div>
+            </div>
+            <div class="process-card fade-up fade-up-delay-2">
+                <div class="process-num">03</div>
+                <div class="process-icon">
+                    <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M8 32L20 8l12 24"></path>
+                        <path d="M12 24h16"></path>
+                    </svg>
+                </div>
+                <div class="process-title">Synthesis</div>
+                <div class="process-body">Translated data into a clear, board-ready story: Challenge → Opportunity → Action → Impact.</div>
+            </div>
+            <div class="process-card fade-up fade-up-delay-3">
+                <div class="process-num">04</div>
+                <div class="process-icon">
+                    <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <polyline points="8,20 16,28 32,12"></polyline>
+                    </svg>
+                </div>
+                <div class="process-title">Board-Ready</div>
+                <div class="process-body">Two rounds of revisions with the CFO. Final deck delivered as editable PPTX with full source data.</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="results-section">
+        <div class="results-header">
+            <h2 class="fade-up">The deck<br>that <span>secured approval.</span></h2>
+            <p class="fade-up fade-up-delay-2">The board unanimously endorsed the transformation plan. Within 90 days, Stellarton had launched the first wave of cost initiatives and begun logistics restructuring.</p>
+        </div>
+        <div class="results-metrics fade-up">
+            <div class="metric">
+                <div class="metric-bar" style="width:100%"></div>
+                <span class="metric-value">100%</span>
+                <div class="metric-label">Board Approval</div>
+                <div class="metric-desc">Unanimous go-ahead on all three strategic pillars.</div>
+            </div>
+            <div class="metric">
+                <div class="metric-bar" style="width:70%"></div>
+                <span class="metric-value">$12M</span>
+                <div class="metric-label">YoY Savings Realized</div>
+                <div class="metric-desc">First‑wave cost reductions exceeded expectations in the first fiscal year.</div>
+            </div>
+            <div class="metric">
+                <div class="metric-bar" style="width:85%"></div>
+                <span class="metric-value">90 Days</span>
+                <div class="metric-label">Time to Execution</div>
+                <div class="metric-desc">From board presentation to active implementation across 3 plants.</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonial-section">
+        <div class="testimonial-content fade-up">
+            <p class="testimonial-quote">"This deck didn't just describe the problem — it gave us the exact playbook to solve it. Our board approved it in one session."</p>
+            <div class="testimonial-author">
+                <div class="testimonial-avatar">AR</div>
+                <div>
+                    <span class="testimonial-name">Anita Reynolds</span>
+                    <span class="testimonial-role">Chief Financial Officer, Stellarton Foods</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="cta-eyebrow">Ready to build?</div>
+        <h2 class="cta-title">
+            READY TO<br><span>EXECUTE?</span>
+        </h2>
+        <a href="https://stealthstrategist.co/#contact" class="cta-btn">
+            Start a project
+            <span class="cta-btn-arrow">→</span>
+        </a>
+    </section>
+
+    <footer>
+        <div class="footer-logo">Stealth Strategist</div>
+        <div class="footer-right">© 2025 · Strategy & Transformation Communication</div>
+    </footer>
 
     <script>
-        (function() {
-            const slides = document.querySelectorAll('.slide');
-            const totalSlides = slides.length;
-            let currentIndex = 0, isTransitioning = false;
-            const prevBtn = document.getElementById('prevBtn'), nextBtn = document.getElementById('nextBtn');
-            const slideCounter = document.getElementById('slideCounter'), dotNav = document.getElementById('dotNav'), kbHint = document.getElementById('kbHint');
-            for(let i=0;i<totalSlides;i++){const dot=document.createElement('span');dot.className='dot';dot.setAttribute('aria-label','Go to slide '+(i+1));dot.setAttribute('role','button');dot.setAttribute('tabindex','0');dot.addEventListener('click',()=>goToSlide(i));dotNav.appendChild(dot);}
-            const dots=dotNav.querySelectorAll('.dot');
-            function updateUI(){const num=String(currentIndex+1).padStart(2,'0');slideCounter.textContent=num+' / '+totalSlides;dots.forEach((d,i)=>d.classList.toggle('active',i===currentIndex));prevBtn.disabled=currentIndex===0;nextBtn.disabled=currentIndex===totalSlides-1;slides.forEach((s,i)=>{s.classList.remove('active','exit-left','exit-right');if(i===currentIndex)s.classList.add('active');});}
-            function goToSlide(index){if(isTransitioning||index<0||index>=totalSlides||index===currentIndex)return;isTransitioning=true;const oldIndex=currentIndex;const goingForward=index>oldIndex;slides[oldIndex].classList.remove('active');slides[oldIndex].classList.add(goingForward?'exit-left':'exit-right');currentIndex=index;updateUI();setTimeout(()=>{slides[oldIndex].classList.remove('exit-left','exit-right');isTransitioning=false;},550);}
-            function goNext(){if(currentIndex<totalSlides-1)goToSlide(currentIndex+1);}
-            function goPrev(){if(currentIndex>0)goToSlide(currentIndex-1);}
-            nextBtn.addEventListener('click',goNext);prevBtn.addEventListener('click',goPrev);
-            document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='Right'){e.preventDefault();goNext();hideKbHint();}else if(e.key==='ArrowLeft'||e.key==='Left'){e.preventDefault();goPrev();hideKbHint();}else if(e.key==='Home'){e.preventDefault();goToSlide(0);}else if(e.key==='End'){e.preventDefault();goToSlide(totalSlides-1);}});
-            let touchStartX=0;const carousel=document.getElementById('carousel');
-            carousel.addEventListener('touchstart',function(e){touchStartX=e.changedTouches[0].screenX;},{passive:true});
-            carousel.addEventListener('touchend',function(e){const diff=touchStartX-e.changedTouches[0].screenX;if(Math.abs(diff)>60){if(diff>0)goNext();else goPrev();hideKbHint();}},{passive:true});
-            let wheelTimeout;carousel.addEventListener('wheel',function(e){if(wheelTimeout)return;wheelTimeout=setTimeout(()=>{wheelTimeout=null;},800);if(Math.abs(e.deltaY)>30||Math.abs(e.deltaX)>30){if(e.deltaY>0||e.deltaX>0)goNext();else goPrev();hideKbHint();}},{passive:true});
-            function hideKbHint(){if(kbHint){kbHint.style.opacity='0';setTimeout(()=>{if(kbHint)kbHint.style.display='none';},600);}}
-            setTimeout(()=>{if(kbHint&&kbHint.style.opacity!=='0'){kbHint.style.transition='opacity 0.8s';kbHint.style.opacity='0';setTimeout(()=>{if(kbHint)kbHint.style.display='none';},800);}},10000);
-            updateUI();slides[0].classList.add('active');
-        })();
+        const cursor = document.getElementById('cursor');
+        const cursorRing = document.getElementById('cursorRing');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.transform = `translate(${e.clientX - 6}px, ${e.clientY - 6}px)`;
+            cursorRing.style.transform = `translate(${e.clientX - 18}px, ${e.clientY - 18}px)`;
+        });
+
+        const fadeEls = document.querySelectorAll('.fade-up');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+        fadeEls.forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
