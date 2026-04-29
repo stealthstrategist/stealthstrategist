@@ -121,11 +121,23 @@ section { padding: 80px 40px; border-bottom: 0.5px solid rgba(240,236,228,0.08);
 .card-keynote::before { background: linear-gradient(90deg, #d4b87a, #a8844a); }
 .card-verdant::before { background: linear-gradient(90deg, #5DCAA5, #1D9E75); }
 .card-arcana::before  { background: linear-gradient(90deg, #F0997B, #c25a30); }
-.card-valor::before   { background: linear-gradient(90deg, #D4537E, #E8339A); }
+
+/* ============================================================
+   VALOR CARD — fixed to match the actual case study palette:
+   black bg + acid green (#c8f23a) + red (#e8291c)
+   ============================================================ */
+.card-valor::before   { background: linear-gradient(90deg, #c8f23a, #e8291c); }
 
 .deck-preview { height: 200px; display: flex; align-items: center; justify-content: center; padding: 20px; position: relative; overflow: hidden; }
 .deck-preview-overlay { position: absolute; inset: 0; background: rgba(201,169,110,0.04); opacity: 0; transition: opacity 0.3s; }
-.dp1 { background: #100d20; } .dp2 { background: #130f08; } .dp3 { background: #080808; } .dp4 { background: #051a10; } .dp5 { background: #120e0a; } .dp6 { background: #0d0a1a; }
+.dp1 { background: #100d20; }
+.dp2 { background: #130f08; }
+.dp3 { background: #080808; }
+.dp4 { background: #051a10; }
+.dp5 { background: #120e0a; }
+/* VALOR — near-black to match the case study hero bg */
+.dp6 { background: #080808; }
+
 .slide-mock { width: 85%; aspect-ratio: 16/9; border-radius: 3px; padding: 12px 14px; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.4s var(--ease); }
 .deck-card-link:hover .slide-mock { transform: scale(1.02) translateY(-2px); }
 .sm-dp { background: #1e1845; border: 0.5px solid rgba(127,119,221,0.2); }
@@ -133,17 +145,29 @@ section { padding: 80px 40px; border-bottom: 0.5px solid rgba(240,236,228,0.08);
 .sm-bk { background: #0e0e0e; border: 0.5px solid rgba(201,168,76,0.15); }
 .sm-dg { background: #062b1a; border: 0.5px solid rgba(29,158,117,0.2); }
 .sm-cr { background: #1e1209; border: 0.5px solid rgba(216,90,48,0.15); }
-.sm-mg { background: #150b1e; border: 0.5px solid rgba(233,30,99,0.2); }
+/* VALOR — dark bg + acid green border to match case study */
+.sm-mg { background: #0d0d0d; border: 0.5px solid rgba(200,242,58,0.15); }
+
 .sm-badge { display: inline-block; font-size: 6px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 6px; margin-bottom: 8px; }
 .b-purple { background: rgba(127,119,221,0.2); color: #AFA9EC; }
 .b-coral  { background: rgba(216,90,48,0.2);   color: #F0997B; }
 .b-gold   { background: rgba(201,168,76,0.15);  color: #e8c97a; }
 .b-green  { background: rgba(29,158,117,0.2);   color: #5DCAA5; }
-.b-mag    { background: rgba(233,30,99,0.2);    color: #f06292; }
+/* VALOR — acid green badge */
+.b-mag    { background: rgba(200,242,58,0.12);  color: #c8f23a; }
+
 .ln { height: 3px; border-radius: 1px; margin-bottom: 3px; }
 .ln.h { height: 6px; }
 .ln.w80 { width: 80%; } .ln.w60 { width: 60%; } .ln.w40 { width: 40%; } .ln.w50 { width: 50%; }
-.c-purple { background: rgba(127,119,221,0.7); } .c-coral { background: rgba(216,90,48,0.65); } .c-gold { background: rgba(201,168,76,0.7); } .c-green { background: rgba(29,158,117,0.7); } .c-mag { background: rgba(233,30,99,0.8); } .c-muted { background: rgba(255,255,255,0.15); }
+.c-purple { background: rgba(127,119,221,0.7); }
+.c-coral  { background: rgba(216,90,48,0.65);  }
+.c-gold   { background: rgba(201,168,76,0.7);  }
+.c-green  { background: rgba(29,158,117,0.7);  }
+/* VALOR — acid green line accent */
+.c-mag    { background: rgba(200,242,58,0.7);  }
+.c-red    { background: rgba(232,41,28,0.75);  }
+.c-muted  { background: rgba(255,255,255,0.15);}
+
 .bars { display: flex; gap: 3px; align-items: flex-end; height: 28px; }
 .bar { flex: 1; border-radius: 1px 1px 0 0; }
 .donut { width: 28px; height: 28px; border-radius: 50%; border: 2.5px solid rgba(29,158,117,0.6); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
@@ -488,21 +512,28 @@ footer { background: var(--ink-2); padding: 28px 40px; display: flex; justify-co
       <div class="view-label">View deck <span class="view-arrow">→</span></div>
     </a>
 
+    <!-- ============================================================
+         VALOR CARD — colors now match the actual case study:
+         black bg · acid green accents · red secondary accent
+         ============================================================ -->
     <a class="deck-card-link card-valor reveal reveal-delay-1" href="portfolio/07-valor-league.html">
       <div class="deck-preview dp6">
         <div class="deck-preview-overlay"></div>
-        <div class="slide-mock sm-mg" style="align-items:center;justify-content:center;gap:7px;">
-          <span class="sm-badge b-mag">Sports Brand</span>
-          <div class="ln h c-mag" style="width:70%;"></div>
-          <div class="ln" style="background:rgba(255,179,0,0.65);width:50%;"></div>
-          <div class="ln c-muted w40"></div>
+        <div class="slide-mock sm-mg" style="align-items:flex-start;justify-content:space-between;">
+          <div>
+            <span class="sm-badge b-mag">Sports Brand</span>
+            <div class="ln h c-mag" style="width:70%;"></div>
+            <div class="ln c-red" style="width:50%;"></div>
+            <div class="ln c-muted w40"></div>
+          </div>
+          <div style="font-family:'Courier New',monospace;font-size:9px;color:rgba(200,242,58,0.35);letter-spacing:0.12em;align-self:flex-end;">VALOR</div>
         </div>
       </div>
       <div class="deck-info">
         <div class="deck-outcome">Brand launch · Global women's sport tour</div>
         <div class="deck-title">VALOR League — brand deck</div>
         <div class="deck-meta">10 slides · Brand launch</div>
-        <div class="deck-chips"><span class="chip">Dark + magenta</span><span class="chip">Bold type</span><span class="chip">Sports</span></div>
+        <div class="deck-chips"><span class="chip">Black + acid green</span><span class="chip">Bold type</span><span class="chip">Sports</span></div>
       </div>
       <div class="view-label">View deck <span class="view-arrow">→</span></div>
     </a>
