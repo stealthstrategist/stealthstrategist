@@ -1,823 +1,1208 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stealth Strategist — Presentation Design</title>
-<meta name="description" content="High-stakes presentation design for startups, consultants, and executives. Pitch decks, sales decks, board materials.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stealth Strategist — Presentation Design for High-Stakes Moments</title>
+  <meta name="description" content="Presentation design studio for founders, executives, and brands. Pitch decks, keynotes, sales decks, and brand campaigns. Premium. Fast. Built to win."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet"/>
 
-<style>
-:root {
-  --ink:     #0a0908;
-  --ink-2:   #1c1a18;
-  --ink-3:   #2e2b27;
-  --cream:   #f0ece4;
-  --cream-2: #e2ddd4;
-  --cream-3: #c8c2b6;
-  --muted:   #7a7570;
-  --accent:  #c9a96e;
-  --accent-2:#a8844a;
-  --serif: 'Cormorant Garamond', Georgia, serif;
-  --sans:  'DM Sans', system-ui, sans-serif;
-  --ease: cubic-bezier(0.16, 1, 0.3, 1);
-}
+  <style>
+    :root {
+      --black: #0A0A0A;
+      --white: #F5F2EC;
+      --cream: #EDE8DF;
+      --gold: #C9A84C;
+      --gold-light: #E8D08A;
+      --charcoal: #1C1C1C;
+      --mid: #2E2E2E;
+      --muted: #888;
+      --accent: #FF3B1F;
+    }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-body {
-  font-family: var(--sans);
-  background: var(--ink);
-  color: var(--cream);
-  line-height: 1.6;
-  font-size: 15px;
-  cursor: none;
-  -webkit-font-smoothing: antialiased;
-}
+    html { scroll-behavior: smooth; }
 
-.cursor {
-  position: fixed; top: 0; left: 0;
-  width: 10px; height: 10px;
-  background: var(--accent);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: transform 0.08s var(--ease), width 0.3s var(--ease), height 0.3s var(--ease), background 0.3s;
-}
-.cursor.hovering { width: 40px; height: 40px; background: transparent; border: 1px solid var(--accent); }
-a, button, .deck-card-link, input, select, textarea { cursor: none; }
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: var(--ink); }
-::-webkit-scrollbar-thumb { background: var(--ink-3); border-radius: 2px; }
-::selection { background: var(--accent-2); color: var(--cream); }
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.4rem 4rem;
+      background: rgba(10,10,10,0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(201,168,76,0.12);
+    }
 
-.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
-.reveal-delay-4 { transition-delay: 0.4s; }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.12em;
+      color: var(--white);
+      text-decoration: none;
+    }
 
-nav {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 0 40px; height: 64px;
-  border-bottom: 0.5px solid rgba(240,236,228,0.08);
-  background: rgba(10,9,8,0.92);
-  backdrop-filter: blur(12px);
-  position: sticky; top: 0; z-index: 100;
-}
-.nav-logo { font-family: var(--serif); font-size: 18px; font-weight: 400; color: var(--cream); text-decoration: none; letter-spacing: 0.04em; }
-.nav-logo em { font-style: italic; color: var(--accent); }
-.nav-links { display: flex; gap: 32px; list-style: none; }
-.nav-links a { font-size: 12px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-.nav-links a:hover { color: var(--cream); }
-.nav-cta { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; padding: 9px 20px; border: 0.5px solid rgba(201,169,110,0.5); color: var(--accent); background: transparent; text-decoration: none; transition: background 0.2s, border-color 0.2s; }
-.nav-cta:hover { background: rgba(201,169,110,0.08); border-color: var(--accent); }
+    .nav-logo span { color: var(--gold); }
 
-.hero { min-height: 86vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 40px 60px; position: relative; overflow: hidden; border-bottom: 0.5px solid rgba(240,236,228,0.08); }
-.hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 70% 40%, rgba(201,169,110,0.06) 0%, transparent 70%), radial-gradient(ellipse 40% 60% at 20% 80%, rgba(201,169,110,0.03) 0%, transparent 70%); pointer-events: none; }
-.hero-grid-lines { position: absolute; inset: 0; pointer-events: none; opacity: 0.04; background-image: linear-gradient(rgba(240,236,228,1) 1px, transparent 1px), linear-gradient(90deg, rgba(240,236,228,1) 1px, transparent 1px); background-size: 80px 80px; }
-.hero-eyebrow { font-size: 11px; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
-.hero-eyebrow::before { content: ''; display: block; width: 32px; height: 0.5px; background: var(--accent); flex-shrink: 0; }
-.hero h1 { font-family: var(--serif); font-size: clamp(52px, 7vw, 96px); font-weight: 300; line-height: 1.05; letter-spacing: -0.02em; color: var(--cream); margin-bottom: 28px; max-width: 820px; }
-.hero h1 em { font-style: italic; color: var(--accent); }
-.hero-bottom { display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
-.hero-sub { font-size: 15px; font-weight: 300; color: var(--cream-3); line-height: 1.7; max-width: 420px; }
-.hero-right { display: flex; flex-direction: column; align-items: flex-end; gap: 24px; }
-.hero-btns { display: flex; gap: 12px; }
-.btn-primary { font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 13px 28px; background: var(--cream); color: var(--ink); border: none; text-decoration: none; display: inline-block; transition: background 0.2s; }
-.btn-primary:hover { background: var(--cream-2); }
-.btn-ghost { font-size: 12px; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; padding: 13px 28px; background: transparent; color: var(--cream-3); border: 0.5px solid rgba(240,236,228,0.2); text-decoration: none; display: inline-block; transition: color 0.2s, border-color 0.2s; }
-.btn-ghost:hover { color: var(--cream); border-color: rgba(240,236,228,0.5); }
-.hero-stats { display: flex; gap: 32px; }
-.hero-stat-num { font-family: var(--serif); font-size: 28px; font-weight: 300; color: var(--cream); line-height: 1; }
-.hero-stat-label { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2.5rem;
+    }
 
-.avail-band { background: rgba(201,169,110,0.08); border-top: 0.5px solid rgba(201,169,110,0.2); border-bottom: 0.5px solid rgba(201,169,110,0.2); padding: 12px 40px; display: flex; align-items: center; gap: 10px; }
-.avail-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 2s ease-in-out infinite; }
-@keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.7); } }
-.avail-text { font-size: 12px; font-weight: 400; letter-spacing: 0.06em; color: var(--accent); }
+    nav ul a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
 
-section { padding: 80px 40px; border-bottom: 0.5px solid rgba(240,236,228,0.08); }
-.section-label { font-size: 10px; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 48px; display: flex; align-items: center; gap: 12px; }
-.section-label::after { content: ''; flex: 1; height: 0.5px; background: rgba(240,236,228,0.1); }
+    nav ul a:hover { color: var(--white); }
 
-#work { background: var(--ink); }
-.deck-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: rgba(240,236,228,0.08); }
-.deck-card-link { text-decoration: none; display: block; background: var(--ink); transition: background 0.3s; position: relative; overflow: hidden; }
-.deck-card-link:hover { background: var(--ink-2); }
-.deck-card-link:hover .deck-preview-overlay { opacity: 1; }
-.deck-card-link:hover .view-arrow { transform: translateX(4px); }
+    .nav-cta {
+      background: var(--gold);
+      color: var(--black) !important;
+      padding: 0.55rem 1.4rem;
+      border-radius: 2px;
+      font-weight: 500 !important;
+      font-size: 0.8rem !important;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: background 0.2s, color 0.2s !important;
+    }
 
-.deck-card-link::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; opacity: 0.7; transition: opacity 0.3s; }
-.deck-card-link:hover::before { opacity: 1; }
-.card-nova::before    { background: linear-gradient(90deg, #7F77DD, #534AB7); }
-.card-meridian::before{ background: linear-gradient(90deg, #F0997B, #D85A30); }
-.card-keynote::before { background: linear-gradient(90deg, #d4b87a, #a8844a); }
-.card-verdant::before { background: linear-gradient(90deg, #5DCAA5, #1D9E75); }
-.card-arcana::before  { background: linear-gradient(90deg, #F0997B, #c25a30); }
+    .nav-cta:hover { background: var(--gold-light) !important; color: var(--black) !important; }
 
-/* ============================================================
-   VALOR CARD — fixed to match the actual case study palette:
-   black bg + acid green (#c8f23a) + red (#e8291c)
-   ============================================================ */
-.card-valor::before   { background: linear-gradient(90deg, #c8f23a, #e8291c); }
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      padding: 12rem 4rem 6rem;
+      position: relative;
+      overflow: hidden;
+    }
 
-.deck-preview { height: 200px; display: flex; align-items: center; justify-content: center; padding: 20px; position: relative; overflow: hidden; }
-.deck-preview-overlay { position: absolute; inset: 0; background: rgba(201,169,110,0.04); opacity: 0; transition: opacity 0.3s; }
-.dp1 { background: #100d20; }
-.dp2 { background: #130f08; }
-.dp3 { background: #080808; }
-.dp4 { background: #051a10; }
-.dp5 { background: #120e0a; }
-/* VALOR — near-black to match the case study hero bg */
-.dp6 { background: #080808; }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse 60% 50% at 80% 20%, rgba(201,168,76,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 10% 80%, rgba(255,59,31,0.04) 0%, transparent 60%);
+    }
 
-.slide-mock { width: 85%; aspect-ratio: 16/9; border-radius: 3px; padding: 12px 14px; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.4s var(--ease); }
-.deck-card-link:hover .slide-mock { transform: scale(1.02) translateY(-2px); }
-.sm-dp { background: #1e1845; border: 0.5px solid rgba(127,119,221,0.2); }
-.sm-db { background: #231808; border: 0.5px solid rgba(249,115,22,0.2); }
-.sm-bk { background: #0e0e0e; border: 0.5px solid rgba(201,168,76,0.15); }
-.sm-dg { background: #062b1a; border: 0.5px solid rgba(29,158,117,0.2); }
-.sm-cr { background: #1e1209; border: 0.5px solid rgba(216,90,48,0.15); }
-/* VALOR — dark bg + acid green border to match case study */
-.sm-mg { background: #0d0d0d; border: 0.5px solid rgba(200,242,58,0.15); }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2.5rem;
+    }
 
-.sm-badge { display: inline-block; font-size: 6px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 6px; margin-bottom: 8px; }
-.b-purple { background: rgba(127,119,221,0.2); color: #AFA9EC; }
-.b-coral  { background: rgba(216,90,48,0.2);   color: #F0997B; }
-.b-gold   { background: rgba(201,168,76,0.15);  color: #e8c97a; }
-.b-green  { background: rgba(29,158,117,0.2);   color: #5DCAA5; }
-/* VALOR — acid green badge */
-.b-mag    { background: rgba(200,242,58,0.12);  color: #c8f23a; }
+    .hero-tag::before {
+      content: '';
+      display: inline-block;
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+    }
 
-.ln { height: 3px; border-radius: 1px; margin-bottom: 3px; }
-.ln.h { height: 6px; }
-.ln.w80 { width: 80%; } .ln.w60 { width: 60%; } .ln.w40 { width: 40%; } .ln.w50 { width: 50%; }
-.c-purple { background: rgba(127,119,221,0.7); }
-.c-coral  { background: rgba(216,90,48,0.65);  }
-.c-gold   { background: rgba(201,168,76,0.7);  }
-.c-green  { background: rgba(29,158,117,0.7);  }
-/* VALOR — acid green line accent */
-.c-mag    { background: rgba(200,242,58,0.7);  }
-.c-red    { background: rgba(232,41,28,0.75);  }
-.c-muted  { background: rgba(255,255,255,0.15);}
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 10vw, 9.5rem);
+      line-height: 0.92;
+      letter-spacing: 0.01em;
+      max-width: 900px;
+      position: relative;
+    }
 
-.bars { display: flex; gap: 3px; align-items: flex-end; height: 28px; }
-.bar { flex: 1; border-radius: 1px 1px 0 0; }
-.donut { width: 28px; height: 28px; border-radius: 50%; border: 2.5px solid rgba(29,158,117,0.6); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.donut span { font-size: 5px; color: #5DCAA5; font-weight: 500; }
-.mini-card { flex: 1; border-radius: 2px; padding: 5px; }
-.deck-info { padding: 20px 24px; }
-.deck-outcome { font-family: var(--serif); font-style: italic; font-size: 13px; color: var(--accent); margin-bottom: 8px; font-weight: 400; }
-.deck-title { font-size: 15px; font-weight: 400; color: var(--cream); margin-bottom: 4px; }
-.deck-meta  { font-size: 12px; color: var(--muted); margin-bottom: 10px; }
-.deck-chips { display: flex; gap: 6px; flex-wrap: wrap; }
-.chip { font-size: 10px; letter-spacing: 0.05em; padding: 3px 9px; border: 0.5px solid rgba(240,236,228,0.12); color: var(--muted); }
-.view-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); padding: 14px 24px; border-top: 0.5px solid rgba(240,236,228,0.06); display: flex; align-items: center; gap: 8px; transition: color 0.2s; }
-.deck-card-link:hover .view-label { color: var(--accent); }
-.view-arrow { transition: transform 0.25s var(--ease); }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--gold);
+    }
 
-#process { background: var(--ink-2); }
-.process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(240,236,228,0.08); }
-.proc-step { background: var(--ink-2); padding: 36px 28px; transition: background 0.2s; }
-.proc-step:hover { background: var(--ink-3); }
-.proc-num { font-family: var(--serif); font-size: 13px; font-weight: 300; color: var(--accent); margin-bottom: 16px; letter-spacing: 0.06em; }
-.proc-title { font-size: 14px; font-weight: 500; color: var(--cream); margin-bottom: 8px; }
-.proc-desc  { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.65; }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 460px;
+      margin-top: 2rem;
+      line-height: 1.7;
+      font-weight: 300;
+    }
 
-#testimonials { background: var(--ink); }
-.testi-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-.tcard { background: var(--ink-2); border: 0.5px solid rgba(240,236,228,0.08); padding: 36px 32px; position: relative; }
-.tcard::before { content: '\201C'; font-family: var(--serif); font-size: 72px; font-weight: 300; color: var(--accent); opacity: 0.3; position: absolute; top: 16px; left: 24px; line-height: 1; }
-.tquote { font-family: var(--serif); font-style: italic; font-size: 18px; font-weight: 300; color: var(--cream-2); line-height: 1.6; margin-bottom: 28px; padding-top: 28px; }
-.tattrib { display: flex; align-items: center; gap: 12px; }
-.tavatar { width: 36px; height: 36px; border-radius: 50%; border: 0.5px solid rgba(201,169,110,0.3); color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 500; letter-spacing: 0.05em; flex-shrink: 0; }
-.tname { font-size: 13px; font-weight: 500; color: var(--cream); }
-.trole { font-size: 11px; letter-spacing: 0.05em; color: var(--muted); margin-top: 2px; }
+    .hero-actions {
+      display: flex;
+      gap: 1.2rem;
+      margin-top: 3rem;
+      flex-wrap: wrap;
+    }
 
-#pricing { background: var(--ink-2); }
-.pricing-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; }
-.pricing-intro { font-family: var(--serif); font-size: 36px; font-weight: 300; color: var(--cream); line-height: 1.2; max-width: 400px; }
-.pricing-intro em { font-style: italic; color: var(--accent); }
-.pricing-note { font-size: 12px; font-weight: 300; color: var(--muted); max-width: 220px; text-align: right; line-height: 1.6; }
-.pricing-grid { display: grid; grid-template-columns: 1fr 1.15fr 1fr; gap: 12px; align-items: start; }
-.ptier { background: var(--ink); border: 0.5px solid rgba(240,236,228,0.1); padding: 32px 28px; transition: border-color 0.2s; }
-.ptier:hover { border-color: rgba(240,236,228,0.25); }
-.ptier.featured { background: var(--cream); border-color: var(--cream); padding: 40px 32px; }
-.ptier.featured:hover { border-color: var(--cream-2); }
-.pt-label { font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
-.ptier.featured .pt-label { color: var(--accent-2); }
-.pt-price { font-family: var(--serif); font-size: 42px; font-weight: 300; color: var(--cream); line-height: 1; margin-bottom: 6px; }
-.ptier.featured .pt-price { color: var(--ink); font-size: 52px; }
-.pt-sub { font-size: 12px; font-weight: 300; color: var(--muted); margin-bottom: 24px; padding-bottom: 24px; border-bottom: 0.5px solid rgba(240,236,228,0.1); }
-.ptier.featured .pt-sub { color: var(--ink-3); border-bottom-color: rgba(10,9,8,0.15); }
-.pt-items { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-.pt-items li { font-size: 13px; font-weight: 300; color: var(--cream-3); display: flex; align-items: flex-start; gap: 10px; }
-.ptier.featured .pt-items li { color: var(--ink-3); }
-.pt-items li::before { content: ''; display: block; width: 16px; height: 0.5px; background: var(--accent); flex-shrink: 0; margin-top: 9px; }
-.ptier.featured .pt-items li::before { background: var(--accent-2); }
-.pt-cta { display: block; text-align: center; margin-top: 28px; padding: 12px 20px; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border: 0.5px solid rgba(240,236,228,0.2); color: var(--cream-3); background: transparent; transition: color 0.2s, border-color 0.2s; }
-.pt-cta:hover { color: var(--cream); border-color: rgba(240,236,228,0.5); }
-.ptier.featured .pt-cta { background: var(--ink); border-color: var(--ink); color: var(--cream); }
-.ptier.featured .pt-cta:hover { background: var(--ink-2); border-color: var(--ink-2); }
-.pt-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-2); margin-bottom: 8px; }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--black);
+      padding: 1rem 2.2rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 500;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.2s;
+      font-family: 'DM Sans', sans-serif;
+    }
 
-#contact { background: var(--ink); padding: 100px 40px; position: relative; overflow: hidden; }
-.contact-bg { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 50% 80% at 80% 50%, rgba(201,169,110,0.05) 0%, transparent 70%); }
-.contact-layout { display: grid; grid-template-columns: 1fr 1.1fr; gap: 80px; align-items: start; position: relative; z-index: 1; }
-.contact-eyebrow { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
-.contact-eyebrow::before { content: ''; display: block; width: 32px; height: 0.5px; background: var(--accent); }
-.contact-title { font-family: var(--serif); font-size: clamp(32px, 3.5vw, 52px); font-weight: 300; color: var(--cream); line-height: 1.1; margin-bottom: 20px; }
-.contact-title em { font-style: italic; color: var(--accent); }
-.contact-sub { font-size: 14px; font-weight: 300; color: var(--muted); max-width: 360px; line-height: 1.7; margin-bottom: 36px; }
-.contact-details { display: flex; flex-direction: column; gap: 16px; }
-.contact-detail-item { display: flex; flex-direction: column; gap: 3px; }
-.contact-detail-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
-.contact-detail-value { font-size: 13px; color: var(--cream-3); }
-.contact-detail-value a { color: var(--cream-3); text-decoration: none; transition: color 0.2s; }
-.contact-detail-value a:hover { color: var(--accent); }
-.contact-profiles { display: flex; gap: 12px; margin-top: 8px; }
-.profile-link { display: inline-flex; align-items: center; gap: 7px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 8px 16px; border: 0.5px solid rgba(240,236,228,0.15); color: var(--muted); text-decoration: none; transition: color 0.2s, border-color 0.2s; }
-.profile-link:hover { color: var(--cream); border-color: rgba(240,236,228,0.4); }
+    .btn-primary:hover { background: var(--gold-light); }
 
-.inquiry-form { background: var(--ink-2); border: 0.5px solid rgba(240,236,228,0.1); padding: 40px 36px; }
-.form-title { font-family: var(--serif); font-size: 22px; font-weight: 300; color: var(--cream); margin-bottom: 28px; padding-bottom: 20px; border-bottom: 0.5px solid rgba(240,236,228,0.08); }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.form-group { display: flex; flex-direction: column; gap: 7px; margin-bottom: 16px; }
-.form-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
-.form-input, .form-select, .form-textarea {
-  background: rgba(240,236,228,0.03);
-  border: 0.5px solid rgba(240,236,228,0.12);
-  color: var(--cream);
-  font-family: var(--sans);
-  font-size: 13px; font-weight: 300;
-  padding: 11px 14px;
-  outline: none;
-  transition: border-color 0.2s, background 0.2s;
-  width: 100%;
-  -webkit-appearance: none; appearance: none;
-  border-radius: 0;
-}
-.form-input::placeholder, .form-textarea::placeholder { color: var(--muted); }
-.form-input:focus, .form-select:focus, .form-textarea:focus { border-color: rgba(201,169,110,0.5); background: rgba(201,169,110,0.03); }
-.form-select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath stroke='%237a7570' stroke-width='1' d='M1 1l4 4 4-4'/%3E%3C/svg%3E");
-  background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px;
-}
-.form-select option { background: #1c1a18; color: var(--cream); }
-.form-textarea { resize: vertical; min-height: 100px; }
-.form-submit { display: block; width: 100%; margin-top: 24px; font-family: var(--sans); font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; padding: 15px 24px; background: var(--cream); color: var(--ink); border: none; cursor: none; transition: background 0.2s, transform 0.15s; }
-.form-submit:hover { background: var(--cream-2); }
-.form-submit:active { transform: scale(0.99); }
-.form-submit:disabled { opacity: 0.5; }
-.form-note { font-size: 11px; color: var(--muted); margin-top: 12px; text-align: center; line-height: 1.5; }
-.form-error { font-size: 12px; color: #e07070; margin-top: 12px; text-align: center; padding: 10px; border: 0.5px solid rgba(224,112,112,0.2); display: none; line-height: 1.5; }
-.form-success { display: none; text-align: center; padding: 40px 20px; }
-.form-success-icon { width: 40px; height: 40px; border-radius: 50%; border: 0.5px solid rgba(201,169,110,0.4); color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 18px; margin: 0 auto 16px; }
-.form-success-title { font-family: var(--serif); font-size: 22px; font-weight: 300; color: var(--cream); margin-bottom: 8px; }
-.form-success-sub { font-size: 13px; color: var(--muted); }
+    .btn-ghost {
+      color: var(--white);
+      padding: 1rem 2.2rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 400;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 2px;
+      transition: border-color 0.2s, color 0.2s;
+      font-family: 'DM Sans', sans-serif;
+    }
 
-footer { background: var(--ink-2); padding: 28px 40px; display: flex; justify-content: space-between; align-items: center; border-top: 0.5px solid rgba(240,236,228,0.06); flex-wrap: wrap; gap: 12px; }
-.footer-logo { font-family: var(--serif); font-size: 16px; font-weight: 300; color: var(--muted); }
-.footer-logo em { font-style: italic; color: var(--cream-3); }
-.footer-copy { font-size: 11px; color: var(--muted); letter-spacing: 0.05em; }
-.footer-links { display: flex; gap: 24px; }
-.footer-links a { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-.footer-links a:hover { color: var(--cream-3); }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
 
-@media (max-width: 860px) {
-  nav { padding: 0 20px; }
-  .nav-links { display: none; }
-  .hero { padding: 0 20px 48px; min-height: 80vh; }
-  .hero-btns { flex-wrap: wrap; }
-  .hero-right { align-items: flex-start; }
-  .hero-stats { gap: 20px; }
-  section { padding: 60px 20px; }
-  .avail-band { padding: 12px 20px; }
-  .deck-grid { grid-template-columns: 1fr; }
-  .process-grid { grid-template-columns: 1fr 1fr; }
-  .testi-grid { grid-template-columns: 1fr; }
-  .pricing-grid { grid-template-columns: 1fr; }
-  .pricing-header { flex-direction: column; align-items: flex-start; gap: 16px; }
-  .pricing-note { text-align: left; max-width: 100%; }
-  .ptier.featured { padding: 32px 28px; }
-  #contact { padding: 72px 20px; }
-  .contact-layout { grid-template-columns: 1fr; gap: 48px; }
-  .form-row { grid-template-columns: 1fr; }
-  .inquiry-form { padding: 28px 24px; }
-  footer { padding: 24px 20px; }
-  .cursor { display: none; }
-  body { cursor: auto; }
-  a, button, .deck-card-link, input, select, textarea { cursor: auto; }
-}
-</style>
+    .hero-stats {
+      display: flex;
+      gap: 4rem;
+      padding-top: 6rem;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      position: relative;
+    }
+
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.4rem;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+    }
+
+    .stat-label {
+      font-size: 0.78rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 0.2rem;
+    }
+
+    /* ── MARQUEE ── */
+    .marquee-wrap {
+      overflow: hidden;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 1rem 0;
+      background: var(--charcoal);
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 3rem;
+      animation: marquee 28s linear infinite;
+      white-space: nowrap;
+    }
+
+    .marquee-track span {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      flex-shrink: 0;
+    }
+
+    .marquee-track span.dot {
+      color: var(--gold);
+      font-size: 0.6rem;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ── SECTION SHELL ── */
+    section { padding: 8rem 4rem; }
+
+    .section-tag {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+    }
+
+    .section-headline {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 3.8rem);
+      line-height: 1.1;
+      max-width: 640px;
+      font-weight: 400;
+    }
+
+    .section-headline em { font-style: italic; color: var(--gold); }
+
+    /* ── WORK GRID ── */
+    #work { background: var(--black); }
+
+    .work-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 5rem;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .work-subtext {
+      color: var(--muted);
+      max-width: 340px;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .deck-card {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      cursor: pointer;
+      background: var(--charcoal);
+      text-decoration: none;
+      display: block;
+    }
+
+    .deck-card:nth-child(1) { grid-column: 1 / 3; aspect-ratio: auto; min-height: 440px; }
+    .deck-card:nth-child(4) { grid-column: 2 / 4; aspect-ratio: auto; min-height: 400px; }
+    .deck-card:nth-child(7) { grid-column: 1 / 3; aspect-ratio: auto; min-height: 400px; }
+
+    /* Visual fills for cards without photos */
+    .deck-card .card-bg {
+      position: absolute;
+      inset: 0;
+      transition: transform 0.6s cubic-bezier(.25,.46,.45,.94);
+    }
+
+    .deck-card:hover .card-bg { transform: scale(1.04); }
+
+    /* Card 1 — NovaPay (fintech dark blue) */
+    .card-bg-1 {
+      background: linear-gradient(135deg, #06091a 0%, #0d1836 40%, #112050 100%);
+    }
+    .card-bg-1::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse 50% 60% at 75% 30%, rgba(30,80,200,0.35) 0%, transparent 65%),
+        radial-gradient(ellipse 30% 30% at 20% 70%, rgba(0,200,150,0.1) 0%, transparent 50%);
+    }
+
+    /* Card 2 — Meridian (dark + orange) */
+    .card-bg-2 {
+      background: linear-gradient(145deg, #120800 0%, #1e0e00 50%, #2a1200 100%);
+    }
+    .card-bg-2::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 70% at 65% 40%, rgba(220,80,0,0.4) 0%, transparent 65%);
+    }
+
+    /* Card 3 — Keynote (black + gold) */
+    .card-bg-3 {
+      background: linear-gradient(160deg, #0c0900 0%, #1a1200 60%, #0c0900 100%);
+    }
+    .card-bg-3::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(201,168,76,0.2) 0%, transparent 65%);
+    }
+
+    /* Card 4 — Annual Report (dark green) */
+    .card-bg-4 {
+      background: linear-gradient(135deg, #010e06 0%, #062010 50%, #031408 100%);
+    }
+    .card-bg-4::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 55% 60% at 30% 50%, rgba(0,150,60,0.25) 0%, transparent 65%);
+    }
+
+    /* Card 5 — Consulting (warm coral) */
+    .card-bg-5 {
+      background: linear-gradient(145deg, #1a0800 0%, #2e1200 50%, #1a0800 100%);
+    }
+    .card-bg-5::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 65% 65% at 60% 40%, rgba(220,80,50,0.35) 0%, transparent 65%);
+    }
+
+    /* Card 6 — VALOR Sports (dark + magenta) */
+    .card-bg-6 {
+      background: linear-gradient(145deg, #0a0012 0%, #16002a 50%, #0a0012 100%);
+    }
+    .card-bg-6::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse 50% 60% at 70% 30%, rgba(200,0,160,0.45) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 20% 70%, rgba(100,0,220,0.2) 0%, transparent 50%);
+    }
+
+    /* Card 7 — Brand Campaign (new — photo-forward) */
+    .card-bg-7 {
+      background: linear-gradient(145deg, #0a0005 0%, #1a000a 50%, #0a0005 100%);
+    }
+    .card-bg-7::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 60% 35%, rgba(255,30,80,0.4) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 50% at 10% 65%, rgba(255,160,0,0.15) 0%, transparent 55%);
+    }
+
+    /* Card 8 — Luxury RE (new — cream/gold) */
+    .card-bg-8 {
+      background: linear-gradient(145deg, #0c0900 0%, #181100 50%, #0c0900 100%);
+    }
+    .card-bg-8::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse 70% 60% at 50% 40%, rgba(201,168,76,0.25) 0%, transparent 65%),
+        radial-gradient(ellipse 30% 30% at 85% 75%, rgba(201,168,76,0.1) 0%, transparent 50%);
+    }
+
+    /* Decorative overlays per card */
+    .card-deco {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* text elements in cards */
+    .card-content {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .card-type {
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 0.6rem;
+    }
+
+    .card-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      line-height: 1;
+      letter-spacing: 0.03em;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .card-meta {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 1.2rem;
+    }
+
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      transition: gap 0.2s;
+    }
+
+    .deck-card:hover .card-link { gap: 1rem; }
+
+    .card-link-arrow { font-size: 1rem; }
+
+    /* Card overlay on hover */
+    .deck-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
+      z-index: 1;
+    }
+
+    /* Decorative card numbers */
+    .card-num {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 5rem;
+      line-height: 1;
+      color: rgba(255,255,255,0.04);
+      z-index: 2;
+      letter-spacing: 0.05em;
+    }
+
+    /* Decorative elements layered into card bg */
+    .card-geo {
+      position: absolute;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* data-viz decorations for specific cards */
+    .card-bars {
+      position: absolute;
+      bottom: 3rem;
+      left: 2.5rem;
+      display: flex;
+      align-items: flex-end;
+      gap: 4px;
+      height: 60px;
+      z-index: 1;
+      opacity: 0.25;
+    }
+
+    .bar {
+      width: 8px;
+      background: var(--gold);
+      border-radius: 1px;
+    }
+
+    /* ── BIG QUOTE ── */
+    .quote-section {
+      background: var(--cream);
+      color: var(--black);
+      text-align: center;
+      padding: 8rem 4rem;
+    }
+
+    .quote-section blockquote {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 3rem);
+      line-height: 1.25;
+      max-width: 820px;
+      margin: 0 auto 2rem;
+      font-weight: 400;
+    }
+
+    .quote-section blockquote em { font-style: italic; color: #8B6914; }
+
+    .quote-attr {
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #888;
+    }
+
+    /* ── PROCESS ── */
+    #process { background: var(--charcoal); }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      margin-top: 5rem;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .process-step {
+      background: var(--charcoal);
+      padding: 3.5rem;
+    }
+
+    .step-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 5rem;
+      line-height: 1;
+      color: rgba(201,168,76,0.15);
+      letter-spacing: 0.05em;
+      margin-bottom: 1.5rem;
+    }
+
+    .step-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      font-weight: 400;
+    }
+
+    .step-body {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.75;
+    }
+
+    /* ── PRICING ── */
+    #pricing { background: var(--black); }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 5rem;
+    }
+
+    .price-card {
+      background: var(--charcoal);
+      padding: 3rem 2.5rem;
+      position: relative;
+    }
+
+    .price-card.featured {
+      background: var(--mid);
+      border: 1px solid rgba(201,168,76,0.3);
+    }
+
+    .price-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--gold);
+      padding: 0.25rem 0.75rem;
+      border-radius: 1px;
+      margin-bottom: 2rem;
+    }
+
+    .price-name {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .price-amount {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 4rem;
+      line-height: 1;
+      letter-spacing: 0.02em;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+
+    .price-amount span {
+      font-size: 1.8rem;
+      color: var(--gold);
+    }
+
+    .price-from {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    .price-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+      margin: 1.5rem 0;
+    }
+
+    .price-features {
+      list-style: none;
+      margin-bottom: 2.5rem;
+    }
+
+    .price-features li {
+      font-size: 0.87rem;
+      color: rgba(255,255,255,0.6);
+      padding: 0.55rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .price-features li::before {
+      content: '—';
+      color: var(--gold);
+      font-size: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .price-note {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    /* ── TESTIMONIALS ── */
+    #testimonials { background: var(--charcoal); }
+
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 4rem;
+    }
+
+    .testi-card {
+      background: var(--mid);
+      padding: 2.5rem;
+    }
+
+    .testi-quote {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.05rem;
+      line-height: 1.65;
+      color: var(--white);
+      margin-bottom: 2rem;
+      font-weight: 400;
+    }
+
+    .testi-quote::before { content: '\201C'; color: var(--gold); }
+    .testi-quote::after  { content: '\201D'; color: var(--gold); }
+
+    .testi-name {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.2rem;
+    }
+
+    .testi-role {
+      font-size: 0.73rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--black);
+      text-align: center;
+      padding: 10rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #contact::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse 60% 50% at 50% 50%, rgba(201,168,76,0.06) 0%, transparent 70%);
+    }
+
+    .contact-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    #contact h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 8vw, 7rem);
+      line-height: 0.92;
+      letter-spacing: 0.02em;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .contact-sub {
+      color: var(--muted);
+      max-width: 420px;
+      margin: 0 auto 3rem;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .contact-email {
+      display: block;
+      font-size: 1rem;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      margin-top: 2rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--charcoal);
+      padding: 3rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2rem;
+      letter-spacing: 0.12em;
+      color: var(--white);
+    }
+
+    .footer-logo span { color: var(--gold); }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .footer-links a {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    .footer-copy {
+      font-size: 0.73rem;
+      color: rgba(255,255,255,0.25);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 1.5rem; }
+      nav ul { display: none; }
+      .hero { padding: 10rem 1.5rem 4rem; }
+      .hero-stats { gap: 2rem; flex-wrap: wrap; }
+      section { padding: 5rem 1.5rem; }
+      .work-grid { grid-template-columns: 1fr; }
+      .deck-card:nth-child(1),
+      .deck-card:nth-child(4),
+      .deck-card:nth-child(7) { grid-column: 1; min-height: 300px; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .work-header { flex-direction: column; align-items: flex-start; }
+      footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
 </head>
 <body>
 
-<div class="cursor" id="cursor"></div>
-
+<!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">Stealth <em>Strategist</em></a>
-  <ul class="nav-links">
+  <a href="#" class="nav-logo">Stealth<span>.</span></a>
+  <ul>
     <li><a href="#work">Work</a></li>
     <li><a href="#process">Process</a></li>
     <li><a href="#pricing">Pricing</a></li>
+    <li><a href="mailto:tyra@stealthstrategist.co" class="nav-cta">Book a call</a></li>
   </ul>
-  <a href="#contact" class="nav-cta">Book a call</a>
 </nav>
 
-<div class="hero" id="home">
+<!-- HERO -->
+<section class="hero">
   <div class="hero-bg"></div>
-  <div class="hero-grid-lines"></div>
-  <div class="hero-eyebrow reveal">Presentation design studio</div>
-  <h1 class="reveal reveal-delay-1">Decks that close deals,<br>win rooms, and <em>move fast.</em></h1>
-  <div class="hero-bottom reveal reveal-delay-2">
-    <p class="hero-sub">High-stakes presentations for startups, consultants, and executives — pitch decks, sales decks, board materials. Polished. On-brand. Ready when you need it.</p>
-    <div class="hero-right">
-      <div class="hero-btns">
-        <a href="#work" class="btn-primary">See the work</a>
-        <a href="#contact" class="btn-ghost">Get a quote</a>
-      </div>
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <div class="hero-stat-num">50+</div>
-          <div class="hero-stat-label">Decks delivered</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-num">3–5 days</div>
-          <div class="hero-stat-label">Standard turnaround</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-num">24 hrs</div>
-          <div class="hero-stat-label">Rush available</div>
-        </div>
-      </div>
+  <div>
+    <p class="hero-tag">Presentation Design Studio</p>
+    <h1>Decks that<br><em>close.</em><br>Every time.</h1>
+    <p class="hero-sub">High-stakes presentations for founders, executives, and global brands. Pitch decks, keynotes, sales decks, and brand campaigns. Polished. On-brand. Built to win rooms.</p>
+    <div class="hero-actions">
+      <a href="#work" class="btn-primary">See my work</a>
+      <a href="mailto:tyra@stealthstrategist.co" class="btn-ghost">Get a quote →</a>
     </div>
+  </div>
+  <div class="hero-stats">
+    <div>
+      <div class="stat-num">50+</div>
+      <div class="stat-label">Decks delivered</div>
+    </div>
+    <div>
+      <div class="stat-num">3–5</div>
+      <div class="stat-label">Day turnaround</div>
+    </div>
+    <div>
+      <div class="stat-num">24H</div>
+      <div class="stat-label">Rush available</div>
+    </div>
+    <div>
+      <div class="stat-num">$50M+</div>
+      <div class="stat-label">Raised by clients</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span>Pitch Decks</span><span class="dot">◆</span>
+    <span>Sales Decks</span><span class="dot">◆</span>
+    <span>Executive Keynotes</span><span class="dot">◆</span>
+    <span>Brand Campaigns</span><span class="dot">◆</span>
+    <span>Annual Reports</span><span class="dot">◆</span>
+    <span>Board Materials</span><span class="dot">◆</span>
+    <span>Investor Decks</span><span class="dot">◆</span>
+    <span>Sports &amp; Culture</span><span class="dot">◆</span>
+    <span>Pitch Decks</span><span class="dot">◆</span>
+    <span>Sales Decks</span><span class="dot">◆</span>
+    <span>Executive Keynotes</span><span class="dot">◆</span>
+    <span>Brand Campaigns</span><span class="dot">◆</span>
+    <span>Annual Reports</span><span class="dot">◆</span>
+    <span>Board Materials</span><span class="dot">◆</span>
+    <span>Investor Decks</span><span class="dot">◆</span>
+    <span>Sports &amp; Culture</span><span class="dot">◆</span>
   </div>
 </div>
 
-<div class="avail-band">
-  <div class="avail-dot"></div>
-  <span class="avail-text">2 project spots available for May — <a href="#contact" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">inquire now</a></span>
-</div>
-
+<!-- WORK -->
 <section id="work">
-  <div class="section-label">Selected work</div>
-  <div class="deck-grid">
-
-    <a class="deck-card-link card-nova reveal" href="portfolio/01-pitch-deck.html">
-      <div class="deck-preview dp1">
-        <div class="deck-preview-overlay"></div>
-        <div class="slide-mock sm-dp">
-          <div>
-            <span class="sm-badge b-purple">Series A</span>
-            <div class="ln h c-purple w80"></div>
-            <div class="ln c-purple w60"></div>
-            <div class="ln c-muted w40"></div>
-          </div>
-          <div class="bars">
-            <div class="bar" style="background:rgba(127,119,221,0.35);height:42%;"></div>
-            <div class="bar" style="background:rgba(127,119,221,0.5);height:64%;"></div>
-            <div class="bar" style="background:rgba(127,119,221,0.4);height:52%;"></div>
-            <div class="bar" style="background:rgba(127,119,221,0.7);height:82%;"></div>
-            <div class="bar" style="background:rgba(127,119,221,0.9);height:100%;"></div>
-          </div>
-        </div>
-      </div>
-      <div class="deck-info">
-        <div class="deck-outcome">$8.5M raised · 2 weeks post-delivery</div>
-        <div class="deck-title">Nova — Series A fundraise</div>
-        <div class="deck-meta">10 slides · Investor-facing</div>
-        <div class="deck-chips"><span class="chip">Dark purple</span><span class="chip">Data viz</span><span class="chip">Startup</span></div>
-      </div>
-      <div class="view-label">View deck <span class="view-arrow">→</span></div>
-    </a>
-
-    <a class="deck-card-link card-meridian reveal reveal-delay-1" href="portfolio/02-sales-deck.html">
-      <div class="deck-preview dp2">
-        <div class="deck-preview-overlay"></div>
-        <div class="slide-mock sm-db">
-          <div>
-            <span class="sm-badge b-coral">Enterprise sales</span>
-            <div class="ln h c-coral w80"></div>
-            <div class="ln c-coral w60"></div>
-          </div>
-          <div style="display:flex;gap:5px;margin-top:auto;">
-            <div class="mini-card" style="background:rgba(249,115,22,0.12);border:0.5px solid rgba(249,115,22,0.2);">
-              <div class="ln c-coral w80"></div>
-              <div class="ln c-muted w60" style="margin-top:3px;height:2px;"></div>
-            </div>
-            <div class="mini-card" style="background:rgba(249,115,22,0.12);border:0.5px solid rgba(249,115,22,0.2);">
-              <div class="ln c-coral w80"></div>
-              <div class="ln c-muted w60" style="margin-top:3px;height:2px;"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="deck-info">
-        <div class="deck-outcome">B2B enterprise · Used across 12-country sales rollout</div>
-        <div class="deck-title">Meridian — revenue intelligence</div>
-        <div class="deck-meta">10 slides · Interactive sales deck</div>
-        <div class="deck-chips"><span class="chip">Dark + orange</span><span class="chip">Feature grid</span><span class="chip">Sales</span></div>
-      </div>
-      <div class="view-label">View deck <span class="view-arrow">→</span></div>
-    </a>
-
-    <a class="deck-card-link card-keynote reveal" href="portfolio/03-keynote.html">
-      <div class="deck-preview dp3">
-        <div class="deck-preview-overlay"></div>
-        <div class="slide-mock sm-bk" style="align-items:center;justify-content:center;gap:6px;">
-          <div style="font-size:6px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(201,168,76,0.5);margin-bottom:4px;">Global Leadership Summit</div>
-          <div class="ln h c-gold" style="width:60%;"></div>
-          <div class="ln c-gold" style="width:44%;"></div>
-          <div class="ln c-muted" style="width:52%;height:2px;margin-top:2px;"></div>
-          <div style="margin-top:6px;display:flex;align-items:center;gap:6px;">
-            <div style="width:16px;height:0.5px;background:rgba(255,255,255,0.08);"></div>
-            <div style="font-size:5px;color:rgba(255,255,255,0.15);letter-spacing:0.1em;">ELENA VASQUEZ · CEO</div>
-            <div style="width:16px;height:0.5px;background:rgba(255,255,255,0.08);"></div>
-          </div>
-        </div>
-      </div>
-      <div class="deck-info">
-        <div class="deck-outcome">Presented to 400+ delegates · Horizon Group summit</div>
-        <div class="deck-title">The Leadership Edge — keynote</div>
-        <div class="deck-meta">10 slides · Speaking deck</div>
-        <div class="deck-chips"><span class="chip">Black + gold</span><span class="chip">Bold type</span><span class="chip">Conference</span></div>
-      </div>
-      <div class="view-label">View deck <span class="view-arrow">→</span></div>
-    </a>
-
-    <a class="deck-card-link card-verdant reveal reveal-delay-1" href="portfolio/04-annual-report.html">
-      <div class="deck-preview dp4">
-        <div class="deck-preview-overlay"></div>
-        <div class="slide-mock sm-dg">
-          <div>
-            <span class="sm-badge b-green">Annual report</span>
-            <div class="ln h c-green w80"></div>
-            <div class="ln c-green w60"></div>
-          </div>
-          <div style="display:flex;gap:8px;align-items:center;">
-            <div class="bars" style="flex:1;height:26px;">
-              <div class="bar" style="background:rgba(29,158,117,0.35);height:40%;"></div>
-              <div class="bar" style="background:rgba(29,158,117,0.55);height:64%;"></div>
-              <div class="bar" style="background:rgba(29,158,117,0.4);height:50%;"></div>
-              <div class="bar" style="background:rgba(29,158,117,0.75);height:84%;"></div>
-            </div>
-            <div class="donut"><span>84%</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="deck-info">
-        <div class="deck-outcome">$142M AUM · Board-ready annual materials</div>
-        <div class="deck-title">Verdant Capital — investor report</div>
-        <div class="deck-meta">10 slides · Finance deck</div>
-        <div class="deck-chips"><span class="chip">Dark green</span><span class="chip">Charts</span><span class="chip">Finance</span></div>
-      </div>
-      <div class="view-label">View deck <span class="view-arrow">→</span></div>
-    </a>
-
-    <a class="deck-card-link card-arcana reveal" href="portfolio/05-consulting-strategy.html">
-      <div class="deck-preview dp5">
-        <div class="deck-preview-overlay"></div>
-        <div class="slide-mock sm-cr">
-          <div>
-            <span class="sm-badge b-coral">Strategy recommendation</span>
-            <div class="ln h c-coral w80"></div>
-            <div class="ln c-coral w60"></div>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:4px;margin-top:auto;">
-            <div style="background:rgba(255,255,255,0.03);padding:5px 6px;display:flex;gap:5px;align-items:center;">
-              <div style="font-size:8px;color:rgba(240,230,208,0.15);font-family:Georgia,serif;">01</div>
-              <div style="flex:1;"><div class="ln c-coral w80" style="height:2px;margin-bottom:2px;"></div><div class="ln c-muted w60" style="height:2px;"></div></div>
-            </div>
-            <div style="background:rgba(255,255,255,0.03);padding:5px 6px;display:flex;gap:5px;align-items:center;">
-              <div style="font-size:8px;color:rgba(240,230,208,0.15);font-family:Georgia,serif;">02</div>
-              <div style="flex:1;"><div class="ln c-coral w80" style="height:2px;margin-bottom:2px;"></div><div class="ln c-muted w60" style="height:2px;"></div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="deck-info">
-        <div class="deck-outcome">Strategy deliverable · Stellarton Foods growth transformation</div>
-        <div class="deck-title">Arcana Strategy — growth deck</div>
-        <div class="deck-meta">10 slides · Consulting deliverable</div>
-        <div class="deck-chips"><span class="chip">Warm coral</span><span class="chip">Editorial</span><span class="chip">Consulting</span></div>
-      </div>
-      <div class="view-label">View deck <span class="view-arrow">→</span></div>
-    </a>
-
-    <!-- ============================================================
-         VALOR CARD — colors now match the actual case study:
-         black bg · acid green accents · red secondary accent
-         ============================================================ -->
-    <a class="deck-card-link card-valor reveal reveal-delay-1" href="portfolio/07-valor-league.html">
-      <div class="deck-preview dp6">
-        <div class="deck-preview-overlay"></div>
-        <div class="slide-mock sm-mg" style="align-items:flex-start;justify-content:space-between;">
-          <div>
-            <span class="sm-badge b-mag">Sports Brand</span>
-            <div class="ln h c-mag" style="width:70%;"></div>
-            <div class="ln c-red" style="width:50%;"></div>
-            <div class="ln c-muted w40"></div>
-          </div>
-          <div style="font-family:'Courier New',monospace;font-size:9px;color:rgba(200,242,58,0.35);letter-spacing:0.12em;align-self:flex-end;">VALOR</div>
-        </div>
-      </div>
-      <div class="deck-info">
-        <div class="deck-outcome">Brand launch · Global women's sport tour</div>
-        <div class="deck-title">VALOR League — brand deck</div>
-        <div class="deck-meta">10 slides · Brand launch</div>
-        <div class="deck-chips"><span class="chip">Black + acid green</span><span class="chip">Bold type</span><span class="chip">Sports</span></div>
-      </div>
-      <div class="view-label">View deck <span class="view-arrow">→</span></div>
-    </a>
-
+  <div class="work-header">
+    <div>
+      <p class="section-tag">Selected Work</p>
+      <h2 class="section-headline">Decks that moved<br><em>money and rooms.</em></h2>
+    </div>
+    <p class="work-subtext">Every deck starts with a story. The design earns its place by making that story impossible to ignore.</p>
   </div>
+
+  <div class="work-grid">
+
+    <!-- CARD 1 — NovaPay (wide) -->
+    <a class="deck-card" href="https://stealthstrategist.co/portfolio/01-pitch-deck.html">
+      <div class="card-bg card-bg-1"></div>
+      <!-- decorative grid lines -->
+      <svg class="card-deco" viewBox="0 0 800 440" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;z-index:1;opacity:0.07">
+        <line x1="0" y1="100" x2="800" y2="100" stroke="white" stroke-width="0.5"/>
+        <line x1="0" y1="200" x2="800" y2="200" stroke="white" stroke-width="0.5"/>
+        <line x1="0" y1="300" x2="800" y2="300" stroke="white" stroke-width="0.5"/>
+        <line x1="200" y1="0" x2="200" y2="440" stroke="white" stroke-width="0.5"/>
+        <line x1="400" y1="0" x2="400" y2="440" stroke="white" stroke-width="0.5"/>
+        <line x1="600" y1="0" x2="600" y2="440" stroke="white" stroke-width="0.5"/>
+        <circle cx="600" cy="140" r="80" stroke="#1e50c8" stroke-width="0.8" fill="none" opacity="0.5"/>
+        <circle cx="600" cy="140" r="140" stroke="#1e50c8" stroke-width="0.5" fill="none" opacity="0.3"/>
+      </svg>
+      <!-- data bars -->
+      <div class="card-bars">
+        <div class="bar" style="height:30%"></div>
+        <div class="bar" style="height:45%"></div>
+        <div class="bar" style="height:60%"></div>
+        <div class="bar" style="height:55%"></div>
+        <div class="bar" style="height:80%"></div>
+        <div class="bar" style="height:70%"></div>
+        <div class="bar" style="height:100%"></div>
+      </div>
+      <div class="card-num">01</div>
+      <div class="card-content">
+        <p class="card-type">Series A · Pitch Deck · Fintech</p>
+        <p class="card-title">NOVAPAY SERIES A</p>
+        <p class="card-meta">18 slides · $8.5M raise · Investor-facing</p>
+        <span class="card-link">View deck <span class="card-link-arrow">→</span></span>
+      </div>
+    </a>
+
+    <!-- CARD 2 — Meridian -->
+    <a class="deck-card" href="https://stealthstrategist.co/portfolio/02-sales-deck.html">
+      <div class="card-bg card-bg-2"></div>
+      <svg class="card-deco" viewBox="0 0 400 300" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;z-index:1;opacity:0.12">
+        <rect x="80" y="60" width="240" height="180" rx="2" stroke="#dc5000" stroke-width="0.8" fill="none"/>
+        <line x1="80" y1="150" x2="320" y2="150" stroke="#dc5000" stroke-width="0.5"/>
+      </svg>
+      <div class="card-num">02</div>
+      <div class="card-content">
+        <p class="card-type">Enterprise Sales · B2B · SaaS</p>
+        <p class="card-title">MERIDIAN REVENUE</p>
+        <p class="card-meta">10 slides · B2B enterprise · Interactive</p>
+        <span class="card-link">View deck <span class="card-link-arrow">→</span></span>
+      </div>
+    </a>
+
+    <!-- CARD 3 — Keynote -->
+    <a class="deck-card" href="https://stealthstrategist.co/portfolio/03-keynote.html">
+      <div class="card-bg card-bg-3"></div>
+      <svg class="card-deco" viewBox="0 0 400 300" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;z-index:1;opacity:0.14">
+        <circle cx="200" cy="150" r="100" stroke="#c9a84c" stroke-width="0.8" fill="none"/>
+        <circle cx="200" cy="150" r="60" stroke="#c9a84c" stroke-width="0.5" fill="none"/>
+        <line x1="200" y1="50" x2="200" y2="250" stroke="#c9a84c" stroke-width="0.5"/>
+        <line x1="100" y1="150" x2="300" y2="150" stroke="#c9a84c" stroke-width="0.5"/>
+      </svg>
+      <div class="card-num">03</div>
+      <div class="card-content">
+        <p class="card-type">Executive Keynote · C-Suite · Summit</p>
+        <p class="card-title">THE LEADERSHIP EDGE</p>
+        <p class="card-meta">10 slides · Horizon Group · Global summit</p>
+        <span class="card-link">View deck <span class="card-link-arrow">→</span></span>
+      </div>
+    </a>
+
+    <!-- CARD 4 — Annual Report (wide) -->
+    <a class="deck-card" href="https://stealthstrategist.co/portfolio/04-annual-report.html">
+      <div class="card-bg card-bg-4"></div>
+      <svg class="card-deco" viewBox="0 0 800 400" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;z-index:1;opacity:0.1">
+        <polyline points="50,300 150,200 250,240 350,120 450,160 550,80 650,100 750,60" stroke="#00c850" stroke-width="1.2" fill="none"/>
+        <polyline points="50,350 150,280 250,300 350,200 450,240 550,160 650,180 750,140" stroke="#00c850" stroke-width="0.6" fill="none"/>
+      </svg>
+      <div class="card-num">04</div>
+      <div class="card-content">
+        <p class="card-type">Annual Report · Finance · Board-ready</p>
+        <p class="card-title">VERDANT CAPITAL REPORT</p>
+        <p class="card-meta">10 slides · $142M AUM · Investor-grade</p>
+        <span class="card-link">View deck <span class="card-link-arrow">→</span></span>
+      </div>
+    </a>
+
+    <!-- CARD 5 — Consulting -->
+    <a class="deck-card" href="https://stealthstrategist.co/portfolio/05-consulting-strategy.html">
+      <div class="card-bg card-bg-5"></div>
+      <div class="card-num">05</div>
+      <div class="card-content">
+        <p class="card-type">Consulting · Strategy · Growth</p>
+        <p class="card-title">ARCANA STRATEGY</p>
+        <p class="card-meta">10 slides · Stellarton Foods · Growth transformation</p>
+        <span class="card-link">View deck <span class="card-link-arrow">→</span></span>
+      </div>
+    </a>
+
+    <!-- CARD 6 — VALOR Sports -->
+    <a class="deck-card" href="https://stealthstrategist.co/portfolio/07-valor-league.html">
+      <div class="card-bg card-bg-6"></div>
+      <svg class="card-deco" viewBox="0 0 400 300" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;z-index:1;opacity:0.15">
+        <line x1="0" y1="0" x2="400" y2="300" stroke="#c800a0" stroke-width="0.6"/>
+        <line x1="400" y1="0" x2="0" y2="300" stroke="#c800a0" stroke-width="0.4"/>
+      </svg>
+      <div class="card-num">06</div>
+      <div class="card-content">
+        <p class="card-type">Sports · Brand Launch · Women's Sport</p>
+        <p class="card-title">VALOR LEAGUE</p>
+        <p class="card-meta">24 slides · Global tour · Brand activation</p>
+        <span class="card-link">View deck <span class="card-link-arrow">→</span></span>
+      </div>
+    </a>
+
+    <!-- CARD 7 — NEW: Brand Campaign (wide, photo-forward) -->
+    <a class="deck-card" href="https://stealthstrategist.co/portfolio/08-brand-campaign.html">
+      <div class="card-bg card-bg-7"></div>
+      <!-- Photo placeholder instructions: replace background-image below with your actual image URL -->
+      <div style="position:absolute;inset:0;z-index:0;background-image:url('YOUR-BRAND-CAMPAIGN-IMAGE-URL-HERE');background-size:cover;background-position:center;opacity:0.35;"></div>
+      <svg class="card-deco" viewBox="0 0 800 400" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;z-index:1;opacity:0.2">
+        <rect x="40" y="40" width="720" height="320" rx="1" stroke="white" stroke-width="0.5" fill="none"/>
+        <line x1="40" y1="200" x2="760" y2="200" stroke="white" stroke-width="0.4"/>
+      </svg>
+      <div class="card-num">07</div>
+      <!-- Big editorial text overlay -->
+      <div style="position:absolute;top:2rem;left:2.5rem;z-index:3;font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,6vw,5rem);line-height:0.9;letter-spacing:0.02em;color:rgba(255,255,255,0.08);">BRAND<br>POWER</div>
+      <div class="card-content">
+        <p class="card-type">Brand Campaign · Consumer · Visual-Forward</p>
+        <p class="card-title">VANTAGE BRAND CAMPAIGN</p>
+        <p class="card-meta">16 slides · Photo-driven · Campaign pitch</p>
+        <span class="card-link">View deck <span class="card-link-arrow">→</span></span>
+      </div>
+    </a>
+
+    <!-- CARD 8 — NEW: Luxury Real Estate -->
+    <a class="deck-card" href="https://stealthstrategist.co/portfolio/09-luxury-property.html">
+      <div class="card-bg card-bg-8"></div>
+      <!-- Photo placeholder: replace with actual image URL -->
+      <div style="position:absolute;inset:0;z-index:0;background-image:url('YOUR-LUXURY-PROPERTY-IMAGE-URL-HERE');background-size:cover;background-position:center;opacity:0.3;"></div>
+      <svg class="card-deco" viewBox="0 0 400 300" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;z-index:1;opacity:0.14">
+        <circle cx="200" cy="150" r="120" stroke="#c9a84c" stroke-width="0.6" fill="none"/>
+        <rect x="120" y="70" width="160" height="160" stroke="#c9a84c" stroke-width="0.4" fill="none"/>
+      </svg>
+      <div class="card-num">08</div>
+      <div class="card-content">
+        <p class="card-type">Luxury Real Estate · Investor Pitch · High-Net-Worth</p>
+        <p class="card-title">AURUM PROPERTIES</p>
+        <p class="card-meta">14 slides · Luxury market · Investment pitch</p>
+        <span class="card-link">View deck <span class="card-link-arrow">→</span></span>
+      </div>
+    </a>
+
+  </div><!-- /work-grid -->
 </section>
 
+<!-- PULL QUOTE -->
+<div class="quote-section">
+  <blockquote>
+    "Tyra turned our messy slide dump into a deck we were actually proud to show investors. We closed our round <em>two weeks later.</em>"
+  </blockquote>
+  <p class="quote-attr">Jordan M. — CEO, NovaPay · Series A Founder</p>
+</div>
+
+<!-- PROCESS -->
 <section id="process">
-  <div class="section-label">How it works</div>
+  <p class="section-tag">How it works</p>
+  <h2 class="section-headline">Four steps. No<br><em>surprises.</em></h2>
   <div class="process-grid">
-    <div class="proc-step reveal">
-      <div class="proc-num">01</div>
-      <div class="proc-title">Brief & discovery</div>
-      <div class="proc-desc">You share your content, brand assets, and the goal of the deck. 30-min kickoff call or async — your choice.</div>
+    <div class="process-step">
+      <div class="step-num">01</div>
+      <h3 class="step-title">Brief & Discovery</h3>
+      <p class="step-body">You share your content, brand assets, and the goal of the deck. 30-min kickoff call or async brief. I ask the questions that shape the whole project before a single slide is touched.</p>
     </div>
-    <div class="proc-step reveal reveal-delay-1">
-      <div class="proc-num">02</div>
-      <div class="proc-title">Structure & strategy</div>
-      <div class="proc-desc">I map the narrative flow and slide outline before any design begins. Story first, slides second.</div>
+    <div class="process-step">
+      <div class="step-num">02</div>
+      <h3 class="step-title">Narrative Strategy</h3>
+      <p class="step-body">I map the story arc and slide outline before any design begins. Structure is 80% of the work. The design only lands when the narrative already does.</p>
     </div>
-    <div class="proc-step reveal reveal-delay-2">
-      <div class="proc-num">03</div>
-      <div class="proc-title">Design & build</div>
-      <div class="proc-desc">Full design in PowerPoint or Google Slides, branded and polished. First draft in 48–72 hrs.</div>
+    <div class="process-step">
+      <div class="step-num">03</div>
+      <h3 class="step-title">Design & Build</h3>
+      <p class="step-body">Full design in PowerPoint or Google Slides — branded, polished, and built to your audience. First draft in 48–72 hrs. Every element earns its place.</p>
     </div>
-    <div class="proc-step reveal reveal-delay-3">
-      <div class="proc-num">04</div>
-      <div class="proc-title">Revise & deliver</div>
-      <div class="proc-desc">Two rounds of revisions included. Final file in editable format + PDF — ready to present.</div>
-    </div>
-  </div>
-</section>
-
-<section id="testimonials">
-  <div class="section-label">Client feedback</div>
-  <div class="testi-grid">
-    <div class="tcard reveal">
-      <div class="tquote">"Tyra turned our messy slide dump into a deck we were actually proud to show investors. We closed our round two weeks later."</div>
-      <div class="tattrib">
-        <div class="tavatar">JM</div>
-        <div>
-          <div class="tname">Jordan M.</div>
-          <div class="trole">CEO, Series A startup</div>
-        </div>
-      </div>
-    </div>
-    <div class="tcard reveal reveal-delay-1">
-      <div class="tquote">"Fast, sharp, and she understood our brand immediately. We've used Stealth Strategist for every major pitch since."</div>
-      <div class="tattrib">
-        <div class="tavatar">SR</div>
-        <div>
-          <div class="tname">Sofia R.</div>
-          <div class="trole">Head of Marketing, SaaS company</div>
-        </div>
-      </div>
+    <div class="process-step">
+      <div class="step-num">04</div>
+      <h3 class="step-title">Revise & Deliver</h3>
+      <p class="step-body">Two rounds of revisions included. Final file delivered in fully editable format plus PDF export — so you can update it yourself after delivery without starting over.</p>
     </div>
   </div>
 </section>
 
+<!-- PRICING -->
 <section id="pricing">
-  <div class="pricing-header reveal">
-    <div class="pricing-intro">Investment in a deck that <em>actually works.</em></div>
-    <div class="pricing-note">All projects include a strategy session. You're not just buying slides — you're buying a story.</div>
-  </div>
+  <p class="section-tag">Pricing</p>
+  <h2 class="section-headline">Straightforward pricing.<br><em>Zero surprises.</em></h2>
+
   <div class="pricing-grid">
-    <div class="ptier reveal">
-      <div class="pt-label">Refresh</div>
-      <div class="pt-price">From $750</div>
-      <div class="pt-sub">Up to 15 slides · Existing content</div>
-      <ul class="pt-items">
+
+    <!-- STARTER -->
+    <div class="price-card">
+      <p class="price-name">Starter</p>
+      <p class="price-amount"><span>$</span>1,500</p>
+      <p class="price-from">Starting rate — up to 12 slides</p>
+      <div class="price-divider"></div>
+      <ul class="price-features">
         <li>Redesign of existing content</li>
-        <li>Brand application</li>
+        <li>Brand application & cleanup</li>
         <li>1 revision round</li>
         <li>5-day turnaround</li>
+        <li>PPTX + PDF export</li>
       </ul>
-      <a href="#contact" class="pt-cta">Get started</a>
+      <p class="price-note">Best for: Founders who have a draft and need it elevated. Internal decks, investor updates, early-stage pitches.</p>
+      <a href="mailto:tyra@stealthstrategist.co" class="btn-ghost" style="display:inline-block;font-size:0.78rem;">Get started →</a>
     </div>
-    <div class="ptier featured reveal reveal-delay-1">
-      <div class="pt-badge">
-        <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent-2);"></span>
-        Most requested
-      </div>
-      <div class="pt-label">Signature</div>
-      <div class="pt-price">From $2,000</div>
-      <div class="pt-sub">Full deck from scratch · Strategy included</div>
-      <ul class="pt-items">
-        <li>Narrative strategy session</li>
-        <li>Custom brand system</li>
+
+    <!-- PROFESSIONAL (FEATURED) -->
+    <div class="price-card featured">
+      <span class="price-badge">Most Popular</span>
+      <p class="price-name">Professional</p>
+      <p class="price-amount"><span>$</span>3,500</p>
+      <p class="price-from">Starting rate — full deck from scratch</p>
+      <div class="price-divider"></div>
+      <ul class="price-features">
+        <li>Narrative strategy included</li>
+        <li>Custom brand system built</li>
+        <li>Up to 20 slides</li>
         <li>2 revision rounds</li>
         <li>3-day turnaround</li>
-        <li>PDF + editable source files</li>
+        <li>PPTX + PDF + Google Slides</li>
+        <li>Priority scheduling</li>
       </ul>
-      <a href="#contact" class="pt-cta">Book a call</a>
+      <p class="price-note">Best for: Series A founders, sales leaders, executives. When the deck directly determines a business outcome.</p>
+      <a href="mailto:tyra@stealthstrategist.co" class="btn-primary" style="display:inline-block;font-size:0.78rem;">Book a call →</a>
     </div>
-    <div class="ptier reveal reveal-delay-2">
-      <div class="pt-label">Advisory</div>
-      <div class="pt-price">Custom</div>
-      <div class="pt-sub">Complex or urgent projects</div>
-      <ul class="pt-items">
-        <li>24-hr delivery available</li>
-        <li>Board & investor-grade</li>
-        <li>Unlimited revisions</li>
-        <li>Ongoing retainer option</li>
+
+    <!-- ENTERPRISE -->
+    <div class="price-card">
+      <p class="price-name">Enterprise / Rush</p>
+      <p class="price-amount"><span>$</span>6,500<span style="font-size:1.2rem;color:var(--muted)">+</span></p>
+      <p class="price-from">Custom scoping — complex or urgent</p>
+      <div class="price-divider"></div>
+      <ul class="price-features">
+        <li>24-hr rush delivery available</li>
+        <li>Board & investor-grade output</li>
+        <li>Unlimited revision rounds</li>
+        <li>Multi-deck retainer available</li>
+        <li>Brand campaign decks</li>
+        <li>Keynote + speaker notes</li>
+        <li>White-glove delivery</li>
       </ul>
-      <a href="#contact" class="pt-cta">Let's talk</a>
+      <p class="price-note">Best for: Agencies, brands, executives with board presentations, sponsorship decks, or ongoing monthly needs.</p>
+      <a href="mailto:tyra@stealthstrategist.co" class="btn-ghost" style="display:inline-block;font-size:0.78rem;">Let's talk →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <p class="section-tag">Client feedback</p>
+  <h2 class="section-headline">Words from the<br><em>rooms we've won.</em></h2>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <p class="testi-quote">Tyra turned our messy slide dump into a deck we were actually proud to show investors. We closed our round two weeks later.</p>
+      <p class="testi-name">Jordan M.</p>
+      <p class="testi-role">CEO, NovaPay — Series A Founder</p>
+    </div>
+    <div class="testi-card">
+      <p class="testi-quote">Fast, sharp, and she understood our brand immediately. The deck matched our energy and then some. We've used Stealth for every major pitch since.</p>
+      <p class="testi-name">Sofia R.</p>
+      <p class="testi-role">Head of Marketing, B2B SaaS</p>
+    </div>
+    <div class="testi-card">
+      <p class="testi-quote">We walked into that meeting knowing the deck would do half the work for us. It did more than half. The design alone opened the conversation differently.</p>
+      <p class="testi-name">Marcus R.</p>
+      <p class="testi-role">Co-founder, Valor Sports</p>
     </div>
   </div>
 </section>
 
-<div id="contact">
-  <div class="contact-bg"></div>
-  <div class="contact-layout reveal">
+<!-- CONTACT -->
+<section id="contact">
+  <p class="contact-eyebrow">Ready to build</p>
+  <h2>YOUR DECK.<br>YOUR ROUND.<br>YOUR STAGE.</h2>
+  <p class="contact-sub">I take on a limited number of projects each month. If you have a deadline, let's talk now — not later.</p>
+  <a href="mailto:tyra@stealthstrategist.co" class="btn-primary" style="font-size:1rem;padding:1.2rem 3rem;">Book a free consult →</a>
+  <a href="mailto:tyra@stealthstrategist.co" class="contact-email">tyra@stealthstrategist.co</a>
+</section>
 
-    <div>
-      <div class="contact-eyebrow">Get in touch</div>
-      <h2 class="contact-title">Ready to build something <em>worth presenting?</em></h2>
-      <p class="contact-sub">Two spots available in May. Projects book 1–2 weeks out — if you have a deadline, let's talk now.</p>
-      <div class="contact-details">
-        <div class="contact-detail-item">
-          <span class="contact-detail-label">Email</span>
-          <span class="contact-detail-value"><a href="mailto:tyra@stealthstrategist.co">tyra@stealthstrategist.co</a></span>
-        </div>
-        <div class="contact-detail-item">
-          <span class="contact-detail-label">Turnaround</span>
-          <span class="contact-detail-value">3–5 days standard · 24 hrs rush</span>
-        </div>
-        <div class="contact-detail-item">
-          <span class="contact-detail-label">Profiles</span>
-          <div class="contact-profiles">
-            <a href="https://www.behance.net/" target="_blank" rel="noopener" class="profile-link">Behance ↗</a>
-            <a href="https://contra.com/" target="_blank" rel="noopener" class="profile-link">Contra ↗</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="inquiry-form">
-      <div class="form-title">Project inquiry</div>
-      <div id="form-fields">
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label" for="f-name">Your name</label>
-            <input class="form-input" type="text" id="f-name" name="name" placeholder="Alex Chen" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="f-email">Email</label>
-            <input class="form-input" type="email" id="f-email" name="email" placeholder="alex@company.com" required>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label" for="f-type">Deck type</label>
-            <select class="form-select" id="f-type" name="deck_type">
-              <option value="" disabled selected>Select type</option>
-              <option>Pitch / fundraise deck</option>
-              <option>Sales deck</option>
-              <option>Board / investor report</option>
-              <option>Keynote / conference</option>
-              <option>Consulting deliverable</option>
-              <option>Brand deck</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="f-budget">Budget range</label>
-            <select class="form-select" id="f-budget" name="budget">
-              <option value="" disabled selected>Select range</option>
-              <option>$750 – $1,500</option>
-              <option>$1,500 – $3,000</option>
-              <option>$3,000 – $6,000</option>
-              <option>$6,000+</option>
-              <option>Not sure yet</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="f-deadline">Deadline</label>
-          <input class="form-input" type="text" id="f-deadline" name="deadline" placeholder="e.g. May 15 · ASAP · Flexible">
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="f-message">Tell me about the project</label>
-          <textarea class="form-textarea" id="f-message" name="message" placeholder="What's the deck for? Who's the audience? What's the goal?" rows="4"></textarea>
-        </div>
-        <button class="form-submit" id="form-btn" type="button" onclick="submitForm()">Send inquiry →</button>
-        <p class="form-note">I respond to all inquiries within 24 hours.</p>
-        <p class="form-error" id="form-error"></p>
-      </div>
-      <div class="form-success" id="form-success">
-        <div class="form-success-icon">✓</div>
-        <div class="form-success-title">Inquiry received.</div>
-        <p class="form-success-sub">I'll be in touch within 24 hours. Check your inbox — and your spam, just in case.</p>
-      </div>
-    </div>
-
-  </div>
-</div>
-
+<!-- FOOTER -->
 <footer>
-  <div class="footer-logo">Stealth <em>Strategist</em></div>
-  <div class="footer-copy">© 2025 Stealth Strategist</div>
+  <div class="footer-logo">Stealth<span>.</span></div>
   <div class="footer-links">
-    <a href="https://www.behance.net/" target="_blank" rel="noopener">Behance</a>
-    <a href="https://contra.com/" target="_blank" rel="noopener">Contra</a>
-    <a href="mailto:tyra@stealthstrategist.co">Contact</a>
+    <a href="https://behance.net/YOUR-HANDLE" target="_blank">Behance</a>
+    <a href="https://contra.com/YOUR-HANDLE" target="_blank">Contra</a>
+    <a href="mailto:tyra@stealthstrategist.co">Email</a>
   </div>
+  <p class="footer-copy">© 2025 Stealth Strategist. All rights reserved.</p>
 </footer>
 
-<script>
-const cursor = document.getElementById('cursor');
-document.addEventListener('mousemove', e => {
-  cursor.style.left = e.clientX + 'px';
-  cursor.style.top  = e.clientY + 'px';
-});
-document.querySelectorAll('a, button, .deck-card-link, input, select, textarea').forEach(el => {
-  el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
-  el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
-});
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.12 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-window.addEventListener('DOMContentLoaded', () => {
-  setTimeout(() => {
-    document.querySelectorAll('.hero .reveal').forEach(el => el.classList.add('visible'));
-  }, 100);
-});
-
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const id = a.getAttribute('href');
-    if (id === '#') return;
-    const t = document.querySelector(id);
-    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
-  });
-});
-
-async function submitForm() {
-  const btn      = document.getElementById('form-btn');
-  const errEl    = document.getElementById('form-error');
-  const name     = document.getElementById('f-name').value.trim();
-  const email    = document.getElementById('f-email').value.trim();
-  const type     = document.getElementById('f-type').value;
-  const budget   = document.getElementById('f-budget').value;
-  const deadline = document.getElementById('f-deadline').value.trim();
-  const message  = document.getElementById('f-message').value.trim();
-
-  errEl.style.display = 'none';
-
-  if (!name) { document.getElementById('f-name').focus(); return; }
-  if (!email) { document.getElementById('f-email').focus(); return; }
-
-  btn.disabled = true;
-  btn.textContent = 'Sending…';
-
-  try {
-    const res = await fetch('https://formspree.io/f/xrernyba', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ name, email, deck_type: type, budget, deadline, message })
-    });
-
-    const data = await res.json().catch(() => ({}));
-
-    if (res.ok) {
-      document.getElementById('form-fields').style.display = 'none';
-      document.getElementById('form-success').style.display = 'block';
-    } else {
-      btn.disabled = false;
-      btn.textContent = 'Send inquiry →';
-      const msg = (data.errors && data.errors[0] && data.errors[0].message)
-        ? data.errors[0].message
-        : (data.error || 'Submission failed (error ' + res.status + ')');
-      errEl.textContent = msg + ' — or email tyra@stealthstrategist.co directly.';
-      errEl.style.display = 'block';
-    }
-  } catch (err) {
-    btn.disabled = false;
-    btn.textContent = 'Send inquiry →';
-    errEl.textContent = 'Connection error — please email tyra@stealthstrategist.co directly.';
-    errEl.style.display = 'block';
-  }
-}
-</script>
 </body>
 </html>
