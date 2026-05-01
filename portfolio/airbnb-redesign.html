@@ -62,6 +62,16 @@ body::before {
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 
+/* Frame-fitted images (slide thumbnails) */
+.cover-reveal .frame img,
+.showcase .slide-frame img,
+.compare .pair-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: var(--ink-2);
+}
+
 .container {
   max-width: var(--max);
   margin: 0 auto;
@@ -802,13 +812,7 @@ footer .credit {
       The wordmark broken across two lines, ampersand in coral, three-quarters of the canvas left empty. The cover claims its real estate by refusing to fill it.
     </p>
     <div class="frame reveal d2">
-      <!-- TODO TYRA: replace this entire .placeholder div with your <img> -->
-      <div class="placeholder">
-        <div>
-          <span class="ph-label">Cover · Redesigned</span>
-          <div class="ph-title">Drop slide 01 here</div>
-        </div>
-      </div>
+      <img src="airbnb-redesign-assets/redesigned/slide-1.jpg" alt="AirBed & Breakfast cover slide, restaged 2026 — wordmark broken across two lines, ampersand in coral on warm near-black ground" />
     </div>
     <p class="caption reveal d3">Cover slide · AirBed &amp; Breakfast · Restaged 2026</p>
   </div>
@@ -902,12 +906,7 @@ footer .credit {
       <!-- Slide 02 — Problem -->
       <div class="slide with-note reveal">
         <div class="slide-frame">
-          <div class="placeholder">
-            <div>
-              <div class="ph-num">02</div>
-              <div class="ph-label">Problem</div>
-            </div>
-          </div>
+          <img src="airbnb-redesign-assets/redesigned/slide-2.jpg" alt="Slide 02, Problem — Hotels leave you disconnected from the city and its culture, set as the display headline with two supporting statements beneath" />
         </div>
         <div class="slide-meta">
           <span class="num">02</span>
@@ -919,12 +918,7 @@ footer .credit {
       <!-- Slide 03 — Solution -->
       <div class="slide with-note reveal d1">
         <div class="slide-frame">
-          <div class="placeholder">
-            <div>
-              <div class="ph-num">03</div>
-              <div class="ph-label">Solution</div>
-            </div>
-          </div>
+          <img src="airbnb-redesign-assets/redesigned/slide-3.jpg" alt="Slide 03, Solution — three columns: Save Money, Make Money, Share Culture, with a single coral mark above the first" />
         </div>
         <div class="slide-meta">
           <span class="num">03</span>
@@ -936,12 +930,7 @@ footer .credit {
       <!-- Slide 04 — Market validation -->
       <div class="slide with-note reveal">
         <div class="slide-frame">
-          <div class="placeholder">
-            <div>
-              <div class="ph-num">04</div>
-              <div class="ph-label">Market Validation</div>
-            </div>
-          </div>
+          <img src="airbnb-redesign-assets/redesigned/slide-4.jpg" alt="Slide 04, Market Validation — 660,000 Couchsurfing users and 50,000 weekly Craigslist listings, set at headline scale" />
         </div>
         <div class="slide-meta">
           <span class="num">04</span>
@@ -953,12 +942,7 @@ footer .credit {
       <!-- Slide 05 — Market size -->
       <div class="slide with-note reveal d1">
         <div class="slide-frame">
-          <div class="placeholder">
-            <div>
-              <div class="ph-num">05</div>
-              <div class="ph-label">Market Size</div>
-            </div>
-          </div>
+          <img src="airbnb-redesign-assets/redesigned/slide-5.jpg" alt="Slide 05, Market Size — $84M addressable market headline with three stacked pills showing TAM, SAM, and AB&B share" />
         </div>
         <div class="slide-meta">
           <span class="num">05</span>
@@ -970,12 +954,7 @@ footer .credit {
       <!-- Slide 06 — Product -->
       <div class="slide with-note reveal">
         <div class="slide-frame">
-          <div class="placeholder">
-            <div>
-              <div class="ph-num">06</div>
-              <div class="ph-label">Product</div>
-            </div>
-          </div>
+          <img src="airbnb-redesign-assets/redesigned/slide-6.jpg" alt="Slide 06, Product — three numbered steps in serif: Search by City, Review Listings, Book It, with the third number rendered in coral" />
         </div>
         <div class="slide-meta">
           <span class="num">06</span>
@@ -987,12 +966,7 @@ footer .credit {
       <!-- Slide 07 — Business model -->
       <div class="slide with-note reveal d1">
         <div class="slide-frame">
-          <div class="placeholder">
-            <div>
-              <div class="ph-num">07</div>
-              <div class="ph-label">Business Model</div>
-            </div>
-          </div>
+          <img src="airbnb-redesign-assets/redesigned/slide-7.jpg" alt="Slide 07, Business Model — 10% commission set as the largest type on the slide, with $2.1B / $25 / $84M unit economics in a right column at body scale" />
         </div>
         <div class="slide-meta">
           <span class="num">07</span>
@@ -1004,12 +978,7 @@ footer .credit {
       <!-- Slide 08 — Adoption strategy -->
       <div class="slide with-note reveal">
         <div class="slide-frame">
-          <div class="placeholder">
-            <div>
-              <div class="ph-num">08</div>
-              <div class="ph-label">Adoption Strategy</div>
-            </div>
-          </div>
+          <img src="airbnb-redesign-assets/redesigned/slide-8.jpg" alt="Slide 08, Adoption Strategy — Craigslist and Partnerships labeled on the left, five target events listed with audience sizes right-aligned" />
         </div>
         <div class="slide-meta">
           <span class="num">08</span>
@@ -1021,12 +990,7 @@ footer .credit {
       <!-- Slide 09 — Competition -->
       <div class="slide with-note reveal d1">
         <div class="slide-frame">
-          <div class="placeholder">
-            <div>
-              <div class="ph-num">09</div>
-              <div class="ph-label">Competition</div>
-            </div>
-          </div>
+          <img src="airbnb-redesign-assets/redesigned/slide-9.jpg" alt="Slide 09, Competition — 2x2 positioning matrix with affordable/expensive on horizontal and online/offline on vertical, AB&B plotted as the only coral dot" />
         </div>
         <div class="slide-meta">
           <span class="num">09</span>
@@ -1038,12 +1002,7 @@ footer .credit {
       <!-- Slide 10 — Competitive advantages -->
       <div class="slide with-note reveal">
         <div class="slide-frame">
-          <div class="placeholder">
-            <div>
-              <div class="ph-num">10</div>
-              <div class="ph-label">Competitive Advantages</div>
-            </div>
-          </div>
+          <img src="airbnb-redesign-assets/redesigned/slide-10.jpg" alt="Slide 10, Competitive Advantages — six advantages in a 2x3 grid with 1st to Market underlined in coral and the others in cream rule" />
         </div>
         <div class="slide-meta">
           <span class="num">10</span>
@@ -1055,12 +1014,7 @@ footer .credit {
       <!-- Slide 11 — Team -->
       <div class="slide with-note reveal d1">
         <div class="slide-frame">
-          <div class="placeholder">
-            <div>
-              <div class="ph-num">11</div>
-              <div class="ph-label">Team</div>
-            </div>
-          </div>
+          <img src="airbnb-redesign-assets/redesigned/slide-11.jpg" alt="Slide 11, Team — four founder bios in a 2x2 grid: Brian Chesky, Nathan Blecharczyk, Joe Gebbia, and Michael Seibel, set in serif with role and credentials in mono" />
         </div>
         <div class="slide-meta">
           <span class="num">11</span>
@@ -1072,12 +1026,7 @@ footer .credit {
       <!-- Slide 12 — Press -->
       <div class="slide with-note reveal">
         <div class="slide-frame">
-          <div class="placeholder">
-            <div>
-              <div class="ph-num">12</div>
-              <div class="ph-label">Press</div>
-            </div>
-          </div>
+          <img src="airbnb-redesign-assets/redesigned/slide-12.jpg" alt="Slide 12, Press — three press quotes set in italic serif with publication source beneath each, anchored by a coral quote glyph" />
         </div>
         <div class="slide-meta">
           <span class="num">12</span>
@@ -1089,12 +1038,7 @@ footer .credit {
       <!-- Slide 13 — User testimonials -->
       <div class="slide with-note reveal d1">
         <div class="slide-frame">
-          <div class="placeholder">
-            <div>
-              <div class="ph-num">13</div>
-              <div class="ph-label">User Testimonials</div>
-            </div>
-          </div>
+          <img src="airbnb-redesign-assets/redesigned/slide-13.jpg" alt="Slide 13, User Testimonials — four customer quotes in italic serif arranged in a 2x2 grid, attributed by name and city" />
         </div>
         <div class="slide-meta">
           <span class="num">13</span>
@@ -1106,12 +1050,7 @@ footer .credit {
       <!-- Slide 14 — The Ask -->
       <div class="slide with-note reveal">
         <div class="slide-frame">
-          <div class="placeholder">
-            <div>
-              <div class="ph-num">14</div>
-              <div class="ph-label">The Ask</div>
-            </div>
-          </div>
+          <img src="airbnb-redesign-assets/redesigned/slide-14.jpg" alt="Slide 14, The Ask — $500K set at maximum scale in coral, with a single-line caption beneath naming the milestone of 80,000 transactions" />
         </div>
         <div class="slide-meta">
           <span class="num">14</span>
@@ -1139,13 +1078,13 @@ footer .credit {
       <div class="pair-block">
         <span class="pair-tag"><span class="dot"></span>Original · 2008</span>
         <div class="pair-frame">
-          <div class="placeholder">Drop original cover</div>
+          <img src="airbnb-redesign-assets/original/slide-1.jpg" alt="Original AirBed & Breakfast cover slide, 2008 — chunky cyan-and-magenta logotype on a baby-blue ground" />
         </div>
       </div>
       <div class="pair-block">
         <span class="pair-tag after"><span class="dot"></span>Restaged · 2026</span>
         <div class="pair-frame after">
-          <div class="placeholder">Drop redesigned cover</div>
+          <img src="airbnb-redesign-assets/redesigned/slide-1.jpg" alt="Restaged AirBed & Breakfast cover slide, 2026 — wordmark broken across two lines with ampersand in coral on warm near-black" />
         </div>
       </div>
     </div>
@@ -1160,13 +1099,13 @@ footer .credit {
       <div class="pair-block">
         <span class="pair-tag"><span class="dot"></span>Original · Slide 06</span>
         <div class="pair-frame">
-          <div class="placeholder">Drop original product slide</div>
+          <img src="airbnb-redesign-assets/original/slide-6.jpg" alt="Original Product slide, 2008 — three browser screenshots of the booking flow fanned at angles across the slide" />
         </div>
       </div>
       <div class="pair-block">
         <span class="pair-tag after"><span class="dot"></span>Restaged · Slide 06</span>
         <div class="pair-frame after">
-          <div class="placeholder">Drop redesigned product slide</div>
+          <img src="airbnb-redesign-assets/redesigned/slide-6.jpg" alt="Restaged Product slide, 2026 — three numbered words in serif: Search by City, Review Listings, Book It" />
         </div>
       </div>
     </div>
@@ -1181,13 +1120,13 @@ footer .credit {
       <div class="pair-block">
         <span class="pair-tag"><span class="dot"></span>Original · Slide 14</span>
         <div class="pair-frame">
-          <div class="placeholder">Drop original financial slide</div>
+          <img src="airbnb-redesign-assets/original/slide-14.jpg" alt="Original Financial slide, 2008 — three orange circles for $500K Angel Round, 80K Trips, and $2M Revenue laid out horizontally" />
         </div>
       </div>
       <div class="pair-block">
         <span class="pair-tag after"><span class="dot"></span>Restaged · Slide 14</span>
         <div class="pair-frame after">
-          <div class="placeholder">Drop redesigned financial slide</div>
+          <img src="airbnb-redesign-assets/redesigned/slide-14.jpg" alt="Restaged Financial slide, 2026 — $500K set in coral at maximum scale, single-line caption beneath" />
         </div>
       </div>
     </div>
