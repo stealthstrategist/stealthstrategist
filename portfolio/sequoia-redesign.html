@@ -1,0 +1,1203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sequoia's Black Swan Memo, Re-Set — Case Study · Stealth Strategist</title>
+<meta name="description" content="A 2020 strategic memo from Sequoia Capital to its portfolio founders, set as the document of record it has since become. By Stealth Strategist." />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Sequoia's Black Swan Memo, Re-Set — Case Study · Stealth Strategist" />
+<meta property="og:description" content="Same memo as 2020, set for the record: no virus illustration, no platform chrome, no inline list — only type and pace." />
+<meta property="og:type" content="article" />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --ink:        #0F0E0C;
+  --ink-2:      #15130F;
+  --ink-3:      #1C1A15;
+  --paper:      #EFEBE3;
+  --paper-dim:  #B5AEA0;
+  --mute:       #6F6A60;
+  --rule:       rgba(239, 235, 227, 0.12);
+  --rule-bold:  rgba(239, 235, 227, 0.28);
+  --accent:     #B8413E;
+  --accent-2:   #8C2A2A;
+
+  --font-display: 'Fraunces', 'Times New Roman', serif;
+  --font-body:    'IBM Plex Sans', -apple-system, sans-serif;
+  --font-mono:    'IBM Plex Mono', ui-monospace, monospace;
+
+  --max:        1320px;
+  --max-prose:  720px;
+  --pad:        clamp(20px, 4vw, 56px);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--ink);
+  color: var(--paper);
+  font-weight: 300;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  mix-blend-mode: overlay;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+/* Frame-fitted images (slide thumbnails) */
+.cover-reveal .frame img,
+.showcase .slide-frame img,
+.compare .pair-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: var(--ink-2);
+}
+/* Originals from a Medium article are tall portrait scans — fit them by width, top-aligned */
+.compare .pair-frame.is-portrait img {
+  object-fit: cover;
+  object-position: top center;
+}
+
+.container {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--pad);
+  position: relative;
+  z-index: 2;
+}
+.container.prose {
+  max-width: var(--max-prose);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mute);
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.eyebrow::before {
+  content: ''; width: 28px; height: 1px; background: var(--rule-bold);
+}
+.eyebrow.accent { color: var(--accent); }
+.eyebrow.accent::before { background: var(--accent); }
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--paper-dim);
+}
+
+/* ============== NAV ============== */
+nav.site {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(15, 14, 12, 0.78);
+  backdrop-filter: saturate(140%) blur(14px);
+  -webkit-backdrop-filter: saturate(140%) blur(14px);
+  border-bottom: 1px solid var(--rule);
+}
+nav.site .row {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+.brand {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 21px;
+  letter-spacing: -0.02em;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+.brand .dot { color: var(--accent); }
+nav.site ul {
+  display: flex; gap: clamp(20px, 3vw, 36px); list-style: none; align-items: center;
+}
+nav.site a.nav-link {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--paper-dim);
+  transition: color 220ms ease;
+}
+nav.site a.nav-link:hover { color: var(--paper); }
+nav.site a.nav-cta {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: var(--accent);
+  padding: 9px 16px;
+  border-radius: 999px;
+  transition: background 220ms ease, transform 220ms ease;
+}
+nav.site a.nav-cta:hover { background: var(--accent-2); transform: translateY(-1px); }
+@media (max-width: 720px) {
+  nav.site ul li.hide-sm { display: none; }
+}
+
+/* ============== HERO ============== */
+.case-hero {
+  padding: clamp(64px, 12vh, 140px) 0 clamp(56px, 9vh, 100px);
+  border-bottom: 1px solid var(--rule);
+}
+.case-hero .breadcrumb {
+  display: flex; gap: 14px; align-items: center;
+  margin-bottom: clamp(40px, 6vw, 60px);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+.case-hero .breadcrumb a { transition: color 220ms ease; }
+.case-hero .breadcrumb a:hover { color: var(--accent); }
+.case-hero .breadcrumb .sep { color: var(--rule-bold); }
+
+.case-hero .meta-strip {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-bottom: clamp(32px, 5vw, 48px);
+}
+@media (min-width: 760px) {
+  .case-hero .meta-strip {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .case-hero .meta-strip .item {
+    padding: 18px 24px 18px 0;
+    border-right: 1px solid var(--rule);
+  }
+  .case-hero .meta-strip .item:last-child { border-right: 0; }
+}
+.case-hero .meta-strip .meta-key {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mute);
+  display: block;
+  margin-bottom: 6px;
+}
+.case-hero .meta-strip .meta-val {
+  font-family: var(--font-display);
+  font-weight: 380;
+  font-size: clamp(15px, 1.2vw, 17px);
+  font-variation-settings: "opsz" 14, "SOFT" 50;
+}
+
+.case-hero h1 {
+  font-family: var(--font-display);
+  font-weight: 350;
+  font-size: clamp(54px, 10vw, 152px);
+  letter-spacing: -0.035em;
+  line-height: 0.92;
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+  margin-top: clamp(40px, 6vw, 60px);
+}
+.case-hero h1 .em {
+  font-style: italic; color: var(--accent);
+  font-variation-settings: "opsz" 144, "SOFT" 90;
+}
+.case-hero .lede {
+  margin-top: clamp(28px, 4vw, 40px);
+  font-family: var(--font-display);
+  font-weight: 350;
+  font-size: clamp(20px, 1.7vw, 26px);
+  line-height: 1.4;
+  letter-spacing: -0.012em;
+  color: var(--paper-dim);
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+  max-width: 820px;
+}
+
+/* ============== PROLOGUE ============== */
+.prologue {
+  padding: clamp(64px, 10vh, 110px) 0;
+  border-bottom: 1px solid var(--rule);
+}
+.prologue .row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(32px, 5vw, 60px);
+}
+@media (min-width: 920px) {
+  .prologue .row { grid-template-columns: 0.4fr 1fr; }
+}
+.prologue h2 {
+  font-family: var(--font-display);
+  font-weight: 350;
+  font-size: clamp(26px, 2.4vw, 34px);
+  letter-spacing: -0.018em;
+  line-height: 1.1;
+  font-variation-settings: "opsz" 144, "SOFT" 40;
+}
+.prologue h2 .em { font-style: italic; color: var(--accent); }
+.prologue p {
+  font-size: clamp(16px, 1.2vw, 18px);
+  line-height: 1.65;
+  color: var(--paper-dim);
+  margin-bottom: 20px;
+  max-width: var(--max-prose);
+}
+.prologue p:last-child { margin-bottom: 0; }
+.prologue p:first-of-type::first-letter {
+  font-family: var(--font-display);
+  font-weight: 380;
+  font-size: 4.4em;
+  float: left;
+  line-height: 0.85;
+  margin: 0.05em 0.08em -0.02em 0;
+  color: var(--accent);
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+
+/* ============== COVER REVEAL ============== */
+.cover-reveal {
+  padding: clamp(64px, 10vh, 110px) 0 clamp(60px, 9vh, 100px);
+  border-bottom: 1px solid var(--rule);
+  text-align: center;
+}
+.cover-reveal .intro-note {
+  max-width: 640px;
+  margin: 18px auto 36px;
+  font-family: var(--font-display);
+  font-weight: 350;
+  font-style: italic;
+  font-size: clamp(17px, 1.4vw, 21px);
+  line-height: 1.45;
+  color: var(--paper-dim);
+  font-variation-settings: "opsz" 144, "SOFT" 70;
+}
+.cover-reveal .frame {
+  max-width: 1100px;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  background: var(--ink-2);
+  border: 1px solid var(--rule-bold);
+  position: relative;
+  overflow: hidden;
+}
+.cover-reveal .caption {
+  margin-top: 22px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mute);
+  font-style: italic;
+}
+
+/* ============== CHAPTER (essay sections) ============== */
+.chapter {
+  padding: clamp(72px, 11vh, 130px) 0;
+  border-bottom: 1px solid var(--rule);
+}
+.chapter.alt { background: linear-gradient(180deg, var(--ink) 0%, var(--ink-2) 100%); }
+
+.chapter .head {
+  display: flex; align-items: baseline; gap: 18px;
+  margin-bottom: clamp(40px, 6vw, 60px);
+}
+.chapter .head .num {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 380;
+  font-size: clamp(40px, 4.5vw, 64px);
+  color: var(--accent);
+  line-height: 1;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+  letter-spacing: -0.02em;
+}
+.chapter h2 {
+  font-family: var(--font-display);
+  font-weight: 350;
+  font-size: clamp(40px, 6vw, 76px);
+  letter-spacing: -0.025em;
+  line-height: 0.96;
+  font-variation-settings: "opsz" 144, "SOFT" 40;
+  flex: 1;
+}
+.chapter h2 .em {
+  font-style: italic; color: var(--accent);
+  font-variation-settings: "opsz" 144, "SOFT" 90;
+}
+
+.chapter p {
+  font-size: clamp(16px, 1.2vw, 18px);
+  line-height: 1.7;
+  color: var(--paper);
+  margin-bottom: 24px;
+  font-weight: 300;
+}
+.chapter p:last-child { margin-bottom: 0; }
+
+.chapter .pullquote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 380;
+  font-size: clamp(28px, 3vw, 42px);
+  letter-spacing: -0.018em;
+  line-height: 1.2;
+  color: var(--paper);
+  font-variation-settings: "opsz" 144, "SOFT" 90;
+  margin: clamp(40px, 6vw, 60px) 0;
+  padding: clamp(28px, 4vw, 44px) 0;
+  border-top: 1px solid var(--rule-bold);
+  border-bottom: 1px solid var(--rule-bold);
+  position: relative;
+}
+.chapter .pullquote::before {
+  content: '"';
+  font-size: 1.4em;
+  color: var(--accent);
+  margin-right: 0.1em;
+  vertical-align: -0.15em;
+}
+
+/* ============== DESIGN SYSTEM SECTION ============== */
+.design-system {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  border-top: 1px solid var(--rule-bold);
+  margin-top: 28px;
+}
+@media (min-width: 880px) {
+  .design-system { grid-template-columns: repeat(3, 1fr); }
+}
+.design-system .ds-block {
+  padding: clamp(28px, 4vw, 44px) clamp(20px, 3vw, 32px);
+  border-bottom: 1px solid var(--rule);
+}
+@media (min-width: 880px) {
+  .design-system .ds-block { border-bottom: 0; border-right: 1px solid var(--rule); }
+  .design-system .ds-block:last-child { border-right: 0; }
+}
+.design-system .ds-key {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin-bottom: 18px;
+}
+.design-system .ds-display-type {
+  font-family: var(--font-display);
+  font-weight: 350;
+  font-size: clamp(48px, 5vw, 64px);
+  line-height: 1;
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+.design-system .ds-display-type .em { font-style: italic; color: var(--accent); }
+.design-system .ds-meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--paper-dim);
+  letter-spacing: 0.04em;
+}
+.design-system .ds-swatch-row {
+  display: flex; gap: 12px; flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+.design-system .ds-swatch {
+  width: 56px; height: 56px;
+  border: 1px solid var(--rule-bold);
+}
+.design-system .ds-text {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--paper-dim);
+}
+
+/* ============== SLIDE SHOWCASE ============== */
+.showcase {
+  padding: clamp(72px, 11vh, 130px) 0;
+  border-bottom: 1px solid var(--rule);
+}
+.showcase .slides {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(40px, 6vw, 60px);
+  margin-top: clamp(40px, 6vw, 60px);
+}
+.showcase .slide {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+@media (min-width: 920px) {
+  .showcase .slide.with-note {
+    grid-template-columns: 1fr 280px;
+    gap: clamp(28px, 4vw, 48px);
+    align-items: start;
+  }
+}
+.showcase .slide-frame {
+  aspect-ratio: 16 / 9;
+  background: var(--ink-2);
+  border: 1px solid var(--rule-bold);
+  position: relative;
+  overflow: hidden;
+}
+.showcase .slide-meta {
+  display: flex; flex-direction: column; gap: 10px;
+  padding-top: 4px;
+}
+.showcase .slide-meta .num {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--accent);
+  font-variation-settings: "opsz" 144, "SOFT" 90;
+}
+.showcase .slide-meta .title {
+  font-family: var(--font-display);
+  font-weight: 380;
+  font-size: clamp(20px, 1.5vw, 24px);
+  letter-spacing: -0.012em;
+  line-height: 1.15;
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+}
+.showcase .slide-meta .note {
+  font-size: 14px;
+  color: var(--paper-dim);
+  line-height: 1.55;
+}
+
+/* ============== BEFORE/AFTER ============== */
+.compare {
+  padding: clamp(72px, 11vh, 130px) 0;
+  border-bottom: 1px solid var(--rule);
+  background: linear-gradient(180deg, var(--ink-2) 0%, var(--ink) 100%);
+}
+.compare .pair {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin-top: clamp(32px, 5vw, 48px);
+}
+@media (min-width: 880px) { .compare .pair { grid-template-columns: 1fr 1fr; gap: 28px; } }
+
+.compare .pair-block { display: flex; flex-direction: column; gap: 14px; }
+.compare .pair-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mute);
+  display: flex; align-items: center; gap: 12px;
+}
+.compare .pair-tag .dot {
+  width: 8px; height: 8px;
+  background: var(--mute);
+  border-radius: 50%;
+}
+.compare .pair-tag.after { color: var(--accent); }
+.compare .pair-tag.after .dot { background: var(--accent); }
+
+.compare .pair-frame {
+  aspect-ratio: 16 / 9;
+  background: var(--ink-2);
+  border: 1px solid var(--rule);
+  position: relative;
+  overflow: hidden;
+}
+.compare .pair-frame.after { border-color: var(--accent-2); }
+
+/* The originals are rasterized Medium pages on white — give them a paper background */
+.compare .pair-frame.is-original { background: var(--paper); }
+
+.compare .pair-rationale {
+  margin-top: clamp(40px, 6vw, 60px);
+  max-width: var(--max-prose);
+}
+.compare .pair-rationale h4 {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 380;
+  font-size: clamp(22px, 2vw, 28px);
+  letter-spacing: -0.012em;
+  font-variation-settings: "opsz" 144, "SOFT" 80;
+  margin-bottom: 16px;
+}
+.compare .pair-rationale p {
+  font-size: clamp(15px, 1.2vw, 17px);
+  line-height: 1.65;
+  color: var(--paper-dim);
+}
+
+/* ============== EPILOGUE ============== */
+.epilogue {
+  padding: clamp(80px, 12vh, 140px) 0;
+  border-bottom: 1px solid var(--rule);
+}
+.epilogue .closing {
+  font-family: var(--font-display);
+  font-weight: 350;
+  font-size: clamp(28px, 3.2vw, 44px);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+  max-width: 900px;
+  margin-bottom: clamp(40px, 5vw, 56px);
+}
+.epilogue .closing .em { font-style: italic; color: var(--accent); }
+.epilogue p {
+  font-size: clamp(16px, 1.2vw, 18px);
+  line-height: 1.65;
+  color: var(--paper-dim);
+  max-width: var(--max-prose);
+  margin-bottom: 20px;
+}
+.epilogue p em.list { font-style: italic; color: var(--paper); }
+
+/* ============== NEXT CASE ============== */
+.next-case {
+  padding: clamp(60px, 9vh, 100px) 0;
+  border-bottom: 1px solid var(--rule);
+}
+.next-case .row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+@media (min-width: 720px) {
+  .next-case .row { grid-template-columns: auto 1fr auto; align-items: center; gap: 40px; }
+}
+.next-case .label-block { display: flex; flex-direction: column; gap: 6px; }
+.next-case .next-link {
+  font-family: var(--font-display);
+  font-weight: 350;
+  font-size: clamp(36px, 5vw, 64px);
+  letter-spacing: -0.025em;
+  line-height: 1;
+  font-variation-settings: "opsz" 144, "SOFT" 40;
+  display: inline-flex; align-items: center; gap: 18px;
+  transition: color 220ms ease;
+}
+.next-case .next-link:hover { color: var(--accent); }
+.next-case .next-link .em { font-style: italic; color: var(--accent); }
+.next-case .arrow { transition: transform 220ms ease; display: inline-block; }
+.next-case .next-link:hover .arrow { transform: translateX(8px); }
+.next-case .all-link {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--paper-dim);
+  border: 1px solid var(--rule-bold);
+  padding: 14px 22px;
+  border-radius: 999px;
+  transition: all 220ms ease;
+}
+.next-case .all-link:hover { color: var(--paper); border-color: var(--paper); }
+
+/* ============== FOOTER ============== */
+footer { padding: 60px 0 40px; }
+footer .row {
+  display: grid; grid-template-columns: 1fr; gap: 28px;
+}
+@media (min-width: 720px) { footer .row { grid-template-columns: 1fr auto; align-items: end; } }
+footer .links { display: flex; gap: 24px; flex-wrap: wrap; }
+footer .links a {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--paper-dim);
+  transition: color 220ms ease;
+}
+footer .links a:hover { color: var(--accent); }
+footer .legal {
+  margin-top: 40px; padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.7;
+  letter-spacing: 0.04em;
+  color: var(--mute);
+  max-width: 820px;
+}
+footer .credit {
+  margin-top: 24px;
+  display: flex; justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 11px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--mute);
+  flex-wrap: wrap; gap: 12px;
+}
+
+/* ============== REVEAL ANIMATION ============== */
+.reveal {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 900ms cubic-bezier(0.2, 0.8, 0.2, 1), transform 900ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.reveal.in { opacity: 1; transform: translateY(0); }
+.reveal.d1 { transition-delay: 80ms; }
+.reveal.d2 { transition-delay: 160ms; }
+.reveal.d3 { transition-delay: 240ms; }
+.reveal.d4 { transition-delay: 320ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ========== NAV ========== -->
+<nav class="site">
+  <div class="container">
+    <div class="row">
+      <a href="../index.html" class="brand">Stealth<span class="dot">.</span></a>
+      <ul>
+        <li class="hide-sm"><a href="../index.html#work" class="nav-link">Work</a></li>
+        <li class="hide-sm"><a href="../index.html#approach" class="nav-link">Approach</a></li>
+        <li class="hide-sm"><a href="../index.html#process" class="nav-link">Process</a></li>
+        <li class="hide-sm"><a href="../index.html#pricing" class="nav-link">Pricing</a></li>
+        <!-- TODO TYRA: replace with your Cal.com URL -->
+        <li><a href="https://cal.com/your-handle/intro" class="nav-cta">Book a call</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<header class="case-hero">
+  <div class="container">
+    <div class="breadcrumb reveal in">
+      <a href="../index.html">Stealth</a>
+      <span class="sep">/</span>
+      <a href="../index.html#work">Work</a>
+      <span class="sep">/</span>
+      <span>Sequoia · Black Swan Memo</span>
+    </div>
+
+    <div class="meta-strip reveal in d1">
+      <div class="item">
+        <span class="meta-key">Type</span>
+        <span class="meta-val">Strategic Memo Redesign</span>
+      </div>
+      <div class="item">
+        <span class="meta-key">Year</span>
+        <span class="meta-val">2020 → 2026</span>
+      </div>
+      <div class="item">
+        <span class="meta-key">Pages</span>
+        <span class="meta-val">15</span>
+      </div>
+      <div class="item">
+        <span class="meta-key">Industry</span>
+        <span class="meta-val">Strategic Communications · Venture Capital</span>
+      </div>
+    </div>
+
+    <h1 class="reveal in d2">
+      Sequoia's Black Swan memo,<br />
+      <span class="em">re-set.</span>
+    </h1>
+
+    <p class="lede reveal in d3">
+      Same memo as 2020, set for the record: no virus illustration, no platform chrome, no inline list — only type and pace.
+    </p>
+  </div>
+</header>
+
+<!-- ============================================================
+     PROLOGUE
+============================================================ -->
+<section class="prologue">
+  <div class="container">
+    <div class="row">
+      <div>
+        <span class="eyebrow accent reveal">Prologue</span>
+        <h2 class="reveal d1" style="margin-top: 18px;">A memo that outlived its <span class="em">format.</span></h2>
+      </div>
+      <div>
+        <p class="reveal">
+          On March 5, 2020, Sequoia Capital sent a letter to the founders and CEOs of its portfolio companies titled "Coronavirus: The Black Swan of 2020." The world had been watching the spread of a novel coronavirus for ten weeks; the World Health Organization would not declare a pandemic for another six days. The letter was direct, paternal, and short — eight hundred words on how to think about cash, fundraising, and headcount when the ground beneath the business is moving. Within seventy-two hours it was the most-circulated document in venture capital. Within a year it had been quoted, paraphrased, and footnoted in board memos, investor updates, and annual letters across the industry.
+        </p>
+        <p class="reveal d1">
+          The conventional verdict is that the memo's standing transcended its medium — that the prose was direct enough, the structure clear enough, that it didn't matter the thing was published as a Medium post under a stock illustration of a coronavirus particle. The verdict is half a compliment. The other half is: a document that gets quoted in board memos for six years and counting was always going to outlive its publishing surface, and deserved to be set as the thing it has since become.
+        </p>
+        <p class="reveal d2">
+          This redesign is the staging exercise. Same fifteen pages, same words, same memo — set as the document of record rather than the article it was uploaded as. Not slicker. Not more corporate. Quieter. The bet is that an argument this composed reads even better when nothing else is competing for the page.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     COVER REVEAL
+============================================================ -->
+<section class="cover-reveal">
+  <div class="container">
+    <span class="eyebrow accent reveal" style="display:inline-flex; margin-bottom: 18px;">The Redesign</span>
+    <p class="intro-note reveal d1">
+      The documentary label above the title. The Fraunces Light wordmark carrying the page on its own. A single oxblood rule no longer than a wax seal. The cover establishes the register before the document arrives.
+    </p>
+    <div class="frame reveal d2">
+      <img src="sequoia-redesign-assets/redesigned/slide-1.jpg" alt="Coronavirus: The Black Swan of 2020 — cover slide, restaged 2026 — Fraunces Light title in cream on warm near-black ground with single oxblood rule" />
+    </div>
+    <p class="caption reveal d3">Cover · A Note to Sequoia Founders · Restaged 2026</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     CHAPTER 01 — Reading the original honestly
+============================================================ -->
+<section class="chapter">
+  <div class="container prose">
+    <div class="head reveal">
+      <span class="num">01</span>
+      <h2>The original, <span class="em">honestly.</span></h2>
+    </div>
+
+    <p class="reveal d1">
+      The original memo is structurally near-perfect for a crisis communication. Three sentences in, the thesis is announced. The structure — situation, outlook, six numbered questions, lesson, signature — is the structure of every serious crisis letter of the last hundred years, from Eisenhower's farewell address to Buffett's annual notes. The decision to invoke prior downturns by name (Black Monday 1987, the dot-com unwind of 2001, the Global Financial Crisis of 2008) does the work no chart could do: it locates the moment historically and signals to founders that the people sending the letter have been here before.
+    </p>
+
+    <p class="reveal d2">
+      What worked was the discipline. Eight hundred words and change. Six numbered questions, every one of which a CFO could answer with concrete numbers within a week. One quoted partner — Alfred Lin, who had lived through 2008 as an operating executive — and not one celebrity investor name beyond him. A closing benediction so plain ("stay healthy, keep your company healthy, and put a dent in the world") that it could only have been written by someone unembarrassed about meaning it. None of that is rhetorical sleight of hand. It is an argument that wants to be circulated.
+    </p>
+
+    <div class="pullquote reveal">
+      The format treated it as a blog post. The decade has treated it as a primary source.
+    </div>
+
+    <p class="reveal">
+      What didn't work was almost entirely surface. The title sat above a stock illustration of a coronavirus particle in close-up — the visual register of the news cycle the memo was trying to give founders distance from. The body type was Medium's default. The numbered founder questions, which are the rhetorical core of the document, ran inline with the prose at body scale, so the eye passed each one in seconds rather than sitting with it. A platform-injected newsletter signup landed mid-letter ("Get Sequoia's stories in your inbox"), the kind of UI element that appears when a publishing surface and an authorial intent disagree. None of it hurt the memo's standing — the writing was strong enough to outlast its packaging. The redesign is what happens when no one has to do the favor of looking past the packaging anymore.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================
+     CHAPTER 02 — The system
+============================================================ -->
+<section class="chapter alt">
+  <div class="container prose">
+    <div class="head reveal">
+      <span class="num">02</span>
+      <h2>Gravitas, by <span class="em">subtraction.</span></h2>
+    </div>
+
+    <p class="reveal d1">
+      The brief pulled in three directions. The redesign had to make the memo feel like the historical artifact it has become — without conscripting the visual language of the news cycle the memo was trying to give founders distance from. It had to read as 2026, not as period revival, while also reading as something that could still be picked up and read in 2046. And it had to honor Sequoia's authorship of the document without borrowing Sequoia's brand.
+    </p>
+
+    <p class="reveal d2">
+      Fraunces, in its Light weight, did the typographic work. It is a contemporary serif with a wide aperture and a slightly unsettled drawing — a Cooper-revival inheritance softened by a designer's hand. It reads as historical without performing antiquity. Times would have read as administrative; Garamond would have argued for the wrong century. The accent is oxblood, not Sequoia red. Borrowing the firm's own brand color would have collapsed the distance between the design and the institution being designed for; oxblood reads as a wax seal or a printer's accent rather than a logo. The ground is warm near-black, throughout. Cream paper would have read as letter; the dark ground reads as document — closer in register to a wall text in a museum than to a piece of correspondence.
+    </p>
+  </div>
+
+  <div class="container" style="margin-top: clamp(40px, 6vw, 60px);">
+    <div class="design-system">
+      <div class="ds-block reveal">
+        <div class="ds-key">Display Type</div>
+        <div class="ds-display-type">Fraunces<span class="em">.</span></div>
+        <div class="ds-meta">Variable serif · Light · 144pt opsz · Soft 30 · Weight 300</div>
+      </div>
+      <div class="ds-block reveal d1">
+        <div class="ds-key">Body &amp; Labels</div>
+        <div class="ds-display-type" style="font-family: var(--font-body); font-weight: 400; font-size: clamp(36px, 4vw, 48px);">Plex&nbsp;Sans</div>
+        <div class="ds-meta">IBM Plex Sans · 14–16pt · Weight 300/400 · Plex Mono for labels</div>
+      </div>
+      <div class="ds-block reveal d2">
+        <div class="ds-key">Palette</div>
+        <div class="ds-swatch-row">
+          <div class="ds-swatch" style="background: #0F0E0C;" title="Ink #0F0E0C"></div>
+          <div class="ds-swatch" style="background: #EFEBE3;" title="Paper #EFEBE3"></div>
+          <div class="ds-swatch" style="background: #8C2A2A;" title="Oxblood #8C2A2A"></div>
+        </div>
+        <div class="ds-text">Warm near-black ground, paper cream type, a single oxblood. The accent is rationed — used only on numerals, the drop cap, the cover rule, and the chart's markers.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE SHOWCASE — slides 02 through 15
+     (Cover handled in cover-reveal section above.)
+============================================================ -->
+<section class="showcase">
+  <div class="container">
+    <span class="eyebrow accent reveal">The Document</span>
+    <h2 style="font-family: var(--font-display); font-weight: 350; font-size: clamp(40px, 6vw, 76px); letter-spacing: -0.025em; line-height: 0.96; margin-top: 18px;" class="reveal d1">
+      Fifteen pages. <span style="font-style: italic; color: var(--accent);">In sequence.</span>
+    </h2>
+
+    <div class="slides">
+
+      <!-- Slide 02 — Drop-cap opening -->
+      <div class="slide with-note reveal">
+        <div class="slide-frame">
+          <img src="sequoia-redesign-assets/redesigned/slide-2.jpg" alt="Drop-cap opening: Dear Founders & CEOs, with the D set in italic Fraunces oxblood, followed by the first paragraph of the memo" />
+        </div>
+        <div class="slide-meta">
+          <span class="num">02</span>
+          <span class="title">The salutation.</span>
+          <p class="note">The italic Fraunces D in oxblood imports a centuries-old typesetting tradition. The reader knows what kind of object they're holding immediately: not an article being scrolled, a letter being received.</p>
+        </div>
+      </div>
+
+      <!-- Slide 03 — What Happened divider -->
+      <div class="slide with-note reveal d1">
+        <div class="slide-frame">
+          <img src="sequoia-redesign-assets/redesigned/slide-3.jpg" alt="Section divider: What Happened, set small at upper-left with a 02 page number" />
+        </div>
+        <div class="slide-meta">
+          <span class="num">03</span>
+          <span class="title">Act one divider.</span>
+          <p class="note">Set small. Set quiet. The act-divider gives the eye a beat to clear before the next argument arrives — a beat the original prose had to deliver inside its own paragraphs.</p>
+        </div>
+      </div>
+
+      <!-- Slide 04 — The Situation -->
+      <div class="slide with-note reveal">
+        <div class="slide-frame">
+          <img src="sequoia-redesign-assets/redesigned/slide-4.jpg" alt="The Situation slide — single column of body prose set in IBM Plex Sans on warm near-black, no decoration" />
+        </div>
+        <div class="slide-meta">
+          <span class="num">04</span>
+          <span class="title">The situation.</span>
+          <p class="note">Single column, no callouts, no icons, no decoration. The composure of the page mirrors the composure the prose was attempting to model for its readers.</p>
+        </div>
+      </div>
+
+      <!-- Slide 05 — Three challenges -->
+      <div class="slide with-note reveal d1">
+        <div class="slide-frame">
+          <img src="sequoia-redesign-assets/redesigned/slide-5.jpg" alt="Challenges Companies Are Facing — three numbered challenges with oxblood numerals: drop in business activity, supply chain disruptions, curtailment of travel" />
+        </div>
+        <div class="slide-meta">
+          <span class="num">05</span>
+          <span class="title">The three challenges.</span>
+          <p class="note">Drop in business activity. Supply chain disruptions. Curtailment of travel. The original's bullets become structure rather than texture — the oxblood numerals are the page's primary visual event, where bullets had been its smallest mark.</p>
+        </div>
+      </div>
+
+      <!-- Slide 06 — What This Means divider -->
+      <div class="slide with-note reveal">
+        <div class="slide-frame">
+          <img src="sequoia-redesign-assets/redesigned/slide-6.jpg" alt="Section divider: What This Means, with a 05 page number" />
+        </div>
+        <div class="slide-meta">
+          <span class="num">06</span>
+          <span class="title">Act two divider.</span>
+          <p class="note">Same format as the first divider. Once the system establishes a rhythm, the rhythm itself becomes the message — pacing earned by repetition, not announced by it.</p>
+        </div>
+      </div>
+
+      <!-- Slide 07 — The Outlook -->
+      <div class="slide with-note reveal d1">
+        <div class="slide-frame">
+          <img src="sequoia-redesign-assets/redesigned/slide-7.jpg" alt="The Outlook slide — paragraph stating that monetary policy may prove a blunt tool against the economic ramifications of a global health crisis" />
+        </div>
+        <div class="slide-meta">
+          <span class="num">07</span>
+          <span class="title">The outlook.</span>
+          <p class="note">The acknowledgment that monetary policy may not fix what is breaking sits alone on its own page. Buried in the original, it lands here because nothing else is competing for the same air.</p>
+        </div>
+      </div>
+
+      <!-- Slide 08 — Historical Context -->
+      <div class="slide with-note reveal">
+        <div class="slide-frame">
+          <img src="sequoia-redesign-assets/redesigned/slide-8.jpg" alt="Historical Context slide — companies forged during downturns: Cisco, Google, PayPal, Airbnb, Square, Stripe" />
+        </div>
+        <div class="slide-meta">
+          <span class="num">08</span>
+          <span class="title">Historical context.</span>
+          <p class="note">Cisco. Google. PayPal. Airbnb. Square. Stripe. The proof points the original cited in passing become the page itself. Set as a list rather than a paragraph, the reader registers the names instead of skimming past them — and notices that two of them are Sequoia's own.</p>
+        </div>
+      </div>
+
+      <!-- Slide 09 — The chart -->
+      <div class="slide with-note reveal d1">
+        <div class="slide-frame">
+          <img src="sequoia-redesign-assets/redesigned/slide-9.jpg" alt="Venture Funding During Downturns — chart with bar columns at 1987, 2001, 2008, 2020 and oxblood dot markers showing the funding decline at each downturn" />
+        </div>
+        <div class="slide-meta">
+          <span class="num">09</span>
+          <span class="title">The chart.</span>
+          <p class="note">The deck's only data visualization. Four bar columns at 1987, 2001, 2008, and 2020 — the four downturns the memo invokes by name — with dot markers showing the venture-funding decline at each. A second chart anywhere else would have made this one ordinary.</p>
+        </div>
+      </div>
+
+      <!-- Slide 10 — What To Do divider -->
+      <div class="slide with-note reveal">
+        <div class="slide-frame">
+          <img src="sequoia-redesign-assets/redesigned/slide-10.jpg" alt="Section divider: What To Do, with a 09 page number" />
+        </div>
+        <div class="slide-meta">
+          <span class="num">10</span>
+          <span class="title">Act three divider.</span>
+          <p class="note">The rhetorical pivot. Same form as the prior two dividers — the structure does the work of signaling that the prescription is about to begin, and the design refuses to do it twice.</p>
+        </div>
+      </div>
+
+      <!-- Slide 11 — Questions 01 & 02 -->
+      <div class="slide with-note reveal d1">
+        <div class="slide-frame">
+          <img src="sequoia-redesign-assets/redesigned/slide-11.jpg" alt="Question Every Assumption — questions 01 Cash runway and 02 Fundraising in paired columns with display-scale oxblood numerals" />
+        </div>
+        <div class="slide-meta">
+          <span class="num">11</span>
+          <span class="title">Questions 01 &amp; 02.</span>
+          <p class="note">Cash runway. Fundraising. The first two of six. The numerals are display-scale, oxblood, and given more pixels than the questions themselves — the question is what the founder will sit with, the numeral is what stays in peripheral vision while they do.</p>
+        </div>
+      </div>
+
+      <!-- Slide 12 — Questions 03 & 04 -->
+      <div class="slide with-note reveal">
+        <div class="slide-frame">
+          <img src="sequoia-redesign-assets/redesigned/slide-12.jpg" alt="Question Every Assumption — questions 03 Sales forecasts and 04 Marketing in paired columns" />
+        </div>
+        <div class="slide-meta">
+          <span class="num">12</span>
+          <span class="title">Questions 03 &amp; 04.</span>
+          <p class="note">Sales forecasts. Marketing. The format holds. Three spreads, two questions per spread, identical structure throughout — once a system is established, it earns the right to repeat without explaining itself.</p>
+        </div>
+      </div>
+
+      <!-- Slide 13 — Questions 05 & 06 -->
+      <div class="slide with-note reveal d1">
+        <div class="slide-frame">
+          <img src="sequoia-redesign-assets/redesigned/slide-13.jpg" alt="Question Every Assumption — questions 05 Headcount and 06 Capital spending in paired columns" />
+        </div>
+        <div class="slide-meta">
+          <span class="num">13</span>
+          <span class="title">Questions 05 &amp; 06.</span>
+          <p class="note">Headcount. Capital spending. The final pair closes the section without ceremony — no summary slide, no "in conclusion," no recap of the previous five. A pitch deck would have summarized; a memo trusts its reader to remember.</p>
+        </div>
+      </div>
+
+      <!-- Slide 14 — The Lesson -->
+      <div class="slide with-note reveal">
+        <div class="slide-frame">
+          <img src="sequoia-redesign-assets/redesigned/slide-14.jpg" alt="The Lesson slide — Darwin's quote on adaptability set in Fraunces Light at display scale, alone on the page" />
+        </div>
+        <div class="slide-meta">
+          <span class="num">14</span>
+          <span class="title">The lesson.</span>
+          <p class="note">Darwin's line gets its own page. The most-cited sentence in the entire memo, set in Fraunces Light at display scale, with no chart and no callout. The sentence has carried itself for a hundred and sixty years; the design's job is to get out of its way.</p>
+        </div>
+      </div>
+
+      <!-- Slide 15 — Signature page -->
+      <div class="slide with-note reveal d1">
+        <div class="slide-frame">
+          <img src="sequoia-redesign-assets/redesigned/slide-15.jpg" alt="To Our Founders — closing slide with Alfred Lin's R.I.P. Good Times recollection, the closing benediction, and the signature: Best, Team Sequoia" />
+        </div>
+        <div class="slide-meta">
+          <span class="num">15</span>
+          <span class="title">The signature.</span>
+          <p class="note">Alfred Lin's R.I.P. Good Times recollection. The benediction: stay healthy, keep your company healthy, put a dent in the world. The signature: Best, Team Sequoia. The last page mirrors the first in proportion and restraint — the document closes on its own terms, in its own typeface.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     BEFORE / AFTER
+============================================================ -->
+<section class="compare">
+  <div class="container">
+    <span class="eyebrow accent reveal">Before / After</span>
+    <h2 style="font-family: var(--font-display); font-weight: 350; font-size: clamp(40px, 6vw, 76px); letter-spacing: -0.025em; line-height: 0.96; margin-top: 18px;" class="reveal d1">
+      The decisions that <span style="font-style: italic; color: var(--accent);">mattered.</span>
+    </h2>
+
+    <!-- Pair 1 — Cover -->
+    <div class="pair reveal d2">
+      <div class="pair-block">
+        <span class="pair-tag"><span class="dot"></span>Original · Medium, March 2020</span>
+        <div class="pair-frame is-original is-portrait">
+          <img src="sequoia-redesign-assets/original/cover.jpg" alt="Original Medium article cover, March 2020 — black sans-serif title above a large stock illustration of a coronavirus particle" />
+        </div>
+      </div>
+      <div class="pair-block">
+        <span class="pair-tag after"><span class="dot"></span>Restaged · 2026</span>
+        <div class="pair-frame after">
+          <img src="sequoia-redesign-assets/redesigned/slide-1.jpg" alt="Restaged cover, 2026 — Fraunces Light title in cream on warm near-black, with single oxblood rule and documentary label" />
+        </div>
+      </div>
+    </div>
+
+    <div class="pair-rationale reveal">
+      <h4>The cover.</h4>
+      <p>The original cover sells the memo with a stock illustration of a coronavirus particle in close-up — the visual register of the news cycle the letter inside was trying to give founders distance from. The redesign deletes the image. The title, set in Fraunces Light at display size, has to carry the page on its own. The only ornament is a single oxblood rule, no longer than a wax seal. Three-quarters of the slide is empty because the cover doesn't need to do the persuasion — that is what the next fourteen pages are for.</p>
+    </div>
+
+    <!-- Pair 2 — The chart -->
+    <div class="pair reveal d1" style="margin-top: clamp(48px, 7vw, 80px);">
+      <div class="pair-block">
+        <span class="pair-tag"><span class="dot"></span>Original · A line in the prose</span>
+        <div class="pair-frame is-original is-portrait">
+          <img src="sequoia-redesign-assets/original/recession-line.jpg" alt="Original article body, page 4 — the line about prior recessions buried in inline prose alongside the numbered founder questions" />
+        </div>
+      </div>
+      <div class="pair-block">
+        <span class="pair-tag after"><span class="dot"></span>Restaged · A page of its own</span>
+        <div class="pair-frame after">
+          <img src="sequoia-redesign-assets/redesigned/slide-9.jpg" alt="Restaged chart slide — Venture Funding During Downturns, with bars and dot markers at 1987, 2001, 2008, 2020" />
+        </div>
+      </div>
+    </div>
+
+    <div class="pair-rationale reveal">
+      <h4>The chart, where there was none.</h4>
+      <p>The line about prior downturns — "as happened in 2001 and 2009" — sits in the original as nine words inside a paragraph about fundraising. It is the only assertion in the entire memo that is checkable against data; everything else is judgment. The redesign surfaces it as the deck's single chart. The argument behind the addition is specific: the founders Sequoia is writing to in 2020 don't need to be told what 2008 felt like, but they do need to be reminded that this has happened on a schedule. Being the only chart in the deck is what makes the chart worth showing — a second one anywhere would have made this one ordinary.</p>
+    </div>
+
+    <!-- Pair 3 — Founder questions -->
+    <div class="pair reveal d1" style="margin-top: clamp(48px, 7vw, 80px);">
+      <div class="pair-block">
+        <span class="pair-tag"><span class="dot"></span>Original · Inline numbered list</span>
+        <div class="pair-frame is-original is-portrait">
+          <img src="sequoia-redesign-assets/original/inline-questions.jpg" alt="Original article body, page 3 — the numbered founder questions running inline with the prose at body scale" />
+        </div>
+      </div>
+      <div class="pair-block">
+        <span class="pair-tag after"><span class="dot"></span>Restaged · Three paired spreads</span>
+        <div class="pair-frame after">
+          <img src="sequoia-redesign-assets/redesigned/slide-11.jpg" alt="Restaged founder questions spread — questions 01 Cash runway and 02 Fundraising paired at display scale with oxblood numerals" />
+        </div>
+      </div>
+    </div>
+
+    <div class="pair-rationale reveal">
+      <h4>The founder questions.</h4>
+      <p>The six founder questions are the rhetorical core of the memo. In the original they survive on the strength of the writing, but the format works against them — a numbered list reads at the pace the eye sets, not the pace each question deserves. Splitting them across three paired spreads means the reader cannot finish them in under a minute. The oxblood numerals do the same job the original's "1." "2." "3." did, but at a scale that makes them the page's primary visual event rather than its smallest mark. The questions, given room, become assignments.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     EPILOGUE
+============================================================ -->
+<section class="epilogue">
+  <div class="container prose">
+    <span class="eyebrow accent reveal">Epilogue</span>
+    <p class="closing reveal d1">
+      The original earned its standing despite its format. <span class="em">This is what it would have looked like</span> if its format had been part of the standing.
+    </p>
+    <p class="reveal d2">
+      The redesign is a counterfactual, not a verdict. Sequoia published the memo on a Wednesday afternoon in March and let the writing carry it. It worked. The exercise here is the smaller, more selfish question: what would the same fifteen pages look like if the visual work had been doing its share?
+    </p>
+    <p class="reveal d3">
+      The answer is the deck above. Quieter. Slower. More confident in less. It is not the memo Sequoia needed to send in March 2020 — Sequoia in March 2020 needed exactly the memo it sent. It is what an investor communication could look like in 2026, made by a partner or operator or writer who has not yet earned the privilege of being read past their packaging.
+    </p>
+    <p class="reveal d4">
+      For the studio, this is also a category move. The portfolio to date has been proof that Stealth Strategist can design for persuasion. This piece is the proof that Stealth Strategist can also design for record. <em class="list">Strategic memos, investor letters, board communications, founder updates, annual reports</em> — documents where the brief is to disappear into the prose, where good typography earns more trust than visual invention. The pitch deck is one register. This is the other.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================
+     NEXT CASE
+============================================================ -->
+<section class="next-case">
+  <div class="container">
+    <div class="row">
+      <div class="label-block">
+        <span class="label">Next Case</span>
+        <!-- TODO TYRA: update count once the new case is published -->
+        <span class="label" style="color: var(--mute);">03 of 05</span>
+      </div>
+      <!-- TODO TYRA: replace href with the actual next case slug -->
+      <a href="./buffer-redesign.html" class="next-link">
+        Buffer <span class="em">Seed.</span>
+        <span class="arrow">→</span>
+      </a>
+      <a href="../index.html#work" class="all-link">All work</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div>
+        <a href="../index.html" class="brand">Stealth<span class="dot">.</span></a>
+        <p style="color: var(--mute); font-size: 13px; margin-top: 12px; max-width: 360px;">
+          Presentation design studio. Founded by Tyra. Based in California, available worldwide.
+        </p>
+      </div>
+      <div class="links">
+        <!-- TODO TYRA: update social links once set up -->
+        <a href="https://contra.com/your-handle">Contra</a>
+        <a href="https://dribbble.com/your-handle">Dribbble</a>
+        <a href="https://behance.net/your-handle">Behance</a>
+        <a href="mailto:tyra@stealthstrategist.co">Email</a>
+      </div>
+    </div>
+    <p class="legal">
+      Redesigned as a portfolio exercise. Original memo authored by Sequoia Capital, March 2020. Stealth Strategist is unaffiliated with Sequoia.
+    </p>
+    <div class="credit">
+      <span>© 2026 Stealth Strategist · All rights reserved</span>
+      <span>Designed by Tyra</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  if ('IntersectionObserver' in window) {
+    const reveals = document.querySelectorAll('.reveal:not(.in)');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+  }
+})();
+</script>
+
+</body>
+</html>
