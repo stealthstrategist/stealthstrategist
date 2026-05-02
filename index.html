@@ -359,37 +359,6 @@ section.work {
   line-height: 1.55;
 }
 
-/* Editorial premise note that sits above the grid */
-.work-premise {
-  margin-bottom: clamp(40px, 6vw, 60px);
-  padding: clamp(20px, 3vw, 28px) 0;
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
-}
-@media (min-width: 760px) {
-  .work-premise { grid-template-columns: auto 1fr; gap: 32px; align-items: center; }
-}
-.work-premise .premise-label {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--accent);
-  white-space: nowrap;
-}
-.work-premise .premise-text {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 350;
-  font-size: clamp(17px, 1.4vw, 21px);
-  line-height: 1.45;
-  color: var(--paper-dim);
-  font-variation-settings: "opsz" 144, "SOFT" 70;
-}
-
 .work-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -397,7 +366,6 @@ section.work {
   border-top: 1px solid var(--rule);
 }
 @media (min-width: 760px) { .work-grid { grid-template-columns: 1fr 1fr; } }
-@media (min-width: 1080px) { .work-grid { grid-template-columns: 1fr 1fr 1fr; } }
 
 .work-item {
   position: relative;
@@ -406,50 +374,12 @@ section.work {
   display: flex; flex-direction: column; gap: 14px;
   min-height: clamp(280px, 32vh, 360px);
   transition: background 280ms ease;
+  cursor: pointer;
 }
-@media (min-width: 760px) and (max-width: 1079px) {
+@media (min-width: 760px) {
   .work-item:nth-child(odd) { border-right: 1px solid var(--rule); }
 }
-@media (min-width: 1080px) {
-  .work-item { border-right: 1px solid var(--rule); }
-  .work-item:nth-child(3n) { border-right: 0; }
-}
-
-/* ----- Live state (clickable, accent visible) ----- */
-.work-item.is-live { cursor: pointer; }
-.work-item.is-live:hover { background: var(--ink-2); }
-.work-item.is-live .num { color: var(--accent); }
-.work-item.is-live .arrow-row .cta { color: var(--paper); }
-.work-item.is-live:hover .arrow-row .cta { color: var(--accent); }
-.work-item.is-live:hover .arrow-row .arrow { transform: translateX(4px); }
-
-/* ----- In-progress state (named, but muted) ----- */
-.work-item.is-progress { cursor: default; opacity: 0.78; }
-.work-item.is-progress .num { color: var(--paper-dim); }
-.work-item.is-progress .title { color: var(--paper-dim); }
-.work-item.is-progress .arrow-row .cta { color: var(--mute); }
-.work-item.is-progress .arrow-row .arrow { display: none; }
-
-/* ----- Reserved slot (almost ghost) ----- */
-.work-item.is-reserved {
-  cursor: default;
-  background: transparent;
-  border-style: dashed;
-  border-color: var(--rule);
-}
-.work-item.is-reserved .num { color: var(--mute); font-style: normal; opacity: 0.6; }
-.work-item.is-reserved .title {
-  color: var(--mute);
-  font-size: clamp(20px, 2vw, 26px);
-  font-style: italic;
-  font-weight: 350;
-  font-variation-settings: "opsz" 144, "SOFT" 80;
-}
-.work-item.is-reserved .meta { color: var(--mute); opacity: 0.7; }
-.work-item.is-reserved .arrow-row { border-top-color: var(--rule); }
-.work-item.is-reserved .arrow-row .cta { color: var(--mute); }
-.work-item.is-reserved .arrow-row .arrow { display: none; }
-
+.work-item:hover { background: var(--ink-2); }
 .work-item .row-top {
   display: flex; justify-content: space-between; align-items: flex-start; gap: 16px;
 }
@@ -458,6 +388,7 @@ section.work {
   font-style: italic;
   font-size: 22px;
   font-weight: 350;
+  color: var(--accent);
   font-variation-settings: "opsz" 144, "SOFT" 80;
 }
 .work-item .tag {
@@ -489,11 +420,6 @@ section.work {
   border: 1px solid var(--rule-bold);
   padding: 3px 8px;
   border-radius: 999px;
-  font-weight: 500;
-}
-.work-item.is-live .title .badge {
-  color: var(--accent);
-  border-color: var(--accent);
 }
 .work-item .meta {
   font-family: var(--font-mono);
@@ -512,10 +438,15 @@ section.work {
   font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
+  color: var(--paper-dim);
   display: inline-flex; align-items: center; gap: 8px;
   transition: color 220ms ease;
 }
-.work-item .arrow-row .arrow { transition: transform 220ms ease; }
+.work-item:hover .arrow-row .cta { color: var(--accent); }
+.work-item .arrow-row .arrow {
+  transition: transform 220ms ease;
+}
+.work-item:hover .arrow-row .arrow { transform: translateX(4px); }
 
 /* ============== MANIFESTO ============== */
 section.manifesto {
@@ -843,8 +774,6 @@ footer .credit {
 .reveal.d3 { transition-delay: 240ms; }
 .reveal.d4 { transition-delay: 320ms; }
 .reveal.d5 { transition-delay: 400ms; }
-/* in-progress reveal sits at slightly lower opacity even after .in fires */
-.work-item.is-progress.reveal.in { opacity: 0.78; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
@@ -917,8 +846,8 @@ footer .credit {
 <!-- ========== MARQUEE ========== -->
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track">
-    <span class="marquee-item">Pitch Decks <span class="diamond"></span> Sales Decks <span class="diamond"></span> Executive Keynotes <span class="diamond"></span> Brand Campaigns <span class="diamond"></span> Annual Reports <span class="diamond"></span> Board Materials <span class="diamond"></span> Investor Decks <span class="diamond"></span> Sports & Culture <span class="diamond"></span></span>
-    <span class="marquee-item">Pitch Decks <span class="diamond"></span> Sales Decks <span class="diamond"></span> Executive Keynotes <span class="diamond"></span> Brand Campaigns <span class="diamond"></span> Annual Reports <span class="diamond"></span> Board Materials <span class="diamond"></span> Investor Decks <span class="diamond"></span> Sports & Culture <span class="diamond"></span></span>
+    <span class="marquee-item">Pitch Decks <span class="diamond"></span> Strategic Memos <span class="diamond"></span> Investor Letters <span class="diamond"></span> Sales Decks <span class="diamond"></span> Executive Keynotes <span class="diamond"></span> Board Materials <span class="diamond"></span> Annual Reports <span class="diamond"></span> Brand Campaigns <span class="diamond"></span></span>
+    <span class="marquee-item">Pitch Decks <span class="diamond"></span> Strategic Memos <span class="diamond"></span> Investor Letters <span class="diamond"></span> Sales Decks <span class="diamond"></span> Executive Keynotes <span class="diamond"></span> Board Materials <span class="diamond"></span> Annual Reports <span class="diamond"></span> Brand Campaigns <span class="diamond"></span></span>
   </div>
 </div>
 
@@ -928,101 +857,125 @@ footer .credit {
     <div class="section-head">
       <div>
         <span class="eyebrow reveal">Studio Work</span>
-        <h2 class="reveal d1" style="margin-top: 22px;">Famous decks, <span class="em">re-set.</span></h2>
+        <h2 class="reveal d1" style="margin-top: 22px;">Decks built to a <span class="em">single standard.</span></h2>
       </div>
       <p class="lede reveal d2">
-        A working portfolio of seed and strategic decks restaged at a contemporary design standard. Each entry is a deck that closed a real round or shaped a real moment. New case studies publish monthly.
-      </p>
-    </div>
-
-    <div class="work-premise reveal">
-      <span class="premise-label">Editorial premise</span>
-      <p class="premise-text">
-        Every redesign starts from a publicly-circulated original — a deck the world has already seen. The studio's argument is in what changes between the two.
+        A curated portfolio of concept projects and pitch deck redesigns. Every deck below was designed as if the round depended on it. The first real client cases publish as the founding cohort delivers.
       </p>
     </div>
 
     <div class="work-grid">
-      <!-- 01 — AIRBNB (LIVE) -->
-      <a href="portfolio/airbnb-redesign.html" class="work-item is-live reveal">
+      <!-- 01 — Airbnb redesign (live) -->
+      <a href="./portfolio/airbnb-redesign.html" class="work-item reveal">
         <div class="row-top">
           <div class="num">01</div>
-          <div class="tag">Seed-deck Restage · Marketplace · 2008</div>
+          <div class="tag">Redesign · Marketplace · Seed Round · 2009 → 2026</div>
         </div>
-        <div class="title">Airbnb <span class="badge">Live</span></div>
-        <div class="meta">14 slides · Editorial restage · Type-led system</div>
+        <div class="title">Airbnb <span class="badge">Redesign</span></div>
+        <div class="meta">12 slides · Editorial restraint · Coral accent</div>
         <div class="arrow-row">
           <span class="cta">Read case study</span>
           <span class="arrow">→</span>
         </div>
       </a>
 
-      <!-- 02 — LINKEDIN (IN PROGRESS) -->
-      <div class="work-item is-progress reveal d1">
+      <!-- 02 — Sequoia Black Swan (live) -->
+      <a href="./portfolio/sequoia-blackswan-redesign.html" class="work-item reveal d1">
         <div class="row-top">
           <div class="num">02</div>
-          <div class="tag">Series B Pitch · B2B Network · 2004</div>
+          <div class="tag">Redesign · Strategic Memo · Venture Capital · 2020 → 2026</div>
         </div>
-        <div class="title">LinkedIn <span class="badge">In Production</span></div>
-        <div class="meta">Series B deck · Reid Hoffman · Founder pitch</div>
+        <div class="title">Sequoia Black Swan <span class="badge">Redesign</span></div>
+        <div class="meta">15 pages · Documentary register · Oxblood accent</div>
         <div class="arrow-row">
-          <span class="cta">Shipping soon</span>
+          <span class="cta">Read case study</span>
           <span class="arrow">→</span>
         </div>
-      </div>
+      </a>
 
-      <!-- 03 — SEQUOIA (IN PROGRESS) -->
-      <div class="work-item is-progress reveal">
+      <!-- 03 -->
+      <a href="#approach" class="work-item reveal">
         <div class="row-top">
           <div class="num">03</div>
-          <div class="tag">Strategic Memo · VC-to-founder · 2020</div>
+          <div class="tag">Concept Project · Executive Keynote · Summit</div>
         </div>
-        <div class="title">Sequoia <span class="badge">In Production</span></div>
-        <div class="meta">"Black Swan" memo · COVID portfolio brief</div>
+        <div class="title">The Leadership Edge <span class="badge">Concept</span></div>
+        <div class="meta">10 slides · Horizon Group · Global summit</div>
         <div class="arrow-row">
-          <span class="cta">Shipping soon</span>
+          <span class="cta">Coming soon</span>
           <span class="arrow">→</span>
         </div>
-      </div>
+      </a>
 
-      <!-- 04 — RESERVED -->
-      <div class="work-item is-reserved reveal d1">
+      <!-- 04 -->
+      <a href="#approach" class="work-item reveal d1">
         <div class="row-top">
           <div class="num">04</div>
-          <div class="tag">Reserved</div>
+          <div class="tag">Concept Project · Annual Report · Board-ready</div>
         </div>
-        <div class="title">Next case</div>
-        <div class="meta">Famous-deck restage · TBD</div>
+        <div class="title">Verdant Capital <span class="badge">Concept</span></div>
+        <div class="meta">10 slides · $142M AUM · Investor-grade</div>
         <div class="arrow-row">
-          <span class="cta">Reserved slot</span>
+          <span class="cta">Coming soon</span>
+          <span class="arrow">→</span>
         </div>
-      </div>
+      </a>
 
-      <!-- 05 — RESERVED -->
-      <div class="work-item is-reserved reveal">
+      <!-- 05 -->
+      <a href="#approach" class="work-item reveal">
         <div class="row-top">
           <div class="num">05</div>
-          <div class="tag">Reserved</div>
+          <div class="tag">Concept Project · Strategy · Growth</div>
         </div>
-        <div class="title">Next case</div>
-        <div class="meta">Famous-deck restage · TBD</div>
+        <div class="title">Arcana Strategy <span class="badge">Concept</span></div>
+        <div class="meta">10 slides · F&B brand · Growth transformation</div>
         <div class="arrow-row">
-          <span class="cta">Reserved slot</span>
+          <span class="cta">Coming soon</span>
+          <span class="arrow">→</span>
         </div>
-      </div>
+      </a>
 
-      <!-- 06 — RESERVED -->
-      <div class="work-item is-reserved reveal d1">
+      <!-- 06 -->
+      <a href="#approach" class="work-item reveal d1">
         <div class="row-top">
           <div class="num">06</div>
-          <div class="tag">Reserved</div>
+          <div class="tag">Concept Project · Sports · Brand Launch</div>
         </div>
-        <div class="title">Next case</div>
-        <div class="meta">Famous-deck restage · TBD</div>
+        <div class="title">Valor League <span class="badge">Concept</span></div>
+        <div class="meta">24 slides · Women's sport · Global activation</div>
         <div class="arrow-row">
-          <span class="cta">Reserved slot</span>
+          <span class="cta">Coming soon</span>
+          <span class="arrow">→</span>
         </div>
-      </div>
+      </a>
+
+      <!-- 07 -->
+      <a href="#approach" class="work-item reveal">
+        <div class="row-top">
+          <div class="num">07</div>
+          <div class="tag">Concept Project · Brand Campaign · Consumer</div>
+        </div>
+        <div class="title">Vantage Brand Campaign <span class="badge">Concept</span></div>
+        <div class="meta">16 slides · Photo-driven · Campaign pitch</div>
+        <div class="arrow-row">
+          <span class="cta">Coming soon</span>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <!-- 08 -->
+      <a href="#approach" class="work-item reveal d1">
+        <div class="row-top">
+          <div class="num">08</div>
+          <div class="tag">Concept Project · Luxury Real Estate · HNW</div>
+        </div>
+        <div class="title">Aurum Properties <span class="badge">Concept</span></div>
+        <div class="meta">14 slides · Luxury investment · Editorial</div>
+        <div class="arrow-row">
+          <span class="cta">Coming soon</span>
+          <span class="arrow">→</span>
+        </div>
+      </a>
     </div>
   </div>
 </section>
@@ -1217,10 +1170,8 @@ footer .credit {
         </p>
       </div>
       <div class="links">
-        <!-- TODO TYRA: update social links once set up -->
-        <a href="https://contra.com/your-handle">Contra</a>
-        <a href="https://dribbble.com/your-handle">Dribbble</a>
-        <a href="https://behance.net/your-handle">Behance</a>
+        <a href="https://contra.com/stealthstrategist">Contra</a>
+        <a href="https://dribbble.com/stealthstrategist">Dribbble</a>
         <a href="mailto:tyra@stealthstrategist.co">Email</a>
       </div>
     </div>
