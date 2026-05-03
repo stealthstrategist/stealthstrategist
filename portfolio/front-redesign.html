@@ -224,22 +224,6 @@ nav.site a.nav-cta:hover { background: var(--accent-2); transform: translateY(-1
   background: var(--ink-2); border: 1px solid var(--rule-bold);
   position: relative; overflow: hidden;
 }
-.cover-reveal .frame .placeholder {
-  position: absolute; inset: 0;
-  display: grid; place-items: center;
-  background: repeating-linear-gradient(45deg, transparent 0 11px, rgba(239,235,227,0.04) 11px 12px);
-  text-align: center; padding: 24px;
-}
-.cover-reveal .frame .placeholder .ph-label {
-  font-family: var(--font-mono); font-size: 12px;
-  letter-spacing: 0.2em; text-transform: uppercase; color: var(--mute);
-}
-.cover-reveal .frame .placeholder .ph-title {
-  font-family: var(--font-display); font-style: italic;
-  font-size: clamp(28px, 3vw, 44px); color: var(--accent);
-  margin-top: 8px;
-  font-variation-settings: "opsz" 144, "SOFT" 90;
-}
 .cover-reveal .caption {
   margin-top: 22px;
   font-family: var(--font-mono); font-size: 11px;
@@ -332,22 +316,6 @@ nav.site a.nav-cta:hover { background: var(--accent-2); transform: translateY(-1
   background: var(--ink-2); border: 1px solid var(--rule-bold);
   position: relative; overflow: hidden;
 }
-.showcase .slide-frame .placeholder {
-  position: absolute; inset: 0;
-  display: grid; place-items: center;
-  background: repeating-linear-gradient(45deg, transparent 0 11px, rgba(239,235,227,0.04) 11px 12px);
-  text-align: center; padding: 24px;
-}
-.showcase .slide-frame .placeholder .ph-num {
-  font-family: var(--font-display); font-style: italic;
-  font-size: clamp(40px, 4vw, 56px); color: var(--accent);
-  font-variation-settings: "opsz" 144, "SOFT" 100; line-height: 1;
-}
-.showcase .slide-frame .placeholder .ph-label {
-  font-family: var(--font-mono); font-size: 11px;
-  letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--mute); margin-top: 12px;
-}
 .showcase .slide-meta { display: flex; flex-direction: column; gap: 10px; padding-top: 4px; }
 .showcase .slide-meta .num {
   font-family: var(--font-display); font-style: italic;
@@ -385,14 +353,6 @@ nav.site a.nav-cta:hover { background: var(--accent-2); transform: translateY(-1
   position: relative; overflow: hidden;
 }
 .compare .pair-frame.after { border-color: var(--accent-2); }
-.compare .pair-frame .placeholder {
-  position: absolute; inset: 0;
-  display: grid; place-items: center;
-  background: repeating-linear-gradient(45deg, transparent 0 11px, rgba(239,235,227,0.04) 11px 12px);
-  text-align: center; padding: 16px;
-  font-family: var(--font-mono); font-size: 11px;
-  letter-spacing: 0.18em; text-transform: uppercase; color: var(--mute);
-}
 .compare .pair-rationale { margin-top: clamp(40px, 6vw, 60px); max-width: var(--max-prose); }
 .compare .pair-rationale h4 {
   font-family: var(--font-display); font-style: italic; font-weight: 380;
@@ -548,13 +508,7 @@ footer .credit {
   <div class="container">
     <span class="eyebrow accent reveal" style="display:inline-flex; margin-bottom: 32px;">The Redesign</span>
     <div class="frame reveal d1">
-      <!-- TODO TYRA: replace with <img src="front-redesign-assets/redesigned/slide-1.jpg" alt="Front Series A deck cover, redesigned 2026"> -->
-      <div class="placeholder">
-        <div>
-          <span class="ph-label">Cover · Redesigned</span>
-          <div class="ph-title">Drop slide 01 here</div>
-        </div>
-      </div>
+      <img src="front-redesign-assets/redesigned/slide-1.jpg" alt="Front Series A deck cover, redesigned 2026 — Fraunces wordmark on warm near-black ground with deep ink-blue accent rule">
     </div>
     <p class="caption reveal d2">Cover · Front · Series A · Redesigned 2026</p>
   </div>
@@ -669,8 +623,7 @@ footer .credit {
 
       <div class="slide with-note reveal">
         <div class="slide-frame">
-          <!-- TODO TYRA: <img src="front-redesign-assets/redesigned/slide-1.jpg" alt="Slide 01 — Cover"> -->
-          <div class="placeholder"><div><div class="ph-num">01</div><div class="ph-label">Cover</div></div></div>
+          <img src="front-redesign-assets/redesigned/slide-1.jpg" alt="Slide 01 — Front cover, redesigned 2026">
         </div>
         <div class="slide-meta">
           <span class="num">01</span>
@@ -681,8 +634,7 @@ footer .credit {
 
       <div class="slide with-note reveal d1">
         <div class="slide-frame">
-          <!-- TODO TYRA: <img src="front-redesign-assets/redesigned/slide-2.jpg" alt="Slide 02 — Problem"> -->
-          <div class="placeholder"><div><div class="ph-num">02</div><div class="ph-label">Problem</div></div></div>
+          <img src="front-redesign-assets/redesigned/slide-2.jpg" alt="Slide 02 — The problem, redesigned 2026">
         </div>
         <div class="slide-meta">
           <span class="num">02</span>
@@ -693,8 +645,7 @@ footer .credit {
 
       <div class="slide with-note reveal">
         <div class="slide-frame">
-          <!-- TODO TYRA: <img src="front-redesign-assets/redesigned/slide-3.jpg" alt="Slide 03 — Solution"> -->
-          <div class="placeholder"><div><div class="ph-num">03</div><div class="ph-label">Solution</div></div></div>
+          <img src="front-redesign-assets/redesigned/slide-3.jpg" alt="Slide 03 — The solution, redesigned 2026">
         </div>
         <div class="slide-meta">
           <span class="num">03</span>
@@ -705,8 +656,7 @@ footer .credit {
 
       <div class="slide with-note reveal d1">
         <div class="slide-frame">
-          <!-- TODO TYRA: <img src="front-redesign-assets/redesigned/slide-4.jpg" alt="Slide 04 — Select Customers"> -->
-          <div class="placeholder"><div><div class="ph-num">04</div><div class="ph-label">Select Customers</div></div></div>
+          <img src="front-redesign-assets/redesigned/slide-4.jpg" alt="Slide 04 — Select customers, redesigned 2026">
         </div>
         <div class="slide-meta">
           <span class="num">04</span>
@@ -717,8 +667,7 @@ footer .credit {
 
       <div class="slide with-note reveal">
         <div class="slide-frame">
-          <!-- TODO TYRA: <img src="front-redesign-assets/redesigned/slide-5.jpg" alt="Slide 05 — Consistent Organic Growth"> -->
-          <div class="placeholder"><div><div class="ph-num">05</div><div class="ph-label">Growth</div></div></div>
+          <img src="front-redesign-assets/redesigned/slide-5.jpg" alt="Slide 05 — Consistent organic growth, redesigned 2026">
         </div>
         <div class="slide-meta">
           <span class="num">05</span>
@@ -730,8 +679,7 @@ footer .credit {
 
       <div class="slide with-note reveal d1">
         <div class="slide-frame">
-          <!-- TODO TYRA: <img src="front-redesign-assets/redesigned/slide-6.jpg" alt="Slide 06 — Capital Efficient"> -->
-          <div class="placeholder"><div><div class="ph-num">06</div><div class="ph-label">Capital Efficient</div></div></div>
+          <img src="front-redesign-assets/redesigned/slide-6.jpg" alt="Slide 06 — We've been capital efficient, redesigned 2026">
         </div>
         <div class="slide-meta">
           <span class="num">06</span>
@@ -743,8 +691,7 @@ footer .credit {
 
       <div class="slide with-note reveal">
         <div class="slide-frame">
-          <!-- TODO TYRA: <img src="front-redesign-assets/redesigned/slide-7.jpg" alt="Slide 07 — Team"> -->
-          <div class="placeholder"><div><div class="ph-num">07</div><div class="ph-label">Team</div></div></div>
+          <img src="front-redesign-assets/redesigned/slide-7.jpg" alt="Slide 07 — The team, redesigned 2026">
         </div>
         <div class="slide-meta">
           <span class="num">07</span>
@@ -755,8 +702,7 @@ footer .credit {
 
       <div class="slide with-note reveal d1">
         <div class="slide-frame">
-          <!-- TODO TYRA: <img src="front-redesign-assets/redesigned/slide-8.jpg" alt="Slide 08 — Funding"> -->
-          <div class="placeholder"><div><div class="ph-num">08</div><div class="ph-label">Funding</div></div></div>
+          <img src="front-redesign-assets/redesigned/slide-8.jpg" alt="Slide 08 — Funding history, redesigned 2026">
         </div>
         <div class="slide-meta">
           <span class="num">08</span>
@@ -767,8 +713,7 @@ footer .credit {
 
       <div class="slide with-note reveal">
         <div class="slide-frame">
-          <!-- TODO TYRA: <img src="front-redesign-assets/redesigned/slide-9.jpg" alt="Slide 09 — The Opportunity"> -->
-          <div class="placeholder"><div><div class="ph-num">09</div><div class="ph-label">Opportunity</div></div></div>
+          <img src="front-redesign-assets/redesigned/slide-9.jpg" alt="Slide 09 — The opportunity, redesigned 2026">
         </div>
         <div class="slide-meta">
           <span class="num">09</span>
@@ -780,8 +725,7 @@ footer .credit {
 
       <div class="slide with-note reveal d1">
         <div class="slide-frame">
-          <!-- TODO TYRA: <img src="front-redesign-assets/redesigned/slide-10.jpg" alt="Slide 10 — Thanks"> -->
-          <div class="placeholder"><div><div class="ph-num">10</div><div class="ph-label">Thanks</div></div></div>
+          <img src="front-redesign-assets/redesigned/slide-10.jpg" alt="Slide 10 — Thanks, redesigned 2026">
         </div>
         <div class="slide-meta">
           <span class="num">10</span>
@@ -805,15 +749,13 @@ footer .credit {
       <div class="pair-block">
         <span class="pair-tag"><span class="dot"></span>Original · 2016</span>
         <div class="pair-frame">
-          <!-- TODO TYRA: <img src="front-redesign-assets/original/cover.jpg" alt="Original Front cover, 2016"> -->
-          <div class="placeholder">Drop original cover</div>
+          <img src="front-redesign-assets/original/cover.jpg" alt="Original Front cover, 2016 — blue confetti pattern with FRONT wordmark in white">
         </div>
       </div>
       <div class="pair-block">
         <span class="pair-tag after"><span class="dot"></span>Redesign · 2026</span>
         <div class="pair-frame after">
-          <!-- TODO TYRA: <img src="front-redesign-assets/redesigned/slide-1.jpg" alt="Redesigned Front cover, 2026"> -->
-          <div class="placeholder">Drop redesigned cover</div>
+          <img src="front-redesign-assets/redesigned/slide-1.jpg" alt="Redesigned Front cover, 2026 — Fraunces wordmark on warm near-black ground with ink-blue accent rule">
         </div>
       </div>
     </div>
@@ -827,15 +769,13 @@ footer .credit {
       <div class="pair-block">
         <span class="pair-tag"><span class="dot"></span>Original · Slide 04</span>
         <div class="pair-frame">
-          <!-- TODO TYRA: <img src="front-redesign-assets/original/customers.jpg" alt="Original customer logos slide"> -->
-          <div class="placeholder">Drop original customer-logo slide</div>
+          <img src="front-redesign-assets/original/customers.jpg" alt="Original customer logos slide — eight logos each in native brand color">
         </div>
       </div>
       <div class="pair-block">
         <span class="pair-tag after"><span class="dot"></span>Redesign · Slide 04</span>
         <div class="pair-frame after">
-          <!-- TODO TYRA: <img src="front-redesign-assets/redesigned/slide-4.jpg" alt="Redesigned customer logos slide"> -->
-          <div class="placeholder">Drop redesigned customer-logo slide</div>
+          <img src="front-redesign-assets/redesigned/slide-4.jpg" alt="Redesigned customer logos slide — single ink tone, equal weight, ink-blue accent on Y Combinator">
         </div>
       </div>
     </div>
@@ -849,15 +789,13 @@ footer .credit {
       <div class="pair-block">
         <span class="pair-tag"><span class="dot"></span>Original · Slide 05</span>
         <div class="pair-frame">
-          <!-- TODO TYRA: <img src="front-redesign-assets/original/growth.jpg" alt="Original growth slide"> -->
-          <div class="placeholder">Drop original growth slide</div>
+          <img src="front-redesign-assets/original/growth.jpg" alt="Original growth slide — 'CONSISTENT ORGANIC GROWTH' headline with takeaway in caption">
         </div>
       </div>
       <div class="pair-block">
         <span class="pair-tag after"><span class="dot"></span>Redesign · Slide 05</span>
         <div class="pair-frame after">
-          <!-- TODO TYRA: <img src="front-redesign-assets/redesigned/slide-5.jpg" alt="Redesigned growth slide"> -->
-          <div class="placeholder">Drop redesigned growth slide</div>
+          <img src="front-redesign-assets/redesigned/slide-5.jpg" alt="Redesigned growth slide — 'MRR grew 5.4× in 12 months' as headline">
         </div>
       </div>
     </div>
@@ -871,15 +809,13 @@ footer .credit {
       <div class="pair-block">
         <span class="pair-tag"><span class="dot"></span>Original · Slide 09</span>
         <div class="pair-frame">
-          <!-- TODO TYRA: <img src="front-redesign-assets/original/opportunity.jpg" alt="Original opportunity slide"> -->
-          <div class="placeholder">Drop original opportunity slide</div>
+          <img src="front-redesign-assets/original/opportunity.jpg" alt="Original opportunity slide — four sentences stacked centrally with equal weight">
         </div>
       </div>
       <div class="pair-block">
         <span class="pair-tag after"><span class="dot"></span>Redesign · Slide 09</span>
         <div class="pair-frame after">
-          <!-- TODO TYRA: <img src="front-redesign-assets/redesigned/slide-9.jpg" alt="Redesigned opportunity slide"> -->
-          <div class="placeholder">Drop redesigned opportunity slide</div>
+          <img src="front-redesign-assets/redesigned/slide-9.jpg" alt="Redesigned opportunity slide — Slack premise on left, Front conclusion on right in ink-blue">
         </div>
       </div>
     </div>
